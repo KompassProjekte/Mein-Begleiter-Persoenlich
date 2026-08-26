@@ -1,0 +1,23 @@
+TESTBOGEN – PERSÖNLICHE ARBEITSVERSION 1.9.0
+
+Nur mit erfundenen Testdaten prüfen, bevor echte persönliche Daten verwendet werden.
+
+[ ] Startseite zeigt Version 1.9.0 und „Persönliche Arbeitsversion“.
+[ ] Auslieferungszustand enthält 0 Datensätze und 0 Dokumente.
+[ ] „＋ Neue Einträge“ öffnet das Klappmenü vollständig.
+[ ] Termin, Frage, Medikament, Dokument und Erlebnis lassen sich anlegen.
+[ ] Einfache und vollständige Ansicht funktionieren im Hoch- und Querformat.
+[ ] Bericht, Verlauf und Buchausgabe enthalten die erwarteten Testdaten.
+[ ] Verschlüsselte vollständige Sicherung wird heruntergeladen.
+[ ] Falsches Kennwort und manipulierte Datei werden ohne Datenänderung abgelehnt.
+[ ] Sicherung aus der Linie 1.8 wird geprüft und vollständig übernommen.
+[ ] Dokumentenmappen und Seiten sind nach dem Import vollständig.
+[ ] Nach dem ersten vollständigen Laden funktioniert die App offline.
+[ ] Installation als PWA und Start ohne Adressleiste funktionieren auf dem Zielgerät.
+[ ] Neue Sicherung aus 1.9.0 lässt sich auf einem zweiten Testgerät wiederherstellen.
+
+Ergebnis / Auffälligkeiten:
+
+______________________________________________________________________________
+
+______________________________________________________________________________

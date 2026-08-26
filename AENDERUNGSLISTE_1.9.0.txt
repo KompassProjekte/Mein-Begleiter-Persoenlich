@@ -1,0 +1,17 @@
+ÄNDERUNGSLISTE – VERSION 1.9.0
+
+- Neue Kennzeichnung „Persönliche Arbeitsversion“; alle Praxistest-Hinweise entfernt.
+- Eigenständige PWA-Pfade für /Mein-Begleiter-Persoenlich/.
+- Eigener Service-Worker-Cache für Version 1.9.0.
+- Eigener lokaler Datenspeicher und eigene Dokumentendatenbank; dadurch keine
+  unbeabsichtigte Vermischung mit den getrennten Testversionen auf derselben Domain.
+- Hauptzugang „＋ Neue Einträge“ deutlich hervorgehoben und verständlich beschriftet.
+- Umschaltung „Einfache Ansicht“ / „Vollständige Ansicht“ klarer gestaltet.
+- Sicherer Gerätewechsel und verschlüsselte vollständige Sicherung beibehalten.
+- Verschlüsselte Sicherungen der freigegebenen Linie 1.8 werden zur kontrollierten
+  Datenübernahme akzeptiert; neue Sicherungen werden als persönliche Ausgabe 1.9.0 erstellt.
+- Weitere unverschlüsselte Sicherungen und Tabellenexporte nachrangig eingeordnet.
+- Startbestand verbindlich: 0 persönliche Datensätze.
+
+Nicht verändert wurden die fachlichen Datenbereiche, Berichte, Buchausgabe und die
+grundlegende Datenstruktur, soweit für die Trennung der persönlichen Ausgabe nicht nötig.

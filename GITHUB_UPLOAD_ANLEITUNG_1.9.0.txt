@@ -1,0 +1,22 @@
+GITHUB-UPLOAD – GETRENNTE PERSÖNLICHE ARBEITSVERSION
+
+Empfohlenes neues Repository: Mein-Begleiter-Persoenlich
+Vorgesehene Adresse: https://kompassprojekte.github.io/Mein-Begleiter-Persoenlich/
+
+1. Bei GitHub ein neues, getrenntes Repository „Mein-Begleiter-Persoenlich“ anlegen.
+2. Nur den INHALT dieses entpackten Pakets hochladen, nicht den übergeordneten Ordner.
+3. index.html, manifest.webmanifest, service-worker.js und offline.html müssen direkt im
+   Stammverzeichnis liegen. Der Ordner icons muss als Ordner erhalten bleiben.
+4. Änderungen in den Hauptzweig übernehmen.
+5. Einstellungen > Seiten öffnen. Quelle „Bereitstellung von einem Branch“, Hauptzweig und
+   „/(Wurzel)“ wählen. Speichern, sofern GitHub die Einstellung noch nicht übernommen hat.
+6. Die oben genannte Pages-Adresse nach erfolgreicher Bereitstellung öffnen.
+7. Browser-Cache aktualisieren und die angezeigte Version 1.9.0 prüfen.
+
+NIEMALS HOCHLADEN:
+- .mbg-Sicherungsdateien
+- persönliche Dokumente, Berichte oder Exporte
+- Dateien mit echten Gesundheitsdaten
+- Kennwörter oder Zugangsdaten
+
+Die öffentliche Testadresse und deren Repository bleiben unverändert bestehen.

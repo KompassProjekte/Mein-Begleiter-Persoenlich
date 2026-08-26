@@ -1,0 +1,36 @@
+TECHNISCHES PRÜFPROTOKOLL – VERSION 1.9.0
+Stand: 26.08.2026
+
+Automatisch/statisch geprüft:
+- HTML-Grundstruktur und eindeutige Element-IDs
+- JavaScript-Syntax aller eingebetteten Skripte
+- JSON-Gültigkeit des Manifests
+- Syntax des Service Workers
+- Übereinstimmung von PWA-Basispfad, Manifest, Service Worker und Symbolpfaden
+- Vorhandensein und Pixelmaße aller Installationssymbole
+- leerer Startbestand (0 persönliche Datensätze)
+- eigener lokaler Schlüssel und eigene Dokumentendatenbank für die persönliche Ausgabe
+- AES-256-GCM, PBKDF2-HMAC-SHA-256 und 600.000 Iterationen im Sicherungsmodul
+- keine .mbg-Sicherungsdatei und keine persönlichen Dokumente im Lieferpaket
+
+Sicherheitsgrenze:
+Die technische Prüfung ersetzt keine unabhängige Sicherheitsprüfung. Geräte-, Browser-,
+Download-, Installations-, Offline- und Wiederherstellungstests müssen mit erfundenen Daten
+auf den tatsächlich verwendeten Geräten abgeschlossen werden. Erst nach erfolgreicher
+Prüfung sollten echte persönliche Gesundheitsdaten übernommen werden.
+
+Ergebnis der automatischen Prüfungen am 26.08.2026:
+- 12 eingebettete JavaScript-Blöcke syntaxgültig
+- Service Worker syntaxgültig
+- 311 geprüfte Element-IDs, keine Doppelung
+- Manifest gültiges JSON
+- Symbole vorhanden: 64×64, 180×180, 192×192 und 512×512 Pixel;
+  zusätzlich Maskable-Symbol 512×512 Pixel
+- Startdatenliste leer
+- keine .mbg-, PDF-, Word- oder Bild-Nutzerdokumente außerhalb des Programmordners icons
+- keine aktiven fetch-, XMLHttpRequest-, sendBeacon- oder WebSocket-Aufrufe in index.html
+
+Offen und ausdrücklich nicht als bestanden bezeichnet:
+- Installation und Offline-Test auf realem Android-, Tablet- und PC-Gerät
+- vollständiger Export-/Importtest mit Dokumentenmappen zwischen realen Browsern
+- unabhängige fachkundige Sicherheitsprüfung

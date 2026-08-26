@@ -1,0 +1,24 @@
+MEIN BEGLEITER 1.9.0 – KURZANLEITUNG
+
+1. Beginnen
+Öffnen Sie „＋ Neue Einträge“. Dort wählen Sie Termin, Frage, Medikament, Dokument,
+Erlebnis oder einen anderen passenden Bereich. Nur der gewählte Abschnitt wird geöffnet.
+
+2. Ansicht wählen
+„Einfache Ansicht“ zeigt die wichtigsten Einstiege. „Vollständige Ansicht“ zeigt alle
+vorhandenen Bereiche. Die Umschaltung verändert keine gespeicherten Daten.
+
+3. Regelmäßig sichern
+Öffnen Sie „Sicherung“ und erstellen Sie eine verschlüsselte vollständige Sicherung.
+Bewahren Sie Datei und Kennwort getrennt und sicher auf. Das Kennwort wird nicht gespeichert
+und kann von niemandem wiederhergestellt werden.
+
+4. Geräte wechseln
+Auf dem bisherigen Gerät eine aktuelle verschlüsselte Sicherung erstellen. Die Datei selbst
+auf das neue Gerät übertragen. Dort „Verschlüsselte Sicherung auf diesem Gerät einlesen“
+wählen, Kennwort eingeben, Prüfung kontrollieren und den Import ausdrücklich bestätigen.
+
+5. Wichtig
+Es gibt keine automatische Synchronisation. Änderungen auf einem Gerät erscheinen nicht
+automatisch auf einem anderen Gerät. Sicherungsdateien und persönliche Inhalte niemals in
+das öffentliche GitHub-Repository hochladen.

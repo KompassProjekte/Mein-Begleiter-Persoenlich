@@ -1,0 +1,39 @@
+SICHERUNGSFORMAT .MBG – VERSION 2
+
+ÄUSSERER DATEICONTAINER
+Der JSON-Container enthält ausschließlich technische Angaben:
+- Formatkennung
+- Formatversion 2
+- App-Version
+- Ausgabenkennung
+- Verschlüsselungs- und Schlüsselableitungsverfahren
+- Iterationszahl
+- zufälligen Salt
+- zufälligen Initialisierungswert
+- verschlüsselten, authentifizierten Datenblock
+
+VERFAHREN
+- AES-GCM mit 256-Bit-Schlüssel
+- PBKDF2-HMAC-SHA-256 mit 600.000 Iterationen
+- 16 Byte zufälliger Salt je Datei
+- 12 Byte zufälliger Initialisierungswert je Datei
+- Zufallswerte aus crypto.getRandomValues
+
+VERSCHLÜSSELTER INHALT
+- Produkt- und Formatkennung
+- App- und Datenstruktur-Version
+- Erstellungszeitpunkt und Sicherungskennung
+- Quellgerät-Kategorie
+- vollständige lokale Anwendungsdaten
+- vollständige Dokumentenmappen und Dokumentseiten
+
+INTEGRITÄT
+AES-GCM prüft beim Entschlüsseln die Authentizität des gesamten verschlüsselten
+Inhalts. Ein falsches Kennwort oder eine veränderte Datei wird abgelehnt, bevor
+Daten geschrieben werden.
+
+KOMPATIBILITÄT
+Das Format übernimmt geprüfte verschlüsselte Pakete der Versionen 1.8.3,
+1.8.4, 1.8.5, 1.8.6 und 1.8.6.1. Neue Pakete werden als persönliche Ausgabe
+1.9.0 erstellt. Unbekannte Formate oder Datenstruktur-Versionen werden abgelehnt.
+Eine Zusammenführung mehrerer Datenstände ist in Version 1.9.0 deaktiviert.

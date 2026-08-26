@@ -1,0 +1,69 @@
+const CACHE = 'mein-begleiter-persoenlich-cache-v1-9-0';
+const BASIS = '/Mein-Begleiter-Persoenlich/';
+const PFLICHTDATEIEN = [
+  BASIS,
+  BASIS + 'index.html',
+  BASIS + 'manifest.webmanifest',
+  BASIS + 'offline.html'
+];
+const OPTIONALE_DATEIEN = [
+  BASIS + 'icons/icon-192.png',
+  BASIS + 'icons/icon-512.png',
+  BASIS + 'icons/icon-maskable-512.png',
+  BASIS + 'icons/apple-touch-icon-180.png',
+  BASIS + 'icons/favicon-64.png'
+];
+
+self.addEventListener('install', event => {
+  event.waitUntil((async () => {
+    const cache = await caches.open(CACHE);
+    await cache.addAll(PFLICHTDATEIEN);
+    await Promise.allSettled(OPTIONALE_DATEIEN.map(datei => cache.add(datei)));
+  })());
+});
+
+self.addEventListener('activate', event => {
+  event.waitUntil((async () => {
+    const namen = await caches.keys();
+    await Promise.all(namen
+      .filter(name => name.startsWith('mein-begleiter-persoenlich-cache') && name !== CACHE)
+      .map(name => caches.delete(name)));
+    await self.clients.claim();
+  })());
+});
+
+self.addEventListener('message', event => {
+  if (event.data?.type === 'SKIP_WAITING') self.skipWaiting();
+});
+
+self.addEventListener('fetch', event => {
+  if (event.request.method !== 'GET') return;
+  const url = new URL(event.request.url);
+  if (url.origin !== self.location.origin || !url.pathname.startsWith(BASIS)) return;
+
+  if (event.request.mode === 'navigate') {
+    event.respondWith((async () => {
+      try {
+        const antwort = await fetch(event.request);
+        const cache = await caches.open(CACHE);
+        cache.put(BASIS + 'index.html', antwort.clone());
+        return antwort;
+      } catch {
+        return (await caches.match(BASIS + 'index.html')) ||
+          (await caches.match(BASIS + 'offline.html'));
+      }
+    })());
+    return;
+  }
+
+  event.respondWith((async () => {
+    const gespeichert = await caches.match(event.request);
+    if (gespeichert) return gespeichert;
+    const antwort = await fetch(event.request);
+    if (antwort.ok) {
+      const cache = await caches.open(CACHE);
+      cache.put(event.request, antwort.clone());
+    }
+    return antwort;
+  })());
+});

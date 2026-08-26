@@ -1,0 +1,24 @@
+DATENSCHUTZ UND SICHERHEIT
+
+- Die ausgelieferte Anwendung enthält 0 persönliche Datensätze.
+- Eingaben bleiben im lokalen Browser-Speicher beziehungsweise in IndexedDB.
+- Es gibt kein Benutzerkonto und keine automatische Cloud-Synchronisation.
+- Eine Übertragung findet nur statt, wenn der Benutzer selbst eine
+  verschlüsselte .mbg-Datei erstellt und auf ein anderes Gerät bringt.
+- Die App sendet Sicherungsinhalte nicht an Lothar, Nimbus, GitHub, eine
+  Arztpraxis oder einen Cloud-Dienst.
+- Die Sicherung ist mit AES-256-GCM verschlüsselt und gegen unbemerkte
+  Inhaltsänderungen authentifiziert.
+- Das Kennwort wird nicht gespeichert und kann nicht wiederhergestellt werden.
+- Auch verschlüsselte Dateien müssen sorgfältig aufbewahrt werden.
+- Vor der ersten persönlichen Nutzung alle Sicherungs- und Wiederherstellungsschritte
+  ausschließlich mit erfundenen Daten prüfen.
+- Sicherungsdateien, Dokumente und persönliche Exporte niemals in ein öffentliches
+  GitHub-Repository hochladen.
+- Die Anwendung ersetzt keine ärztliche Beratung oder Behandlung. Bei akuten
+  Beschwerden ärztliche Hilfe holen, im Notfall 112 anrufen.
+
+WICHTIGE GRENZE
+Die technische Umsetzung wurde automatisiert geprüft. Vor einer Verwendung mit
+echten Gesundheitsdaten sind praktische Gerätetests und eine unabhängige
+fachkundige Sicherheitsprüfung empfohlen.
