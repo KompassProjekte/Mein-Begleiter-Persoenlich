@@ -7,7 +7,7 @@
       content="width=device-width,initial-scale=1,viewport-fit=cover"
     />
     <meta name="theme-color" content="#225b56" />
-    <title>Mein Begleiter 1.9.0 PWA – Persönliche Arbeitsversion</title>
+    <title>Mein Begleiter 1.9.0.1 PWA – Persönliche Arbeitsversion</title>
     <link rel="manifest" href="./manifest.webmanifest" />
     <link rel="icon" type="image/png" href="./icons/favicon-64.png" />
     <link rel="apple-touch-icon" href="./icons/apple-touch-icon-180.png" />
@@ -1704,7 +1704,7 @@
           </button>
         </nav>
         <div class="seitenfuss">
-          <strong>Version 1.9.0 PWA · PERSÖNLICHE ARBEITSVERSION</strong
+          <strong>Version 1.9.0.1 PWA · PERSÖNLICHE ARBEITSVERSION</strong
           >Stand: 26.08.2026<br />Entwickelt von Lothar &amp; Nimbus
         </div>
       </aside>
@@ -2595,7 +2595,7 @@
               </div>
               <div class="datenschutz">
                 <strong>⚠ Nicht für einen sicheren Gerätewechsel empfohlen</strong>
-                <p>Diese bisherigen Sicherungsformate sind nicht verschlüsselt. Nutzen Sie für den Gerätewechsel bevorzugt den neuen Bereich „Sicherer Gerätewechsel“ oben.</p>
+                <p>Diese älteren Sicherungsformate sind nicht verschlüsselt und dienen hauptsächlich der Übernahme bisheriger Datenbestände. Für neue Sicherungen verwenden Sie bitte die verschlüsselte vollständige Sicherung.</p>
               </div>
               <div class="sicherungsfeld">
                 <h4>Am bisherigen Gerät – zum Beispiel PC</h4>
@@ -2661,7 +2661,7 @@
                 <span>Persönlicher Browser-Speicher</span>
               </div>
               <p>
-                <strong>Mein Begleiter 1.9.0 PWA – Persönliche Arbeitsversion</strong>
+                <strong>Mein Begleiter 1.9.0.1 PWA – Persönliche Arbeitsversion</strong>
               </p>
               <p>
                 Ihre Einträge werden ausschließlich lokal im persönlichen
@@ -2695,17 +2695,17 @@
                 </button>
               </div>
               <div class="datenschutz">
-                <strong>🔒 Datenschutz beim Testen</strong>
+                <strong>🔒 Datenschutz und sichere Aufbewahrung</strong>
                 <p>
-                  Bitte nur erfundene Testdaten verwenden. Sicherungsdateien
-                  können persönliche Gesundheitsdaten und Originaldokumente
-                  enthalten. Bewahren Sie diese Dateien geschützt auf und
-                  versenden Sie sie nicht unverschlüsselt an Unbefugte.
+                  Ihre Einträge und Dokumente werden ausschließlich lokal im
+                  persönlichen Browser-Speicher dieses Geräts gespeichert. Es
+                  erfolgt keine automatische Übertragung an Lothar, Nimbus,
+                  GitHub, eine Arztpraxis oder einen Cloud-Dienst. Erstellen Sie
+                  regelmäßig eine verschlüsselte vollständige Sicherung und
+                  bewahren Sie Sicherungsdatei und Kennwort getrennt und
+                  geschützt auf.
                 </p>
               </div>
-              <button class="knopf gefahr" id="resetKnopf">
-                Testdaten sichern und Testversion vollständig leeren
-              </button>
             </article>
           </div>
           <dialog id="sicherungPruefung">
@@ -4101,7 +4101,7 @@
               return `<div class="tagebuch-eintrag"><div class="tagebuch-datum">${datumLang(e.datum)}</div><div class="tagebuch-text"><h5>${esc(ueberschrift)}</h5>${texte.join("") || "<p>Eintrag ohne weitere Beschreibung.</p>"}</div></div>`;
             })
             .join("");
-        html += `</div><p class="hinweis">Erstellt mit Mein Begleiter 1.9.0 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus</p>`;
+        html += `</div><p class="hinweis">Erstellt mit Mein Begleiter 1.9.0.1 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus</p>`;
         $("#berichtAusgabe").innerHTML = html;
         gespeichertenEntwurfAnzeigen();
       }
@@ -4163,7 +4163,7 @@
           });
         if (schluss)
           html += `<div class="buch-seite"><h4>Mein Rückblick und Ausblick</h4><div class="buch-schluss"><p>${esc(schluss)}</p></div></div>`;
-        html += `<p class="hinweis">Erstellt mit Mein Begleiter 1.9.0 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus · ${datumLang(heuteIso())}</p>`;
+        html += `<p class="hinweis">Erstellt mit Mein Begleiter 1.9.0.1 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus · ${datumLang(heuteIso())}</p>`;
         $("#berichtAusgabe").innerHTML = html;
       }
       function renderBericht() {
@@ -4193,7 +4193,7 @@
             const datum = d.dokumentDatum || (d.erstellt || "").slice(0, 10);
             return datum >= von && datum <= bis && passtBerichtArzt(d.quelleName);
           });
-        let html = `<div class="bericht-kopf"><h3>🧭 Mein Begleiter – persönlicher Bericht</h3><div class="bericht-meta"><span>Zeitraum: ${zeitraumText(von, bis)}</span><span>Auswahl: ${esc(berichtAuswahlText())}</span><span>Erstellt: ${datumLang(heuteIso())}</span><span>ÖFFENTLICHE PRAXISTEST-VERSION</span></div></div><div class="raster"><div class="span3"><strong>${arr.length}</strong><br>Einträge</div><div class="span3"><strong>${termine.length}</strong><br>Behandlungen / Termine</div><div class="span3"><strong>${checks.length}</strong><br>Tages-Checks</div><div class="span3"><strong>${euro(gesamt)}</strong><br>erfasste Kosten</div></div>`;
+        let html = `<div class="bericht-kopf"><h3>🧭 Mein Begleiter – persönlicher Bericht</h3><div class="bericht-meta"><span>Zeitraum: ${zeitraumText(von, bis)}</span><span>Auswahl: ${esc(berichtAuswahlText())}</span><span>Erstellt: ${datumLang(heuteIso())}</span><span>PERSÖNLICHE ARBEITSVERSION</span></div></div><div class="raster"><div class="span3"><strong>${arr.length}</strong><br>Einträge</div><div class="span3"><strong>${termine.length}</strong><br>Behandlungen / Termine</div><div class="span3"><strong>${checks.length}</strong><br>Tages-Checks</div><div class="span3"><strong>${euro(gesamt)}</strong><br>erfasste Kosten</div></div>`;
         if ($("#optWegbegleiter").checked) {
           html += `<div class="bericht-abschnitt"><h4>Behandlungsverlauf</h4>${arr.length ? `<table class="bericht-tabelle"><thead><tr><th>Datum</th><th>Arzt / Stelle</th><th>Maßnahme und Bemerkungen</th><th>Status / Befinden</th></tr></thead><tbody>${arr.map((e) => `<tr><td>${datumLang(e.datum)}</td><td>${esc(e.arzt)}</td><td>${esc([e.massnahme, e.bemerkung].filter((x, i, a) => x && a.indexOf(x) === i).join(" · "))}</td><td>${e.arzt || e.massnahme ? esc(terminStatus(e)) : ""}${e.befinden ? "<br>" + esc(e.befinden) : ""}${$("#optMesswerte").checked ? `<div class="messwerte">${messwerteHtml(e)}</div>` : ""}</td></tr>`).join("")}</tbody></table>` : "<p>Keine Einträge im gewählten Zeitraum.</p>"}</div>`;
         }
@@ -4429,7 +4429,7 @@
           });
         if (schluss)
           html += `<div class="buch-seite"><h4>Mein Rückblick und Ausblick</h4><div class="buch-schluss"><p>${esc(schluss)}</p></div></div>`;
-        html += `<p class="hinweis">${fassung === "lese" ? "Persönliche Leseausgabe – aus meinen eigenen Einträgen zusammengestellt. " : ""}Erstellt mit Mein Begleiter 1.9.0 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus · ${datumLang(heuteIso())}</p>`;
+        html += `<p class="hinweis">${fassung === "lese" ? "Persönliche Leseausgabe – aus meinen eigenen Einträgen zusammengestellt. " : ""}Erstellt mit Mein Begleiter 1.9.0.1 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus · ${datumLang(heuteIso())}</p>`;
         $("#berichtAusgabe").innerHTML = html;
         gespeichertenEntwurfAnzeigen();
       }
@@ -5439,7 +5439,7 @@
         const zeit = new Date().toISOString(),
           inhalt = JSON.stringify(
             {
-              format: "Mein Begleiter – PWA ÖFFENTLICHE PRAXISTEST-VERSION 1.8",
+              format: "Mein Begleiter – PWA Persönliche Arbeitsversion",
               version: 1.1,
               exportiertAm: zeit,
               eintraege: daten.eintraege,
@@ -5562,43 +5562,6 @@
         }
         ev.target.value = "";
       });
-      $("#resetKnopf").addEventListener("click", async () => {
-        const dokumente = dokumentDb ? await alleDokumente() : [];
-        if (dokumente.length) {
-          alert(
-            `Es sind noch ${dokumente.length} abgelegte Dokumente vorhanden. Diese Dateien gehören nicht zur normalen Sicherung.\n\nBitte lade wichtige Dokumente zuerst im Dokumentenzentrum herunter und lösche sie dort. Danach kannst du Mein Begleiter vollständig leeren.`,
-          );
-          wechsleSeite("dokumente");
-          return;
-        }
-        if (
-          !confirm(
-            "Möchtest du vor dem Leeren jetzt eine vollständige Sicherung herunterladen?\n\nMit „OK“ wird zuerst gespeichert. Mit „Abbrechen“ bleibt alles unverändert.",
-          )
-        )
-          return;
-        if (!(await sicherungErstellen())) return;
-        if (
-          !confirm(
-            "LETZTE SICHERHEITSABFRAGE\n\nJetzt wirklich ALLE Einträge, Medikamente, Einnahmen, Beobachtungen und Buchtexte löschen?\n\nDanach beginnt ein vollständig leeres Mein Begleiter.",
-          )
-        )
-          return;
-        daten = {
-          eintraege: [],
-          fragen: [],
-          medikamente: [],
-          einnahmen: [],
-          nebenwirkungen: [],
-          schritte: [],
-          ausgabeEntwuerfe: {},
-          letzteSicherung: null,
-        };
-        speichern();
-        $("#berichtVon").value = $("#berichtBis").value = "";
-        renderAlles();
-        toast("Mein Begleiter ist wieder vollständig leer");
-      });
       const jetzt = new Date();
       $("#mobilDatum").textContent = jetzt.toLocaleDateString("de-DE", {
         day: "2-digit",
@@ -5618,7 +5581,7 @@
       renderAlles();
     </script>
     <script>
-      // Testversion 010.3: Behandlungsschritte vollständig bearbeiten.
+      // Behandlungsschritte vollständig bearbeiten.
       (() => {
         const basisRenderBehandlung = renderBehandlung;
         renderBehandlung = function () {
@@ -5701,7 +5664,7 @@
       })();
     </script>
     <script>
-      // Testversion 011: getrennte Grafiken, Übersichtsfilter und Dopplungsprüfung.
+      // Getrennte Grafiken, Übersichtsfilter und Dopplungsprüfung.
       (() => {
         const imZeitraum = (e, von, bis) =>
           e.datum &&
@@ -5892,7 +5855,7 @@
         renderKosten();
         renderTermine();
         renderVerlauf();
-        // Praxistest-Version 1.0: Gewichtsverlauf und letzter Gewichtswert im Cockpit.
+        // Gewichtsverlauf und letzter Gewichtswert im Cockpit.
       })();
     </script>
     <script>
@@ -5992,7 +5955,7 @@
           const zeit = new Date().toISOString(),
             inhalt = JSON.stringify(
               {
-                format: "Mein Begleiter – PWA ÖFFENTLICHE PRAXISTEST-VERSION 1.8",
+                format: "Mein Begleiter – PWA Persönliche Arbeitsversion",
                 version: 1.1,
                 exportiertAm: zeit,
                 eintraege: daten.eintraege,
@@ -6514,7 +6477,7 @@
           const version = Number(obj.version || obj.formatVersion || 1);
           if (!Number.isFinite(version) || version > APP_VERSION)
             throw new Error(
-              `Diese Sicherung wurde mit einer neueren Datenstruktur (${obj.version || "unbekannt"}) erstellt und kann mit Version 1.9.0 nicht sicher geöffnet werden.`,
+              `Diese Sicherung wurde mit einer neueren Datenstruktur (${obj.version || "unbekannt"}) erstellt und kann mit Version 1.9.0.1 nicht sicher geöffnet werden.`,
             );
           return {
             obj,
@@ -6798,7 +6761,7 @@
           pass = $("#geraetePasswort"),
           pass2 = $("#geraetePasswort2"),
           weiter = $("#geraeteWeiter");
-        const APP_VERSION_GERAETEWECHSEL = "1.9.0";
+        const APP_VERSION_GERAETEWECHSEL = "1.9.0.1";
         const DATENSTRUKTUR_VERSION = "1.8";
         const SICHERUNGSFORMAT_VERSION = 2;
         const MAX_DATEIGROESSE = 250 * 1024 * 1024;
@@ -7064,7 +7027,7 @@
             throw new Error("Die Sicherung verwendet eine nicht unterstützte Datenstruktur.");
           if ((inhalt.edition !== edition && inhalt.edition !== "praxistest") || !inhalt.daten || !Array.isArray(inhalt.daten.eintraege))
             throw new Error("Das Paket ist unvollständig oder gehört zu einer anderen Ausgabe.");
-          if (inhalt.appVersion !== "1.8.3" && inhalt.appVersion !== "1.8.4" && inhalt.appVersion !== "1.8.5" && inhalt.appVersion !== "1.8.6" && inhalt.appVersion !== "1.8.6.1" && inhalt.appVersion !== APP_VERSION_GERAETEWECHSEL)
+          if (inhalt.appVersion !== "1.8.3" && inhalt.appVersion !== "1.8.4" && inhalt.appVersion !== "1.8.5" && inhalt.appVersion !== "1.8.6" && inhalt.appVersion !== "1.8.6.1" && inhalt.appVersion !== "1.9.0" && inhalt.appVersion !== APP_VERSION_GERAETEWECHSEL)
             throw new Error(`Die Programmversion ${inhalt.appVersion || "unbekannt"} ist nicht freigegeben.`);
           if (!inhalt.mitDokumenten || !Array.isArray(inhalt.dokumente))
             throw new Error("Für den sicheren Gerätewechsel müssen die Dokumente vollständig enthalten sein.");
@@ -7237,7 +7200,7 @@
                 vorbereiteteRuecksicherung = await ruecksicherungVorbereiten(kennwort);
               }
               $("#geraetePruefung").innerHTML =
-                `<strong>✓ Entschlüsselung und Integritätsprüfung bestanden</strong><p>Datei: ${esc(importDatei.name)} · ${dateigroesse(importDatei.size)}</p><p>Erstellt: ${new Date(innen.erstelltAm).toLocaleString("de-DE")} auf ${esc(innen.quellgeraet)} · Quellversion ${esc(innen.appVersion)}</p><p>Sicherungskennung: ${esc(innen.sicherungsId)}</p><p>${stats.eintraege} Einträge · ${stats.termine} Termine · ${stats.fragen} Fragen · ${stats.medikamente} Medikamente</p><p>${stats.dokumente} Dokumentenmappen · ${stats.seiten} Dokumentseiten · ${dateigroesse(stats.dokumentBytes)}</p><p>Speicher: ${esc(speicher.text)}</p><p>Auf diesem Gerät vorhanden: ${ziel.eintraege} Einträge · ${ziel.dokumente} Dokumentenmappen.</p>${zielIstLeer ? '<p><strong>✓ Das Zielgerät ist vollständig leer. Eine Rücksicherung ist nicht erforderlich.</strong></p>' : '<p><strong>Vorhandene Zieldaten werden ersetzt. Laden Sie deshalb zuerst die verschlüsselte Rücksicherung herunter.</strong></p>'}<p><strong>Eine Zusammenführung ist in Version 1.9.0 sicherheitshalber deaktiviert.</strong></p>`;
+                `<strong>✓ Entschlüsselung und Integritätsprüfung bestanden</strong><p>Datei: ${esc(importDatei.name)} · ${dateigroesse(importDatei.size)}</p><p>Erstellt: ${new Date(innen.erstelltAm).toLocaleString("de-DE")} auf ${esc(innen.quellgeraet)} · Quellversion ${esc(innen.appVersion)}</p><p>Sicherungskennung: ${esc(innen.sicherungsId)}</p><p>${stats.eintraege} Einträge · ${stats.termine} Termine · ${stats.fragen} Fragen · ${stats.medikamente} Medikamente</p><p>${stats.dokumente} Dokumentenmappen · ${stats.seiten} Dokumentseiten · ${dateigroesse(stats.dokumentBytes)}</p><p>Speicher: ${esc(speicher.text)}</p><p>Auf diesem Gerät vorhanden: ${ziel.eintraege} Einträge · ${ziel.dokumente} Dokumentenmappen.</p>${zielIstLeer ? '<p><strong>✓ Das Zielgerät ist vollständig leer. Eine Rücksicherung ist nicht erforderlich.</strong></p>' : '<p><strong>Vorhandene Zieldaten werden ersetzt. Laden Sie deshalb zuerst die verschlüsselte Rücksicherung herunter.</strong></p>'}<p><strong>Eine Zusammenführung ist in Version 1.9.0.1 sicherheitshalber deaktiviert.</strong></p>`;
               $("#geraetePruefung").hidden = false;
               pass.disabled = true;
               weiter.textContent = zielIstLeer
@@ -8328,7 +8291,7 @@
 </dialog>
 <script id="bedienoptimierung-v186-script">
 (() => {
-  const APP_VERSION = '1.9.0';
+  const APP_VERSION = '1.9.0.1';
   const MODUS_KEY = 'mein-begleiter-persoenlich-v1-9-0-ansicht';
   const START_KEY = 'mein-begleiter-persoenlich-v1-9-0-startauswahl';
   const ua = navigator.userAgent;

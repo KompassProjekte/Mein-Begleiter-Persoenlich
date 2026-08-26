@@ -1,0 +1,21 @@
+GITHUB-AKTUALISIERUNG – VERSION 1.9.0.1
+
+Repository: Mein-Begleiter-Persoenlich
+Adresse: https://kompassprojekte.github.io/Mein-Begleiter-Persoenlich/
+
+1. Vor der Aktualisierung in Version 1.9.0 eine verschlüsselte vollständige .mbg-Sicherung erstellen.
+2. Das neue ZIP-Paket auf dem PC entpacken.
+3. Im bestehenden GitHub-Repository „Datei hinzufügen“ und „Dateien hochladen“ wählen.
+4. Nur den INHALT des entpackten Ordners hochladen.
+5. Vorhandene Programmdateien mit den gleichnamigen neuen Dateien ersetzen.
+6. Den Ordner icons als Ordner erhalten.
+7. Änderungen in den Hauptzweig übernehmen.
+8. Die Pages-Bereitstellung abwarten und danach die Startadresse neu laden.
+9. Prüfen, dass Version 1.9.0.1 angezeigt wird und die vorhandenen lokalen Daten weiterhin sichtbar sind.
+
+NIEMALS ZU GITHUB HOCHLADEN:
+- .mbg-, .mbs- oder persönliche .json-Sicherungen
+- persönliche Dokumente, Berichte oder Tabellenexporte
+- Gesundheitsdaten, Kennwörter oder Zugangsdaten
+
+Das Aktualisieren der Programmdateien löscht den lokalen Browser-Speicher nicht. Browserdaten dürfen während des Updates nicht manuell gelöscht werden.

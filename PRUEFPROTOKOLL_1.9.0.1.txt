@@ -1,0 +1,28 @@
+TECHNISCHES PRÜFPROTOKOLL – VERSION 1.9.0.1
+Stand: 26.08.2026
+
+Verbindlich unverändert geprüft:
+- lokaler Hauptspeicherschlüssel: mein-begleiter-persoenlich-pwa-v1-9-0
+- Dokumentendatenbank: mein-begleiter-persoenlich-pwa-v1-9-0-dokumente
+- PWA-Pfad: /Mein-Begleiter-Persoenlich/
+- Datenstruktur-Version und vorhandene Importwege
+
+Automatisch/statisch geprüft:
+- Syntax aller eingebetteten JavaScript-Blöcke
+- Syntax des Service Workers und Gültigkeit des Manifests
+- eindeutige HTML-Element-IDs
+- neuer Cache mein-begleiter-persoenlich-cache-v1-9-0-1
+- vollständige Installationssymbole und Pixelmaße
+- leerer Auslieferungsbestand mit 0 persönlichen Datensätzen
+- keine Sicherungs- oder persönlichen Dokumentdateien im Lieferpaket
+- keine prominente Test-Löschschaltfläche und kein zugehöriger Ereignishandler
+- keine sichtbaren Praxistest- oder Testversionsbezeichnungen in der Anwendung
+- AES-256-GCM, PBKDF2-HMAC-SHA-256 und 600.000 Iterationen erhalten
+- Quellversion 1.9.0 für verschlüsselte Datenübernahme freigegeben
+
+Nicht als automatisch bestanden bezeichnet:
+- Installation und Offlinebetrieb auf realen Endgeräten
+- vollständiger Export- und Importlauf mit echten Browserdateidialogen
+- Sichtprüfung aller persönlichen Inhalte des Anwenders
+
+Diese Punkte werden anhand des beiliegenden Testbogens auf den verwendeten Geräten geprüft.

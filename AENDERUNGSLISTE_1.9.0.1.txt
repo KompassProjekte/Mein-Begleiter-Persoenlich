@@ -1,0 +1,17 @@
+ÄNDERUNGSLISTE – VERSION 1.9.0.1
+
+- Verbliebene Testbezeichnungen aus der persönlichen Oberfläche entfernt.
+- Hinweis „Datenschutz und sichere Aufbewahrung“ mit passendem persönlichen Text eingesetzt.
+- Prominente rote Schaltfläche zum Leeren der Testversion einschließlich Ereignisbehandlung entfernt.
+- Berichtskopf auf „Persönliche Arbeitsversion“ bereinigt.
+- Alte unverschlüsselte Sicherungen verständlicher als Übernahmeformat erklärt.
+- Alle sichtbaren und technischen Versionsangaben auf 1.9.0.1 aktualisiert.
+- Service-Worker-Cache auf eine neue Versionskennung aktualisiert.
+- Import verschlüsselter Sicherungen aus Version 1.9.0 ausdrücklich beibehalten.
+
+Unverändert geblieben:
+- lokaler Speicherschlüssel mein-begleiter-persoenlich-pwa-v1-9-0
+- Dokumentendatenbank mein-begleiter-persoenlich-pwa-v1-9-0-dokumente
+- PWA-ID, Startadresse und Manifest-Scope
+- Datenstruktur und alle fachlichen Funktionen
+- Sicherungsformate .mbs, .json und .mbg

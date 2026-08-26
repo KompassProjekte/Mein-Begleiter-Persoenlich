@@ -1,0 +1,19 @@
+DATENÜBERNAHME AUS DER LINIE 1.8
+
+Voraussetzung: Erstellen Sie in der bisherigen Version eine verschlüsselte vollständige
+Sicherung mit Dokumenten. Verwenden Sie keine unverschlüsselte Datei für den Gerätewechsel.
+
+1. Persönliche Version 1.9.0.1 vollständig laden.
+2. „Sicherung“ öffnen.
+3. „Verschlüsselte Sicherung auf diesem Gerät einlesen“ wählen.
+4. Datei auswählen und das Sicherungskennwort eingeben.
+5. Quellversion, Datensatzanzahlen, Dokumentanzahl und Integritätsprüfung kontrollieren.
+6. Falls auf dem Zielgerät bereits Daten liegen, die angebotene verschlüsselte Rücksicherung
+   herunterladen und sicher speichern.
+7. Erst danach das vollständige Ersetzen ausdrücklich bestätigen.
+8. Nach dem Neustart Einträge, Termine, Medikamente, Dokumente, Bericht und Verlauf prüfen.
+9. Abschließend aus Version 1.9.0.1 eine neue verschlüsselte Sicherung erstellen.
+
+Freigegebene Quellversionen: 1.8.3, 1.8.4, 1.8.5, 1.8.6, 1.8.6.1 und 1.9.0.
+Eine Zusammenführung verschiedener Datenstände ist deaktiviert. Der geprüfte Import ersetzt
+den bisherigen Zielbestand vollständig. Bei einem Fehler bleibt der bisherige Bestand erhalten.

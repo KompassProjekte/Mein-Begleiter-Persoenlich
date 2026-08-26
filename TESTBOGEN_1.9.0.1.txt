@@ -1,0 +1,23 @@
+TESTBOGEN – PERSÖNLICHE ARBEITSVERSION 1.9.0.1
+
+Vor der Aktualisierung eine verschlüsselte vollständige Sicherung erstellen.
+
+[ ] Version 1.9.0.1 und „Persönliche Arbeitsversion“ werden angezeigt.
+[ ] Vorhandene Einträge, Termine, Fragen und Medikamente sind unverändert vorhanden.
+[ ] Vorhandene Dokumentenmappen und Dokumentseiten lassen sich öffnen.
+[ ] Tagescheck, Verlauf, Kosten, Bericht und Buchausgabe funktionieren.
+[ ] „＋ Neue Einträge“, einfache und vollständige Ansicht funktionieren.
+[ ] Der Hinweis heißt „Datenschutz und sichere Aufbewahrung“.
+[ ] Im Sicherungsbereich gibt es keine rote Test-Löschschaltfläche.
+[ ] Eine ältere vollständige .mbs-Sicherung kann weiterhin ausgewählt und geprüft werden.
+[ ] Eine verschlüsselte .mbg-Sicherung aus Version 1.9.0 kann eingelesen werden.
+[ ] Eine neue verschlüsselte .mbg-Sicherung trägt die Quellversion 1.9.0.1.
+[ ] Falsches Kennwort und beschädigte Datei verändern keine Daten.
+[ ] Offline-Start und PWA-Installation funktionieren nach vollständigem Laden.
+[ ] Hoch- und Querformat sind auf PC, Tablet und Smartphone bedienbar.
+
+Ergebnis / Auffälligkeiten:
+
+______________________________________________________________________________
+
+______________________________________________________________________________
