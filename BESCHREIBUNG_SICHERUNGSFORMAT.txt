@@ -35,5 +35,5 @@ Daten geschrieben werden.
 KOMPATIBILITÄT
 Das Format übernimmt geprüfte verschlüsselte Pakete der Versionen 1.8.3,
 1.8.4, 1.8.5, 1.8.6, 1.8.6.1 und 1.9.0. Neue Pakete werden als persönliche
-Ausgabe 1.9.1 erstellt. Unbekannte Formate oder Datenstruktur-Versionen werden
-abgelehnt. Eine Zusammenführung mehrerer Datenstände ist in Version 1.9.1 deaktiviert.
+Ausgabe 1.9.1.1 erstellt. Unbekannte Formate oder Datenstruktur-Versionen werden
+abgelehnt. Eine Zusammenführung mehrerer Datenstände ist in Version 1.9.1.1 deaktiviert.

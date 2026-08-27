@@ -1,0 +1,18 @@
+MEIN BEGLEITER 1.9.1.1 – ÄNDERUNGSLISTE
+Stand: 27.08.2026
+
+Grundlage: Version 1.9.1 PWA – Persönliche Arbeitsversion.
+
+- Statusanzeigen in eine eigene Zeile oberhalb des Seiteninhalts verschoben.
+- Kopfbereiche aller Seiten vereinheitlicht.
+- Seitenaktionen großzügig unterhalb der Überschrift angeordnet.
+- Wichtigste Aktion wird dunkelgrün hervorgehoben; Nebenaktionen bleiben hell.
+- Berichtszentrum: Drucken/PDF steht vor Datei speichern und Text bearbeiten.
+- Terminübersicht: Neue Einträge steht vor Termine aktualisieren.
+- Behandlungszentrum grundlegend geordnet: Übersicht zuerst, nur ein Eingabeformular gleichzeitig.
+- Nächste Medikamentengabe und nächster Termin/Behandlungsschritt hervorgehoben.
+- Vier eindeutige Aufgaben: Medikament verwalten, Einnahme/Spritze dokumentieren, Nebenwirkung festhalten, Behandlungsschritt planen.
+- Gespeicherte Listen bleiben in der Übersicht sichtbar; Eingaben werden erst nach Auswahl geöffnet.
+- „Arztübersicht drucken“ in „Behandlungsübersicht drucken“ umbenannt.
+- Darstellung für PC, Tablet, Smartphone und erhöhte Zoomstufen abgesichert.
+- Datenstruktur, lokale Speicherschlüssel, Dokumente und Sicherungsformat bleiben kompatibel.

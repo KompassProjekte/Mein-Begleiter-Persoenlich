@@ -1,0 +1,22 @@
+MEIN BEGLEITER 1.9.1.1 – TECHNISCHES PRÜFPROTOKOLL
+Stand: 27.08.2026
+
+BESTANDEN
+- HTML-Grundstruktur und eindeutige Element-IDs geprüft.
+- JavaScript-Syntax aller eingebetteten Skripte geprüft.
+- Service-Worker-Syntax und neuer Cache geprüft.
+- Manifest als gültiges JSON geprüft.
+- Einheitliche Versionsangaben 1.9.1.1 geprüft.
+- Lokale Daten- und Dokumentenschlüssel gegenüber 1.9.1 unverändert.
+- Sicherungsimport akzeptiert Versionen 1.8.3 bis 1.9.1.1.
+- Keine persönlichen Testdaten eingefügt.
+- Statuszeile wird aus dem Aktionsbereich herausgenommen.
+- Behandlungsformulare werden standardmäßig geschlossen und einzeln geöffnet.
+- Bearbeiten eines Medikaments oder Behandlungsschritts öffnet den passenden Bereich.
+
+PERSÖNLICHER PRAXISTEST NOCH ERFORDERLICH
+- PC bei 100 %, 125 % und 150 % Browser-Zoom.
+- Samsung A9 im Hoch- und Querformat.
+- Android-Smartphone in Browseransicht und installierter PWA.
+- Alle vier Aufgaben im Behandlungszentrum mit erfundenen Testdaten.
+- Verschlüsselte Sicherung erstellen und wiederherstellen.

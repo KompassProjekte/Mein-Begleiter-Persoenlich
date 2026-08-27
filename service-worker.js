@@ -1,4 +1,4 @@
-const CACHE = 'mein-begleiter-persoenlich-cache-v1-9-1';
+const CACHE = 'mein-begleiter-persoenlich-cache-v1-9-1-1';
 const BASIS = '/Mein-Begleiter-Persoenlich/';
 const PFLICHTDATEIEN = [
   BASIS,

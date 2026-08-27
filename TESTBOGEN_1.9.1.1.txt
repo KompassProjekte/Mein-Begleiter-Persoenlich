@@ -1,0 +1,20 @@
+MEIN BEGLEITER 1.9.1.1 – KURZER ABNAHMETEST
+
+[ ] Version 1.9.1.1 wird angezeigt.
+[ ] Persönliche Daten und Dokumente sind vollständig vorhanden.
+[ ] Statusanzeigen stehen getrennt oberhalb des Seiteninhalts.
+[ ] Keine Schaltflächen überlagern sich.
+[ ] Hauptaktionen sind deutlich hervorgehoben.
+[ ] Berichtsschaltflächen stehen in verständlicher Reihenfolge.
+[ ] Behandlungszentrum startet als ruhige Übersicht.
+[ ] Es ist kein Eingabeformular ohne Auswahl geöffnet.
+[ ] Jede der vier Aufgaben öffnet nur das zugehörige Formular.
+[ ] „Zur Behandlungsübersicht“ schließt das Formular.
+[ ] Medikament ändern öffnet den richtigen Bereich.
+[ ] Behandlungsschritt ändern öffnet den richtigen Bereich.
+[ ] Behandlungsübersicht lässt sich drucken.
+[ ] PC-Zoom 100 %, 125 % und 150 % geprüft.
+[ ] Samsung A9 Hoch- und Querformat geprüft.
+[ ] Smartphone geprüft.
+
+Neue Funktionen zunächst nur mit erfundenen Testdaten prüfen.

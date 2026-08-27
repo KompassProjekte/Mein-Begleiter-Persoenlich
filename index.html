@@ -7,7 +7,7 @@
       content="width=device-width,initial-scale=1,viewport-fit=cover"
     />
     <meta name="theme-color" content="#225b56" />
-    <title>Mein Begleiter 1.9.1 PWA – Persönliche Arbeitsversion</title>
+    <title>Mein Begleiter 1.9.1.1 PWA – Persönliche Arbeitsversion</title>
     <link rel="manifest" href="./manifest.webmanifest" />
     <link rel="icon" type="image/png" href="./icons/favicon-64.png" />
     <link rel="apple-touch-icon" href="./icons/apple-touch-icon-180.png" />
@@ -1704,8 +1704,8 @@
           </button>
         </nav>
         <div class="seitenfuss">
-          <strong>Version 1.9.1 PWA · PERSÖNLICHE ARBEITSVERSION</strong
-          >Stand: 26.08.2026<br />Entwickelt von Lothar &amp; Nimbus
+          <strong>Version 1.9.1.1 PWA · PERSÖNLICHE ARBEITSVERSION</strong
+          >Stand: 27.08.2026<br />Entwickelt von Lothar &amp; Nimbus
         </div>
       </aside>
       <main>
@@ -1980,7 +1980,7 @@
             </div>
             <div class="kopf-aktionen">
               <button class="knopf sekundaer" onclick="window.print()">
-                🖨 Arztübersicht drucken
+                🖨 Behandlungsübersicht drucken
               </button>
             </div>
           </header>
@@ -2661,7 +2661,7 @@
                 <span>Persönlicher Browser-Speicher</span>
               </div>
               <p>
-                <strong>Mein Begleiter 1.9.1 PWA – Persönliche Arbeitsversion</strong>
+                <strong>Mein Begleiter 1.9.1.1 PWA – Persönliche Arbeitsversion</strong>
               </p>
               <p>
                 Ihre Einträge werden ausschließlich lokal im persönlichen
@@ -4117,7 +4117,7 @@
               return `<div class="tagebuch-eintrag"><div class="tagebuch-datum">${datumLang(e.datum)}</div><div class="tagebuch-text"><h5>${esc(ueberschrift)}</h5>${texte.join("") || "<p>Eintrag ohne weitere Beschreibung.</p>"}</div></div>`;
             })
             .join("");
-        html += `</div><p class="hinweis">Erstellt mit Mein Begleiter 1.9.1 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus</p>`;
+        html += `</div><p class="hinweis">Erstellt mit Mein Begleiter 1.9.1.1 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus</p>`;
         $("#berichtAusgabe").innerHTML = html;
         gespeichertenEntwurfAnzeigen();
       }
@@ -4179,7 +4179,7 @@
           });
         if (schluss)
           html += `<div class="buch-seite"><h4>Mein Rückblick und Ausblick</h4><div class="buch-schluss"><p>${esc(schluss)}</p></div></div>`;
-        html += `<p class="hinweis">Erstellt mit Mein Begleiter 1.9.1 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus · ${datumLang(heuteIso())}</p>`;
+        html += `<p class="hinweis">Erstellt mit Mein Begleiter 1.9.1.1 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus · ${datumLang(heuteIso())}</p>`;
         $("#berichtAusgabe").innerHTML = html;
       }
       function renderBericht() {
@@ -4445,7 +4445,7 @@
           });
         if (schluss)
           html += `<div class="buch-seite"><h4>Mein Rückblick und Ausblick</h4><div class="buch-schluss"><p>${esc(schluss)}</p></div></div>`;
-        html += `<p class="hinweis">${fassung === "lese" ? "Persönliche Leseausgabe – aus meinen eigenen Einträgen zusammengestellt. " : ""}Erstellt mit Mein Begleiter 1.9.1 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus · ${datumLang(heuteIso())}</p>`;
+        html += `<p class="hinweis">${fassung === "lese" ? "Persönliche Leseausgabe – aus meinen eigenen Einträgen zusammengestellt. " : ""}Erstellt mit Mein Begleiter 1.9.1.1 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus · ${datumLang(heuteIso())}</p>`;
         $("#berichtAusgabe").innerHTML = html;
         gespeichertenEntwurfAnzeigen();
       }
@@ -6514,7 +6514,7 @@
           const version = Number(obj.version || obj.formatVersion || 1);
           if (!Number.isFinite(version) || version > APP_VERSION)
             throw new Error(
-              `Diese Sicherung wurde mit einer neueren Datenstruktur (${obj.version || "unbekannt"}) erstellt und kann mit Version 1.9.1 nicht sicher geöffnet werden.`,
+              `Diese Sicherung wurde mit einer neueren Datenstruktur (${obj.version || "unbekannt"}) erstellt und kann mit Version 1.9.1.1 nicht sicher geöffnet werden.`,
             );
           return {
             obj,
@@ -6798,7 +6798,7 @@
           pass = $("#geraetePasswort"),
           pass2 = $("#geraetePasswort2"),
           weiter = $("#geraeteWeiter");
-        const APP_VERSION_GERAETEWECHSEL = "1.9.1";
+        const APP_VERSION_GERAETEWECHSEL = "1.9.1.1";
         const DATENSTRUKTUR_VERSION = "1.8";
         const SICHERUNGSFORMAT_VERSION = 2;
         const MAX_DATEIGROESSE = 250 * 1024 * 1024;
@@ -7064,7 +7064,7 @@
             throw new Error("Die Sicherung verwendet eine nicht unterstützte Datenstruktur.");
           if ((inhalt.edition !== edition && inhalt.edition !== "praxistest") || !inhalt.daten || !Array.isArray(inhalt.daten.eintraege))
             throw new Error("Das Paket ist unvollständig oder gehört zu einer anderen Ausgabe.");
-          if (inhalt.appVersion !== "1.8.3" && inhalt.appVersion !== "1.8.4" && inhalt.appVersion !== "1.8.5" && inhalt.appVersion !== "1.8.6" && inhalt.appVersion !== "1.8.6.1" && inhalt.appVersion !== "1.9.0" && inhalt.appVersion !== "1.9.0.1" && inhalt.appVersion !== APP_VERSION_GERAETEWECHSEL)
+          if (inhalt.appVersion !== "1.8.3" && inhalt.appVersion !== "1.8.4" && inhalt.appVersion !== "1.8.5" && inhalt.appVersion !== "1.8.6" && inhalt.appVersion !== "1.8.6.1" && inhalt.appVersion !== "1.9.0" && inhalt.appVersion !== "1.9.0.1" && inhalt.appVersion !== "1.9.1" && inhalt.appVersion !== APP_VERSION_GERAETEWECHSEL)
             throw new Error(`Die Programmversion ${inhalt.appVersion || "unbekannt"} ist nicht freigegeben.`);
           if (!inhalt.mitDokumenten || !Array.isArray(inhalt.dokumente))
             throw new Error("Für den sicheren Gerätewechsel müssen die Dokumente vollständig enthalten sein.");
@@ -7237,7 +7237,7 @@
                 vorbereiteteRuecksicherung = await ruecksicherungVorbereiten(kennwort);
               }
               $("#geraetePruefung").innerHTML =
-        `<strong>✓ Entschlüsselung und Integritätsprüfung bestanden</strong><p>Datei: ${esc(importDatei.name)} · ${dateigroesse(importDatei.size)}</p><p>Erstellt: ${new Date(innen.erstelltAm).toLocaleString("de-DE")} auf ${esc(innen.quellgeraet)} · Quellversion ${esc(innen.appVersion)}</p><p>Sicherungskennung: ${esc(innen.sicherungsId)}</p><p>${stats.eintraege} Einträge · ${stats.termine} Termine · ${stats.fragen} Fragen · ${stats.medikamente} Medikamente</p><p>${stats.dokumente} Dokumentenmappen · ${stats.seiten} Dokumentseiten · ${dateigroesse(stats.dokumentBytes)}</p><p>Speicher: ${esc(speicher.text)}</p><p>Auf diesem Gerät vorhanden: ${ziel.eintraege} Einträge · ${ziel.dokumente} Dokumentenmappen.</p>${zielIstLeer ? '<p><strong>✓ Das Zielgerät ist vollständig leer. Eine Rücksicherung ist nicht erforderlich.</strong></p>' : '<p><strong>Vorhandene Zieldaten werden ersetzt. Laden Sie deshalb zuerst die verschlüsselte Rücksicherung herunter.</strong></p>'}<p><strong>Eine Zusammenführung ist in Version 1.9.1 sicherheitshalber deaktiviert.</strong></p>`;
+        `<strong>✓ Entschlüsselung und Integritätsprüfung bestanden</strong><p>Datei: ${esc(importDatei.name)} · ${dateigroesse(importDatei.size)}</p><p>Erstellt: ${new Date(innen.erstelltAm).toLocaleString("de-DE")} auf ${esc(innen.quellgeraet)} · Quellversion ${esc(innen.appVersion)}</p><p>Sicherungskennung: ${esc(innen.sicherungsId)}</p><p>${stats.eintraege} Einträge · ${stats.termine} Termine · ${stats.fragen} Fragen · ${stats.medikamente} Medikamente</p><p>${stats.dokumente} Dokumentenmappen · ${stats.seiten} Dokumentseiten · ${dateigroesse(stats.dokumentBytes)}</p><p>Speicher: ${esc(speicher.text)}</p><p>Auf diesem Gerät vorhanden: ${ziel.eintraege} Einträge · ${ziel.dokumente} Dokumentenmappen.</p>${zielIstLeer ? '<p><strong>✓ Das Zielgerät ist vollständig leer. Eine Rücksicherung ist nicht erforderlich.</strong></p>' : '<p><strong>Vorhandene Zieldaten werden ersetzt. Laden Sie deshalb zuerst die verschlüsselte Rücksicherung herunter.</strong></p>'}<p><strong>Eine Zusammenführung ist in Version 1.9.1.1 sicherheitshalber deaktiviert.</strong></p>`;
               $("#geraetePruefung").hidden = false;
               pass.disabled = true;
               weiter.textContent = zielIstLeer
@@ -8333,7 +8333,7 @@
 </dialog>
 <script id="bedienoptimierung-v186-script">
 (() => {
-  const APP_VERSION = '1.9.1';
+  const APP_VERSION = '1.9.1.1';
   const MODUS_KEY = 'mein-begleiter-persoenlich-v1-9-1-ansicht';
   const START_KEY = 'mein-begleiter-persoenlich-v1-9-1-startauswahl';
   const ua = navigator.userAgent;
@@ -8580,5 +8580,129 @@
   @media(max-width:1280px){.kopf{flex-direction:column}.kopf-aktionen{width:100%;flex:0 0 auto;justify-content:flex-start}.pwa-leiste{position:static!important;width:100%;justify-content:flex-start}}
   @media(max-width:720px){.geraete-aktionen{grid-template-columns:1fr}.weitere-eintragsfelder{grid-template-columns:1fr}.neu-kopf-aktionen #neuZurAuswahl{padding:8px 10px}.kopf-aktionen>.knopf,.kopf-aktionen>.neu-haupteinstieg{width:100%!important;min-width:0!important}}
 </style>
+<style id="bedien-und-uebersicht-v1911">
+  .v1911-statuszeile{display:flex;justify-content:flex-end;align-items:center;min-height:48px;margin:-18px 0 16px;padding:7px 0;border-bottom:1px solid #d8e4e0}
+  .v1911-statuszeile .pwa-leiste{position:static!important;inset:auto!important;z-index:auto!important;display:flex!important;width:auto!important;max-width:100%!important;padding:0!important;background:transparent!important;box-shadow:none!important;gap:9px!important;justify-content:flex-end!important}
+  .seite>.kopf{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:16px!important;margin-bottom:24px!important;padding:0 0 18px!important;border-bottom:1px solid #d8e4e0}
+  .seite>.kopf>.kopf-aktionen{grid-column:1/-1;width:100%!important;max-width:none!important;display:flex!important;align-items:stretch!important;justify-content:flex-start!important;gap:14px!important;flex-wrap:wrap!important;padding-top:2px}
+  .seite>.kopf>.kopf-aktionen .knopf{min-height:50px;padding:11px 18px;white-space:normal}
+  .seite>.kopf>.kopf-aktionen .knopf:not(.sekundaer){box-shadow:0 7px 18px rgba(23,74,69,.2)}
+  .seite>.kopf>.kopf-aktionen .neu-haupteinstieg{min-width:300px!important}
+  #seite-bericht>.kopf>.kopf-aktionen #berichtDrucken{order:1;min-width:250px}
+  #seite-bericht>.kopf>.kopf-aktionen #tagebuchSpeichern{order:2}
+  #seite-bericht>.kopf>.kopf-aktionen #ausgabeBearbeiten{order:3}
+  #seite-bericht>.kopf>.kopf-aktionen #aenderungenSpeichern{order:4}
+  #seite-termine>.kopf>.kopf-aktionen .neu-haupteinstieg{order:1}
+  #seite-termine>.kopf>.kopf-aktionen #termineAktualisieren{order:2}
+  .behandlung-kurzuebersicht{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-bottom:18px}
+  .behandlung-kurzkarte{border:1px solid #b9d7ce;border-radius:16px;background:linear-gradient(135deg,#fff,#edf8f4);padding:16px 18px;box-shadow:0 6px 18px rgba(23,59,57,.08)}
+  .behandlung-kurzkarte span{display:block;color:#55706b;font-size:.82rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em}
+  .behandlung-kurzkarte strong{display:block;margin-top:5px;font-size:1.16rem;color:#173b39;overflow-wrap:anywhere}
+  #seite-behandlung .v1911-aufgabenhinweis{margin:0 0 14px;padding:12px 15px;border-radius:13px;background:#fff7df;border:1px solid #dfbd63;font-weight:750}
+  #seite-behandlung .behandlung-bereich{position:relative}
+  #seite-behandlung .behandlung-bereich>.kompakt-form{display:none}
+  #seite-behandlung .behandlung-oeffnen{width:100%;margin:10px 0 14px;min-height:48px}
+  #seite-behandlung .behandlung-zurueck{display:none;margin:0 0 16px}
+  #seite-behandlung.v1911-bearbeitung .behandlung-bereich:not(.v1911-aktiv){display:none}
+  #seite-behandlung.v1911-bearbeitung .behandlung-bereich.v1911-aktiv{grid-column:span 12}
+  #seite-behandlung.v1911-bearbeitung .behandlung-bereich.v1911-aktiv>.kompakt-form{display:grid}
+  #seite-behandlung.v1911-bearbeitung .behandlung-bereich.v1911-aktiv>.behandlung-oeffnen{display:none}
+  #seite-behandlung.v1911-bearbeitung .behandlung-bereich.v1911-aktiv>.behandlung-zurueck{display:inline-flex}
+  #seite-behandlung.v1911-bearbeitung>.behandlung-kurzuebersicht,
+  #seite-behandlung.v1911-bearbeitung>.v1911-aufgabenhinweis,
+  #seite-behandlung.v1911-bearbeitung>.uebersicht-filter,
+  #seite-behandlung.v1911-bearbeitung .behandlung-gesamtuebersicht{display:none}
+  @media(max-width:900px){.behandlung-kurzuebersicht{grid-template-columns:1fr}.v1911-statuszeile{justify-content:flex-start}.v1911-statuszeile .pwa-leiste{justify-content:flex-start!important}.seite>.kopf>.kopf-aktionen{display:grid!important;grid-template-columns:1fr!important}.seite>.kopf>.kopf-aktionen .knopf,.seite>.kopf>.kopf-aktionen .neu-haupteinstieg{width:100%!important;min-width:0!important}}
+  @media(max-width:620px){.v1911-statuszeile{margin:0 0 10px;padding:6px 0}.v1911-statuszeile .pwa-leiste{justify-content:center!important}.seite>.kopf{padding-bottom:13px!important;margin-bottom:15px!important}.behandlung-kurzkarte{padding:13px}}
+  @media print{.v1911-statuszeile,.behandlung-oeffnen,.behandlung-zurueck,.v1911-aufgabenhinweis{display:none!important}#seite-behandlung .behandlung-bereich>.kompakt-form{display:none!important}}
+</style>
+<script id="bedien-und-uebersicht-v1911-script">
+(() => {
+  const main = document.querySelector('main');
+  const status = document.querySelector('.pwa-leiste');
+  if (main && status) {
+    const zeile = document.createElement('div');
+    zeile.className = 'v1911-statuszeile';
+    main.prepend(zeile);
+    zeile.appendChild(status);
+  }
+
+  const berichtAktionen = document.querySelector('#seite-bericht .kopf-aktionen');
+  ['berichtDrucken','tagebuchSpeichern','ausgabeBearbeiten','aenderungenSpeichern'].forEach(id => {
+    const knopf = document.getElementById(id); if (knopf && berichtAktionen) berichtAktionen.appendChild(knopf);
+  });
+  const terminAktionen = document.querySelector('#seite-termine .kopf-aktionen');
+  const neuerTermin = terminAktionen?.querySelector('.neu-haupteinstieg');
+  if (neuerTermin) terminAktionen.prepend(neuerTermin);
+  document.querySelectorAll('.seite>.kopf>.kopf-aktionen').forEach(gruppe => {
+    const knoepfe = [...gruppe.querySelectorAll(':scope > .knopf:not([hidden])')];
+    if (knoepfe.length === 1) knoepfe[0].classList.remove('sekundaer');
+  });
+
+  const seite = document.getElementById('seite-behandlung');
+  const raster = seite?.querySelector(':scope > .raster');
+  if (!seite || !raster) return;
+  const bereiche = [...raster.querySelectorAll(':scope > article')].slice(0,4);
+  const gesamt = [...raster.querySelectorAll(':scope > article')].slice(4);
+  gesamt.forEach(k => k.classList.add('behandlung-gesamtuebersicht'));
+
+  const kurz = document.createElement('div');
+  kurz.className = 'behandlung-kurzuebersicht';
+  kurz.innerHTML = '<div class="behandlung-kurzkarte"><span>Nächste Medikamentengabe</span><strong id="v1911NaechsteGabe">–</strong></div><div class="behandlung-kurzkarte"><span>Nächster Termin oder Behandlungsschritt</span><strong id="v1911NaechsterSchritt">–</strong></div>';
+  const hinweis = document.createElement('p');
+  hinweis.className = 'v1911-aufgabenhinweis';
+  hinweis.textContent = 'Wählen Sie eine Aufgabe aus. Es wird immer nur das dazugehörige Eingabeformular geöffnet.';
+  const filter = seite.querySelector(':scope > .uebersicht-filter');
+  seite.insertBefore(kurz, filter || raster);
+  seite.insertBefore(hinweis, filter || raster);
+
+  const definitionen = [
+    ['Medikament verwalten','💊 Medikament hinzufügen oder ändern'],
+    ['Einnahme oder Spritze dokumentieren','💉 Einnahme oder Spritze dokumentieren'],
+    ['Nebenwirkung festhalten','🩺 Nebenwirkung festhalten'],
+    ['Behandlungsschritt planen','📅 Behandlungsschritt planen']
+  ];
+  const schliessen = () => {
+    seite.classList.remove('v1911-bearbeitung');
+    bereiche.forEach(k => k.classList.remove('v1911-aktiv'));
+    seite.querySelector('.v1911-aufgabenhinweis')?.scrollIntoView({behavior:'smooth',block:'start'});
+  };
+  const oeffnen = index => {
+    seite.classList.add('v1911-bearbeitung');
+    bereiche.forEach((k,i) => k.classList.toggle('v1911-aktiv',i===index));
+    bereiche[index]?.scrollIntoView({behavior:'smooth',block:'start'});
+    setTimeout(() => bereiche[index]?.querySelector('input:not([type="hidden"]),select,textarea')?.focus(),120);
+  };
+  bereiche.forEach((karte,index) => {
+    karte.classList.add('behandlung-bereich');
+    const zurueck = document.createElement('button');
+    zurueck.type = 'button'; zurueck.className = 'knopf sekundaer behandlung-zurueck'; zurueck.textContent = '← Zur Behandlungsübersicht';
+    zurueck.addEventListener('click', schliessen);
+    const form = karte.querySelector('.kompakt-form');
+    karte.insertBefore(zurueck, form);
+    const start = document.createElement('button');
+    start.type = 'button'; start.className = 'knopf behandlung-oeffnen'; start.textContent = definitionen[index][1];
+    start.setAttribute('aria-label', definitionen[index][0]);
+    start.addEventListener('click', () => oeffnen(index));
+    karte.insertBefore(start, form);
+  });
+  const altMed = window.medBearbeiten;
+  if (typeof altMed === 'function') window.medBearbeiten = id => { oeffnen(0); altMed(id); };
+  const altSchritt = window.schrittBearbeiten;
+  if (typeof altSchritt === 'function') window.schrittBearbeiten = id => { oeffnen(3); altSchritt(id); };
+
+  const zielGabe = document.getElementById('v1911NaechsteGabe');
+  const zielSchritt = document.getElementById('v1911NaechsterSchritt');
+  const quelleGabe = document.getElementById('kpiMedikament');
+  const quelleGabeText = document.getElementById('kpiMedikamentText');
+  const quelleSchritt = document.getElementById('arztNaechster');
+  const sync = () => {
+    if (zielGabe) zielGabe.textContent = [quelleGabe?.textContent?.trim(),quelleGabeText?.textContent?.trim()].filter(Boolean).join(' · ') || 'Keine Gabe fällig';
+    if (zielSchritt) zielSchritt.textContent = quelleSchritt?.textContent?.trim() || 'Kein Termin geplant';
+  };
+  sync();
+  [quelleGabe,quelleGabeText,quelleSchritt].filter(Boolean).forEach(q => new MutationObserver(sync).observe(q,{childList:true,subtree:true,characterData:true}));
+})();
+</script>
 </body>
 </html>
