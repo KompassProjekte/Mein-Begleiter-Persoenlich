@@ -1,0 +1,20 @@
+MEIN BEGLEITER 1.9.1 – ÄNDERUNGSLISTE
+Stand: 27.08.2026
+
+Grundlage: Version 1.9.0.1 – Beschriftungsbereinigung.
+
+- „Verschlüsselte Sicherung erstellen“ und „Verschlüsselte Sicherung wiederherstellen“ eindeutig benannt.
+- Beide Sicherungs-Hauptaktionen gleichwertig hervorgehoben.
+- Einstellungen von Sicherung und Gerätewechsel getrennt und über „Mehr > Einstellungen“ erreichbar.
+- Dokumentbegriffe vereinheitlicht: „Dokument hinzufügen“ und „Dokument speichern“.
+- Unter „Neue Einträge“ wird nach der Auswahl nur noch das gewählte Formular angezeigt.
+- Eigene Schaltfläche „Andere Auswahl“ ergänzt.
+- Fragen können beim Erstellen oder Ändern eines Termins unmittelbar zugeordnet werden.
+- Beim Löschen eines Termins bleiben Fragen erhalten und werden von der Terminzuordnung gelöst.
+- Selten benötigte Buch- und Kostenangaben unter „Weitere Angaben“ zusammengefasst.
+- Speichern und Abbrechen bleiben in langen Dialogen erreichbar.
+- Kopfaktionen gegen Überlagerungen bei kleinen Fenstern und erhöhtem Browser-Zoom abgesichert.
+- Neuer Service-Worker-Cache für Version 1.9.1.
+
+Die lokale Hauptdatenbank und die Dokumentdatenbank behalten ihre bisherigen Schlüssel.
+Dadurch bleiben vorhandene persönliche Daten auf demselben Gerät erhalten.

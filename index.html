@@ -7,7 +7,7 @@
       content="width=device-width,initial-scale=1,viewport-fit=cover"
     />
     <meta name="theme-color" content="#225b56" />
-    <title>Mein Begleiter 1.9.0.1 PWA – Persönliche Arbeitsversion</title>
+    <title>Mein Begleiter 1.9.1 PWA – Persönliche Arbeitsversion</title>
     <link rel="manifest" href="./manifest.webmanifest" />
     <link rel="icon" type="image/png" href="./icons/favicon-64.png" />
     <link rel="apple-touch-icon" href="./icons/apple-touch-icon-180.png" />
@@ -1704,7 +1704,7 @@
           </button>
         </nav>
         <div class="seitenfuss">
-          <strong>Version 1.9.0.1 PWA · PERSÖNLICHE ARBEITSVERSION</strong
+          <strong>Version 1.9.1 PWA · PERSÖNLICHE ARBEITSVERSION</strong
           >Stand: 26.08.2026<br />Entwickelt von Lothar &amp; Nimbus
         </div>
       </aside>
@@ -2552,14 +2552,14 @@
             </div>
             <div class="geraete-aktionen">
               <button class="knopf" id="geraeteExport">
-                🔐 Sichere vollständige Sicherung erstellen</button
+                🔐 Verschlüsselte Sicherung erstellen</button
               ><input
                 id="geraeteDatei"
                 type="file"
                 accept=".mbg,application/octet-stream,application/json"
                 hidden
               /><button class="knopf sekundaer" id="geraeteImport">
-                📲 Sichere Sicherung einlesen
+                📲 Verschlüsselte Sicherung wiederherstellen
               </button>
             </div>
             <div class="datenschutz">
@@ -2577,7 +2577,7 @@
           </article>
           <header class="kopf">
             <div>
-              <h2>Sicherung &amp; Einstellungen</h2>
+              <h2>Weitere Sicherungsmöglichkeiten</h2>
               <p>
                 Deine Daten bleiben in diesem Browser. Eine Sicherungskopie
                 schützt vor Verlust.
@@ -2616,7 +2616,7 @@
                   id="vollImportKnopf"
                   style="margin-top: 10px"
                 >
-                  <span class="sicherungs-pfeil">↑</span> Bisherige vollständige Sicherung einlesen
+                  <span class="sicherungs-pfeil">↑</span> Bisherige vollständige Sicherung wiederherstellen
                 </button>
                 <div class="uebertragungs-schritt">
                   <h4>Am neuen Gerät – zum Beispiel Handy</h4>
@@ -2641,7 +2641,7 @@
                   id="importKnopf"
                   style="margin-top: 10px"
                 >
-                  <span class="sicherungs-pfeil">↑</span> Sicherung ohne Dokumente einlesen
+                  <span class="sicherungs-pfeil">↑</span> Sicherung ohne Dokumente wiederherstellen
                 </button>
               </div>
               <div class="sicherungsfeld" style="margin-top: 16px">
@@ -2661,7 +2661,7 @@
                 <span>Persönlicher Browser-Speicher</span>
               </div>
               <p>
-                <strong>Mein Begleiter 1.9.0.1 PWA – Persönliche Arbeitsversion</strong>
+                <strong>Mein Begleiter 1.9.1 PWA – Persönliche Arbeitsversion</strong>
               </p>
               <p>
                 Ihre Einträge werden ausschließlich lokal im persönlichen
@@ -2747,7 +2747,7 @@
           <h3>Was möchten Sie neu festhalten?</h3>
           <p class="hinweis">Wählen Sie einen Bereich. Es wird immer nur ein Formular geöffnet.</p>
         </div>
-        <button class="schliessen" type="button" id="neuDialogSchliessen" aria-label="Fenster schließen">×</button>
+        <div class="neu-kopf-aktionen"><button class="knopf klein sekundaer" type="button" id="neuZurAuswahl" hidden>← Andere Auswahl</button><button class="schliessen" type="button" id="neuDialogSchliessen" aria-label="Fenster schließen">×</button></div>
       </div>
       <div class="dialog-inhalt neu-dialog-inhalt">
         <div class="neu-akkordeon">
@@ -2783,6 +2783,7 @@
                 <div class="feld breit"><label for="neuTerminArzt">Arzt / Stelle *</label><input id="neuTerminArzt" list="arztVorschlaege" maxlength="100" required></div>
                 <div class="feld breit"><label for="neuTerminMassnahme">Grund / Maßnahme</label><input id="neuTerminMassnahme" maxlength="160" placeholder="Untersuchung, Behandlung, Gespräch …"></div>
                 <div class="feld breit"><label for="neuTerminNotiz">Notiz</label><textarea id="neuTerminNotiz" maxlength="500"></textarea></div>
+                <div class="feld breit"><details class="termin-frage-zusatz"><summary>Frage für diesen Termin hinzufügen</summary><label for="neuTerminFrage">Meine Frage (freiwillig)</label><textarea id="neuTerminFrage" maxlength="240" placeholder="z. B. Was muss ich vor dem Termin beachten?"></textarea><span class="hinweis">Die Frage wird automatisch genau diesem Termin zugeordnet.</span></details></div>
               </div>
               <div class="neu-form-aktionen"><button class="knopf sekundaer" type="button" data-neu-abbrechen>Abbrechen</button><button class="knopf" type="submit">💾 Termin speichern</button></div>
             </form>
@@ -2815,8 +2816,8 @@
           <section class="neu-bereich" data-neu-bereich="dokument">
             <button class="neu-bereich-kopf" type="button" aria-expanded="false"><span>📂 Dokument hinzufügen</span><span aria-hidden="true">⌄</span></button>
             <div class="neu-bereich-form" id="neuDokumentForm" hidden>
-              <p>Dokumente werden weiterhin im bewährten Dokumentenzentrum lokal abgelegt. Dort können Sie eine oder mehrere Seiten auswählen oder fotografieren.</p>
-              <div class="neu-form-aktionen"><button class="knopf sekundaer" type="button" data-neu-abbrechen>Abbrechen</button><button class="knopf" type="button" id="neuDokumentWeiter">📂 Dokument auswählen</button></div>
+              <p>Dokumente werden weiterhin im Dokumentenzentrum lokal gespeichert. Dort können Sie eine oder mehrere Seiten auswählen oder fotografieren.</p>
+              <div class="neu-form-aktionen"><button class="knopf sekundaer" type="button" data-neu-abbrechen>Abbrechen</button><button class="knopf" type="button" id="neuDokumentWeiter">📂 Dokument hinzufügen</button></div>
             </div>
           </section>
           <section class="neu-bereich" data-neu-bereich="tagescheck">
@@ -2912,6 +2913,18 @@
                 placeholder="Was wurde besprochen? Was ist als Nächstes wichtig?"
               ></textarea>
             </div>
+            <div class="feld breit terminfrage-bearbeiten">
+              <details id="terminFrageDetails">
+                <summary>Frage für diesen Termin hinzufügen</summary>
+                <label for="terminNeueFrage">Neue Frage (freiwillig)</label>
+                <textarea id="terminNeueFrage" maxlength="240" placeholder="z. B. Welche Unterlagen soll ich mitbringen?"></textarea>
+                <span class="hinweis">Die Frage wird beim Speichern diesem Termin zugeordnet. Bereits zugeordnete Fragen bleiben erhalten.</span>
+              </details>
+            </div>
+            <div class="feld breit">
+              <details class="weitere-eintragsangaben">
+                <summary>Weitere Angaben</summary>
+                <div class="formular weitere-eintragsfelder">
             <div class="feld breit">
               <label for="gedanken"
                 >Was möchte ich von diesem Tag erzählen? (freiwillig)</label
@@ -2962,6 +2975,9 @@
                 step="0.01"
                 inputmode="decimal"
               />
+            </div>
+                </div>
+              </details>
             </div>
             <div class="feld">
               <label for="befindenWert">Befinden (0–10)</label>
@@ -4101,7 +4117,7 @@
               return `<div class="tagebuch-eintrag"><div class="tagebuch-datum">${datumLang(e.datum)}</div><div class="tagebuch-text"><h5>${esc(ueberschrift)}</h5>${texte.join("") || "<p>Eintrag ohne weitere Beschreibung.</p>"}</div></div>`;
             })
             .join("");
-        html += `</div><p class="hinweis">Erstellt mit Mein Begleiter 1.9.0.1 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus</p>`;
+        html += `</div><p class="hinweis">Erstellt mit Mein Begleiter 1.9.1 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus</p>`;
         $("#berichtAusgabe").innerHTML = html;
         gespeichertenEntwurfAnzeigen();
       }
@@ -4163,7 +4179,7 @@
           });
         if (schluss)
           html += `<div class="buch-seite"><h4>Mein Rückblick und Ausblick</h4><div class="buch-schluss"><p>${esc(schluss)}</p></div></div>`;
-        html += `<p class="hinweis">Erstellt mit Mein Begleiter 1.9.0.1 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus · ${datumLang(heuteIso())}</p>`;
+        html += `<p class="hinweis">Erstellt mit Mein Begleiter 1.9.1 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus · ${datumLang(heuteIso())}</p>`;
         $("#berichtAusgabe").innerHTML = html;
       }
       function renderBericht() {
@@ -4429,7 +4445,7 @@
           });
         if (schluss)
           html += `<div class="buch-seite"><h4>Mein Rückblick und Ausblick</h4><div class="buch-schluss"><p>${esc(schluss)}</p></div></div>`;
-        html += `<p class="hinweis">${fassung === "lese" ? "Persönliche Leseausgabe – aus meinen eigenen Einträgen zusammengestellt. " : ""}Erstellt mit Mein Begleiter 1.9.0.1 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus · ${datumLang(heuteIso())}</p>`;
+        html += `<p class="hinweis">${fassung === "lese" ? "Persönliche Leseausgabe – aus meinen eigenen Einträgen zusammengestellt. " : ""}Erstellt mit Mein Begleiter 1.9.1 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus · ${datumLang(heuteIso())}</p>`;
         $("#berichtAusgabe").innerHTML = html;
         gespeichertenEntwurfAnzeigen();
       }
@@ -4457,6 +4473,7 @@
       }
       function oeffneNeu(nurBefinden = false) {
         $("#eintragForm").reset();
+        $("#terminFrageDetails")?.removeAttribute("open");
         $("#eintragId").value = "";
         $("#datum").value = heuteIso();
         $("#arztAuswahl").value = "";
@@ -4489,6 +4506,10 @@
       window.bearbeiten = (id) => {
         const e = daten.eintraege.find((x) => x.id === id);
         if (!e) return;
+        $("#terminNeueFrage").value = "";
+        $("#terminFrageDetails")?.removeAttribute("open");
+        const terminFrageBereich = document.querySelector(".terminfrage-bearbeiten");
+        if (terminFrageBereich) terminFrageBereich.hidden = !(e.arzt || e.massnahme || e.terminstatus);
         $("#eintragId").value = e.id;
         [
           "datum",
@@ -4547,11 +4568,16 @@
         const e = daten.eintraege.find((x) => x.id === id);
         if (!e) return;
         const bezeichnung = e.arzt || e.massnahme || "Termin";
+        const zugeordneteFragen = daten.fragen.filter((f) => f.terminId === id);
+        const fragenHinweis = zugeordneteFragen.length
+          ? `\n\n${zugeordneteFragen.length} zugeordnete Frage${zugeordneteFragen.length === 1 ? " bleibt" : "n bleiben"} erhalten und wird anschließend keinem Termin mehr zugeordnet.`
+          : "";
         if (
           confirm(
-            `${bezeichnung} am ${datumLang(e.datum)} vollständig löschen?\n\nDiese Aktion kann nicht rückgängig gemacht werden.`,
+            `${bezeichnung} am ${datumLang(e.datum)} vollständig löschen?${fragenHinweis}\n\nDiese Aktion kann nicht rückgängig gemacht werden.`,
           )
         ) {
+          daten.fragen.forEach((f) => { if (f.terminId === id) f.terminId = ""; });
           daten.eintraege = daten.eintraege.filter((x) => x.id !== id);
           speichern();
           renderAlles();
@@ -4661,6 +4687,17 @@
         const i = daten.eintraege.findIndex((x) => x.id === id);
         if (i >= 0) daten.eintraege[i] = e;
         else daten.eintraege.push(e);
+        const neueTerminFrage = $("#terminNeueFrage")?.value.trim() || "";
+        if (neueTerminFrage) {
+          daten.fragen.push({
+            id: "f" + Date.now(),
+            arzt: e.arzt || "Allgemeine Frage",
+            text: neueTerminFrage,
+            terminId: id,
+            erledigt: false,
+          });
+          $("#terminNeueFrage").value = "";
+        }
         speichern();
         $("#eintragDialog").close();
         eintragAusgang = "";
@@ -6477,7 +6514,7 @@
           const version = Number(obj.version || obj.formatVersion || 1);
           if (!Number.isFinite(version) || version > APP_VERSION)
             throw new Error(
-              `Diese Sicherung wurde mit einer neueren Datenstruktur (${obj.version || "unbekannt"}) erstellt und kann mit Version 1.9.0.1 nicht sicher geöffnet werden.`,
+              `Diese Sicherung wurde mit einer neueren Datenstruktur (${obj.version || "unbekannt"}) erstellt und kann mit Version 1.9.1 nicht sicher geöffnet werden.`,
             );
           return {
             obj,
@@ -6761,7 +6798,7 @@
           pass = $("#geraetePasswort"),
           pass2 = $("#geraetePasswort2"),
           weiter = $("#geraeteWeiter");
-        const APP_VERSION_GERAETEWECHSEL = "1.9.0.1";
+        const APP_VERSION_GERAETEWECHSEL = "1.9.1";
         const DATENSTRUKTUR_VERSION = "1.8";
         const SICHERUNGSFORMAT_VERSION = 2;
         const MAX_DATEIGROESSE = 250 * 1024 * 1024;
@@ -7027,7 +7064,7 @@
             throw new Error("Die Sicherung verwendet eine nicht unterstützte Datenstruktur.");
           if ((inhalt.edition !== edition && inhalt.edition !== "praxistest") || !inhalt.daten || !Array.isArray(inhalt.daten.eintraege))
             throw new Error("Das Paket ist unvollständig oder gehört zu einer anderen Ausgabe.");
-          if (inhalt.appVersion !== "1.8.3" && inhalt.appVersion !== "1.8.4" && inhalt.appVersion !== "1.8.5" && inhalt.appVersion !== "1.8.6" && inhalt.appVersion !== "1.8.6.1" && inhalt.appVersion !== "1.9.0" && inhalt.appVersion !== APP_VERSION_GERAETEWECHSEL)
+          if (inhalt.appVersion !== "1.8.3" && inhalt.appVersion !== "1.8.4" && inhalt.appVersion !== "1.8.5" && inhalt.appVersion !== "1.8.6" && inhalt.appVersion !== "1.8.6.1" && inhalt.appVersion !== "1.9.0" && inhalt.appVersion !== "1.9.0.1" && inhalt.appVersion !== APP_VERSION_GERAETEWECHSEL)
             throw new Error(`Die Programmversion ${inhalt.appVersion || "unbekannt"} ist nicht freigegeben.`);
           if (!inhalt.mitDokumenten || !Array.isArray(inhalt.dokumente))
             throw new Error("Für den sicheren Gerätewechsel müssen die Dokumente vollständig enthalten sein.");
@@ -7200,7 +7237,7 @@
                 vorbereiteteRuecksicherung = await ruecksicherungVorbereiten(kennwort);
               }
               $("#geraetePruefung").innerHTML =
-                `<strong>✓ Entschlüsselung und Integritätsprüfung bestanden</strong><p>Datei: ${esc(importDatei.name)} · ${dateigroesse(importDatei.size)}</p><p>Erstellt: ${new Date(innen.erstelltAm).toLocaleString("de-DE")} auf ${esc(innen.quellgeraet)} · Quellversion ${esc(innen.appVersion)}</p><p>Sicherungskennung: ${esc(innen.sicherungsId)}</p><p>${stats.eintraege} Einträge · ${stats.termine} Termine · ${stats.fragen} Fragen · ${stats.medikamente} Medikamente</p><p>${stats.dokumente} Dokumentenmappen · ${stats.seiten} Dokumentseiten · ${dateigroesse(stats.dokumentBytes)}</p><p>Speicher: ${esc(speicher.text)}</p><p>Auf diesem Gerät vorhanden: ${ziel.eintraege} Einträge · ${ziel.dokumente} Dokumentenmappen.</p>${zielIstLeer ? '<p><strong>✓ Das Zielgerät ist vollständig leer. Eine Rücksicherung ist nicht erforderlich.</strong></p>' : '<p><strong>Vorhandene Zieldaten werden ersetzt. Laden Sie deshalb zuerst die verschlüsselte Rücksicherung herunter.</strong></p>'}<p><strong>Eine Zusammenführung ist in Version 1.9.0.1 sicherheitshalber deaktiviert.</strong></p>`;
+        `<strong>✓ Entschlüsselung und Integritätsprüfung bestanden</strong><p>Datei: ${esc(importDatei.name)} · ${dateigroesse(importDatei.size)}</p><p>Erstellt: ${new Date(innen.erstelltAm).toLocaleString("de-DE")} auf ${esc(innen.quellgeraet)} · Quellversion ${esc(innen.appVersion)}</p><p>Sicherungskennung: ${esc(innen.sicherungsId)}</p><p>${stats.eintraege} Einträge · ${stats.termine} Termine · ${stats.fragen} Fragen · ${stats.medikamente} Medikamente</p><p>${stats.dokumente} Dokumentenmappen · ${stats.seiten} Dokumentseiten · ${dateigroesse(stats.dokumentBytes)}</p><p>Speicher: ${esc(speicher.text)}</p><p>Auf diesem Gerät vorhanden: ${ziel.eintraege} Einträge · ${ziel.dokumente} Dokumentenmappen.</p>${zielIstLeer ? '<p><strong>✓ Das Zielgerät ist vollständig leer. Eine Rücksicherung ist nicht erforderlich.</strong></p>' : '<p><strong>Vorhandene Zieldaten werden ersetzt. Laden Sie deshalb zuerst die verschlüsselte Rücksicherung herunter.</strong></p>'}<p><strong>Eine Zusammenführung ist in Version 1.9.1 sicherheitshalber deaktiviert.</strong></p>`;
               $("#geraetePruefung").hidden = false;
               pass.disabled = true;
               weiter.textContent = zielIstLeer
@@ -8266,19 +8303,24 @@
     <button class="wichtig" data-v186-aktion="eintrag">＋ Neue Einträge</button>
     <button class="wichtig" data-v186-seite="termine">📅 Termine &amp; Fragen</button>
     <button class="wichtig" data-v186-seite="behandlung">💊 Medikamente</button>
-    <button class="wichtig" data-v186-seite="dokumente">📂 Dokument ablegen</button>
+    <button class="wichtig" data-v186-seite="dokumente">📂 Dokument hinzufügen</button>
     <button class="wichtig" data-v186-seite="sicherung">🔐 Sicherung &amp; Gerätewechsel</button>
     <div class="v186-menue-trenner v186-nur-voll">Weitere Bereiche</div>
     <button class="v186-nur-voll" data-v186-seite="eintraege">📖 Meine Einträge</button>
     <button class="v186-nur-voll" data-v186-seite="kosten">€ Kosten</button>
     <button class="v186-nur-voll" data-v186-seite="verlauf">📈 Verlauf</button>
     <button class="v186-nur-voll" data-v186-seite="bericht">🖨 Bericht &amp; Buch</button>
-    <div class="v186-menue-trenner">Ansicht</div>
+    <div class="v186-menue-trenner">Einstellungen</div>
+    <button data-v191-einstellungen>⚙ Einstellungen öffnen</button>
     <button data-v186-hilfe>❔ Einführung anzeigen</button>
     <button data-v186-modus="einfach"><span class="ansicht-symbol">👁️</span> Einfache Ansicht</button>
     <button data-v186-modus="voll"><span class="ansicht-symbol">▦</span> Vollständige Ansicht</button>
   </div>
 </div>
+<dialog class="pwa-dialog" id="v191Einstellungen">
+  <div class="dialog-kopf"><div><h3>Einstellungen</h3><p class="hinweis">Darstellung und freiwillige Tagescheck-Werte festlegen.</p></div><button class="schliessen" id="v191EinstellungenZu" type="button" aria-label="Einstellungen schließen">×</button></div>
+  <div class="dialog-inhalt" id="v191EinstellungenInhalt"></div>
+</dialog>
 <dialog class="pwa-dialog" id="v186Start">
   <div class="dialog-kopf"><h3>Wie möchten Sie „Mein Begleiter“ verwenden?</h3></div>
   <div class="dialog-inhalt"><p><strong>Einfache Ansicht</strong> zeigt zunächst nur die wichtigsten Funktionen. Alle weiteren Bereiche und alle Daten bleiben erhalten.</p><p><strong>Vollständige Ansicht</strong> zeigt den vollständigen Funktionsumfang.</p><p class="hinweis" id="v186Empfehlung"></p></div>
@@ -8286,14 +8328,14 @@
 </dialog>
 <dialog class="pwa-dialog" id="v186Hilfe">
   <div class="dialog-kopf"><h3>Einfach beginnen</h3><button id="v186HilfeZu" type="button" aria-label="Einführung schließen">×</button></div>
-  <div class="dialog-inhalt"><ol><li><strong>Tages-Check eintragen:</strong> Befinden und freiwillige Körperwerte festhalten.</li><li><strong>Termin oder Frage speichern:</strong> Gespräche mit Ärzten und Behandelnden vorbereiten.</li><li><strong>Dokument ablegen:</strong> Wichtige Unterlagen fotografieren oder auswählen.</li><li><strong>Daten sichern:</strong> Regelmäßig eine verschlüsselte vollständige Sicherung erstellen.</li></ol><p>Die Anwendung ersetzt keine medizinische Beratung. Im Notfall 112 anrufen.</p></div>
+  <div class="dialog-inhalt"><ol><li><strong>Tages-Check eintragen:</strong> Befinden und freiwillige Körperwerte festhalten.</li><li><strong>Termin oder Frage speichern:</strong> Gespräche mit Ärzten und Behandelnden vorbereiten.</li><li><strong>Dokument hinzufügen:</strong> Wichtige Unterlagen fotografieren oder auswählen.</li><li><strong>Daten sichern:</strong> Regelmäßig eine verschlüsselte vollständige Sicherung erstellen.</li></ol><p>Die Anwendung ersetzt keine medizinische Beratung. Im Notfall 112 anrufen.</p></div>
   <div class="dialog-fuss"><button class="knopf" id="v186HilfeFertig" type="button">Verstanden</button></div>
 </dialog>
 <script id="bedienoptimierung-v186-script">
 (() => {
-  const APP_VERSION = '1.9.0.1';
-  const MODUS_KEY = 'mein-begleiter-persoenlich-v1-9-0-ansicht';
-  const START_KEY = 'mein-begleiter-persoenlich-v1-9-0-startauswahl';
+  const APP_VERSION = '1.9.1';
+  const MODUS_KEY = 'mein-begleiter-persoenlich-v1-9-1-ansicht';
+  const START_KEY = 'mein-begleiter-persoenlich-v1-9-1-startauswahl';
   const ua = navigator.userAgent;
   const istTablet = /iPad|Tablet/i.test(ua) || (/Android/i.test(ua) && !/Mobile/i.test(ua));
   const istHandy = /Mobi|iPhone|Android/i.test(ua) && !istTablet;
@@ -8340,6 +8382,12 @@
   document.getElementById('v186HilfeZu').addEventListener('click', hilfeZu);
   document.getElementById('v186HilfeFertig').addEventListener('click', hilfeZu);
   menue.querySelector('[data-v186-hilfe]').addEventListener('click', () => { setMenue(false); hilfe.showModal(); });
+  const einstellungen = document.getElementById('v191Einstellungen');
+  const einstellungenInhalt = document.getElementById('v191EinstellungenInhalt');
+  const tagescheckEinstellungen = document.querySelector('.tc-einstellungen');
+  if (tagescheckEinstellungen) einstellungenInhalt.appendChild(tagescheckEinstellungen);
+  menue.querySelector('[data-v191-einstellungen]').addEventListener('click', () => { setMenue(false); einstellungen.showModal(); });
+  document.getElementById('v191EinstellungenZu').addEventListener('click', () => einstellungen.close());
 
   function optionenSortieren(select, oben = [], unten = []) {
     if (!select) return;
@@ -8421,6 +8469,8 @@
 (() => {
   const dialog = document.getElementById('neuDialog');
   const bereiche = [...dialog.querySelectorAll('.neu-bereich')];
+  const auswahl = dialog.querySelector('.neu-akkordeon');
+  const zurAuswahl = document.getElementById('neuZurAuswahl');
   let offen = null, ausgang = '';
   const formStand = bereich => JSON.stringify([...bereich.querySelectorAll('input,textarea,select')].map(el => [el.id, el.type === 'checkbox' ? el.checked : el.value]));
   const geaendert = () => offen && ausgang && formStand(offen) !== ausgang;
@@ -8430,6 +8480,8 @@
     offen.classList.remove('offen');
     offen.querySelector('.neu-bereich-kopf').setAttribute('aria-expanded','false');
     offen.querySelector('.neu-bereich-form').hidden = true;
+    auswahl.classList.remove('auswahl-getroffen');
+    zurAuswahl.hidden = true;
     offen = null; ausgang = '';
   };
   const aktualisiereAuswahl = () => {
@@ -8462,11 +8514,14 @@
     bereich.classList.add('offen');
     bereich.querySelector('.neu-bereich-kopf').setAttribute('aria-expanded','true');
     bereich.querySelector('.neu-bereich-form').hidden = false;
+    auswahl.classList.add('auswahl-getroffen');
+    zurAuswahl.hidden = false;
     ausgang = formStand(bereich);
     setTimeout(() => bereich.querySelector('input,textarea,select,button:not(.neu-bereich-kopf)')?.focus(),30);
   }));
   const dialogSchliessen = () => { if (!darfVerlassen()) return; schliesseBereich(); dialog.close(); };
   document.getElementById('neuDialogSchliessen').addEventListener('click', dialogSchliessen);
+  zurAuswahl.addEventListener('click', () => { if (darfVerlassen()) schliesseBereich(); });
   dialog.addEventListener('cancel', e => { e.preventDefault(); dialogSchliessen(); });
   dialog.addEventListener('click', e => { if (e.target === dialog) dialogSchliessen(); });
   dialog.querySelectorAll('[data-neu-abbrechen]').forEach(b => b.addEventListener('click', () => { if (darfVerlassen()) schliesseBereich(); }));
@@ -8485,7 +8540,9 @@
   document.getElementById('neuTerminForm').addEventListener('submit', e => {
     e.preventDefault(); const datum=document.getElementById('neuTerminDatum').value, zeit=document.getElementById('neuTerminZeit').value, arzt=document.getElementById('neuTerminArzt').value.trim();
     if(!datum||!zeit||!arzt){toast('Bitte Datum, Uhrzeit und Arzt oder Stelle eintragen.');return;}
-    const obj=leeresEintragObjekt('j'+Date.now(),datum,zeit); obj.arzt=arzt; obj.massnahme=document.getElementById('neuTerminMassnahme').value.trim(); obj.bemerkung=document.getElementById('neuTerminNotiz').value.trim(); daten.eintraege.push(obj); fertig('Termin gespeichert');
+    const obj=leeresEintragObjekt('j'+Date.now(),datum,zeit); obj.arzt=arzt; obj.massnahme=document.getElementById('neuTerminMassnahme').value.trim(); obj.bemerkung=document.getElementById('neuTerminNotiz').value.trim(); daten.eintraege.push(obj);
+    const frage=document.getElementById('neuTerminFrage').value.trim(); if(frage) daten.fragen.push({id:'f'+Date.now(),arzt,text:frage,terminId:obj.id,erledigt:false});
+    fertig(frage ? 'Termin und zugeordnete Frage gespeichert' : 'Termin gespeichert');
   });
   document.getElementById('neuMedForm').addEventListener('submit', e => {
     e.preventDefault(); const name=document.getElementById('neuMedName').value.trim(); if(!name){toast('Bitte den Namen des Medikaments eintragen.');return;}
@@ -8504,5 +8561,24 @@
   document.querySelector('[data-v186-aktion="eintrag"]')?.replaceChildren(document.createTextNode('＋ Neue Einträge'));
 })();
 </script>
+<style id="bedienkorrekturen-v191">
+  .geraete-aktionen{grid-template-columns:repeat(2,minmax(260px,1fr))}
+  .geraete-aktionen .knopf{min-height:58px;font-size:1rem}
+  #geraeteImport{background:#e5f3ef;color:#174d48;border:2px solid #5e9d92;box-shadow:0 5px 14px rgba(34,91,86,.12)}
+  #geraeteImport:hover{background:#d4ebe5}
+  .neu-kopf-aktionen{display:flex;align-items:center;gap:9px}
+  .neu-akkordeon.auswahl-getroffen>.neu-bereich:not(.offen){display:none}
+  .neu-akkordeon.auswahl-getroffen>.neu-bereich.offen>.neu-bereich-kopf{cursor:default}
+  .termin-frage-zusatz,.terminfrage-bearbeiten details,.weitere-eintragsangaben{border:1px solid #b9d7ce;border-radius:13px;background:#f4faf8;padding:0}
+  .termin-frage-zusatz summary,.terminfrage-bearbeiten summary,.weitere-eintragsangaben>summary{padding:13px 15px;color:var(--petrol);font-weight:850;cursor:pointer}
+  .termin-frage-zusatz[open],.terminfrage-bearbeiten details[open],.weitere-eintragsangaben[open]{padding:0 14px 14px}
+  .termin-frage-zusatz[open] summary,.terminfrage-bearbeiten details[open] summary,.weitere-eintragsangaben[open]>summary{margin:0 -14px 12px}
+  .weitere-eintragsfelder{margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+  #eintragDialog .dialog-fuss{position:sticky;bottom:0;z-index:5;background:#fff;border-top:1px solid var(--linie);box-shadow:0 -8px 18px rgba(23,59,57,.08)}
+  .kopf{min-width:0}.kopf>div:first-child{min-width:0;flex:1 1 auto}.kopf-aktionen{flex:0 1 650px;max-width:100%}
+  .pwa-leiste{flex:0 1 auto;max-width:100%;flex-wrap:wrap}
+  @media(max-width:1280px){.kopf{flex-direction:column}.kopf-aktionen{width:100%;flex:0 0 auto;justify-content:flex-start}.pwa-leiste{position:static!important;width:100%;justify-content:flex-start}}
+  @media(max-width:720px){.geraete-aktionen{grid-template-columns:1fr}.weitere-eintragsfelder{grid-template-columns:1fr}.neu-kopf-aktionen #neuZurAuswahl{padding:8px 10px}.kopf-aktionen>.knopf,.kopf-aktionen>.neu-haupteinstieg{width:100%!important;min-width:0!important}}
+</style>
 </body>
 </html>

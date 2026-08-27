@@ -1,0 +1,13 @@
+DATENÜBERNAHME NACH VERSION 1.9.1
+
+Auf demselben Gerät und im selben Browser:
+- Version 1.9.1 verwendet absichtlich dieselben lokalen Daten- und Dokumentenschlüssel wie Version 1.9.0.1.
+- Die vorhandenen persönlichen Daten sollten deshalb automatisch sichtbar bleiben.
+
+Auf einem anderen Gerät oder in einem anderen Browser:
+- „Verschlüsselte Sicherung erstellen“ auf dem bisherigen Gerät verwenden.
+- Sicherungsdatei übertragen.
+- „Verschlüsselte Sicherung wiederherstellen“ auf dem Zielgerät verwenden.
+- Kennwort eingeben, Angaben prüfen und Wiederherstellung bestätigen.
+
+Keine Sicherungsdatei bei GitHub hochladen. Es erfolgt keine automatische Synchronisation.

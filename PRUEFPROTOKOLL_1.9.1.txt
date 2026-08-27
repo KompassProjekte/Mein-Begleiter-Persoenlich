@@ -1,0 +1,24 @@
+MEIN BEGLEITER 1.9.1 – TECHNISCHES PRÜFPROTOKOLL
+Stand: 27.08.2026
+
+BESTANDEN
+- HTML-Struktur maschinell geprüft.
+- JavaScript-Syntax aller eingebetteten Skripte geprüft.
+- Manifest als gültiges JSON geprüft.
+- Service-Worker-Syntax geprüft.
+- Versionsangaben und Cachebezeichnung geprüft.
+- Bestehende lokale Daten- und Dokumentenschlüssel unverändert.
+- Verschlüsselte Sicherung akzeptiert weiterhin Versionen 1.8.3 bis 1.9.1.
+- Terminfragen verwenden die eindeutige Termin-ID.
+- Terminlöschung löscht keine zugeordneten Fragen.
+- Ausgangspaket enthielt keine persönlichen Datensätze; es wurden keine Testdaten eingefügt.
+
+FÜR DEN PRAKTISCHEN ABNAHMETEST
+- PC: Fensterbreiten und Browser-Zoom 100 %, 125 % und 150 %.
+- Samsung A9: Hoch- und Querformat.
+- Android-Smartphone: Browseransicht und installierte PWA.
+- Verschlüsselte Sicherung erstellen und wiederherstellen.
+- Termin mit einer Frage speichern und Zuordnung kontrollieren.
+- Termin löschen und Erhalt der Frage kontrollieren.
+
+Version 1.9.1 sollte erst nach diesem persönlichen Praxistest die bisherige Arbeitsversion ablösen.

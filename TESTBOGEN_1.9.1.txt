@@ -1,0 +1,16 @@
+MEIN BEGLEITER 1.9.1 – KURZER ABNAHMETEST
+
+[ ] Verschlüsselte Sicherung der bisherigen persönlichen Version erstellt.
+[ ] Version 1.9.1 wird angezeigt.
+[ ] Sicherung und Einstellungen sind getrennt.
+[ ] Unter „Neue Einträge“ ist nur das ausgewählte Formular sichtbar.
+[ ] „Andere Auswahl“ führt sicher zur Auswahlliste zurück.
+[ ] Dokumente werden einheitlich mit „hinzufügen“ bezeichnet.
+[ ] Neuer Termin mit direkt zugeordneter Frage gespeichert.
+[ ] Zugeordnete Frage erscheint beim richtigen Termin.
+[ ] Frage bleibt nach dem Löschen eines Testtermins erhalten.
+[ ] Obere Schaltflächen überlagern sich nicht.
+[ ] PC, Samsung A9 und Smartphone geprüft.
+[ ] Verschlüsselte Sicherung aus 1.9.1 erfolgreich wiederhergestellt.
+
+Nur erfundene Testdaten für neue Funktionen verwenden.

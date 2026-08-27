@@ -1,6 +1,6 @@
 MEIN BEGLEITER
-Version 1.9.0.1 PWA – Persönliche Arbeitsversion
-Stand: 26.08.2026
+Version 1.9.1 PWA – Persönliche Arbeitsversion
+Stand: 27.08.2026
 Entwickelt von Lothar & Nimbus
 
 Diese Ausgabe ist für die persönliche Arbeit vorgesehen. Sie wird vollständig leer
@@ -19,6 +19,6 @@ WICHTIG
 Vorgesehene GitHub-Pages-Adresse:
 https://kompassprojekte.github.io/Mein-Begleiter-Persoenlich/
 
-Die vorherige persönliche Version 1.9.0 bleibt unverändert erhalten.
+Die vorherigen persönlichen Versionen 1.9.0 und 1.9.0.1 bleiben unverändert erhalten.
 Die Anwendung ersetzt keine ärztliche Beratung oder Behandlung. Bei akuten Beschwerden
 ärztliche Hilfe holen; im medizinischen Notfall 112 anrufen.
