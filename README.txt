@@ -1,5 +1,5 @@
 MEIN BEGLEITER
-Version 1.9.1.2.1 PWA – Aktualisierung, Navigation und Hilfe
+Version 1.9.1.2.2 PWA – Ansichts-, Druck- und Verlaufskorrektur
 Stand: 28.08.2026
 Entwickelt von Lothar & Nimbus
 

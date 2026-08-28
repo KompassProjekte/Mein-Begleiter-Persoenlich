@@ -1,0 +1,50 @@
+MEIN BEGLEITER 1.9.1.2.2 – KURZER ABNAHMETEST
+
+[ ] Version 1.9.1.2.2 wird angezeigt.
+[ ] Persönliche Daten und Dokumente sind vollständig vorhanden.
+[ ] Statusanzeigen stehen getrennt oberhalb des Seiteninhalts.
+[ ] Keine Schaltflächen überlagern sich.
+[ ] Hauptaktionen sind deutlich hervorgehoben.
+[ ] Berichtsschaltflächen stehen in verständlicher Reihenfolge.
+[ ] Behandlungszentrum startet als ruhige Übersicht.
+[ ] Es ist kein Eingabeformular ohne Auswahl geöffnet.
+[ ] Jede der vier Aufgaben öffnet nur das zugehörige Formular.
+[ ] „Zur Behandlungsübersicht“ steht neben der Überschrift und schließt das Formular.
+[ ] Mehrere Beschwerden lassen sich gleichzeitig auswählen und speichern.
+[ ] Eine eigene Beschwerde erscheint nach dem Speichern erneut in der Auswahl.
+[ ] Auswahl löschen und einzelne Auswahlfelder entfernen funktionieren.
+[ ] Eigene Behandlungsorte und ausführende Stellen werden erneut angeboten.
+[ ] Datum, Bezeichnung und Status sind durch Punkte getrennt.
+[ ] Medikament ändern öffnet den richtigen Bereich.
+[ ] Behandlungsschritt ändern öffnet den richtigen Bereich.
+[ ] Behandlungsübersicht lässt sich drucken.
+[ ] Auf der Sicherungsseite sind nur zwei verschlüsselte Hauptaktionen sichtbar.
+[ ] „Sicherung ohne Dokumente“ und unverschlüsselte Sicherungen sind nicht sichtbar.
+[ ] „Speicher und Export“ lässt sich öffnen und schließen.
+[ ] Der Excel-Export ist eindeutig als keine Sicherung bezeichnet.
+[ ] Verschlüsselte Sicherung enthält Einträge und Dokumente.
+[ ] Verschlüsselte Sicherung lässt sich kontrolliert wiederherstellen.
+[ ] PC-Zoom 100 %, 125 % und 150 % geprüft.
+[ ] Samsung A9 Hoch- und Querformat geprüft.
+[ ] Smartphone geprüft.
+[ ] „Einstellungen“ öffnet eine eigene Seite.
+[ ] „Hilfe & Anleitung“ öffnet eine eigene Seite.
+[ ] Auf dem Handy öffnet genau ein Menü; alle Punkte sind erreichbar und scrollbar.
+[ ] Auf dem Tablet bleibt die Navigation in Hoch- und Querformat verständlich.
+[ ] Ein neu gespeicherter Körperwert erscheint ohne Neuladen im Verlauf.
+[ ] „Verlauf aktualisieren“ aktualisiert Kurven und Zeitangabe.
+[ ] Datumsfilter begrenzt alle Verlaufskurven korrekt.
+[ ] Atemfrequenz wird bei vorhandenen Werten dargestellt.
+[ ] Einfache und vollständige Ansicht unterscheiden sich sofort sichtbar.
+[ ] Terminfilter zeigt nur Termine innerhalb des gewählten Zeitraums.
+[ ] Terminfilter „Herkunft“ ist nicht mehr vorhanden.
+[ ] „Zur Übersicht“ erscheint in keinem Ausdruck.
+[ ] Ausdruck „Offene Fragen“ enthält ausschließlich offene Fragen.
+[ ] Medikamenten-, Behandlungs- und Kostenausdruck enthalten nur ihren Fachinhalt.
+[ ] Kostenübersicht passt auf eine DIN-A4-Seite.
+[ ] Buch- und Tagebuchdruck beginnen ohne leere Bedienseite.
+[ ] Kein Messwert erzeugt nur einen kompakten Hinweis.
+[ ] Ein Messwert erscheint als Wertekarte; eine Linie beginnt erst ab zwei Werten.
+[ ] Behandlungsverlauf steht nach allen Diagrammen.
+
+Neue Funktionen zunächst nur mit erfundenen Testdaten prüfen.

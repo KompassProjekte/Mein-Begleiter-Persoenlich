@@ -1,0 +1,9 @@
+MEIN BEGLEITER 1.9.1.2.2 – ANSICHT, DRUCK UND VERLAUF
+
+Vor der Aktualisierung eine verschlüsselte vollständige Sicherung aus Version 1.9.1.1 erstellen.
+
+Version 1.9.1.2.2 verwendet auf demselben Gerät und im selben Browser weiterhin den bisherigen lokalen Datenbestand. Nach dem ersten Start Einträge, Termine, Fragen, Medikamente und Dokumente kontrollieren.
+
+Im Behandlungszentrum wird zunächst eine Übersicht gezeigt. Wählen Sie genau eine Aufgabe aus. Das zugehörige Eingabeformular wird geöffnet; alle anderen bleiben geschlossen. Mit „Zur Behandlungsübersicht“ kehren Sie zurück.
+
+Es erfolgt keine automatische Synchronisation zwischen Geräten.

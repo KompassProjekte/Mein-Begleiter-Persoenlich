@@ -7,7 +7,7 @@
       content="width=device-width,initial-scale=1,viewport-fit=cover"
     />
     <meta name="theme-color" content="#225b56" />
-    <title>Mein Begleiter 1.9.1.2.1 PWA – Persönliche Arbeitsversion</title>
+    <title>Mein Begleiter 1.9.1.2.2 PWA – Persönliche Arbeitsversion</title>
     <link rel="manifest" href="./manifest.webmanifest" />
     <link rel="icon" type="image/png" href="./icons/favicon-64.png" />
     <link rel="apple-touch-icon" href="./icons/apple-touch-icon-180.png" />
@@ -1704,7 +1704,7 @@
           </button>
         </nav>
         <div class="seitenfuss">
-          <strong>Version 1.9.1.2.1 PWA · PERSÖNLICHE ARBEITSVERSION</strong
+          <strong>Version 1.9.1.2.2 PWA · PERSÖNLICHE ARBEITSVERSION</strong
           >Stand: 28.08.2026<br />Entwickelt von Lothar &amp; Nimbus
         </div>
       </aside>
@@ -1840,13 +1840,6 @@
             <label>Von<input class="filter" id="terminVon" type="date" /></label
             ><label
               >Bis<input class="filter" id="terminBis" type="date" /></label
-            ><label
-              >Herkunft<select class="filter" id="terminQuelle">
-                <option value="alle">Alle</option>
-                <option value="journal">Manuell</option>
-                <option value="behandlung">Behandlungsschritt</option>
-                <option value="medikament">Medikamentenplan</option>
-              </select></label
             ><label>Arzt / Stelle<select class="filter" id="terminArztFilter">
                 <option value="">Alle Ärzte / Stellen</option>
               </select></label><button class="knopf klein sekundaer" id="terminFilterReset" type="button">Filter zurücksetzen</button>
@@ -2661,7 +2654,7 @@
                 <span>Persönlicher Browser-Speicher</span>
               </div>
               <p>
-                <strong>Mein Begleiter 1.9.1.2.1 PWA – Persönliche Arbeitsversion</strong>
+                <strong>Mein Begleiter 1.9.1.2.2 PWA – Persönliche Arbeitsversion</strong>
               </p>
               <p>
                 Ihre Einträge werden ausschließlich lokal im persönlichen
@@ -3585,11 +3578,16 @@
       }
       function renderTermine() {
         const arztFilter = ($("#terminArztFilter")?.value || "").trim().toLocaleLowerCase("de-DE");
+        const von = $("#terminVon")?.value || "0000-01-01",
+          bis = $("#terminBis")?.value || "9999-12-31",
+          passtZeitraum = (e) => !!e.datum && e.datum >= von && e.datum <= bis;
         const k = alleTermine()
+            .filter(passtZeitraum)
             .filter(istKommenderTermin)
             .filter((e) => !arztFilter || (arztFilter === "__ohne__" ? !(e.arzt || "").trim() : (e.arzt || "").trim().toLocaleLowerCase("de-DE") === arztFilter))
             .sort((a, b) => zeitSchluessel(a).localeCompare(zeitSchluessel(b))),
           v = alleTermine()
+            .filter(passtZeitraum)
             .filter((e) => !istKommenderTermin(e))
             .filter((e) => !arztFilter || (arztFilter === "__ohne__" ? !(e.arzt || "").trim() : (e.arzt || "").trim().toLocaleLowerCase("de-DE") === arztFilter))
             .sort((a, b) => zeitSchluessel(b).localeCompare(zeitSchluessel(a)));
@@ -4117,7 +4115,7 @@
               return `<div class="tagebuch-eintrag"><div class="tagebuch-datum">${datumLang(e.datum)}</div><div class="tagebuch-text"><h5>${esc(ueberschrift)}</h5>${texte.join("") || "<p>Eintrag ohne weitere Beschreibung.</p>"}</div></div>`;
             })
             .join("");
-        html += `</div><p class="hinweis">Erstellt mit Mein Begleiter 1.9.1.2.1 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus</p>`;
+        html += `</div><p class="hinweis">Erstellt mit Mein Begleiter 1.9.1.2.2 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus</p>`;
         $("#berichtAusgabe").innerHTML = html;
         gespeichertenEntwurfAnzeigen();
       }
@@ -4179,7 +4177,7 @@
           });
         if (schluss)
           html += `<div class="buch-seite"><h4>Mein Rückblick und Ausblick</h4><div class="buch-schluss"><p>${esc(schluss)}</p></div></div>`;
-        html += `<p class="hinweis">Erstellt mit Mein Begleiter 1.9.1.2.1 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus · ${datumLang(heuteIso())}</p>`;
+        html += `<p class="hinweis">Erstellt mit Mein Begleiter 1.9.1.2.2 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus · ${datumLang(heuteIso())}</p>`;
         $("#berichtAusgabe").innerHTML = html;
       }
       function renderBericht() {
@@ -4445,7 +4443,7 @@
           });
         if (schluss)
           html += `<div class="buch-seite"><h4>Mein Rückblick und Ausblick</h4><div class="buch-schluss"><p>${esc(schluss)}</p></div></div>`;
-        html += `<p class="hinweis">${fassung === "lese" ? "Persönliche Leseausgabe – aus meinen eigenen Einträgen zusammengestellt. " : ""}Erstellt mit Mein Begleiter 1.9.1.2.1 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus · ${datumLang(heuteIso())}</p>`;
+        html += `<p class="hinweis">${fassung === "lese" ? "Persönliche Leseausgabe – aus meinen eigenen Einträgen zusammengestellt. " : ""}Erstellt mit Mein Begleiter 1.9.1.2.2 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus · ${datumLang(heuteIso())}</p>`;
         $("#berichtAusgabe").innerHTML = html;
         gespeichertenEntwurfAnzeigen();
       }
@@ -5736,6 +5734,11 @@
               '<div class="diagramm-leer">Für diesen Zeitraum sind noch keine Werte vorhanden.</div>';
             return;
           }
+          if (arr.length === 1) {
+            const e = arr[0];
+            el.innerHTML = `<div class="v19122-einzelwert"><strong>${String(e[feld]).replace('.', ',')}${einheit}</strong><span>${datumLang(e.datum)}</span></div>`;
+            return;
+          }
           const werte = arr.slice(-18),
             w = 560,
             h = 220,
@@ -5823,7 +5826,7 @@
           basisTermine();
           const von = $("#terminVon").value,
             bis = $("#terminBis").value,
-            quelle = $("#terminQuelle").value;
+            quelle = "alle";
           document
             .querySelectorAll(
               "#termineKommend .termin,#termineVergangen .termin",
@@ -5885,7 +5888,7 @@
           $("#kostenArt").value = "alle";
           renderKosten();
         });
-        ["terminVon", "terminBis", "terminQuelle"].forEach((id) =>
+        ["terminVon", "terminBis"].forEach((id) =>
           $("#" + id).addEventListener("change", renderTermine),
         );
         renderCockpit();
@@ -6514,7 +6517,7 @@
           const version = Number(obj.version || obj.formatVersion || 1);
           if (!Number.isFinite(version) || version > APP_VERSION)
             throw new Error(
-              `Diese Sicherung wurde mit einer neueren Datenstruktur (${obj.version || "unbekannt"}) erstellt und kann mit Version 1.9.1.2.1 nicht sicher geöffnet werden.`,
+              `Diese Sicherung wurde mit einer neueren Datenstruktur (${obj.version || "unbekannt"}) erstellt und kann mit Version 1.9.1.2.2 nicht sicher geöffnet werden.`,
             );
           return {
             obj,
@@ -6798,7 +6801,7 @@
           pass = $("#geraetePasswort"),
           pass2 = $("#geraetePasswort2"),
           weiter = $("#geraeteWeiter");
-        const APP_VERSION_GERAETEWECHSEL = "1.9.1.2.1";
+        const APP_VERSION_GERAETEWECHSEL = "1.9.1.2.2";
         const DATENSTRUKTUR_VERSION = "1.8";
         const SICHERUNGSFORMAT_VERSION = 2;
         const MAX_DATEIGROESSE = 250 * 1024 * 1024;
@@ -7064,7 +7067,7 @@
             throw new Error("Die Sicherung verwendet eine nicht unterstützte Datenstruktur.");
           if ((inhalt.edition !== edition && inhalt.edition !== "praxistest") || !inhalt.daten || !Array.isArray(inhalt.daten.eintraege))
             throw new Error("Das Paket ist unvollständig oder gehört zu einer anderen Ausgabe.");
-          if (inhalt.appVersion !== "1.8.3" && inhalt.appVersion !== "1.8.4" && inhalt.appVersion !== "1.8.5" && inhalt.appVersion !== "1.8.6" && inhalt.appVersion !== "1.8.6.1" && inhalt.appVersion !== "1.9.0" && inhalt.appVersion !== "1.9.0.1" && inhalt.appVersion !== "1.9.1" && inhalt.appVersion !== "1.9.1.1" && inhalt.appVersion !== "1.9.1.2" && inhalt.appVersion !== APP_VERSION_GERAETEWECHSEL)
+          if (inhalt.appVersion !== "1.8.3" && inhalt.appVersion !== "1.8.4" && inhalt.appVersion !== "1.8.5" && inhalt.appVersion !== "1.8.6" && inhalt.appVersion !== "1.8.6.1" && inhalt.appVersion !== "1.9.0" && inhalt.appVersion !== "1.9.0.1" && inhalt.appVersion !== "1.9.1" && inhalt.appVersion !== "1.9.1.1" && inhalt.appVersion !== "1.9.1.2" && inhalt.appVersion !== "1.9.1.2.1" && inhalt.appVersion !== APP_VERSION_GERAETEWECHSEL)
             throw new Error(`Die Programmversion ${inhalt.appVersion || "unbekannt"} ist nicht freigegeben.`);
           if (!inhalt.mitDokumenten || !Array.isArray(inhalt.dokumente))
             throw new Error("Für den sicheren Gerätewechsel müssen die Dokumente vollständig enthalten sein.");
@@ -7237,7 +7240,7 @@
                 vorbereiteteRuecksicherung = await ruecksicherungVorbereiten(kennwort);
               }
               $("#geraetePruefung").innerHTML =
-        `<strong>✓ Entschlüsselung und Integritätsprüfung bestanden</strong><p>Datei: ${esc(importDatei.name)} · ${dateigroesse(importDatei.size)}</p><p>Erstellt: ${new Date(innen.erstelltAm).toLocaleString("de-DE")} auf ${esc(innen.quellgeraet)} · Quellversion ${esc(innen.appVersion)}</p><p>Sicherungskennung: ${esc(innen.sicherungsId)}</p><p>${stats.eintraege} Einträge · ${stats.termine} Termine · ${stats.fragen} Fragen · ${stats.medikamente} Medikamente</p><p>${stats.dokumente} Dokumentenmappen · ${stats.seiten} Dokumentseiten · ${dateigroesse(stats.dokumentBytes)}</p><p>Speicher: ${esc(speicher.text)}</p><p>Auf diesem Gerät vorhanden: ${ziel.eintraege} Einträge · ${ziel.dokumente} Dokumentenmappen.</p>${zielIstLeer ? '<p><strong>✓ Das Zielgerät ist vollständig leer. Eine Rücksicherung ist nicht erforderlich.</strong></p>' : '<p><strong>Vorhandene Zieldaten werden ersetzt. Laden Sie deshalb zuerst die verschlüsselte Rücksicherung herunter.</strong></p>'}<p><strong>Eine Zusammenführung ist in Version 1.9.1.2.1 sicherheitshalber deaktiviert.</strong></p>`;
+        `<strong>✓ Entschlüsselung und Integritätsprüfung bestanden</strong><p>Datei: ${esc(importDatei.name)} · ${dateigroesse(importDatei.size)}</p><p>Erstellt: ${new Date(innen.erstelltAm).toLocaleString("de-DE")} auf ${esc(innen.quellgeraet)} · Quellversion ${esc(innen.appVersion)}</p><p>Sicherungskennung: ${esc(innen.sicherungsId)}</p><p>${stats.eintraege} Einträge · ${stats.termine} Termine · ${stats.fragen} Fragen · ${stats.medikamente} Medikamente</p><p>${stats.dokumente} Dokumentenmappen · ${stats.seiten} Dokumentseiten · ${dateigroesse(stats.dokumentBytes)}</p><p>Speicher: ${esc(speicher.text)}</p><p>Auf diesem Gerät vorhanden: ${ziel.eintraege} Einträge · ${ziel.dokumente} Dokumentenmappen.</p>${zielIstLeer ? '<p><strong>✓ Das Zielgerät ist vollständig leer. Eine Rücksicherung ist nicht erforderlich.</strong></p>' : '<p><strong>Vorhandene Zieldaten werden ersetzt. Laden Sie deshalb zuerst die verschlüsselte Rücksicherung herunter.</strong></p>'}<p><strong>Eine Zusammenführung ist in Version 1.9.1.2.2 sicherheitshalber deaktiviert.</strong></p>`;
               $("#geraetePruefung").hidden = false;
               pass.disabled = true;
               weiter.textContent = zielIstLeer
@@ -7779,6 +7782,11 @@
               '<div class="tc-chart-leer">Noch keine Werte eingetragen.</div>';
             return;
           }
+          if (arr.length === 1) {
+            const e = arr[0], zweiter = feld2 ? ` · ${String(e[feld2]).replace('.', ',')} ${einheit}` : '';
+            el.innerHTML = `<div class="v19122-einzelwert"><strong>${String(e[feld]).replace('.', ',')} ${einheit}${zweiter}</strong><span>${datumLang(e.datum)}${e.messUhrzeit ? ' · '+esc(e.messUhrzeit)+' Uhr' : ''}</span></div>`;
+            return;
+          }
           const alle = arr
               .flatMap((e) => [
                 tageswertZahl(e[feld]),
@@ -7802,13 +7810,14 @@
           let svg = `<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="${id}"><line x1="${p}" y1="${h - p}" x2="${w - p}" y2="${h - p}" stroke="#b9cbc6"/><polyline points="${linie(feld)}" fill="none" stroke="#28776d" stroke-width="4"/>`;
           if (feld2)
             svg += `<polyline points="${linie(feld2)}" fill="none" stroke="#cf7d35" stroke-width="4"/>`;
+          const schritt = Math.max(1, Math.ceil(arr.length / 6));
           svg +=
             arr
               .map(
                 (e, i) =>
                   `<circle cx="${x(i)}" cy="${y(tageswertZahl(e[feld]))}" r="5" fill="#28776d"><title>${datumLang(e.datum)} ${e.messUhrzeit || ""}: ${e[feld]} ${einheit}</title></circle>`,
               )
-              .join("") + "</svg>";
+              .join("") + arr.map((e,i) => (i % schritt === 0 || i === arr.length-1) ? `<text x="${x(i)}" y="${h-7}" text-anchor="middle" font-size="12" fill="#506965">${new Intl.DateTimeFormat('de-DE',{day:'2-digit',month:'2-digit'}).format(new Date(e.datum+'T12:00:00'))}</text>` : '').join('') + "</svg>";
           el.innerHTML = svg;
         }
         function tcCharts() {
@@ -8027,7 +8036,7 @@
           $("#suche").value = ""; $("#zeitfilter").value = "alle"; $("#eintragArztFilter").value = ""; renderTabelle();
         });
         $("#terminFilterReset").addEventListener("click", () => {
-          $("#terminVon").value = ""; $("#terminBis").value = ""; $("#terminQuelle").value = "alle"; $("#terminArztFilter").value = ""; renderTermine();
+          $("#terminVon").value = ""; $("#terminBis").value = ""; $("#terminArztFilter").value = ""; renderTermine();
         });
         $("#behandlungFilterReset").addEventListener("click", () => {
           $("#behandlungArztFilter").value = ""; renderBehandlung();
@@ -8341,7 +8350,7 @@
 </dialog>
 <script id="bedienoptimierung-v186-script">
 (() => {
-  const APP_VERSION = '1.9.1.2.1';
+  const APP_VERSION = '1.9.1.2.2';
   const MODUS_KEY = 'mein-begleiter-persoenlich-v1-9-1-ansicht';
   const START_KEY = 'mein-begleiter-persoenlich-v1-9-1-startauswahl';
   const ua = navigator.userAgent;
@@ -8945,6 +8954,83 @@
   }
   document.querySelectorAll('#seite-behandlung .behandlung-bereich').forEach(karte=>{const kopf=karte.querySelector('.behandlung-kopfzeile')||karte.querySelector('h3')?.parentElement;const b=karte.querySelector('.behandlung-zurueck');if(kopf&&b)kopf.appendChild(b);});
   nav?.querySelector('[data-seite="behandlung"]')?.addEventListener('click',()=>{document.getElementById('seite-behandlung')?.classList.remove('v1911-bearbeitung');document.querySelectorAll('#seite-behandlung .v1911-aktiv').forEach(e=>e.classList.remove('v1911-aktiv'));});
+})();
+</script>
+<style id="korrekturen-v19122">
+  html.v186-einfach .v19122-nur-voll{display:none!important}
+  [data-ansicht].aktiv{background:#195f58!important;color:#fff!important;border-color:#195f58!important;box-shadow:0 4px 12px #174c4633}
+  #seite-verlauf .diagramm{height:270px;min-height:0;padding:8px}
+  #seite-verlauf .diagramm svg{width:100%;height:100%;display:block}
+  #seite-verlauf .diagramm.ist-leer{height:auto;min-height:86px}
+  .v19122-einzelwert{height:100%;min-height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;border-radius:12px;background:#f3faf7;text-align:center}
+  .v19122-einzelwert strong{font-size:1.65rem;color:#174d48}.v19122-einzelwert span{color:#58706c}
+  .v19122-weitere-knopf{display:none;margin:0 0 12px}
+  .v19122-druckdatum{display:none}
+  #seite-verlauf .v19122-altes-gewicht{display:none!important}
+  @media(max-width:620px){
+    #seite-verlauf .raster{display:grid;grid-template-columns:1fr!important}
+    #seite-verlauf .raster>.karte{grid-column:1!important}
+    #seite-verlauf .diagramm{height:230px}
+    .v19122-weitere-knopf{display:inline-flex}
+    #seite-verlauf:not(.v19122-weitere-offen) .v19122-weiteres-diagramm{display:none}
+  }
+  @media print{
+    @page{size:A4 portrait;margin:12mm}
+    .zur-uebersicht,.seitenleiste,.mobilkopf,.pwa-leiste,.pwa-update,#v19121MobilMenuknopf,#v19121MobilMenue,
+    .kopf-aktionen,.uebersicht-filter,.pruefhinweis,.werkzeugleiste,.aktionen,.listen-aktionen,.bericht-steuerung,
+    button,input,select,textarea,.behandlung-oeffnen,.behandlung-zurueck,.kompakt-form,.v19121-aktualisierung{display:none!important}
+    body{font-size:9.5pt!important;background:#fff!important}.app,main{display:block!important;padding:0!important;margin:0!important}
+    .v19122-druckdatum{display:block!important;text-align:right;color:#526b67;margin:0 0 4mm;font-size:9pt}
+    .seite.aktiv{display:block!important}.karte{box-shadow:none!important;border:1px solid #cad6d2!important}
+    #seite-kosten .kopf p,#seite-kosten .pruefhinweis{display:none!important}
+    #seite-kosten .raster{display:grid!important;grid-template-columns:repeat(4,1fr)!important;gap:7mm!important}
+    #seite-kosten .raster>.kpi{grid-column:span 1!important;padding:6mm!important;min-height:0!important}
+    #seite-kosten .raster>.span6{grid-column:1/-1!important;padding:6mm!important}
+    #seite-kosten .kpi-wert{font-size:19pt!important}
+    #seite-kosten .kostenliste{min-height:0!important}
+    #seite-kosten .raster>.span6:last-child{display:none!important}
+    #seite-behandlung .behandlung-kurzuebersicht,#seite-behandlung .v1911-aufgabenhinweis,#seite-behandlung .uebersicht-filter{display:none!important}
+    #seite-behandlung .raster{display:grid!important;grid-template-columns:1fr 1fr!important;gap:5mm!important}
+    #seite-behandlung .behandlung-bereich{display:block!important;padding:5mm!important;break-inside:avoid!important}
+    #seite-bericht>.kopf,#seite-bericht>.zur-uebersicht{display:none!important}
+    #berichtAusgabe{border:0!important;padding:0!important;margin:0!important}
+    #berichtAusgabe .bericht-kopf h3{font-size:17pt!important;margin:0 0 3mm!important}
+    #berichtAusgabe .bericht-meta span:not(.v19122-datum){display:none!important}
+    #berichtAusgabe .buch-seite:empty{display:none!important}
+    #seite-verlauf .diagramm{height:58mm!important;break-inside:avoid!important}
+    #seite-verlauf .raster{display:grid!important;grid-template-columns:1fr 1fr!important;gap:5mm!important}
+    #seite-verlauf .raster>.karte{grid-column:span 1!important;break-inside:avoid!important}
+    #seite-verlauf .v19122-behandlungsverlauf{grid-column:1/-1!important;break-before:page}
+  }
+</style>
+<script id="korrekturen-v19122-script">
+(() => {
+  const MODUS_KEY='mein-begleiter-persoenlich-v1-9-1-ansicht';
+  const vollSeiten=['bericht','kosten','verlauf'];
+  document.querySelectorAll('.nav [data-seite]').forEach(b=>{if(vollSeiten.includes(b.dataset.seite))b.classList.add('v19122-nur-voll');});
+  document.querySelectorAll('#v19121MobilMenue [data-seite]').forEach(b=>{if(vollSeiten.includes(b.dataset.seite))b.classList.add('v19122-nur-voll');});
+  const ansichtAktiv=modus=>{const einfach=modus!=='voll';document.documentElement.classList.toggle('v186-einfach',einfach);document.querySelectorAll('[data-ansicht]').forEach(b=>b.classList.toggle('aktiv',b.dataset.ansicht===(einfach?'einfach':'voll')));};
+  document.querySelectorAll('[data-ansicht]').forEach(b=>b.addEventListener('click',()=>requestAnimationFrame(()=>ansichtAktiv(b.dataset.ansicht))));
+  ansichtAktiv(localStorage.getItem(MODUS_KEY)||'voll');
+  ['termine','kosten','behandlung','verlauf'].forEach(id=>{const s=document.getElementById('seite-'+id);if(s&&!s.querySelector('.v19122-druckdatum')){const d=document.createElement('div');d.className='v19122-druckdatum';d.textContent='Erstellt: '+datumLang(heuteIso());s.prepend(d);}});
+
+  const verlauf=document.getElementById('seite-verlauf'), raster=verlauf?.querySelector('.raster'), behandlung=document.getElementById('behandlungVerlauf')?.closest('.karte');
+  if(raster&&behandlung){behandlung.classList.add('v19122-behandlungsverlauf');raster.appendChild(behandlung);}
+  document.getElementById('chartGewicht')?.closest('.karte')?.classList.add('v19122-altes-gewicht');
+  ['chartSpo2','chartBlutzucker','chartAtemfrequenz'].forEach(id=>document.getElementById(id)?.closest('.karte')?.classList.add('v19122-weiteres-diagramm'));
+  if(verlauf&&raster){const b=document.createElement('button');b.type='button';b.className='knopf sekundaer v19122-weitere-knopf';b.textContent='Weitere Diagramme anzeigen';b.addEventListener('click',()=>{const offen=verlauf.classList.toggle('v19122-weitere-offen');b.textContent=offen?'Weitere Diagramme schließen':'Weitere Diagramme anzeigen';});raster.before(b);}
+
+  const berichtSanitieren=()=>{
+    const aus=document.getElementById('berichtAusgabe');if(!aus)return;
+    aus.querySelectorAll('.buch-seite').forEach(s=>{if(!s.textContent.trim())s.remove();});
+    if(ausgabeModus?.()==='bericht'){
+      aus.querySelector(':scope>.raster')?.remove();
+      const abs=[...aus.querySelectorAll('.bericht-abschnitt')], titel=abs.length===1?abs[0].querySelector('h4')?.textContent:'Persönlicher Bericht';
+      const kopf=aus.querySelector('.bericht-kopf');if(kopf){kopf.querySelector('h3').textContent=titel||'Persönlicher Bericht';kopf.querySelector('.bericht-meta').innerHTML=`<span class="v19122-datum">Erstellt: ${datumLang(heuteIso())}</span>`;}
+    }
+  };
+  const basisBericht=renderBericht;renderBericht=function(){const r=basisBericht.apply(this,arguments);berichtSanitieren();return r;};
+  berichtSanitieren();
 })();
 </script>
 </body>
