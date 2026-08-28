@@ -7,7 +7,7 @@
       content="width=device-width,initial-scale=1,viewport-fit=cover"
     />
     <meta name="theme-color" content="#225b56" />
-    <title>Mein Begleiter 1.9.1.1 PWA – Persönliche Arbeitsversion</title>
+    <title>Mein Begleiter 1.9.1.2 PWA – Persönliche Arbeitsversion</title>
     <link rel="manifest" href="./manifest.webmanifest" />
     <link rel="icon" type="image/png" href="./icons/favicon-64.png" />
     <link rel="apple-touch-icon" href="./icons/apple-touch-icon-180.png" />
@@ -1704,7 +1704,7 @@
           </button>
         </nav>
         <div class="seitenfuss">
-          <strong>Version 1.9.1.1 PWA · PERSÖNLICHE ARBEITSVERSION</strong
+          <strong>Version 1.9.1.2 PWA · PERSÖNLICHE ARBEITSVERSION</strong
           >Stand: 27.08.2026<br />Entwickelt von Lothar &amp; Nimbus
         </div>
       </aside>
@@ -2235,7 +2235,7 @@
               <p class="hinweis">
                 Mehrere ausgewählte Fotos oder Scans werden als eine
                 Dokumentenmappe gespeichert. Die Dateien verlassen dein Gerät
-                nicht und sind nicht in der kleinen Sicherung ohne Dokumente enthalten.
+                nicht und sind in der verschlüsselten vollständigen Sicherung enthalten.
               </p>
             </article>
             <article class="karte span7">
@@ -2661,7 +2661,7 @@
                 <span>Persönlicher Browser-Speicher</span>
               </div>
               <p>
-                <strong>Mein Begleiter 1.9.1.1 PWA – Persönliche Arbeitsversion</strong>
+                <strong>Mein Begleiter 1.9.1.2 PWA – Persönliche Arbeitsversion</strong>
               </p>
               <p>
                 Ihre Einträge werden ausschließlich lokal im persönlichen
@@ -4117,7 +4117,7 @@
               return `<div class="tagebuch-eintrag"><div class="tagebuch-datum">${datumLang(e.datum)}</div><div class="tagebuch-text"><h5>${esc(ueberschrift)}</h5>${texte.join("") || "<p>Eintrag ohne weitere Beschreibung.</p>"}</div></div>`;
             })
             .join("");
-        html += `</div><p class="hinweis">Erstellt mit Mein Begleiter 1.9.1.1 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus</p>`;
+        html += `</div><p class="hinweis">Erstellt mit Mein Begleiter 1.9.1.2 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus</p>`;
         $("#berichtAusgabe").innerHTML = html;
         gespeichertenEntwurfAnzeigen();
       }
@@ -4179,7 +4179,7 @@
           });
         if (schluss)
           html += `<div class="buch-seite"><h4>Mein Rückblick und Ausblick</h4><div class="buch-schluss"><p>${esc(schluss)}</p></div></div>`;
-        html += `<p class="hinweis">Erstellt mit Mein Begleiter 1.9.1.1 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus · ${datumLang(heuteIso())}</p>`;
+        html += `<p class="hinweis">Erstellt mit Mein Begleiter 1.9.1.2 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus · ${datumLang(heuteIso())}</p>`;
         $("#berichtAusgabe").innerHTML = html;
       }
       function renderBericht() {
@@ -4445,7 +4445,7 @@
           });
         if (schluss)
           html += `<div class="buch-seite"><h4>Mein Rückblick und Ausblick</h4><div class="buch-schluss"><p>${esc(schluss)}</p></div></div>`;
-        html += `<p class="hinweis">${fassung === "lese" ? "Persönliche Leseausgabe – aus meinen eigenen Einträgen zusammengestellt. " : ""}Erstellt mit Mein Begleiter 1.9.1.1 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus · ${datumLang(heuteIso())}</p>`;
+        html += `<p class="hinweis">${fassung === "lese" ? "Persönliche Leseausgabe – aus meinen eigenen Einträgen zusammengestellt. " : ""}Erstellt mit Mein Begleiter 1.9.1.2 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus · ${datumLang(heuteIso())}</p>`;
         $("#berichtAusgabe").innerHTML = html;
         gespeichertenEntwurfAnzeigen();
       }
@@ -6514,7 +6514,7 @@
           const version = Number(obj.version || obj.formatVersion || 1);
           if (!Number.isFinite(version) || version > APP_VERSION)
             throw new Error(
-              `Diese Sicherung wurde mit einer neueren Datenstruktur (${obj.version || "unbekannt"}) erstellt und kann mit Version 1.9.1.1 nicht sicher geöffnet werden.`,
+              `Diese Sicherung wurde mit einer neueren Datenstruktur (${obj.version || "unbekannt"}) erstellt und kann mit Version 1.9.1.2 nicht sicher geöffnet werden.`,
             );
           return {
             obj,
@@ -6798,7 +6798,7 @@
           pass = $("#geraetePasswort"),
           pass2 = $("#geraetePasswort2"),
           weiter = $("#geraeteWeiter");
-        const APP_VERSION_GERAETEWECHSEL = "1.9.1.1";
+        const APP_VERSION_GERAETEWECHSEL = "1.9.1.2";
         const DATENSTRUKTUR_VERSION = "1.8";
         const SICHERUNGSFORMAT_VERSION = 2;
         const MAX_DATEIGROESSE = 250 * 1024 * 1024;
@@ -7064,7 +7064,7 @@
             throw new Error("Die Sicherung verwendet eine nicht unterstützte Datenstruktur.");
           if ((inhalt.edition !== edition && inhalt.edition !== "praxistest") || !inhalt.daten || !Array.isArray(inhalt.daten.eintraege))
             throw new Error("Das Paket ist unvollständig oder gehört zu einer anderen Ausgabe.");
-          if (inhalt.appVersion !== "1.8.3" && inhalt.appVersion !== "1.8.4" && inhalt.appVersion !== "1.8.5" && inhalt.appVersion !== "1.8.6" && inhalt.appVersion !== "1.8.6.1" && inhalt.appVersion !== "1.9.0" && inhalt.appVersion !== "1.9.0.1" && inhalt.appVersion !== "1.9.1" && inhalt.appVersion !== APP_VERSION_GERAETEWECHSEL)
+          if (inhalt.appVersion !== "1.8.3" && inhalt.appVersion !== "1.8.4" && inhalt.appVersion !== "1.8.5" && inhalt.appVersion !== "1.8.6" && inhalt.appVersion !== "1.8.6.1" && inhalt.appVersion !== "1.9.0" && inhalt.appVersion !== "1.9.0.1" && inhalt.appVersion !== "1.9.1" && inhalt.appVersion !== "1.9.1.1" && inhalt.appVersion !== APP_VERSION_GERAETEWECHSEL)
             throw new Error(`Die Programmversion ${inhalt.appVersion || "unbekannt"} ist nicht freigegeben.`);
           if (!inhalt.mitDokumenten || !Array.isArray(inhalt.dokumente))
             throw new Error("Für den sicheren Gerätewechsel müssen die Dokumente vollständig enthalten sein.");
@@ -7237,7 +7237,7 @@
                 vorbereiteteRuecksicherung = await ruecksicherungVorbereiten(kennwort);
               }
               $("#geraetePruefung").innerHTML =
-        `<strong>✓ Entschlüsselung und Integritätsprüfung bestanden</strong><p>Datei: ${esc(importDatei.name)} · ${dateigroesse(importDatei.size)}</p><p>Erstellt: ${new Date(innen.erstelltAm).toLocaleString("de-DE")} auf ${esc(innen.quellgeraet)} · Quellversion ${esc(innen.appVersion)}</p><p>Sicherungskennung: ${esc(innen.sicherungsId)}</p><p>${stats.eintraege} Einträge · ${stats.termine} Termine · ${stats.fragen} Fragen · ${stats.medikamente} Medikamente</p><p>${stats.dokumente} Dokumentenmappen · ${stats.seiten} Dokumentseiten · ${dateigroesse(stats.dokumentBytes)}</p><p>Speicher: ${esc(speicher.text)}</p><p>Auf diesem Gerät vorhanden: ${ziel.eintraege} Einträge · ${ziel.dokumente} Dokumentenmappen.</p>${zielIstLeer ? '<p><strong>✓ Das Zielgerät ist vollständig leer. Eine Rücksicherung ist nicht erforderlich.</strong></p>' : '<p><strong>Vorhandene Zieldaten werden ersetzt. Laden Sie deshalb zuerst die verschlüsselte Rücksicherung herunter.</strong></p>'}<p><strong>Eine Zusammenführung ist in Version 1.9.1.1 sicherheitshalber deaktiviert.</strong></p>`;
+        `<strong>✓ Entschlüsselung und Integritätsprüfung bestanden</strong><p>Datei: ${esc(importDatei.name)} · ${dateigroesse(importDatei.size)}</p><p>Erstellt: ${new Date(innen.erstelltAm).toLocaleString("de-DE")} auf ${esc(innen.quellgeraet)} · Quellversion ${esc(innen.appVersion)}</p><p>Sicherungskennung: ${esc(innen.sicherungsId)}</p><p>${stats.eintraege} Einträge · ${stats.termine} Termine · ${stats.fragen} Fragen · ${stats.medikamente} Medikamente</p><p>${stats.dokumente} Dokumentenmappen · ${stats.seiten} Dokumentseiten · ${dateigroesse(stats.dokumentBytes)}</p><p>Speicher: ${esc(speicher.text)}</p><p>Auf diesem Gerät vorhanden: ${ziel.eintraege} Einträge · ${ziel.dokumente} Dokumentenmappen.</p>${zielIstLeer ? '<p><strong>✓ Das Zielgerät ist vollständig leer. Eine Rücksicherung ist nicht erforderlich.</strong></p>' : '<p><strong>Vorhandene Zieldaten werden ersetzt. Laden Sie deshalb zuerst die verschlüsselte Rücksicherung herunter.</strong></p>'}<p><strong>Eine Zusammenführung ist in Version 1.9.1.2 sicherheitshalber deaktiviert.</strong></p>`;
               $("#geraetePruefung").hidden = false;
               pass.disabled = true;
               weiter.textContent = zielIstLeer
@@ -8333,7 +8333,7 @@
 </dialog>
 <script id="bedienoptimierung-v186-script">
 (() => {
-  const APP_VERSION = '1.9.1.1';
+  const APP_VERSION = '1.9.1.2';
   const MODUS_KEY = 'mein-begleiter-persoenlich-v1-9-1-ansicht';
   const START_KEY = 'mein-begleiter-persoenlich-v1-9-1-startauswahl';
   const ua = navigator.userAgent;
@@ -8702,6 +8702,151 @@
   };
   sync();
   [quelleGabe,quelleGabeText,quelleSchritt].filter(Boolean).forEach(q => new MutationObserver(sync).observe(q,{childList:true,subtree:true,characterData:true}));
+})();
+</script>
+<style id="behandlung-und-verschlankung-v1912">
+  .behandlung-kopfzeile{display:flex;align-items:center;gap:12px;min-width:0;flex-wrap:wrap}
+  .behandlung-kopfzeile h3{margin:0}
+  #seite-behandlung .behandlung-zurueck{margin:0;min-height:40px;padding:8px 14px;background:#dcefe9;color:#174d48;border:1px solid #78a99f;box-shadow:none}
+  #seite-behandlung .behandlung-zurueck:hover{background:#cce6df}
+  .nebenwirkung-mehrfach{grid-column:1/-1;border:1px solid #b9d7ce;border-radius:12px;background:#f7fbfa;padding:12px}
+  .nebenwirkung-suche{width:100%;margin-bottom:9px}
+  .nebenwirkung-optionen{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;max-height:220px;overflow:auto;padding:3px}
+  .nebenwirkung-optionen label{display:flex;align-items:center;gap:9px;min-height:42px;padding:8px 10px;border:1px solid #d5e4df;border-radius:9px;background:#fff;cursor:pointer}
+  .nebenwirkung-optionen input{width:20px;height:20px;flex:0 0 auto}
+  .nebenwirkung-chips{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:9px}
+  .nebenwirkung-chip{display:inline-flex;align-items:center;gap:7px;padding:6px 9px;border-radius:999px;background:#dcefe9;color:#173b39;font-weight:750}
+  .nebenwirkung-chip button{border:0;background:transparent;color:#8c2d21;font-size:1.05rem;cursor:pointer}
+  .nebenwirkung-werkzeuge{display:flex;justify-content:flex-end;margin-top:8px}
+  .nebenwirkung-eigen-zeile{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px}
+  .hilfe-kurz{display:none;margin:9px 0 0;padding:10px 12px;border-radius:10px;background:#fff7df;border:1px solid #dfbd63}
+  .hilfe-kurz.sichtbar{display:block}
+  .v1912-speicher-export{margin-top:18px;border:1px solid #b9d7ce;border-radius:14px;background:#fff}
+  .v1912-speicher-export>summary{padding:15px 17px;color:var(--petrol);font-weight:900;cursor:pointer}
+  .v1912-speicher-inhalt{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;padding:0 16px 16px}
+  .v1912-speicher-inhalt .sicherungsfeld{margin:0}
+  .v1912-status{margin:14px 0 0}
+  .v1912-kategorie-eigen{margin-top:8px}
+  @media(max-width:720px){
+    .behandlung-kopfzeile{align-items:stretch;flex-direction:column}.behandlung-kopfzeile .behandlung-zurueck{width:100%}
+    .nebenwirkung-optionen{grid-template-columns:1fr}.nebenwirkung-eigen-zeile{grid-template-columns:1fr}.v1912-speicher-inhalt{grid-template-columns:1fr}
+    #seite-sicherung .geraete-aktionen{grid-template-columns:1fr}.v1912-speicher-export>summary{min-height:52px}
+  }
+</style>
+<script id="behandlung-und-verschlankung-v1912-script">
+(() => {
+  const norm = wert => String(wert || '').trim().toLocaleLowerCase('de-DE').replaceAll('ä','a').replaceAll('ö','o').replaceAll('ü','u').replaceAll('ß','ss');
+  const einzigartig = werte => [...new Map(werte.filter(Boolean).map(w => [norm(w), String(w).trim()])).values()].sort((a,b) => norm(a).localeCompare(norm(b),'de'));
+  const datalist = (id, werte) => {
+    let liste = document.getElementById(id);
+    if (!liste) { liste = document.createElement('datalist'); liste.id = id; document.body.appendChild(liste); }
+    liste.replaceChildren(...einzigartig(werte).map(w => { const o=document.createElement('option'); o.value=w; return o; }));
+  };
+
+  function aktualisiereLernlisten() {
+    const schritte = Array.isArray(daten.schritte) ? daten.schritte : [];
+    const eintraege = Array.isArray(daten.eintraege) ? daten.eintraege : [];
+    datalist('v1912Behandlungsorte', schritte.map(s => s.ort));
+    datalist('v1912Ausfuehrende', [...schritte.map(s => s.wer), ...eintraege.map(e => e.arzt)]);
+    datalist('v1912Schritttitel', schritte.map(s => s.titel));
+    datalist('v1912Massnahmen', eintraege.map(e => e.massnahme));
+    datalist('v1912Koerperstellen', eintraege.flatMap(e => [e.schmerzOrt,e.temperaturOrt]));
+    const zuordnen = (id,list) => document.getElementById(id)?.setAttribute('list',list);
+    zuordnen('schrittOrt','v1912Behandlungsorte'); zuordnen('schrittWer','v1912Ausfuehrende'); zuordnen('schrittTitel','v1912Schritttitel');
+    ['neuTerminMassnahme'].forEach(id => zuordnen(id,'v1912Massnahmen'));
+    ['schmerzOrt','temperaturOrt'].forEach(id => zuordnen(id,'v1912Koerperstellen'));
+  }
+
+  const behandlungsSeite = document.getElementById('seite-behandlung');
+  const behandlungsKarten = [...(behandlungsSeite?.querySelectorAll('.behandlung-bereich') || [])];
+  behandlungsKarten.forEach(karte => {
+    const titelzeile = karte.querySelector('.abschnitt-titel');
+    const h3 = titelzeile?.querySelector('h3');
+    const zurueck = karte.querySelector('.behandlung-zurueck');
+    if (titelzeile && h3 && zurueck) {
+      const gruppe = document.createElement('div'); gruppe.className='behandlung-kopfzeile';
+      h3.replaceWith(gruppe); gruppe.append(h3,zurueck);
+    }
+  });
+
+  const kurztext = text => String(text || '').replace(/^(\d{2}\.\d{2}\.\d{4})(?=\S)/,'$1 · ');
+  const naechster = document.getElementById('v1911NaechsterSchritt');
+  if (naechster) { naechster.textContent=kurztext(naechster.textContent); new MutationObserver(() => { const neu=kurztext(naechster.textContent); if(neu!==naechster.textContent) naechster.textContent=neu; }).observe(naechster,{childList:true,subtree:true,characterData:true}); }
+
+  const nebenKarte = behandlungsKarten[2];
+  const altAuswahl = document.getElementById('nebenwirkungAuswahl');
+  const eigen = document.getElementById('nebenwirkungEigen');
+  const altKnopf = document.getElementById('nebenwirkungHinzufuegen');
+  const gewaehlt = new Set();
+  let mehrfach, optionen, chips, suche;
+  const beschwerden = () => einzigartig([
+    ...[...(altAuswahl?.options || [])].map(o => o.value),
+    ...(daten.nebenwirkungen || []).map(n => n.beschwerde),
+    'Übelkeit','Kopfschmerzen','Müdigkeit','Schwindel','Durchfall','Verstopfung','Bauchschmerzen','Hautausschlag / Juckreiz','Schlafstörungen','Reaktion an der Einstichstelle'
+  ]);
+  const zeichneBeschwerden = () => {
+    if (!optionen) return;
+    const filter=norm(suche.value);
+    optionen.innerHTML=beschwerden().filter(w => !filter || norm(w).includes(filter)).map(w => `<label><input type="checkbox" value="${esc(w)}" ${gewaehlt.has(norm(w))?'checked':''}><span>${esc(w)}</span></label>`).join('');
+    optionen.querySelectorAll('input').forEach(c => c.addEventListener('change',() => { c.checked ? gewaehlt.add(norm(c.value)) : gewaehlt.delete(norm(c.value)); zeichneChips(); }));
+  };
+  const originalWert = n => beschwerden().find(w => norm(w)===n) || n;
+  const zeichneChips = () => {
+    if (!chips) return;
+    chips.innerHTML=[...gewaehlt].map(n => `<span class="nebenwirkung-chip">${esc(originalWert(n))}<button type="button" data-entfernen="${esc(n)}" aria-label="Beschwerde entfernen">×</button></span>`).join('');
+    chips.querySelectorAll('button').forEach(b => b.addEventListener('click',() => { gewaehlt.delete(b.dataset.entfernen); zeichneChips(); zeichneBeschwerden(); }));
+  };
+  if (altAuswahl && eigen && altKnopf && nebenKarte) {
+    altAuswahl.hidden=true;
+    mehrfach=document.createElement('div'); mehrfach.className='nebenwirkung-mehrfach';
+    mehrfach.innerHTML='<div class="nebenwirkung-chips" aria-live="polite"></div><input class="nebenwirkung-suche" type="search" placeholder="Beschwerden durchsuchen …" aria-label="Beschwerden durchsuchen"><div class="nebenwirkung-optionen"></div><div class="nebenwirkung-werkzeuge"><button class="knopf klein sekundaer" type="button">Auswahl löschen</button></div>';
+    altAuswahl.insertAdjacentElement('afterend',mehrfach); chips=mehrfach.querySelector('.nebenwirkung-chips'); suche=mehrfach.querySelector('input'); optionen=mehrfach.querySelector('.nebenwirkung-optionen');
+    suche.addEventListener('input',zeichneBeschwerden); mehrfach.querySelector('button').addEventListener('click',() => { gewaehlt.clear(); zeichneChips(); zeichneBeschwerden(); });
+    const zeile=document.createElement('div'); zeile.className='nebenwirkung-eigen-zeile'; eigen.before(zeile); zeile.appendChild(eigen); eigen.placeholder='Weitere Beschwerde ergänzen';
+    const add=document.createElement('button'); add.type='button'; add.className='knopf sekundaer'; add.textContent='Ergänzen'; zeile.appendChild(add);
+    const ergaenzen=() => { const w=eigen.value.trim(); if(!w)return; if(![...altAuswahl.options].some(o=>norm(o.value)===norm(w))){const o=document.createElement('option');o.value=o.textContent=w;altAuswahl.appendChild(o);} gewaehlt.add(norm(w)); eigen.value=''; zeichneChips(); zeichneBeschwerden(); };
+    add.addEventListener('click',ergaenzen); eigen.addEventListener('keydown',e => { if(e.key==='Enter'){e.preventDefault();ergaenzen();} });
+    const neuKnopf=altKnopf.cloneNode(true); altKnopf.replaceWith(neuKnopf);
+    neuKnopf.addEventListener('click',() => {
+      ergaenzen(); const medId=document.getElementById('nebenwirkungMed').value, datum=document.getElementById('nebenwirkungDatum').value, med=daten.medikamente.find(m=>m.id===medId);
+      if(!med || !datum || !gewaehlt.size){toast('Bitte Medikament, Datum und mindestens eine Beschwerde auswählen.');return;}
+      const basis=Date.now(); [...gewaehlt].forEach((n,i) => daten.nebenwirkungen.push({id:'n'+(basis+i),medId,medName:med.name,datum,beschwerde:originalWert(n)}));
+      speichern(); renderBehandlung(); gewaehlt.clear(); zeichneChips(); zeichneBeschwerden(); toast('Beobachtungen gespeichert'); nebenKarte.querySelector('.behandlung-zurueck')?.click();
+    });
+    const hilfe=document.createElement('button'); hilfe.type='button'; hilfe.className='knopf klein sekundaer'; hilfe.textContent='ⓘ Hilfe';
+    const hilfetext=document.createElement('p'); hilfetext.className='hilfe-kurz'; hilfetext.textContent='Bei starken oder plötzlich auftretenden Beschwerden medizinische Hilfe holen.';
+    nebenKarte.querySelector('.behandlung-kopfzeile')?.appendChild(hilfe); nebenKarte.querySelector('.abschnitt-titel')?.insertAdjacentElement('afterend',hilfetext);
+    hilfe.addEventListener('click',() => hilfetext.classList.toggle('sichtbar'));
+    nebenKarte.querySelector(':scope > .hinweis')?.remove(); zeichneBeschwerden();
+  }
+
+  const dokumentKategorie=document.getElementById('dokumentKategorie');
+  if (dokumentKategorie) {
+    const eigenKat=document.createElement('input'); eigenKat.className='v1912-kategorie-eigen'; eigenKat.maxLength=80; eigenKat.placeholder='Eigene Kategorie ergänzen (freiwillig)'; dokumentKategorie.insertAdjacentElement('afterend',eigenKat);
+    const katUebernehmen=() => { const w=eigenKat.value.trim(); if(!w)return; let o=[...dokumentKategorie.options].find(x=>norm(x.value)===norm(w)); if(!o){o=document.createElement('option');o.value=o.textContent=w;dokumentKategorie.appendChild(o);} dokumentKategorie.value=o.value; };
+    eigenKat.addEventListener('change',katUebernehmen); eigenKat.addEventListener('blur',katUebernehmen);
+    if(typeof alleDokumente==='function') alleDokumente().then(ds => { einzigartig(ds.map(d=>d.kategorie)).forEach(w=>{if(![...dokumentKategorie.options].some(o=>norm(o.value)===norm(w))){const o=document.createElement('option');o.value=o.textContent=w;dokumentKategorie.appendChild(o);}}); });
+  }
+
+  const sicherung=document.getElementById('seite-sicherung');
+  const geraete=sicherung?.querySelector('.geraete-karte');
+  if (geraete) {
+    geraete.querySelector('.geraete-schritte')?.remove();
+    const intro=geraete.querySelector(':scope > p:not(.hinweis)'); if(intro) intro.textContent='Erstellen Sie eine vollständige verschlüsselte Sicherung oder stellen Sie eine geprüfte Sicherung wieder her.';
+    const wichtig=geraete.querySelector('.datenschutz p'); if(wichtig) wichtig.textContent='Die verschlüsselte Sicherung enthält alle Daten und Dokumente. Bewahren Sie Sicherungsdatei und Kennwort getrennt und geschützt auf. Es findet keine automatische Synchronisation statt. Laden Sie die Sicherungsdatei niemals in ein öffentliches GitHub-Repository oder einen anderen öffentlich zugänglichen Bereich hoch.';
+    geraete.querySelector('.v186-kurzhinweis')?.remove();
+    const alterHeader=sicherung.querySelector(':scope > .kopf'); const status=document.getElementById('speicherStatus'); if(status){status.classList.add('v1912-status');geraete.appendChild(status);}
+    alterHeader?.remove();
+    const alterDetails=sicherung.querySelector('.v186-weitere'); const raster=sicherung.querySelector(':scope > .raster') || alterDetails?.querySelector('.raster');
+    const csv=document.getElementById('csvKnopf'), speicher=document.getElementById('speicherAktualisieren');
+    const felder=['speicherMappen','speicherSeiten','speicherBelegt','speicherSicherung'].map(id=>document.getElementById(id)?.closest('span')).filter(Boolean);
+    const details=document.createElement('details'); details.className='v1912-speicher-export'; details.innerHTML='<summary>Speicher und Export</summary><div class="v1912-speicher-inhalt"><section class="sicherungsfeld"><h4>Speicherübersicht</h4><div class="speicher-raster" data-speicher></div></section><section class="sicherungsfeld"><h4>Tabellendaten exportieren</h4><p>Enthält Einträge und Messwerte für Excel.</p></section></div>';
+    const inn=details.querySelector('.v1912-speicher-inhalt'), speicherRaster=details.querySelector('[data-speicher]'), exportFeld=inn.lastElementChild;
+    felder.forEach(f=>speicherRaster.appendChild(f)); if(speicher) inn.firstElementChild.appendChild(speicher); if(csv){csv.innerHTML='↓ Tabelle für Excel herunterladen – keine Sicherung';exportFeld.appendChild(csv);}
+    geraete.insertAdjacentElement('afterend',details); alterDetails?.remove(); if(raster?.isConnected) raster.remove();
+  }
+  aktualisiereLernlisten();
+  const altRender=window.renderAlles; if(typeof altRender==='function') window.renderAlles=function(){const r=altRender.apply(this,arguments);aktualisiereLernlisten();return r;};
 })();
 </script>
 </body>

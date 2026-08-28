@@ -1,0 +1,30 @@
+MEIN BEGLEITER 1.9.1.2 – TECHNISCHES PRÜFPROTOKOLL
+Stand: 27.08.2026
+
+BESTANDEN
+- HTML-Grundstruktur und eindeutige Element-IDs geprüft.
+- JavaScript-Syntax aller eingebetteten Skripte geprüft.
+- Service-Worker-Syntax und neuer Cache geprüft.
+- Manifest als gültiges JSON geprüft.
+- Einheitliche Versionsangaben 1.9.1.2 geprüft.
+- Lokale Daten- und Dokumentenschlüssel gegenüber 1.9.1.1 unverändert.
+- Sicherungsimport akzeptiert Versionen 1.8.3 bis 1.9.1.2.
+- Keine persönlichen Testdaten eingefügt.
+- Behandlungsformulare werden standardmäßig geschlossen und einzeln geöffnet.
+- Bearbeiten eines Medikaments oder Behandlungsschritts öffnet den passenden Bereich.
+- Rückkehrschaltfläche steht in der Formular-Kopfzeile.
+- Nebenwirkungs-Mehrfachauswahl, Suche, Auswahlfelder und freie Ergänzung statisch geprüft.
+- Lernende Auswahllisten werden aus vorhandenen gespeicherten Datensätzen gebildet.
+- Sicherung ohne Dokumente und unverschlüsselte Sicherung sind aus der Bedienoberfläche entfernt.
+- Sicherungsseite zeigt nur verschlüsselte vollständige Sicherung und Wiederherstellung als Hauptaktionen.
+- Speicherübersicht und Excel-Export sind unter „Speicher und Export“ zusammengefasst.
+- Excel-Export ist eindeutig als keine Sicherung gekennzeichnet.
+
+PERSÖNLICHER PRAXISTEST NOCH ERFORDERLICH
+- PC bei 100 %, 125 % und 150 % Browser-Zoom.
+- Samsung A9 im Hoch- und Querformat.
+- Android-Smartphone in Browseransicht und installierter PWA.
+- Alle vier Aufgaben im Behandlungszentrum mit erfundenen Testdaten.
+- Mehrere Beschwerden gleichzeitig auswählen, speichern und erneut aufrufen.
+- Eigene Beschwerde, Behandlungsort und ausführende Stelle ergänzen und nach Neustart erneut auswählen.
+- Verschlüsselte Sicherung erstellen und wiederherstellen.

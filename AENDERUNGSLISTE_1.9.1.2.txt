@@ -1,0 +1,21 @@
+MEIN BEGLEITER 1.9.1.2 – ÄNDERUNGSLISTE
+Stand: 27.08.2026
+
+Grundlage: Version 1.9.1.1 PWA – Persönliche Arbeitsversion.
+
+- Rückkehr zur Behandlungsübersicht direkt neben der jeweiligen Formularüberschrift angeordnet.
+- Rückkehrschaltfläche heller als die jeweilige Hauptaktion gestaltet.
+- Fehlende Trennung zwischen Datum, Bezeichnung und Status korrigiert.
+- Nebenwirkungen als durchsuchbare Mehrfachauswahl mit Kontrollkästchen und entfernbaren Auswahlfeldern umgesetzt.
+- „Auswahl löschen“ und freie Ergänzung eigener Beschwerden hinzugefügt.
+- Eigene Beschwerden werden aus gespeicherten Beobachtungen dauerhaft erneut angeboten.
+- Ausführliche Dokumentationshilfe entfernt; kurzer Sicherheitshinweis nur noch über „Hilfe“ einblendbar.
+- Lernende Vorschläge für Behandlungsorte, ausführende Stellen, Behandlungsschritte, Terminmaßnahmen und Körperstellen ergänzt.
+- Eigene Dokumentenkategorien können ergänzt und erneut verwendet werden.
+- Sicherungsseite konsequent auf verschlüsselte vollständige Sicherung und Wiederherstellung reduziert.
+- Sicherung ohne Dokumente und unverschlüsselte Sicherungen aus der Bedienoberfläche entfernt.
+- Doppelte Sicherungshinweise zusammengeführt.
+- Speicherübersicht und Excel-Ausgabe in „Speicher und Export“ zusammengefasst.
+- Excel-Ausgabe eindeutig als nicht vollständige Sicherung bezeichnet.
+- Lokale Speicherkennungen und Dokumentenspeicher bleiben unverändert.
+- Verschlüsselte Sicherungen der Versionen 1.8.3 bis 1.9.1.2 bleiben importierbar.
