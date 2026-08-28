@@ -1,0 +1,42 @@
+MEIN BEGLEITER 1.9.1.2.3 – TECHNISCHES PRÜFPROTOKOLL
+Stand: 28.08.2026
+
+AUTOMATISIERT BESTANDEN
+- HTML-Grundstruktur mit 296 statischen Elementkennungen geprüft; keine doppelte ID.
+- Sämtliche eingebetteten JavaScript-Blöcke syntaktisch gültig.
+- Neue Programmdatei v19123.js syntaktisch gültig.
+- Service Worker syntaktisch gültig; Cachekennung eindeutig auf v1-9-1-2-3 geändert.
+- Manifest als gültiges JSON geprüft.
+- Startdatenbestand ist leer: STARTDATEN = [].
+- Lokaler Datenschlüssel unverändert: mein-begleiter-persoenlich-pwa-v1-9-0.
+- Neue CSS- und JavaScript-Datei sind im Offline-Pflichtcache enthalten.
+- Entwicklungsauftrag, Anleitungen, Änderungsliste und Abnahmetest vollständig enthalten.
+- ZIP-Struktur und CRC-Prüfung bestanden.
+
+QUELLCODE- UND LOGIKPRÜFUNG BESTANDEN
+- Genau eine Ansicht wird aktiv markiert; Häkchen, aria-pressed und Statusanzeige werden gemeinsam gesetzt.
+- Auswahl wird unter dem bestehenden lokalen Ansichtsschlüssel gespeichert.
+- Einfache Ansicht blendet Bericht, Kosten, Verlauf und Drucken aus; vollständige Ansicht zeigt sie.
+- Terminfilter enthält Terminart, sechs Zeitraumvorgaben, Arzt/Stelle und Zurücksetzen.
+- Zeitraum wird vor Zähler, Darstellung und Fragenzuordnung an renderTermine übergeben.
+- Druckzentrum enthält alle 14 vereinbarten Fachausgaben.
+- Druckvorschau wird von der Bedienoberfläche isoliert gedruckt.
+- Druckregeln entfernen Navigation, „Zur Übersicht“, Filter, Eingaben und Bearbeitungsaktionen.
+- Kosten-Einzelposten erscheinen nur nach ausdrücklicher Auswahl.
+- Diagramme sind im Ausdruck höchstens zweispaltig; leere Diagramme werden ausgelassen.
+- Tagebuch-/Buchregeln verwenden ungefähr 15 mm Rand, 11-Punkt-Schrift und geschützte Tagesblöcke.
+- Behandlungsverlauf wird nach den Diagrammen ausgegeben.
+- Alte sichtbare Sicherungsbereiche werden weiterhin beim Start aus der Bedienoberfläche entfernt.
+
+PERSÖNLICHER PRAXISTEST NOCH ERFORDERLICH
+- Ansichtswechsel und Speicherung in Chrome beziehungsweise installierter PWA.
+- Terminfilter mit erfundenen kommenden, vergangenen, erledigten und abgesagten Terminen.
+- Druckvorschau aller Fachausgaben mit erfundenen Daten.
+- Tatsächlicher Papier-/PDF-Ausdruck, insbesondere Kosten, Tagebuch und Buch.
+- PC bei 100, 125 und 150 Prozent Browser-Zoom.
+- Samsung A9 im Hoch- und Querformat.
+- Android-Smartphone in Browseransicht und installierter PWA.
+- Onlinebetrieb und Offlinebetrieb nach vollständigem Laden.
+- Verschlüsselte Sicherung aus Version 1.9.1.2.2 wiederherstellen und neue Sicherung aus 1.9.1.2.3 erstellen.
+
+Hinweis: Browserabhängige Seitenzahlen werden über die Druckfunktion des Browsers ergänzt. Die Anwendung zeigt eine unaufdringliche Fußzeile; die konkrete Nummerierung hängt vom verwendeten Browser und Druckdialog ab.

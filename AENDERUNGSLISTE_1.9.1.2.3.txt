@@ -1,0 +1,27 @@
+MEIN BEGLEITER 1.9.1.2.3 – ÄNDERUNGSLISTE
+Stand: 28.08.2026
+
+Grundlage: Version 1.9.1.2.2 PWA – Persönliche Arbeitsversion.
+
+NEU UND KORRIGIERT
+- Ansichtsumschaltung neu aufgebaut: genau eine aktive Auswahl, Häkchen, Statusanzeige und sofort aktualisierte Navigation.
+- Einfache und vollständige Ansicht werden lokal je Gerät gespeichert.
+- Die vollständige Ansicht ergänzt Bericht, Kosten, Verlauf und das neue Druckzentrum.
+- Zentraler Menüpunkt „Drucken“ mit eigener, auf Mobilgeräten scrollbar aufgebauter Seite.
+- Vierzehn Fachausgaben zentral auswählbar, darunter Fragen, Termine, Medikamente, Behandlung, Dokumente, Kosten, Verlauf, Tagebuch und Buch.
+- Eigene Druckvorschau ohne Navigation, Filter, Eingabefelder und Bearbeitungsknöpfe.
+- Druckdichte „Gut lesbar“ oder „Papiersparend“ auswählbar.
+- Kostenübersicht kompakt; Einzelposten werden nur auf ausdrückliche Auswahl ergänzt.
+- Tagebuch und Buch nutzen rund 15 mm Seitenrand, 11-Punkt-Grundschrift, Trennlinien und geschützte Tagesblöcke.
+- Diagramme werden im Ausdruck höchstens zweispaltig und nicht seitenfüllend angeordnet.
+- Behandlungsverlauf folgt auf die ausgewählten Diagramme.
+- Terminfilter in einer gemeinsamen Leiste: kommende, vergangene oder alle Termine; sechs Zeitraumvorgaben; Arzt/Stelle; Zurücksetzen.
+- Zähler und Fragenzuordnung werden erst nach dem Terminzeitraumfilter berechnet.
+- Offline-Cache um die neuen Programmdateien des Druckzentrums ergänzt.
+
+UNVERÄNDERT GESCHÜTZT
+- Lokaler Datenschlüssel: mein-begleiter-persoenlich-pwa-v1-9-0.
+- Datenstruktur und Dokumentenspeicher.
+- Vollständige verschlüsselte Sicherung und kontrollierte Wiederherstellung.
+- Sicherungen aus Version 1.9.1.2.2 können übernommen werden.
+- Auslieferung mit leerem Startdatenbestand.

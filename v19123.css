@@ -1,0 +1,41 @@
+/* Mein Begleiter 1.9.1.2.3 – Druckzentrum, Ansichten und Terminfilter */
+.v19123-ansicht-status{margin:0 0 14px;padding:10px 13px;border-left:4px solid #23736b;background:#edf7f4;border-radius:8px;font-weight:800;color:#174d48}
+.v19123-ansicht-knopf{display:inline-flex!important;align-items:center;gap:7px}
+.v19123-ansicht-knopf:not(.aktiv){background:#fff!important;color:#185b55!important;border:1px solid #4f9289!important;box-shadow:none!important}
+.v19123-ansicht-knopf.aktiv{background:#195f58!important;color:#fff!important;border-color:#195f58!important}
+.v19123-ansicht-knopf .v19123-check{display:none}.v19123-ansicht-knopf.aktiv .v19123-check{display:inline}
+html.v19123-einfach .v19123-nur-voll{display:none!important}
+.v19123-filterleiste,.v19123-druckfilter{display:grid;grid-template-columns:repeat(4,minmax(150px,1fr));gap:12px;align-items:end}
+.v19123-filterleiste label,.v19123-druckfilter label{display:grid;gap:5px;font-weight:800;color:#274f4a}
+.v19123-druckfilter{margin:15px 0}.v19123-druckaktionen{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+.v19123-druckauswahl{display:grid;grid-template-columns:repeat(3,minmax(180px,1fr));gap:9px;margin:12px 0}
+.v19123-druckauswahl label,.v19123-diagrammauswahl label{display:flex;align-items:center;gap:9px;padding:11px;border:1px solid #c6dcd6;border-radius:10px;background:#fff;font-weight:750}
+.v19123-druckauswahl input,.v19123-diagrammauswahl input{width:19px;height:19px;flex:none}
+.v19123-diagrammauswahl{display:grid;grid-template-columns:repeat(3,minmax(160px,1fr));gap:8px}
+.v19123-vorschau{margin-top:16px;padding:20px;border:1px solid #abcfc6;border-radius:14px;background:#fff;box-shadow:0 8px 24px #174c4617}
+.v19123-vorschau h2{margin:0 0 4px}.v19123-druckmeta{color:#526b67;border-bottom:2px solid #2a7169;padding-bottom:9px;margin-bottom:14px}
+.v19123-druckliste{width:100%;border-collapse:collapse}.v19123-druckliste th,.v19123-druckliste td{padding:8px;border-bottom:1px solid #d5e2de;text-align:left;vertical-align:top}
+.v19123-druckliste th{background:#edf6f3}.v19123-leer{padding:18px;background:#f6faf8;border-radius:10px;color:#536b67}
+.v19123-kosten{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.v19123-kosten>div{padding:12px;border:1px solid #ccddd8;border-radius:10px}.v19123-kosten strong{display:block;font-size:1.35rem;margin-top:4px}
+.v19123-diagramme{display:grid;grid-template-columns:1fr 1fr;gap:12px}.v19123-diagramm{border:1px solid #d1dfdb;border-radius:10px;padding:10px;break-inside:avoid}.v19123-diagramm .diagramm{height:240px!important}
+.v19123-druckfuss{display:none}
+@media(max-width:900px){.v19123-filterleiste,.v19123-druckfilter{grid-template-columns:repeat(2,minmax(0,1fr))}.v19123-druckauswahl,.v19123-diagrammauswahl{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.v19123-filterleiste,.v19123-druckfilter,.v19123-druckauswahl,.v19123-diagrammauswahl,.v19123-diagramme,.v19123-kosten{grid-template-columns:1fr}.v19123-druckaktionen>.knopf{width:100%;justify-content:center}.v19123-vorschau{padding:13px}.v19123-druckliste{display:block;overflow-x:auto}.v19123-filterleiste label{min-width:0}}
+@media print{
+  @page{size:A4 portrait;margin:15mm 15mm 17mm}
+  body.v19123-druckt *{visibility:hidden!important}
+  body.v19123-druckt #seite-drucken,body.v19123-druckt #v19123DruckVorschau,body.v19123-druckt #v19123DruckVorschau *{visibility:visible!important}
+  body.v19123-druckt #seite-drucken{display:block!important;position:absolute!important;inset:0!important;margin:0!important;padding:0!important;width:100%!important}
+  body.v19123-druckt #seite-drucken>*:not(#v19123DruckVorschau){display:none!important}
+  body.v19123-druckt #v19123DruckVorschau{display:block!important;margin:0!important;padding:0!important;border:0!important;box-shadow:none!important;font-size:11pt!important;line-height:1.4!important}
+  body.v19123-druckt #v19123DruckVorschau.v19123-sparsam{font-size:9.5pt!important;line-height:1.25!important}
+  body.v19123-druckt .v19123-druckliste th,body.v19123-druckt .v19123-druckliste td{padding:5px 6px!important}
+  body.v19123-druckt .v19123-kosten>div{padding:7px!important}
+  body.v19123-druckt .v19123-diagramme{grid-template-columns:1fr 1fr!important;gap:5mm!important}
+  body.v19123-druckt .v19123-diagramm .diagramm{height:62mm!important}
+  body.v19123-druckt .tagebuch-eintrag{font-size:11pt!important;line-height:1.4!important;padding:5mm 0!important;border-bottom:1px solid #aebfba!important;break-inside:avoid-page!important}
+  body.v19123-druckt .tagebuch-datum{font-weight:850!important;font-size:12pt!important}
+  body.v19123-druckt .buch-seite,body.v19123-druckt .buch-kapitel{min-height:0!important;padding:0!important;break-before:auto!important;break-after:auto!important}
+  body.v19123-druckt .buch-titelblatt:empty,body.v19123-druckt .buch-seite:empty,body.v19123-druckt .buch-kapitel:empty{display:none!important}
+  body.v19123-druckt .v19123-druckfuss{display:block;position:fixed;bottom:-10mm;left:0;right:0;text-align:center;font-size:8pt;color:#687975}
+}

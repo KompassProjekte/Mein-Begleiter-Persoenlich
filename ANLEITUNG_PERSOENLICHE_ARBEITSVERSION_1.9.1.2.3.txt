@@ -1,0 +1,19 @@
+MEIN BEGLEITER 1.9.1.2.3 – PERSÖNLICHE ARBEITSVERSION
+
+1. ANSICHT AUSWÄHLEN
+Unter „Einstellungen“ wählen Sie „Einfache Ansicht“ oder „Vollständige Ansicht“.
+Ein Häkchen und der Text „Aktuelle Ansicht“ zeigen die wirksame Auswahl. Ihre Daten werden dadurch nicht verändert.
+
+2. TERMINE FILTERN
+Unter „Termine“ zuerst „Welche Termine?“ und anschließend den Zeitraum auswählen.
+Bei „Alle Termine“ erscheinen kommende und vergangene Termine getrennt. Der Arzt-/Stellenfilter schränkt danach weiter ein.
+
+3. DRUCKEN
+In der vollständigen Ansicht „Drucken“ öffnen. Inhalt, Zeitraum, Arzt/Stelle und Druckdichte wählen, Vorschau kontrollieren und drucken.
+Für eine PDF-Datei im Druckdialog des Browsers „Als PDF speichern“ auswählen.
+
+4. SICHERN
+Regelmäßig unter „Sicherung“ eine vollständige verschlüsselte Sicherung erstellen. Sicherungsdatei und Kennwort getrennt schützen.
+
+WICHTIG
+Die Anwendung speichert lokal im aktuellen Browser. Es gibt keine automatische Synchronisation.

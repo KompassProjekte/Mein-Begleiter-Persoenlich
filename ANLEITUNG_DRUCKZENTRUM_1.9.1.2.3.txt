@@ -1,0 +1,20 @@
+DRUCKZENTRUM – MEIN BEGLEITER 1.9.1.2.3
+
+1. Unter „Einstellungen“ die „Vollständige Ansicht“ aktivieren.
+2. In der Navigation „Drucken“ öffnen.
+3. Genau einen Fachinhalt auswählen.
+4. Falls sinnvoll Zeitraum und Arzt beziehungsweise Stelle eingrenzen.
+5. Bei „Ausgewählte Diagramme“ die gewünschten Diagramme markieren.
+6. „Gut lesbar – empfohlen“ oder „Papiersparend“ auswählen.
+7. „Vorschau aktualisieren“ anklicken und den Inhalt prüfen.
+8. „Drucken“ oder „Als PDF speichern“ wählen.
+
+Der Browser öffnet in beiden Fällen seinen Druckdialog. Für eine PDF-Datei dort als Ziel „Als PDF speichern“ auswählen.
+
+Nicht mitgedruckt werden Navigation, „Zur Übersicht“, Filter, Eingabefelder, Bearbeitungsknöpfe und technische Versionsangaben.
+
+Kostenübersicht:
+Die Summen und die Verteilung sind kompakt für eine A4-Seite gestaltet. Einzelposten erscheinen nur nach Aktivierung der zugehörigen Auswahl.
+
+Tagebuch und Buch:
+Zeitraum im Druckzentrum festlegen. Mehrere kurze Tage dürfen eine Seite nutzen; ein zusammengehöriger Tagesblock wird möglichst nicht getrennt.

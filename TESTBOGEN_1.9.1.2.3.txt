@@ -1,0 +1,26 @@
+MEIN BEGLEITER 1.9.1.2.3 – ABNAHMETEST
+
+[ ] Version 1.9.1.2.3 wird angezeigt; vorhandene Daten und Dokumente sind vollständig.
+[ ] Einfache Ansicht zeigt Übersicht, Einträge, Termine, Behandlung, Dokumente, Sicherung, Einstellungen und Hilfe.
+[ ] Vollständige Ansicht ergänzt Bericht, Kosten, Verlauf und Drucken.
+[ ] Genau eine Ansicht ist dunkelgrün, mit Häkchen und korrekter Statusanzeige aktiv.
+[ ] Die Ansicht bleibt nach Schließen und erneutem Öffnen erhalten.
+[ ] Terminfilter „Kommend“, „Vergangen“ und „Alle“ zeigen nur passende Abschnitte.
+[ ] Alle sechs Zeitraumvorgaben und der eigene Zeitraum funktionieren.
+[ ] Arzt-/Stellenfilter und „Filter zurücksetzen“ funktionieren.
+[ ] Zähler entsprechen den sichtbaren Terminen; Fragen werden nur passenden kommenden Terminen zugeordnet.
+[ ] Druckzentrum ist am PC, Smartphone und Tablet vollständig erreichbar und scrollbar.
+[ ] Alle vierzehn Druckarten erzeugen die richtige Vorschau.
+[ ] Ausdruck enthält keine Navigation, Filter, Eingaben, Bearbeitungsaktionen oder „Zur Übersicht“.
+[ ] Kostenübersicht passt ohne Einzelposten auf eine A4-Seite.
+[ ] Ausgewählte Diagramme sind lesbar, höchstens zweispaltig und ohne leere Diagramme.
+[ ] Behandlungsverlauf steht nach den Diagrammen.
+[ ] Tagebuch und Buch enthalten keine unbeabsichtigten Leerseiten; kurze Tage nutzen den Platz sinnvoll.
+[ ] Smartphone Hoch- und Querformat geprüft.
+[ ] Samsung A9 Hoch- und Querformat geprüft.
+[ ] PC bei 100, 125 und 150 Prozent Browser-Zoom geprüft.
+[ ] Verschlüsselte Sicherung aus 1.9.1.2.2 wird kontrolliert wiederhergestellt.
+[ ] Neue vollständige verschlüsselte Sicherung enthält alle Daten und Dokumente.
+[ ] Offlinebetrieb nach einem vollständigen Online-Laden geprüft.
+
+Praxisprüfung zunächst ausschließlich mit erfundenen Testdaten durchführen.
