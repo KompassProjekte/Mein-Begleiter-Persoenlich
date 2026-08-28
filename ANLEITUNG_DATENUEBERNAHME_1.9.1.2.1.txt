@@ -1,0 +1,11 @@
+DATENÜBERNAHME NACH VERSION 1.9.1.2.1
+
+Auf demselben Gerät und im selben Browser bleiben die vorhandenen Daten normalerweise automatisch sichtbar, weil die lokalen Daten- und Dokumentenschlüssel unverändert sind.
+
+Auf einem anderen Gerät oder in einem anderen Browser:
+- Auf dem bisherigen Gerät „Verschlüsselte Sicherung erstellen“ verwenden.
+- Sicherungsdatei übertragen.
+- Auf dem Zielgerät „Verschlüsselte Sicherung wiederherstellen“ verwenden.
+- Angaben prüfen und Wiederherstellung bestätigen.
+
+Keine Sicherungsdatei bei GitHub hochladen. Es erfolgt keine automatische Synchronisation.

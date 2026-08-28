@@ -1,0 +1,12 @@
+GITHUB-AKTUALISIERUNG – MEIN BEGLEITER 1.9.1.2.1
+
+1. In Version 1.9.1.1 eine verschlüsselte vollständige Sicherung erstellen.
+2. ZIP-Datei auf dem PC entpacken.
+3. Im Repository „Mein-Begleiter-Persoenlich“ den Bereich „Code“ öffnen.
+4. „Add file“ und anschließend „Upload files“ wählen.
+5. Den Inhalt des entpackten Ordners hochladen, nicht die ZIP-Datei.
+6. Keine .mbg-Datei, Dokumente oder persönlichen Inhalte hochladen.
+7. Änderung bestätigen und unter „Actions“ den grünen Abschluss abwarten.
+8. Anwendung neu laden und Version 1.9.1.2.1 kontrollieren.
+
+Persönliche Daten liegen weiterhin ausschließlich im Browser.

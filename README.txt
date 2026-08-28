@@ -1,6 +1,6 @@
 MEIN BEGLEITER
-Version 1.9.1.2 PWA – Behandlung, Auswahllisten und Verschlankung
-Stand: 27.08.2026
+Version 1.9.1.2.1 PWA – Aktualisierung, Navigation und Hilfe
+Stand: 28.08.2026
 Entwickelt von Lothar & Nimbus
 
 Diese Ausgabe ist für die persönliche Arbeit vorgesehen. Sie wird vollständig leer

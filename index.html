@@ -7,7 +7,7 @@
       content="width=device-width,initial-scale=1,viewport-fit=cover"
     />
     <meta name="theme-color" content="#225b56" />
-    <title>Mein Begleiter 1.9.1.2 PWA – Persönliche Arbeitsversion</title>
+    <title>Mein Begleiter 1.9.1.2.1 PWA – Persönliche Arbeitsversion</title>
     <link rel="manifest" href="./manifest.webmanifest" />
     <link rel="icon" type="image/png" href="./icons/favicon-64.png" />
     <link rel="apple-touch-icon" href="./icons/apple-touch-icon-180.png" />
@@ -1704,8 +1704,8 @@
           </button>
         </nav>
         <div class="seitenfuss">
-          <strong>Version 1.9.1.2 PWA · PERSÖNLICHE ARBEITSVERSION</strong
-          >Stand: 27.08.2026<br />Entwickelt von Lothar &amp; Nimbus
+          <strong>Version 1.9.1.2.1 PWA · PERSÖNLICHE ARBEITSVERSION</strong
+          >Stand: 28.08.2026<br />Entwickelt von Lothar &amp; Nimbus
         </div>
       </aside>
       <main>
@@ -2661,7 +2661,7 @@
                 <span>Persönlicher Browser-Speicher</span>
               </div>
               <p>
-                <strong>Mein Begleiter 1.9.1.2 PWA – Persönliche Arbeitsversion</strong>
+                <strong>Mein Begleiter 1.9.1.2.1 PWA – Persönliche Arbeitsversion</strong>
               </p>
               <p>
                 Ihre Einträge werden ausschließlich lokal im persönlichen
@@ -4117,7 +4117,7 @@
               return `<div class="tagebuch-eintrag"><div class="tagebuch-datum">${datumLang(e.datum)}</div><div class="tagebuch-text"><h5>${esc(ueberschrift)}</h5>${texte.join("") || "<p>Eintrag ohne weitere Beschreibung.</p>"}</div></div>`;
             })
             .join("");
-        html += `</div><p class="hinweis">Erstellt mit Mein Begleiter 1.9.1.2 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus</p>`;
+        html += `</div><p class="hinweis">Erstellt mit Mein Begleiter 1.9.1.2.1 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus</p>`;
         $("#berichtAusgabe").innerHTML = html;
         gespeichertenEntwurfAnzeigen();
       }
@@ -4179,7 +4179,7 @@
           });
         if (schluss)
           html += `<div class="buch-seite"><h4>Mein Rückblick und Ausblick</h4><div class="buch-schluss"><p>${esc(schluss)}</p></div></div>`;
-        html += `<p class="hinweis">Erstellt mit Mein Begleiter 1.9.1.2 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus · ${datumLang(heuteIso())}</p>`;
+        html += `<p class="hinweis">Erstellt mit Mein Begleiter 1.9.1.2.1 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus · ${datumLang(heuteIso())}</p>`;
         $("#berichtAusgabe").innerHTML = html;
       }
       function renderBericht() {
@@ -4445,7 +4445,7 @@
           });
         if (schluss)
           html += `<div class="buch-seite"><h4>Mein Rückblick und Ausblick</h4><div class="buch-schluss"><p>${esc(schluss)}</p></div></div>`;
-        html += `<p class="hinweis">${fassung === "lese" ? "Persönliche Leseausgabe – aus meinen eigenen Einträgen zusammengestellt. " : ""}Erstellt mit Mein Begleiter 1.9.1.2 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus · ${datumLang(heuteIso())}</p>`;
+        html += `<p class="hinweis">${fassung === "lese" ? "Persönliche Leseausgabe – aus meinen eigenen Einträgen zusammengestellt. " : ""}Erstellt mit Mein Begleiter 1.9.1.2.1 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus · ${datumLang(heuteIso())}</p>`;
         $("#berichtAusgabe").innerHTML = html;
         gespeichertenEntwurfAnzeigen();
       }
@@ -6514,7 +6514,7 @@
           const version = Number(obj.version || obj.formatVersion || 1);
           if (!Number.isFinite(version) || version > APP_VERSION)
             throw new Error(
-              `Diese Sicherung wurde mit einer neueren Datenstruktur (${obj.version || "unbekannt"}) erstellt und kann mit Version 1.9.1.2 nicht sicher geöffnet werden.`,
+              `Diese Sicherung wurde mit einer neueren Datenstruktur (${obj.version || "unbekannt"}) erstellt und kann mit Version 1.9.1.2.1 nicht sicher geöffnet werden.`,
             );
           return {
             obj,
@@ -6798,7 +6798,7 @@
           pass = $("#geraetePasswort"),
           pass2 = $("#geraetePasswort2"),
           weiter = $("#geraeteWeiter");
-        const APP_VERSION_GERAETEWECHSEL = "1.9.1.2";
+        const APP_VERSION_GERAETEWECHSEL = "1.9.1.2.1";
         const DATENSTRUKTUR_VERSION = "1.8";
         const SICHERUNGSFORMAT_VERSION = 2;
         const MAX_DATEIGROESSE = 250 * 1024 * 1024;
@@ -7064,7 +7064,7 @@
             throw new Error("Die Sicherung verwendet eine nicht unterstützte Datenstruktur.");
           if ((inhalt.edition !== edition && inhalt.edition !== "praxistest") || !inhalt.daten || !Array.isArray(inhalt.daten.eintraege))
             throw new Error("Das Paket ist unvollständig oder gehört zu einer anderen Ausgabe.");
-          if (inhalt.appVersion !== "1.8.3" && inhalt.appVersion !== "1.8.4" && inhalt.appVersion !== "1.8.5" && inhalt.appVersion !== "1.8.6" && inhalt.appVersion !== "1.8.6.1" && inhalt.appVersion !== "1.9.0" && inhalt.appVersion !== "1.9.0.1" && inhalt.appVersion !== "1.9.1" && inhalt.appVersion !== "1.9.1.1" && inhalt.appVersion !== APP_VERSION_GERAETEWECHSEL)
+          if (inhalt.appVersion !== "1.8.3" && inhalt.appVersion !== "1.8.4" && inhalt.appVersion !== "1.8.5" && inhalt.appVersion !== "1.8.6" && inhalt.appVersion !== "1.8.6.1" && inhalt.appVersion !== "1.9.0" && inhalt.appVersion !== "1.9.0.1" && inhalt.appVersion !== "1.9.1" && inhalt.appVersion !== "1.9.1.1" && inhalt.appVersion !== "1.9.1.2" && inhalt.appVersion !== APP_VERSION_GERAETEWECHSEL)
             throw new Error(`Die Programmversion ${inhalt.appVersion || "unbekannt"} ist nicht freigegeben.`);
           if (!inhalt.mitDokumenten || !Array.isArray(inhalt.dokumente))
             throw new Error("Für den sicheren Gerätewechsel müssen die Dokumente vollständig enthalten sein.");
@@ -7237,7 +7237,7 @@
                 vorbereiteteRuecksicherung = await ruecksicherungVorbereiten(kennwort);
               }
               $("#geraetePruefung").innerHTML =
-        `<strong>✓ Entschlüsselung und Integritätsprüfung bestanden</strong><p>Datei: ${esc(importDatei.name)} · ${dateigroesse(importDatei.size)}</p><p>Erstellt: ${new Date(innen.erstelltAm).toLocaleString("de-DE")} auf ${esc(innen.quellgeraet)} · Quellversion ${esc(innen.appVersion)}</p><p>Sicherungskennung: ${esc(innen.sicherungsId)}</p><p>${stats.eintraege} Einträge · ${stats.termine} Termine · ${stats.fragen} Fragen · ${stats.medikamente} Medikamente</p><p>${stats.dokumente} Dokumentenmappen · ${stats.seiten} Dokumentseiten · ${dateigroesse(stats.dokumentBytes)}</p><p>Speicher: ${esc(speicher.text)}</p><p>Auf diesem Gerät vorhanden: ${ziel.eintraege} Einträge · ${ziel.dokumente} Dokumentenmappen.</p>${zielIstLeer ? '<p><strong>✓ Das Zielgerät ist vollständig leer. Eine Rücksicherung ist nicht erforderlich.</strong></p>' : '<p><strong>Vorhandene Zieldaten werden ersetzt. Laden Sie deshalb zuerst die verschlüsselte Rücksicherung herunter.</strong></p>'}<p><strong>Eine Zusammenführung ist in Version 1.9.1.2 sicherheitshalber deaktiviert.</strong></p>`;
+        `<strong>✓ Entschlüsselung und Integritätsprüfung bestanden</strong><p>Datei: ${esc(importDatei.name)} · ${dateigroesse(importDatei.size)}</p><p>Erstellt: ${new Date(innen.erstelltAm).toLocaleString("de-DE")} auf ${esc(innen.quellgeraet)} · Quellversion ${esc(innen.appVersion)}</p><p>Sicherungskennung: ${esc(innen.sicherungsId)}</p><p>${stats.eintraege} Einträge · ${stats.termine} Termine · ${stats.fragen} Fragen · ${stats.medikamente} Medikamente</p><p>${stats.dokumente} Dokumentenmappen · ${stats.seiten} Dokumentseiten · ${dateigroesse(stats.dokumentBytes)}</p><p>Speicher: ${esc(speicher.text)}</p><p>Auf diesem Gerät vorhanden: ${ziel.eintraege} Einträge · ${ziel.dokumente} Dokumentenmappen.</p>${zielIstLeer ? '<p><strong>✓ Das Zielgerät ist vollständig leer. Eine Rücksicherung ist nicht erforderlich.</strong></p>' : '<p><strong>Vorhandene Zieldaten werden ersetzt. Laden Sie deshalb zuerst die verschlüsselte Rücksicherung herunter.</strong></p>'}<p><strong>Eine Zusammenführung ist in Version 1.9.1.2.1 sicherheitshalber deaktiviert.</strong></p>`;
               $("#geraetePruefung").hidden = false;
               pass.disabled = true;
               weiter.textContent = zielIstLeer
@@ -7745,26 +7745,33 @@
           ["chartPuls", "Puls", "/min"],
           ["chartSpo2", "Sauerstoffsättigung", "%"],
           ["chartBlutzucker", "Blutzucker", ""],
+          ["chartAtemfrequenz", "Atemfrequenz", "/min"],
         ].forEach(([id, t, e]) =>
           raster.insertAdjacentHTML(
             "beforeend",
             `<article class="karte span6"><div class="abschnitt-titel"><h3>${t}</h3><span>${e}</span></div><div class="diagramm" id="${id}"></div></article>`,
           ),
         );
+        const tageswertZahl = wert => {
+          const zahl = Number(String(wert ?? "").trim().replace(",", "."));
+          return Number.isFinite(zahl) ? zahl : null;
+        };
         function chartTageswerte(id, feld, einheit, feld2) {
-          const arr = daten.eintraege
+          const von = $("#verlaufVon")?.value || "0000-01-01",
+            bis = $("#verlaufBis")?.value || "9999-12-31",
+            kandidaten = daten.eintraege
               .filter(
                 (e) =>
-                  e[feld] !== "" &&
-                  e[feld] !== undefined &&
-                  (!feld2 || (e[feld2] !== "" && e[feld2] !== undefined)),
+                  e.datum >= von && e.datum <= bis &&
+                  tageswertZahl(e[feld]) !== null &&
+                  (!feld2 || tageswertZahl(e[feld2]) !== null),
               )
               .sort((a, b) =>
                 (a.datum + (a.messUhrzeit || "")).localeCompare(
                   b.datum + (b.messUhrzeit || ""),
                 ),
-              )
-              .slice(-30),
+              ),
+            arr = [...new Map(kandidaten.map(e => [`${e.id || ""}|${e.datum}|${e.messUhrzeit || ""}|${feld}|${e[feld]}|${feld2 ? e[feld2] : ""}`, e])).values()].slice(-30),
             el = $("#" + id);
           el.classList.toggle("ist-leer", !arr.length);
           if (!arr.length) {
@@ -7774,9 +7781,9 @@
           }
           const alle = arr
               .flatMap((e) => [
-                +e[feld],
+                tageswertZahl(e[feld]),
                 feld2 && e[feld2] !== "" && e[feld2] !== undefined
-                  ? +e[feld2]
+                  ? tageswertZahl(e[feld2])
                   : null,
               ])
               .filter(Number.isFinite),
@@ -7791,7 +7798,7 @@
                 ? (w - 2 * p) / 2
                 : (i * (w - 2 * p)) / (arr.length - 1)),
             y = (v) => h - p - ((v - min) * (h - 2 * p)) / (max - min || 1),
-            linie = (f) => arr.map((e, i) => `${x(i)},${y(+e[f])}`).join(" ");
+            linie = (f) => arr.map((e, i) => `${x(i)},${y(tageswertZahl(e[f]))}`).join(" ");
           let svg = `<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="${id}"><line x1="${p}" y1="${h - p}" x2="${w - p}" y2="${h - p}" stroke="#b9cbc6"/><polyline points="${linie(feld)}" fill="none" stroke="#28776d" stroke-width="4"/>`;
           if (feld2)
             svg += `<polyline points="${linie(feld2)}" fill="none" stroke="#cf7d35" stroke-width="4"/>`;
@@ -7799,7 +7806,7 @@
             arr
               .map(
                 (e, i) =>
-                  `<circle cx="${x(i)}" cy="${y(+e[feld])}" r="5" fill="#28776d"><title>${datumLang(e.datum)} ${e.messUhrzeit || ""}: ${e[feld]} ${einheit}</title></circle>`,
+                  `<circle cx="${x(i)}" cy="${y(tageswertZahl(e[feld]))}" r="5" fill="#28776d"><title>${datumLang(e.datum)} ${e.messUhrzeit || ""}: ${e[feld]} ${einheit}</title></circle>`,
               )
               .join("") + "</svg>";
           el.innerHTML = svg;
@@ -7816,6 +7823,7 @@
           chartTageswerte("chartPuls", "puls", "/min");
           chartTageswerte("chartSpo2", "spo2", "%");
           chartTageswerte("chartBlutzucker", "blutzucker", "");
+          chartTageswerte("chartAtemfrequenz", "atemfrequenz", "/min");
         }
         const basisRender = renderAlles;
         renderAlles = function () {
@@ -8333,7 +8341,7 @@
 </dialog>
 <script id="bedienoptimierung-v186-script">
 (() => {
-  const APP_VERSION = '1.9.1.2';
+  const APP_VERSION = '1.9.1.2.1';
   const MODUS_KEY = 'mein-begleiter-persoenlich-v1-9-1-ansicht';
   const START_KEY = 'mein-begleiter-persoenlich-v1-9-1-startauswahl';
   const ua = navigator.userAgent;
@@ -8847,6 +8855,96 @@
   }
   aktualisiereLernlisten();
   const altRender=window.renderAlles; if(typeof altRender==='function') window.renderAlles=function(){const r=altRender.apply(this,arguments);aktualisiereLernlisten();return r;};
+})();
+</script>
+<style id="navigation-hilfe-v19121">
+  .v19121-seitenkopf{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-bottom:18px}
+  .v19121-seitenkopf h2{margin:0 0 5px}.v19121-seitenkopf p{margin:0;color:#506965}
+  .v19121-ansicht{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0 20px}
+  .v19121-hilfe-raster{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .v19121-hilfe-raster details{border:1px solid #c8ddd7;border-radius:13px;background:#fff;overflow:hidden}
+  .v19121-hilfe-raster summary{cursor:pointer;padding:15px 17px;font-weight:850;color:#164743}
+  .v19121-hilfe-raster details>div{padding:0 17px 16px;color:#405b57;line-height:1.55}
+  .v19121-notfall{border-color:#efaaa0!important;background:#fff6f4!important}
+  #v19121MobilMenuknopf,#v19121MobilMenue{display:none}
+  #seite-verlauf .v19121-aktualisierung{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:10px 0 16px}
+  #seite-verlauf .v19121-aktualisierung small{color:#56706b}
+  #seite-behandlung.v1911-bearbeitung .behandlung-bereich.v1911-aktiv .behandlung-zurueck{display:inline-flex!important;background:#dcefe9!important}
+  @media (min-width:621px) and (max-width:1100px){
+    html.v186-kompakt .app{display:grid!important;grid-template-columns:190px minmax(0,1fr)!important}
+    html.v186-kompakt .seitenleiste{display:flex!important;position:sticky!important;inset:auto!important;top:0!important;width:190px!important;height:100dvh!important;max-height:100dvh!important;overflow-y:auto!important;flex-direction:column!important}
+    html.v186-kompakt .seitenleiste .marke,html.v186-kompakt .seitenleiste .nav,html.v186-kompakt .seitenleiste .seitenfuss{display:flex!important}
+    html.v186-kompakt .seitenleiste .nav{flex-direction:column!important;position:static!important;background:transparent!important;padding:0!important}
+    html.v186-kompakt .seitenleiste .nav>.nav-knopf{display:flex!important;width:100%!important;min-height:42px!important}
+    html.v186-kompakt main{width:auto!important;max-width:none!important;margin:0!important;padding:24px 22px!important}
+  }
+  @media(max-width:620px){
+    html.v186-kompakt .app{display:block!important}.seitenleiste{display:none!important}main{padding:62px 12px 24px!important}
+    #v19121MobilMenuknopf{display:inline-flex;position:fixed;z-index:1300;left:max(12px,env(safe-area-inset-left));top:max(10px,env(safe-area-inset-top));min-height:46px;padding:9px 14px;border:0;border-radius:12px;background:#175e58;color:#fff;font-weight:850;box-shadow:0 5px 16px #1237}
+    #v19121MobilMenue[open]{display:flex;position:fixed;inset:8px;z-index:1400;width:auto;max-width:none;max-height:calc(100dvh - 16px)!important;margin:0;padding:0;border:0;border-radius:16px;flex-direction:column;overflow:hidden;background:#f6fbf9}
+    #v19121MobilMenue::backdrop{background:#092d2a99}
+    .v19121-menukopf{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 15px;background:#dfeeea;flex:0 0 auto}
+    .v19121-menukopf button{min-width:46px;min-height:46px;border:1px solid #8eb7ad;border-radius:12px;background:#fff;font-size:1.35rem}
+    .v19121-menuliste{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;padding:12px;padding-bottom:max(12px,env(safe-area-inset-bottom));overflow-y:auto;overscroll-behavior:contain}
+    .v19121-menuliste button{min-height:54px;padding:9px 7px;border:1px solid #b8d3cc;border-radius:11px;background:#fff;color:#173f3b;font-weight:800;overflow-wrap:anywhere}
+    .v19121-menuliste button[data-seite="cockpit"],.v19121-menuliste button[data-seite="sicherung"]{background:#23736b;color:#fff}
+    .v19121-hilfe-raster{grid-template-columns:1fr}.v19121-seitenkopf{display:block}
+  }
+  @media(max-width:350px){.v19121-menuliste{grid-template-columns:1fr}}
+  @media print{#v19121MobilMenuknopf,#v19121MobilMenue,.v19121-aktualisierung{display:none!important}}
+</style>
+<dialog id="v19121MobilMenue" aria-label="Hauptmenü">
+  <div class="v19121-menukopf"><strong>Mein Begleiter – Menü</strong><button type="button" data-menue-zu aria-label="Menü schließen">×</button></div>
+  <div class="v19121-menuliste"></div>
+</dialog>
+<button id="v19121MobilMenuknopf" type="button" aria-controls="v19121MobilMenue">☰ Menü</button>
+<script id="navigation-hilfe-v19121-script">
+(() => {
+  const MODUS_KEY='mein-begleiter-persoenlich-v1-9-1-ansicht';
+  document.querySelectorAll('.mobile-mehr,.mobil-mehr-menue,#v186Menuknopf,#v186Menue').forEach(e=>e.remove());
+  const nav=document.querySelector('.seitenleiste .nav');
+  const navPunkte=[['einstellungen','⚙','Einstellungen'],['hilfe','❔','Hilfe & Anleitung']];
+  navPunkte.forEach(([seite,symbol,text])=>{if(!nav?.querySelector(`[data-seite="${seite}"]`)){const b=document.createElement('button');b.type='button';b.className='nav-knopf';b.dataset.seite=seite;b.innerHTML=`<span class="symbol">${symbol}</span>${text}`;b.addEventListener('click',()=>wechsleSeite(seite));nav.appendChild(b);}});
+
+  const main=document.querySelector('main');
+  const einstellungen=document.createElement('section'); einstellungen.className='seite'; einstellungen.id='seite-einstellungen';
+  einstellungen.innerHTML='<div class="v19121-seitenkopf"><div><h2>Einstellungen</h2><p>Ansicht und freiwillige Tages-Check-Werte festlegen.</p></div></div><h3>Darstellung</h3><p>Die Auswahl verändert nur die Bedienoberfläche. Ihre Daten bleiben vollständig erhalten.</p><div class="v19121-ansicht"><button class="knopf" type="button" data-ansicht="einfach">Einfache Ansicht</button><button class="knopf sekundaer" type="button" data-ansicht="voll">Vollständige Ansicht</button></div><div data-tagescheck-einstellungen></div>';
+  const hilfe=document.createElement('section'); hilfe.className='seite'; hilfe.id='seite-hilfe';
+  hilfe.innerHTML='<div class="v19121-seitenkopf"><div><h2>Hilfe & Anleitung</h2><p>Kurze Erklärungen – direkt dort, wo Sie sie benötigen.</p></div><button class="knopf sekundaer" type="button" data-einfuehrung>Einführung anzeigen</button></div><div class="v19121-hilfe-raster">'+[
+    ['Erste Schritte','Beginnen Sie mit Tages-Check, Termin oder Frage. Erstellen Sie regelmäßig eine vollständige verschlüsselte Sicherung.'],
+    ['Übersicht','Zeigt den nächsten Termin, offene Fragen und die nächste Medikamentengabe.'],
+    ['Einträge und Tages-Check','Unter „Neue Einträge“ dokumentieren Sie Ereignisse. Der Tages-Check erfasst freiwillige Körperwerte.'],
+    ['Termine und Fragen','Termine und Fragen können einer Arztpraxis oder Behandlungsstelle zugeordnet werden.'],
+    ['Behandlung und Nebenwirkungen','Wählen Sie eine Aufgabe. Es öffnet sich nur das dazugehörige Formular. Eigene Beschwerden und Stellen werden für spätere Auswahlen gemerkt.'],
+    ['Dokumente','Dokumente bleiben lokal auf diesem Gerät und gehören in die vollständige verschlüsselte Sicherung.'],
+    ['Verlauf','Neue Werte erscheinen automatisch. „Verlauf aktualisieren“ dient nur als zusätzliche Kontrolle.'],
+    ['Bericht und Ausgabe','Erstellen Sie Berichte erst nach Auswahl von Art und Zeitraum. Prüfen Sie die Vorschau vor dem Speichern oder Drucken.'],
+    ['Sicherung und Gerätewechsel','Erstellen oder laden Sie ausschließlich die vollständige verschlüsselte Sicherung. Datei und Kennwort getrennt aufbewahren.'],
+    ['Einstellungen','Hier wechseln Sie zwischen einfacher und vollständiger Ansicht und wählen freiwillige Körperwerte.'],
+    ['Wo finde ich was?','Einstellungen und diese Hilfe stehen als eigene Menüpunkte in der Navigation. Auf dem Handy öffnen Sie beide über „Menü“.'],
+    ['Datenschutz','Die Daten werden lokal im Browser gespeichert. Es findet keine automatische Synchronisation statt.'],
+    ['Medizinischer Notfall','Die Anwendung ersetzt keine medizinische Beratung. Bei akuten Beschwerden ärztliche Hilfe holen, im Notfall 112 anrufen.','v19121-notfall']
+  ].map(([t,x,c=''])=>`<details class="${c}"><summary>${t}</summary><div>${x}</div></details>`).join('')+'</div>';
+  main.append(einstellungen,hilfe);
+  const zurueck=seite=>{const b=document.createElement('button');b.type='button';b.className='knopf sekundaer zur-uebersicht';b.innerHTML='<span aria-hidden="true">←</span> Zur Übersicht';b.addEventListener('click',()=>wechsleSeite('cockpit'));seite.prepend(b);};
+  zurueck(einstellungen); zurueck(hilfe);
+  const tc=document.querySelector('.tc-einstellungen'); if(tc)einstellungen.querySelector('[data-tagescheck-einstellungen]').appendChild(tc);
+  document.getElementById('v191Einstellungen')?.remove();
+  const setAnsicht=modus=>{const einfach=modus!=='voll';localStorage.setItem(MODUS_KEY,einfach?'einfach':'voll');document.documentElement.classList.toggle('v186-einfach',einfach);toast('Ansicht geändert. Ihre Daten bleiben vollständig erhalten.');};
+  einstellungen.querySelectorAll('[data-ansicht]').forEach(b=>b.addEventListener('click',()=>setAnsicht(b.dataset.ansicht)));
+  hilfe.querySelector('[data-einfuehrung]').addEventListener('click',()=>document.getElementById('v186Hilfe')?.showModal());
+
+  const mobil=document.getElementById('v19121MobilMenue'), liste=mobil.querySelector('.v19121-menuliste');
+  const punkte=[['cockpit','🏠 Übersicht'],['eintraege','📖 Einträge'],['termine','📅 Termine'],['behandlung','💊 Behandlung'],['dokumente','📂 Dokumente'],['bericht','🖨 Bericht'],['kosten','€ Kosten'],['verlauf','📈 Verlauf'],['sicherung','🔐 Sicherung'],['einstellungen','⚙ Einstellungen'],['hilfe','❔ Hilfe']];
+  punkte.forEach(([seite,text])=>{const b=document.createElement('button');b.type='button';b.dataset.seite=seite;b.textContent=text;b.addEventListener('click',()=>{mobil.close();wechsleSeite(seite);});liste.appendChild(b);});
+  document.getElementById('v19121MobilMenuknopf').addEventListener('click',()=>mobil.showModal()); mobil.querySelector('[data-menue-zu]').addEventListener('click',()=>mobil.close());
+
+  const verlauf=document.getElementById('seite-verlauf');
+  if(verlauf){const box=document.createElement('div');box.className='v19121-aktualisierung';box.innerHTML='<button class="knopf sekundaer" type="button">↻ Verlauf aktualisieren</button><small aria-live="polite">Werte werden automatisch aktualisiert.</small>';const kopf=verlauf.querySelector('.kopf')||verlauf.firstElementChild;kopf.insertAdjacentElement('afterend',box);const aktualisieren=(melden=false)=>{renderAlles();box.querySelector('small').textContent='Zuletzt aktualisiert: '+new Date().toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'});if(melden)toast('Verlauf aktualisiert');};box.querySelector('button').addEventListener('click',()=>aktualisieren(true));['verlaufVon','verlaufBis','verlaufReset'].forEach(id=>document.getElementById(id)?.addEventListener(id==='verlaufReset'?'click':'change',()=>setTimeout(()=>aktualisieren(false),0)));
+    const basisSpeichern=speichern;let geplant=false;speichern=function(){const r=basisSpeichern.apply(this,arguments);if(!geplant){geplant=true;queueMicrotask(()=>{geplant=false;renderAlles();aktualisieren(false);});}return r;};
+  }
+  document.querySelectorAll('#seite-behandlung .behandlung-bereich').forEach(karte=>{const kopf=karte.querySelector('.behandlung-kopfzeile')||karte.querySelector('h3')?.parentElement;const b=karte.querySelector('.behandlung-zurueck');if(kopf&&b)kopf.appendChild(b);});
+  nav?.querySelector('[data-seite="behandlung"]')?.addEventListener('click',()=>{document.getElementById('seite-behandlung')?.classList.remove('v1911-bearbeitung');document.querySelectorAll('#seite-behandlung .v1911-aktiv').forEach(e=>e.classList.remove('v1911-aktiv'));});
 })();
 </script>
 </body>

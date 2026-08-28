@@ -1,0 +1,34 @@
+MEIN BEGLEITER 1.9.1.2.1 – ÄNDERUNGSLISTE
+Stand: 28.08.2026
+
+Grundlage: Version 1.9.1.2 PWA – Persönliche Arbeitsversion.
+
+SCHWERPUNKT 1.9.1.2.1
+- „Mehr“ durch eine einheitliche Navigation ersetzt.
+- Einstellungen und „Hilfe & Anleitung“ als eigene, direkt erreichbare Seiten ergänzt.
+- Ein einziges scrollbares Handy-Menü mit allen Bereichen eingeführt.
+- Tablet-Navigation bleibt beim Wechsel zwischen Hoch- und Querformat stabil.
+- Neue Körperwerte aktualisieren den Verlauf nach dem Speichern automatisch.
+- Zusätzliche Schaltfläche „Verlauf aktualisieren“ mit Zeitangabe ergänzt.
+- Verlauf berücksichtigt Datumsfilter, Kommazahlen und doppelte Messpunkte zuverlässiger.
+- Atemfrequenz als zusätzliche Verlaufskurve ergänzt.
+- Rückkehr zur Behandlungsübersicht in der jeweiligen Formular-Kopfzeile abgesichert.
+- Persönliche Datenstruktur, Dokumentenspeicher und Sicherungsformat bleiben unverändert.
+- Verschlüsselte Sicherungen der Version 1.9.1.2 bleiben ausdrücklich importierbar.
+
+- Rückkehr zur Behandlungsübersicht direkt neben der jeweiligen Formularüberschrift angeordnet.
+- Rückkehrschaltfläche heller als die jeweilige Hauptaktion gestaltet.
+- Fehlende Trennung zwischen Datum, Bezeichnung und Status korrigiert.
+- Nebenwirkungen als durchsuchbare Mehrfachauswahl mit Kontrollkästchen und entfernbaren Auswahlfeldern umgesetzt.
+- „Auswahl löschen“ und freie Ergänzung eigener Beschwerden hinzugefügt.
+- Eigene Beschwerden werden aus gespeicherten Beobachtungen dauerhaft erneut angeboten.
+- Ausführliche Dokumentationshilfe entfernt; kurzer Sicherheitshinweis nur noch über „Hilfe“ einblendbar.
+- Lernende Vorschläge für Behandlungsorte, ausführende Stellen, Behandlungsschritte, Terminmaßnahmen und Körperstellen ergänzt.
+- Eigene Dokumentenkategorien können ergänzt und erneut verwendet werden.
+- Sicherungsseite konsequent auf verschlüsselte vollständige Sicherung und Wiederherstellung reduziert.
+- Sicherung ohne Dokumente und unverschlüsselte Sicherungen aus der Bedienoberfläche entfernt.
+- Doppelte Sicherungshinweise zusammengeführt.
+- Speicherübersicht und Excel-Ausgabe in „Speicher und Export“ zusammengefasst.
+- Excel-Ausgabe eindeutig als nicht vollständige Sicherung bezeichnet.
+- Lokale Speicherkennungen und Dokumentenspeicher bleiben unverändert.
+- Verschlüsselte Sicherungen der Versionen 1.8.3 bis 1.9.1.2.1 bleiben importierbar.
