@@ -1,0 +1,29 @@
+MEIN BEGLEITER 1.9.1.2.4 – ÄNDERUNGSLISTE
+Stand: 29.08.2026
+
+PC-KORREKTUREN
+- Ansichtswechsel entfernt; Navigation bleibt vollständig.
+- Navigation und Seitentitel auf „Behandlung & Medikamente“ umgestellt.
+- Medikament kann als beendet markiert werden. Verlauf bleibt erhalten; „Nächste“ entfällt.
+- Dateiname wird beim Dokumentimport als änderbarer Titel vorgeschlagen.
+- Eigene Dokumentkategorien stehen auch beim Ändern zur Verfügung.
+- „Fahrtkosten“ ersetzt die unterschiedlichen Begriffe Fahrten/Fahrkarten.
+- Druckzentrum verwendet eine aktuelle Vorschau für Verlauf und ausgewählte Diagramme.
+- Eine gemeinsame Schaltfläche öffnet den Browserdialog zum Drucken oder PDF-Speichern.
+- „Dokumentenverzeichnis“ heißt jetzt „Liste meiner Dokumente“ und erklärt seinen Zweck.
+- Kennwortanzeige wurde durch eine verständliche Augen-Schaltfläche ersetzt.
+- Hilfe- und Erklärungstexte sind größer und kontrastreicher.
+- Schriftgröße kann als Standard, Groß oder Sehr groß gewählt werden; Groß ist empfohlen.
+- Titelseiten wurden in Creme, Petrol und zurückhaltendem Gold aufgewertet.
+- Druckdarstellung blendet „Zur Übersicht“ und weitere Bedienelemente aus.
+- Diagramme werden im Ausdruck kompakter angeordnet; Behandlungsverlauf folgt am Schluss.
+
+DATENSCHUTZ UND KOMPATIBILITÄT
+- Schlüssel des lokalen Datenspeichers unverändert.
+- Dokumentdatenbank unverändert.
+- Verschlüsselte Sicherungen aus Version 1.9.1.2.3 werden akzeptiert.
+- Keine Synchronisation, Cloud oder automatische Datenübertragung ergänzt.
+
+NOCH ZU PRÜFEN
+- PC-Kontrolltest durch Lothar.
+- Danach Samsung A9 und Smartphone, jeweils Hoch- und Querformat.

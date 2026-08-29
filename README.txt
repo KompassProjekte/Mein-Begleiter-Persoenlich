@@ -1,6 +1,6 @@
 MEIN BEGLEITER
-Version 1.9.1.2.3 PWA – Druckzentrum, Ansichten und Terminfilter
-Stand: 28.08.2026
+Version 1.9.1.2.4 PWA – PC-Korrekturversion
+Stand: 29.08.2026
 Entwickelt von Lothar & Nimbus
 
 Diese Ausgabe ist für die persönliche Arbeit vorgesehen. Sie wird vollständig leer
@@ -19,6 +19,6 @@ WICHTIG
 Vorgesehene GitHub-Pages-Adresse:
 https://kompassprojekte.github.io/Mein-Begleiter-Persoenlich/
 
-Die vorherige persönliche Version 1.9.1.2.2 bleibt unverändert erhalten.
+Die vorherige persönliche Version 1.9.1.2.3 bleibt unverändert erhalten.
 Die Anwendung ersetzt keine ärztliche Beratung oder Behandlung. Bei akuten Beschwerden
 ärztliche Hilfe holen; im medizinischen Notfall 112 anrufen.

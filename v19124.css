@@ -1,0 +1,74 @@
+/* Mein Begleiter 1.9.1.2.4 – PC-Korrekturversion */
+.v19123-ansicht-status{margin:0 0 14px;padding:10px 13px;border-left:4px solid #23736b;background:#edf7f4;border-radius:8px;font-weight:800;color:#174d48}
+.v19123-ansicht-knopf{display:inline-flex!important;align-items:center;gap:7px}
+.v19123-ansicht-knopf:not(.aktiv){background:#fff!important;color:#185b55!important;border:1px solid #4f9289!important;box-shadow:none!important}
+.v19123-ansicht-knopf.aktiv{background:#195f58!important;color:#fff!important;border-color:#195f58!important}
+.v19123-ansicht-knopf .v19123-check{display:none}.v19123-ansicht-knopf.aktiv .v19123-check{display:inline}
+html.v19123-einfach .v19123-nur-voll{display:none!important}
+
+/* Vollständige Navigation; der frühere Ansichtswechsel ist entfallen. */
+#v186AnsichtDialog,.v186-ansicht-umschalter,.v19121-ansicht,.v19123-ansicht-status{display:none!important}
+html[data-schrift="standard"]{font-size:16px}
+html[data-schrift="gross"]{font-size:17px}
+html[data-schrift="sehr-gross"]{font-size:19px}
+.v19124-schriftwahl{margin:0 0 22px;padding:18px;border:1px solid #bfd6d0;border-radius:14px;background:#fff}
+.v19124-schriftwahl h3{margin:0 0 6px}.v19124-schriftwahl p{margin:0 0 13px;color:#284f4a;line-height:1.55}
+.v19124-schriftwahl>div{display:flex;gap:10px;flex-wrap:wrap}.v19124-schriftwahl button{min-height:48px;padding:10px 16px;border:1px solid #4f9289;border-radius:10px;background:#fff;color:#174d48;font:inherit;font-weight:800;cursor:pointer}
+.v19124-schriftwahl button.aktiv{background:#195f58;color:#fff;border-color:#195f58;box-shadow:0 4px 12px #174c4633}
+.med-planung{display:grid;gap:6px;text-align:left;font-weight:800;color:#234d48}.med-planung select{width:100%}
+.messwert.beendet{background:#edf3f1;color:#365a55}
+.v19124-kennwort-auge{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:48px;padding:10px 15px;border:1px solid #78a69e;border-radius:10px;background:#fff;color:#174d48;font:inherit;font-weight:800;cursor:pointer}
+.v19124-kennwort-auge:focus-visible,.v19124-schriftwahl button:focus-visible{outline:3px solid #d49b27;outline-offset:3px}
+.v19124-erklaerung{padding:11px 13px;border-left:4px solid #2a7169;background:#f0f7f5;color:#234d48;line-height:1.55}
+#v19124KostenBox{margin:14px 0;padding:14px;border:1px solid #c6dcd6;border-radius:12px;background:#f8fbfa}#v19124KostenBox h4{margin:0 0 9px}#v19124KostenModus{min-width:min(100%,390px)}#v19124KostenEigen{display:flex;gap:9px;flex-wrap:wrap;margin-top:11px}#v19124KostenEigen label{display:flex;align-items:center;gap:7px;min-height:46px;padding:8px 11px;border:1px solid #c6dcd6;border-radius:9px;background:#fff;font-weight:750}#v19124KostenEigen input{width:19px;height:19px}
+
+/* Hilfe: größere Schrift und belastbarer Kontrast für ältere Menschen. */
+#seite-hilfe .v19121-seitenkopf>div>p,#seite-hilfe .kopf p{font-size:1rem!important;color:#2d514c!important}
+#seite-hilfe .v19121-hilfe-raster summary{font-size:1.08rem!important;line-height:1.4!important;min-height:52px!important;color:#113f3b!important}
+#seite-hilfe .v19121-hilfe-raster details>div{font-size:1rem!important;line-height:1.6!important;color:#234944!important}
+#seite-hilfe .v19121-notfall summary{color:#7f211b!important}
+#seite-hilfe .v19121-notfall>div{color:#74241e!important;background:#fff4f1!important}
+.v19123-filterleiste,.v19123-druckfilter{display:grid;grid-template-columns:repeat(4,minmax(150px,1fr));gap:12px;align-items:end}
+.v19123-filterleiste label,.v19123-druckfilter label{display:grid;gap:5px;font-weight:800;color:#274f4a}
+.v19123-druckfilter{margin:15px 0}.v19123-druckaktionen{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+.v19123-druckauswahl{display:grid;grid-template-columns:repeat(3,minmax(180px,1fr));gap:9px;margin:12px 0}
+.v19123-druckauswahl label,.v19123-diagrammauswahl label{display:flex;align-items:center;gap:9px;padding:11px;border:1px solid #c6dcd6;border-radius:10px;background:#fff;font-weight:750}
+.v19123-druckauswahl input,.v19123-diagrammauswahl input{width:19px;height:19px;flex:none}
+.v19123-diagrammauswahl{display:grid;grid-template-columns:repeat(3,minmax(160px,1fr));gap:8px}
+.v19123-vorschau{margin-top:16px;padding:20px;border:1px solid #abcfc6;border-radius:14px;background:#fff;box-shadow:0 8px 24px #174c4617}
+.v19123-vorschau h2{margin:0 0 4px}.v19123-druckmeta{color:#526b67;border-bottom:2px solid #2a7169;padding-bottom:9px;margin-bottom:14px}
+.v19123-druckliste{width:100%;border-collapse:collapse}.v19123-druckliste th,.v19123-druckliste td{padding:8px;border-bottom:1px solid #d5e2de;text-align:left;vertical-align:top}
+.v19123-druckliste th{background:#edf6f3}.v19123-leer{padding:18px;background:#f6faf8;border-radius:10px;color:#536b67}
+.v19123-kosten{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.v19123-kosten>div{padding:12px;border:1px solid #ccddd8;border-radius:10px}.v19123-kosten strong{display:block;font-size:1.35rem;margin-top:4px}
+.v19123-diagramme{display:grid;grid-template-columns:1fr 1fr;gap:12px}.v19123-diagramm{border:1px solid #d1dfdb;border-radius:10px;padding:10px;break-inside:avoid}.v19123-diagramm .diagramm{height:240px!important}
+.v19123-druckfuss{display:none}
+.v19124-behandlungsverlauf{margin-top:6mm;break-before:page}
+
+/* Ruhige, professionelle Titelseiten für Tagebuch und Buch. */
+.buch-titelblatt{position:relative!important;overflow:hidden!important;background:linear-gradient(145deg,#fffdf7 0%,#f7f2e7 100%)!important;border:1.5px solid #4d8179!important;box-shadow:inset 0 0 0 7px #fffdf7!important;color:#173f3b!important}
+.buch-titelblatt::before{content:"✥";position:absolute;left:50%;top:13%;transform:translateX(-50%);font-size:3.2rem;color:#b58a37;opacity:.34}
+.buch-titelblatt::after{content:"";position:absolute;left:20%;right:20%;top:33%;height:2px;background:linear-gradient(90deg,transparent,#b58a37,transparent)}
+.buch-titelblatt h1,.buch-titelblatt h2,.buch-titelblatt h3{color:#175650!important;letter-spacing:.02em}
+.buch-titelblatt .hinweis{color:#355b56!important}
+@media(max-width:900px){.v19123-filterleiste,.v19123-druckfilter{grid-template-columns:repeat(2,minmax(0,1fr))}.v19123-druckauswahl,.v19123-diagrammauswahl{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.v19123-filterleiste,.v19123-druckfilter,.v19123-druckauswahl,.v19123-diagrammauswahl,.v19123-diagramme,.v19123-kosten{grid-template-columns:1fr}.v19123-druckaktionen>.knopf{width:100%;justify-content:center}.v19123-vorschau{padding:13px}.v19123-druckliste{display:block;overflow-x:auto}.v19123-filterleiste label{min-width:0}}
+@media print{
+  @page{size:A4 portrait;margin:15mm 15mm 17mm}
+  body.v19123-druckt *{visibility:hidden!important}
+  body.v19123-druckt #seite-drucken,body.v19123-druckt #v19123DruckVorschau,body.v19123-druckt #v19123DruckVorschau *{visibility:visible!important}
+  body.v19123-druckt #seite-drucken{display:block!important;position:absolute!important;inset:0!important;margin:0!important;padding:0!important;width:100%!important}
+  body.v19123-druckt #seite-drucken>*:not(#v19123DruckVorschau){display:none!important}
+  body.v19123-druckt #v19123DruckVorschau{display:block!important;margin:0!important;padding:0!important;border:0!important;box-shadow:none!important;font-size:11pt!important;line-height:1.4!important}
+  body.v19123-druckt #v19123DruckVorschau.v19123-sparsam{font-size:9.5pt!important;line-height:1.25!important}
+  body.v19123-druckt .v19123-druckliste th,body.v19123-druckt .v19123-druckliste td{padding:5px 6px!important}
+  body.v19123-druckt .v19123-kosten>div{padding:7px!important}
+  body.v19123-druckt .v19123-diagramme{grid-template-columns:1fr 1fr!important;gap:5mm!important}
+  body.v19123-druckt .v19123-diagramm .diagramm{height:55mm!important}
+  body.v19123-druckt .v19124-behandlungsverlauf{break-before:page!important;margin-top:0!important}
+  body.v19123-druckt .zur-uebersicht{display:none!important}
+  body.v19123-druckt .tagebuch-eintrag{font-size:11pt!important;line-height:1.4!important;padding:5mm 0!important;border-bottom:1px solid #aebfba!important;break-inside:avoid-page!important}
+  body.v19123-druckt .tagebuch-datum{font-weight:850!important;font-size:12pt!important}
+  body.v19123-druckt .buch-seite,body.v19123-druckt .buch-kapitel{min-height:0!important;padding:0!important;break-before:auto!important;break-after:auto!important}
+  body.v19123-druckt .buch-titelblatt:empty,body.v19123-druckt .buch-seite:empty,body.v19123-druckt .buch-kapitel:empty{display:none!important}
+  body.v19123-druckt .v19123-druckfuss{display:block;position:fixed;bottom:-10mm;left:0;right:0;text-align:center;font-size:8pt;color:#687975}
+}

@@ -1,0 +1,39 @@
+MEIN BEGLEITER 1.9.1.2.4 – TECHNISCHES PRÜFPROTOKOLL
+Stand: 29.08.2026
+
+BESTANDSPRÜFUNG
+[BESTANDEN] Ausgangsversion 1.9.1.2.3 unverändert erhalten.
+[BESTANDEN] Lokaler Speicherschlüssel unverändert.
+[BESTANDEN] Dokumentdatenbank und Sicherungsformat nicht umbenannt.
+[BESTANDEN] Manifest, sichtbare Version und Service-Worker-Cache auf 1.9.1.2.4 gesetzt.
+[BESTANDEN] Pflichtdateien des Service Workers vorhanden.
+
+STATISCHE TECHNIKPRÜFUNG
+[BESTANDEN] index.html syntaktisch eingelesen.
+[BESTANDEN] v19124.js besteht die JavaScript-Syntaxprüfung.
+[BESTANDEN] Keine persönlichen Datensätze in die Programmdateien eingefügt.
+[BESTANDEN] Keine Cloud-, Konto- oder Synchronisationsfunktion ergänzt.
+[BESTANDEN] Sicherungsimport erlaubt ausdrücklich die Quellversion 1.9.1.2.3.
+
+FUNKTIONSKONTROLLEN IM QUELLCODE
+[BESTANDEN] Ansichtswechsel wird entfernt und vollständige Navigation erzwungen.
+[BESTANDEN] Medikamentenstatus „Behandlung beendet“ erhält die Historie.
+[BESTANDEN] Dokumenttitel-Vorschlag überschreibt keinen selbst eingegebenen Titel.
+[BESTANDEN] Dokumentkategorien werden zwischen Hinzufügen und Ändern synchronisiert.
+[BESTANDEN] Druckauswahl aktualisiert die Vorschau bei jedem Wechsel.
+[BESTANDEN] Diagrammzeitraum wird vor dem Klonen an den Verlauf übergeben.
+[BESTANDEN] Druckdialog wird erst nach zwei Darstellungszyklen geöffnet.
+[BESTANDEN] Druck-CSS blendet „Zur Übersicht“ aus.
+[BESTANDEN] Kennwörter starten nach dem Schließen wieder verborgen.
+
+NOCH DURCH DEN ANWENDER ZU PRÜFEN
+- Echtes Drucken und Speichern als PDF in Chrome und Firefox.
+- Darstellung mit vorhandenen persönlichen Daten.
+- Wiederherstellung einer aktuellen verschlüsselten Sicherung auf einem sicheren Teststand.
+- PC-Kontrolltest gemäß TESTLISTE_LOTHAR_1.9.1.2.4.txt.
+- Anschließend A9- und Smartphone-Test.
+
+HINWEIS
+Eine vollständig automatisierte Browserprüfung war in der Erstellungsumgebung nicht
+möglich, weil dort kein ausführbarer Browser installiert war. Dieser Umstand wird
+offen ausgewiesen; nicht ausgeführte Praxistests werden nicht als bestanden bezeichnet.

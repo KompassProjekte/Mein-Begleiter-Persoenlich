@@ -1,0 +1,39 @@
+MEIN BEGLEITER 1.9.1.2.4 – KURZER PC-KONTROLLTEST
+
+Bitte vor dem Test eine aktuelle verschlüsselte Sicherung der bisherigen Version erstellen.
+Keine Sicherung bei GitHub hochladen.
+
+1. START UND DATEN
+[ ] Version 1.9.1.2.4 wird angezeigt.
+[ ] Vorhandene Einträge, Termine, Medikamente, Dokumente und Kosten sind vorhanden.
+[ ] Navigation ist vollständig; Ansichtswechsel ist verschwunden.
+
+2. BEHANDLUNG & MEDIKAMENTE
+[ ] Seite ist so benannt und erreichbar.
+[ ] Ein Medikament auf „Nein – Behandlung beendet“ setzen.
+[ ] „Nächste“ verschwindet, „Letzte“ und bisherige Anwendungen bleiben erhalten.
+
+3. DOKUMENTE
+[ ] Datei auswählen: Dateiname erscheint ohne Endung als änderbarer Titel.
+[ ] Eigenen Titel vorher eingeben: Er wird nicht überschrieben.
+[ ] Dokument mit eigener Kategorie ändern: Kategorie bleibt ausgewählt.
+
+4. VERLAUF UND DRUCKEN
+[ ] Im Druckzentrum „Ausgewählte Diagramme“ wählen.
+[ ] Vorschau zeigt Diagramme und nicht den vorherigen Druckinhalt.
+[ ] Auswahl einzelner Diagramme funktioniert.
+[ ] „Verlauf“ zeigt Diagramme und danach den Behandlungsverlauf.
+[ ] „Drucken oder als PDF speichern“ öffnet den Browser-Druckdialog.
+[ ] Ausdruck/PDF enthält weder Navigation noch „Zur Übersicht“.
+
+5. KOSTEN
+[ ] Überall steht „Fahrtkosten“.
+[ ] Summen und Einzelposten stimmen.
+[ ] Kostenübersicht lässt sich drucken beziehungsweise als PDF speichern.
+
+6. SICHERUNG UND HILFE
+[ ] Auge zeigt beide Kennwortfelder; erneutes Anklicken verbirgt sie.
+[ ] Hilfetexte sind größer und deutlich lesbar.
+[ ] Schriftgröße Standard, Groß und Sehr groß funktioniert.
+
+Bitte Auffälligkeiten mit Bereich, kurzer Beschreibung und möglichst Screenshot melden.
