@@ -1,6 +1,6 @@
 "use strict";
 (() => {
-  const VERSION = "1.9.1.2.5.2";
+  const VERSION = "1.9.1.2.5.3";
   const q = (s, r = document) => r.querySelector(s);
   const qa = (s, r = document) => [...r.querySelectorAll(s)];
   const safe = v => typeof esc === "function" ? esc(String(v ?? "")) : String(v ?? "").replace(/[&<>\"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));

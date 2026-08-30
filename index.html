@@ -7,7 +7,7 @@
       content="width=device-width,initial-scale=1,viewport-fit=cover"
     />
     <meta name="theme-color" content="#225b56" />
-    <title>Mein Begleiter 1.9.1.2.5.2 PWA – Persönliche Arbeitsversion</title>
+    <title>Mein Begleiter 1.9.1.2.5.3 PWA – Persönliche Arbeitsversion</title>
     <link rel="manifest" href="./manifest.webmanifest" />
     <link rel="icon" type="image/png" href="./icons/favicon-64.png" />
     <link rel="apple-touch-icon" href="./icons/apple-touch-icon-180.png" />
@@ -1704,7 +1704,7 @@
           </button>
         </nav>
         <div class="seitenfuss">
-          <strong>Version 1.9.1.2.5.2 PWA – PERSÖNLICHE ARBEITSVERSION</strong
+          <strong>Version 1.9.1.2.5.3 PWA – PERSÖNLICHE ARBEITSVERSION</strong
           >Stand: 28.08.2026<br />Entwickelt von Lothar &amp; Nimbus
         </div>
       </aside>
@@ -2660,7 +2660,7 @@
                 <span>Persönlicher Browser-Speicher</span>
               </div>
               <p>
-                <strong>Mein Begleiter 1.9.1.2.5.2 PWA – Persönliche Arbeitsversion</strong>
+                <strong>Mein Begleiter 1.9.1.2.5.3 PWA – Persönliche Arbeitsversion</strong>
               </p>
               <p>
                 Ihre Einträge werden ausschließlich lokal im persönlichen
@@ -3549,6 +3549,15 @@
           ? `<div class="journal-karte-feld"><strong>${titel}</strong><div>${inhalt}</div></div>`
           : "";
         const zeilen = arr.map((e) => {
+          // Vitalwert-Messungen erhalten eine eindeutige sichtbare Bezeichnung,
+          // ohne das allgemeine Feld "massnahme" zu belegen. Dieses Feld bleibt
+          // leer, damit eine Messung nicht wieder als Termin behandelt wird.
+          const istVitalwertMessung = e.eintragsart === "vitalwerte";
+          const sichtbareMassnahme = istVitalwertMessung
+            ? `<strong>Vitalwerte</strong><br><small>Messung</small>`
+            : e.massnahme
+              ? esc(e.massnahme)
+              : "";
           const dokumenteAmTag = docHtml(e.datum);
           const bemerkungen = [
             e.bemerkung ? esc(e.bemerkung) : "",
@@ -3563,10 +3572,10 @@
           const befinden = [e.befinden ? esc(e.befinden) : "", messwerte ? `<div class="messwerte">${messwerte}</div>` : ""].filter(Boolean).join("");
           karten.push({
             schluessel: zeitSchluessel(e),
-            html: `<article class="journal-karte"><header><div><strong>${datumLang(e.datum)}</strong>${e.messUhrzeit ? `<small>${esc(e.messUhrzeit)} Uhr</small>` : ""}</div>${e.arzt || e.massnahme ? `<span class="messwert">${esc(terminStatus(e))}</span>` : ""}</header>${kartenFeld("Arzt / Stelle", e.arzt ? esc(e.arzt) : "")}${kartenFeld("Maßnahme", e.massnahme ? esc(e.massnahme) : "")}${kartenFeld("Bemerkungen", bemerkungen)}${kartenFeld("Dokumente", dokumenteAmTag)}${kartenFeld("Kosten / Rezepte / Fahrtkosten", nebenkosten)}${kartenFeld("Befinden / Messwerte", befinden)}<div class="journal-karte-aktionen"><button class="knopf klein sekundaer" onclick="bearbeiten('${e.id}')">Ändern</button><button class="knopf klein gefahr" onclick="loeschen('${e.id}')">Löschen</button></div></article>`,
+            html: `<article class="journal-karte"><header><div><strong>${datumLang(e.datum)}</strong>${e.messUhrzeit ? `<small>${esc(e.messUhrzeit)} Uhr</small>` : ""}</div>${e.arzt || e.massnahme ? `<span class="messwert">${esc(terminStatus(e))}</span>` : ""}</header>${kartenFeld("Arzt / Stelle", e.arzt ? esc(e.arzt) : "")}${kartenFeld(istVitalwertMessung ? "Eintragsart" : "Maßnahme", sichtbareMassnahme)}${kartenFeld("Bemerkungen", bemerkungen)}${kartenFeld("Dokumente", dokumenteAmTag)}${kartenFeld("Kosten / Rezepte / Fahrtkosten", nebenkosten)}${kartenFeld("Befinden / Messwerte", befinden)}<div class="journal-karte-aktionen"><button class="knopf klein sekundaer" onclick="bearbeiten('${e.id}')">Ändern</button><button class="knopf klein gefahr" onclick="loeschen('${e.id}')">Löschen</button></div></article>`,
           });
           gruppiert.delete(e.datum);
-          return { schluessel: zeitSchluessel(e), html: `<tr><td>${datumLang(e.datum)}${e.messUhrzeit ? `<br><small>${esc(e.messUhrzeit)} Uhr</small>` : ""}</td><td>${esc(e.arzt)}${e.arzt || e.massnahme ? `<div class="messwerte"><span class="messwert">${esc(terminStatus(e))}</span></div>` : ""}</td><td>${esc(e.massnahme)}</td><td>${esc(e.bemerkung)}${e.gedanken ? `<p><strong>Meine Gedanken:</strong><br>${esc(e.gedanken)}</p>` : ""}${e.buchMoment && e.buchMoment !== "normal" ? `<div class="messwerte"><span class="messwert">${e.buchMoment === "wendepunkt" ? "Wendepunkt" : "Wichtiger Moment"}</span></div>` : ""}</td><td>${dokumenteAmTag}</td><td class="geld">${e.rechnung ? euro(e.rechnung) : ""}</td><td class="geld">${e.rezept ? euro(e.rezept) : ""}</td><td class="geld">${e.fahrt ? euro(e.fahrt) : ""}</td><td>${esc(e.befinden)}<div class="messwerte">${messwerteHtml(e)}</div></td><td class="aktionen"><button class="knopf klein sekundaer" onclick="bearbeiten('${e.id}')">Ändern</button> <button class="knopf klein gefahr" onclick="loeschen('${e.id}')">Löschen</button></td></tr>` };
+          return { schluessel: zeitSchluessel(e), html: `<tr><td>${datumLang(e.datum)}${e.messUhrzeit ? `<br><small>${esc(e.messUhrzeit)} Uhr</small>` : ""}</td><td>${esc(e.arzt)}${e.arzt || e.massnahme ? `<div class="messwerte"><span class="messwert">${esc(terminStatus(e))}</span></div>` : ""}</td><td>${sichtbareMassnahme}</td><td>${esc(e.bemerkung)}${e.gedanken ? `<p><strong>Meine Gedanken:</strong><br>${esc(e.gedanken)}</p>` : ""}${e.buchMoment && e.buchMoment !== "normal" ? `<div class="messwerte"><span class="messwert">${e.buchMoment === "wendepunkt" ? "Wendepunkt" : "Wichtiger Moment"}</span></div>` : ""}</td><td>${dokumenteAmTag}</td><td class="geld">${e.rechnung ? euro(e.rechnung) : ""}</td><td class="geld">${e.rezept ? euro(e.rezept) : ""}</td><td class="geld">${e.fahrt ? euro(e.fahrt) : ""}</td><td>${esc(e.befinden)}<div class="messwerte">${messwerteHtml(e)}</div></td><td class="aktionen"><button class="knopf klein sekundaer" onclick="bearbeiten('${e.id}')">Ändern</button> <button class="knopf klein gefahr" onclick="loeschen('${e.id}')">Löschen</button></td></tr>` };
         });
         [...gruppiert.entries()].forEach(([datum, dokumente]) => {
           const dokumentHtml = dokumente.map((d) => `<div class="geschichte-dokument"><strong>${esc(d.name || "Dokument")}</strong><small>${esc(d.kategorie || "Sonstiges")} · ${d.seiten?.length || 1} ${(d.seiten?.length || 1) === 1 ? "Datei" : "Seiten"}${d.notiz ? " · " + esc(d.notiz) : ""}</small><button class="knopf klein sekundaer" type="button" onclick="dokumentOeffnen('${d.id}')">Dokument öffnen</button></div>`).join("");
@@ -4121,7 +4130,7 @@
               return `<div class="tagebuch-eintrag"><div class="tagebuch-datum">${datumLang(e.datum)}</div><div class="tagebuch-text"><h5>${esc(ueberschrift)}</h5>${texte.join("") || "<p>Eintrag ohne weitere Beschreibung.</p>"}</div></div>`;
             })
             .join("");
-        html += `</div><p class="hinweis">Erstellt mit Mein Begleiter 1.9.1.2.5.2 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus</p>`;
+        html += `</div><p class="hinweis">Erstellt mit Mein Begleiter 1.9.1.2.5.3 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus</p>`;
         $("#berichtAusgabe").innerHTML = html;
         gespeichertenEntwurfAnzeigen();
       }
@@ -4183,7 +4192,7 @@
           });
         if (schluss)
           html += `<div class="buch-seite"><h4>Mein Rückblick und Ausblick</h4><div class="buch-schluss"><p>${esc(schluss)}</p></div></div>`;
-        html += `<p class="hinweis">Erstellt mit Mein Begleiter 1.9.1.2.5.2 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus · ${datumLang(heuteIso())}</p>`;
+        html += `<p class="hinweis">Erstellt mit Mein Begleiter 1.9.1.2.5.3 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus · ${datumLang(heuteIso())}</p>`;
         $("#berichtAusgabe").innerHTML = html;
       }
       function renderBericht() {
@@ -4449,7 +4458,7 @@
           });
         if (schluss)
           html += `<div class="buch-seite"><h4>Mein Rückblick und Ausblick</h4><div class="buch-schluss"><p>${esc(schluss)}</p></div></div>`;
-        html += `<p class="hinweis">${fassung === "lese" ? "Persönliche Leseausgabe – aus meinen eigenen Einträgen zusammengestellt. " : ""}Erstellt mit Mein Begleiter 1.9.1.2.5.2 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus · ${datumLang(heuteIso())}</p>`;
+        html += `<p class="hinweis">${fassung === "lese" ? "Persönliche Leseausgabe – aus meinen eigenen Einträgen zusammengestellt. " : ""}Erstellt mit Mein Begleiter 1.9.1.2.5.3 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus · ${datumLang(heuteIso())}</p>`;
         $("#berichtAusgabe").innerHTML = html;
         gespeichertenEntwurfAnzeigen();
       }
@@ -6513,7 +6522,7 @@
           const version = Number(obj.version || obj.formatVersion || 1);
           if (!Number.isFinite(version) || version > APP_VERSION)
             throw new Error(
-              `Diese Sicherung wurde mit einer neueren Datenstruktur (${obj.version || "unbekannt"}) erstellt und kann mit Version 1.9.1.2.5.2 nicht sicher geöffnet werden.`,
+              `Diese Sicherung wurde mit einer neueren Datenstruktur (${obj.version || "unbekannt"}) erstellt und kann mit Version 1.9.1.2.5.3 nicht sicher geöffnet werden.`,
             );
           return {
             obj,
@@ -6797,7 +6806,7 @@
           pass = $("#geraetePasswort"),
           pass2 = $("#geraetePasswort2"),
           weiter = $("#geraeteWeiter");
-        const APP_VERSION_GERAETEWECHSEL = "1.9.1.2.5.2";
+        const APP_VERSION_GERAETEWECHSEL = "1.9.1.2.5.3";
         const DATENSTRUKTUR_VERSION = "1.8";
         const SICHERUNGSFORMAT_VERSION = 2;
         const MAX_DATEIGROESSE = 250 * 1024 * 1024;
@@ -7236,7 +7245,7 @@
                 vorbereiteteRuecksicherung = await ruecksicherungVorbereiten(kennwort);
               }
               $("#geraetePruefung").innerHTML =
-        `<strong>✓ Entschlüsselung und Integritätsprüfung bestanden</strong><p>Datei: ${esc(importDatei.name)} · ${dateigroesse(importDatei.size)}</p><p>Erstellt: ${new Date(innen.erstelltAm).toLocaleString("de-DE")} auf ${esc(innen.quellgeraet)} · Quellversion ${esc(innen.appVersion)}</p><p>Sicherungskennung: ${esc(innen.sicherungsId)}</p><p>${stats.eintraege} Einträge · ${stats.termine} Termine · ${stats.fragen} Fragen · ${stats.medikamente} Medikamente</p><p>${stats.dokumente} Dokumentenmappen · ${stats.seiten} Dokumentseiten · ${dateigroesse(stats.dokumentBytes)}</p><p>Speicher: ${esc(speicher.text)}</p><p>Auf diesem Gerät vorhanden: ${ziel.eintraege} Einträge · ${ziel.dokumente} Dokumentenmappen.</p>${zielIstLeer ? '<p><strong>✓ Das Zielgerät ist vollständig leer. Eine Rücksicherung ist nicht erforderlich.</strong></p>' : '<p><strong>Vorhandene Zieldaten werden ersetzt. Laden Sie deshalb zuerst die verschlüsselte Rücksicherung herunter.</strong></p>'}<p><strong>Eine Zusammenführung ist in Version 1.9.1.2.5.2 sicherheitshalber deaktiviert.</strong></p>`;
+        `<strong>✓ Entschlüsselung und Integritätsprüfung bestanden</strong><p>Datei: ${esc(importDatei.name)} · ${dateigroesse(importDatei.size)}</p><p>Erstellt: ${new Date(innen.erstelltAm).toLocaleString("de-DE")} auf ${esc(innen.quellgeraet)} · Quellversion ${esc(innen.appVersion)}</p><p>Sicherungskennung: ${esc(innen.sicherungsId)}</p><p>${stats.eintraege} Einträge · ${stats.termine} Termine · ${stats.fragen} Fragen · ${stats.medikamente} Medikamente</p><p>${stats.dokumente} Dokumentenmappen · ${stats.seiten} Dokumentseiten · ${dateigroesse(stats.dokumentBytes)}</p><p>Speicher: ${esc(speicher.text)}</p><p>Auf diesem Gerät vorhanden: ${ziel.eintraege} Einträge · ${ziel.dokumente} Dokumentenmappen.</p>${zielIstLeer ? '<p><strong>✓ Das Zielgerät ist vollständig leer. Eine Rücksicherung ist nicht erforderlich.</strong></p>' : '<p><strong>Vorhandene Zieldaten werden ersetzt. Laden Sie deshalb zuerst die verschlüsselte Rücksicherung herunter.</strong></p>'}<p><strong>Eine Zusammenführung ist in Version 1.9.1.2.5.3 sicherheitshalber deaktiviert.</strong></p>`;
               $("#geraetePruefung").hidden = false;
               pass.disabled = true;
               weiter.textContent = zielIstLeer
@@ -8346,7 +8355,7 @@
 </dialog>
 <script id="bedienoptimierung-v186-script">
 (() => {
-  const APP_VERSION = '1.9.1.2.5.2';
+  const APP_VERSION = '1.9.1.2.5.3';
   const MODUS_KEY = 'mein-begleiter-persoenlich-v1-9-1-ansicht';
   const START_KEY = 'mein-begleiter-persoenlich-v1-9-1-startauswahl';
   const ua = navigator.userAgent;
