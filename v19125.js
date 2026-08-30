@@ -1,6 +1,6 @@
 "use strict";
 (() => {
-  const VERSION = "1.9.1.2.5.4";
+  const VERSION = "1.9.1.2.5.5";
   const q = (s, r = document) => r.querySelector(s);
   const qa = (s, r = document) => [...r.querySelectorAll(s)];
   const safe = v => typeof esc === "function" ? esc(String(v ?? "")) : String(v ?? "").replace(/[&<>\"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -83,12 +83,13 @@
   const vitalDialog = document.createElement("dialog");
   vitalDialog.id = "v19125VitalDialog";
   vitalDialog.className = "dialog v19125-vitaldialog";
-  vitalDialog.innerHTML = `<form method="dialog"><div class="dialog-kopf"><div><h2>Vitalwerte eintragen</h2><p>Mehrere Messungen am selben Tag werden einzeln gespeichert.</p></div><button type="button" class="dialog-x" aria-label="Dialog schließen" data-vital-abbruch>×</button></div><div class="dialog-inhalt v19125-vitalraster"><label>Datum<input id="vitalDatum" type="date" required></label><label>Uhrzeit<input id="vitalZeit" type="time" required></label><label>Blutdruck SYS<input id="vitalSys" type="number" min="50" max="300" inputmode="numeric"></label><label>Blutdruck DIA<input id="vitalDia" type="number" min="30" max="200" inputmode="numeric"></label><label>Puls /min<input id="vitalPuls" type="number" min="20" max="250" inputmode="numeric"></label><label>Temperatur °C<input id="vitalTemp" type="number" min="30" max="45" step="0.1" inputmode="decimal"></label><label>Messstelle<select id="vitalTempOrt"><option value="">Nicht angegeben</option><option>Ohr</option><option>Mund</option><option>Stirn</option><option>Achsel</option><option>Rektal</option><option>Andere Messstelle</option></select></label><label>Sauerstoffsättigung %<input id="vitalSpo2" type="number" min="50" max="100" inputmode="numeric"></label><label>Blutzucker<input id="vitalZucker" type="number" min="0" step="0.1" inputmode="decimal"></label><label>Einheit<select id="vitalZuckerEinheit"><option value="mg/dl">mg/dl</option><option value="mmol/l">mmol/l</option></select></label><label class="span2">Situation oder kurze Notiz<textarea id="vitalNotiz" rows="2"></textarea></label></div><div class="dialog-fuss"><button type="button" class="knopf sekundaer" data-vital-abbruch>Abbrechen</button><button type="button" class="knopf" id="vitalSpeichern">Vitalwerte speichern</button></div></form>`;
+  vitalDialog.innerHTML = `<form method="dialog"><div class="dialog-kopf"><div><h2>Vitalwerte eintragen</h2><p>Mehrere Messungen am selben Tag werden einzeln gespeichert.</p></div><button type="button" class="dialog-x" aria-label="Dialog schließen" data-vital-abbruch>×</button></div><div class="dialog-inhalt v19125-vitalraster"><label>Datum<input id="vitalDatum" type="date" required></label><label>Uhrzeit<input id="vitalZeit" type="time" required></label><label>Blutdruck SYS<input id="vitalSys" type="number" min="50" max="300" inputmode="numeric"></label><label>Blutdruck DIA<input id="vitalDia" type="number" min="30" max="200" inputmode="numeric"></label><label>Puls /min<input id="vitalPuls" type="number" min="20" max="250" inputmode="numeric"></label><label>Temperatur °C<input id="vitalTemp" type="number" min="30" max="45" step="0.1" inputmode="decimal"></label><label>Messstelle<select id="vitalTempOrt"><option value="">Nicht angegeben</option><option>Ohr</option><option>Mund</option><option>Stirn</option><option>Achsel</option><option>Rektal</option><option>Andere Messstelle</option></select></label><label>Sauerstoffsättigung %<input id="vitalSpo2" type="number" min="50" max="100" inputmode="numeric"></label><label>Blutzucker<input id="vitalZucker" type="number" min="0" step="0.1" inputmode="decimal"></label><label>Einheit<select id="vitalZuckerEinheit"><option value="mg/dl">mg/dl</option><option value="mmol/l">mmol/l</option></select></label><label class="span2">Situation oder kurze Notiz<textarea id="vitalNotiz" rows="2"></textarea></label><div id="vitalStatus" class="v19125-vitalstatus span2" role="alert" hidden></div></div><div class="dialog-fuss"><button type="button" class="knopf sekundaer" data-vital-abbruch>Abbrechen</button><button type="button" class="knopf" id="vitalSpeichern">Vitalwerte speichern</button></div></form>`;
   document.body.appendChild(vitalDialog);
   const vitalOeffnen = () => {
     q("#vitalDatum").value = heute();
     q("#vitalZeit").value = new Date().toTimeString().slice(0, 5);
     qa("#v19125VitalDialog input:not(#vitalDatum):not(#vitalZeit),#v19125VitalDialog textarea").forEach(x => x.value = "");
+    q("#vitalStatus").hidden = true;
     vitalDialog.showModal();
   };
   qa("[data-vital-abbruch]", vitalDialog).forEach(b => b.addEventListener("click", () => vitalDialog.close()));
@@ -118,13 +119,21 @@
       });
       daten.eintraege.push(neuerEintrag);
       speichern();
-      renderAlles();
+      // Der erfolgreiche Speichervorgang darf nicht von einer nachfolgenden
+      // Bildschirmaktualisierung verdeckt werden. Deshalb zuerst schließen
+      // und bestätigen; die Ansichten werden anschließend getrennt erneuert.
       vitalDialog.close();
       if (typeof toast === "function") toast("Vitalwerte gespeichert");
+      setTimeout(() => {
+        ["renderTabelle", "renderCockpit", "renderVerlauf"].forEach(name => {
+          try { if (typeof globalThis[name] === "function") globalThis[name](); } catch (fehler) { console.error(`${name} nach Vitalwertspeicherung:`, fehler); }
+        });
+      }, 0);
     } catch (fehler) {
       console.error("Vitalwerte konnten nicht gespeichert werden:", fehler);
-      if (typeof toast === "function") toast("Vitalwerte wurden nicht gespeichert. Bitte erneut versuchen.");
-      else alert("Vitalwerte wurden nicht gespeichert. Bitte erneut versuchen.");
+      const status = q("#vitalStatus");
+      status.textContent = "Die Vitalwerte konnten nicht gespeichert werden. Bitte brechen Sie ab und versuchen Sie es erneut.";
+      status.hidden = false;
     } finally {
       speichernKnopf.disabled = false;
     }
