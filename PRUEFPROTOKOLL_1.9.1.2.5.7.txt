@@ -1,0 +1,43 @@
+MEIN BEGLEITER 1.9.1.2.5.7 – TECHNISCHES PRÜFPROTOKOLL
+
+BESTANDEN – KONSOLIDIERUNG UND CACHE
+- Neue eindeutige Dateien v19127.js und v19127.css werden geladen.
+- Der Service Worker verwendet den neuen Cache 1.9.1.2.5.7 und enthält ausschließlich die neuen konsolidierten Dateinamen.
+- Der Berichtzugang wurde aus der Übersicht fest entfernt.
+- „＋ Vitalwerte eintragen“ ist fest in der Übersicht vorhanden und wird von der Laufzeitlogik genau einmal angebunden.
+
+BESTANDEN – AUTOMATISIERTER DOM-LAUFZEITTEST
+- Anwendung startet ohne JavaScript-Laufzeitfehler.
+- Vitalwertdialog öffnet und speichert Blutdruck sowie Puls.
+- Dialog schließt; Speicherbestätigung erscheint.
+- Die technische Eintragsart lautet nach der Neuanlage `vitalwerte`.
+- Vitalmessung wurde geändert und erneut gespeichert; Eintragsart und sichtbare Kennzeichnung blieben erhalten.
+- Kostenübersicht fehlt im allgemeinen Druckzentrum und ist zentral auf der Kostenseite vorhanden.
+- Offene Frage zeigt im Ausdruck ihr Erfassungsdatum.
+- Befinden zeigt Wert und Datum an jedem Testpunkt.
+- Blutdruck erzeugt getrennte SYS- und DIA-Wertangaben.
+- Diagrammdruck setzt eine dynamische A4-Querformatregel.
+- Buchvorschau enthält keinen Zeitraum 01.01.1 bis 31.12.9999 und verwendet das persönliche Logo.
+
+BESTANDEN – STATISCHE PRÜFUNGEN
+- JavaScript-Syntax von v19124.js, v19127.js, Service Worker und allen eingebetteten Skripten geprüft.
+- manifest.webmanifest ist gültiges JSON.
+- Keine doppelten statischen HTML-IDs gefunden.
+- Hauptversionsangaben stehen auf 1.9.1.2.5.7.
+- ZIP enthält index.html, Manifest, Service Worker, Offline-Seite, v19124, v19127 und alle erforderlichen Symbole.
+- Keine absichtlich eingebauten persönlichen Testdaten in den Programmdateien.
+
+BESTANDSSCHUTZ
+- Datenstruktur und Sicherungsformat wurden nicht geändert.
+- Bereits gespeicherte Messwerte werden nicht gelöscht oder verändert.
+- Die automatische Kennzeichnungsreparatur ist auf reine Vitalmessungen ohne Arzt, Maßnahme, Tagescheck oder Kosten begrenzt.
+- Keine automatische Synchronisation oder Datenübertragung.
+
+NOCH DURCH LOTHAR ZU PRÜFEN
+- Sichtprüfung der Startseite mit persönlichen Daten.
+- Reale Druckvorschau in Firefox oder Chrome: Querformat, Seitenumbrüche und Schriftgröße.
+- Kostenbericht mit den vorhandenen Einzelposten.
+- Persönliches Buch mit den eigenen Einträgen.
+- Nach dem PC-Test folgen Samsung A9 und Smartphone in einer späteren Version.
+
+Hinweis: Der automatisierte Laufzeittest bildet Bedienvorgänge in einer DOM-Browserumgebung ab. Die echte Druckvorschau und das Aussehen auf Lothars PC bleiben deshalb Teil des Praxistests.
