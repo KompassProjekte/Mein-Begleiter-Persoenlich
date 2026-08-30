@@ -1,6 +1,6 @@
 "use strict";
 (() => {
-  const VERSION = "1.9.1.2.5.3";
+  const VERSION = "1.9.1.2.5.4";
   const q = (s, r = document) => r.querySelector(s);
   const qa = (s, r = document) => [...r.querySelectorAll(s)];
   const safe = v => typeof esc === "function" ? esc(String(v ?? "")) : String(v ?? "").replace(/[&<>\"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -99,39 +99,34 @@
     const e = {temperatur:zahl("#vitalTemp"), temperaturOrt:q("#vitalTempOrt").value, blutdruckSys:zahl("#vitalSys"), blutdruckDia:zahl("#vitalDia"), puls:zahl("#vitalPuls"), spo2:zahl("#vitalSpo2"), blutzucker:zahl("#vitalZucker"), blutzuckerEinheit:q("#vitalZuckerEinheit").value, messnotiz:q("#vitalNotiz").value.trim()};
     const hatWert = [e.temperatur,e.blutdruckSys,e.blutdruckDia,e.puls,e.spo2,e.blutzucker].some(v => v !== "") || e.messnotiz;
     if (!hatWert) { if (typeof toast === "function") toast("Bitte mindestens einen Messwert eintragen."); return; }
+    const speichernKnopf = q("#vitalSpeichern");
+    speichernKnopf.disabled = true;
     try {
-      const form = q("#eintragForm");
-      if (!form) throw new Error("Das Speicherformular wurde nicht gefunden.");
-      form.reset();
-      q("#eintragId").value = "";
-      q("#datum").value = datum;
-      q("#messUhrzeit").value = zeit;
-      q("#terminstatus").value = "Geplant";
-      q("#buchMoment").value = "normal";
-      q("#befindenWert").dataset.aktiv = "0";
-      q("#schmerz").dataset.aktiv = "0";
-      q("#temperatur").value = e.temperatur;
-      q("#temperaturOrt").value = e.temperaturOrt;
-      q("#blutdruckSys").value = e.blutdruckSys;
-      q("#blutdruckDia").value = e.blutdruckDia;
-      q("#puls").value = e.puls;
-      q("#spo2").value = e.spo2;
-      q("#blutzucker").value = e.blutzucker;
-      q("#blutzuckerEinheit").value = e.blutzuckerEinheit;
-      q("#messnotiz").value = e.messnotiz;
-      const vorherigeIds = new Set(daten.eintraege.map(eintrag => eintrag.id));
-      form.requestSubmit();
-      const neuerEintrag = daten.eintraege.find(eintrag => !vorherigeIds.has(eintrag.id));
-      if (neuerEintrag) {
-        neuerEintrag.eintragsart = "vitalwerte";
-        speichern();
-        renderAlles();
-      }
+      // Direkt als eigener Messdatensatz speichern. Der frühere Umweg über das
+      // geschlossene allgemeine Eintragsformular wurde nicht von jedem Browser
+      // zuverlässig ausgeführt.
+      const id = `j${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+      const neuerEintrag = typeof leeresEintragObjekt === "function"
+        ? leeresEintragObjekt(id, datum, zeit)
+        : { id, datum, messUhrzeit: zeit, arzt: "", massnahme: "", terminstatus: "Geplant" };
+      Object.assign(neuerEintrag, e, {
+        eintragsart: "vitalwerte",
+        arzt: "",
+        massnahme: "",
+        datum,
+        messUhrzeit: zeit,
+      });
+      daten.eintraege.push(neuerEintrag);
+      speichern();
+      renderAlles();
       vitalDialog.close();
+      if (typeof toast === "function") toast("Vitalwerte gespeichert");
     } catch (fehler) {
       console.error("Vitalwerte konnten nicht gespeichert werden:", fehler);
       if (typeof toast === "function") toast("Vitalwerte wurden nicht gespeichert. Bitte erneut versuchen.");
       else alert("Vitalwerte wurden nicht gespeichert. Bitte erneut versuchen.");
+    } finally {
+      speichernKnopf.disabled = false;
     }
   });
   const vitalButton = document.createElement("button");

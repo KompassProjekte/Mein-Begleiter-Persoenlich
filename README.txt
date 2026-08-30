@@ -1,5 +1,5 @@
 MEIN BEGLEITER
-Version 1.9.1.2.5.3 PWA – Persönliche Arbeitsversion
+Version 1.9.1.2.5.4 PWA – Persönliche Arbeitsversion
 Stand: 29.08.2026
 Entwickelt von Lothar & Nimbus
 

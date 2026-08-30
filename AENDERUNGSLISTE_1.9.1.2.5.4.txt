@@ -1,0 +1,48 @@
+MEIN BEGLEITER 1.9.1.2.5.4 – ÄNDERUNGSLISTE
+
+KORREKTUR 1.9.1.2.5.4
+- Der Speichervorgang des Vitalwert-Dialogs wurde grundlegend repariert.
+- Vitalwerte werden jetzt direkt als eigener Messdatensatz gespeichert.
+- Der unzuverlässige Umweg über das geschlossene allgemeine Eintragsformular entfällt.
+- Nach erfolgreichem Speichern erscheint die Meldung „Vitalwerte gespeichert“.
+- Während des Speicherns ist die Schaltfläche kurz gesperrt, damit kein Doppelklick zwei Datensätze erzeugt.
+- Der Messdatensatz enthält weiterhin keine Arzt- oder Maßnahmenangabe und erzeugt keinen Termin.
+
+Übernommen aus 1.9.1.2.5.3
+- Vitalwert-Messungen werden in „Meine Einträge“ sichtbar als „Vitalwerte – Messung“ bezeichnet.
+- Die Kennzeichnung erscheint in Tabellenansicht und mobiler Kartenansicht.
+- Das allgemeine Feld „Maßnahme“ bleibt dabei unverändert leer; Vitalwerte werden daher nicht zu Terminen.
+- Vorhandene Messwerte, Datum, Uhrzeit und Notizen werden nicht verändert.
+
+Übernommen aus 1.9.1.2.5.2
+- Bereits gespeicherte Vitalmessungen mit der falschen Maßnahme „Vitalwerte“ werden erkannt.
+- Ausschließlich die falsche Termin-Kennzeichnung wird entfernt.
+- Messwerte, Datum, Uhrzeit und Notiz bleiben vollständig erhalten.
+- Neue Vitalmessungen erhalten dauerhaft die Eintragsart „vitalwerte“.
+- Doppelte Messungen werden aus Gründen des Bestandsschutzes nicht automatisch gelöscht.
+
+- Vitalwertspeicherung an die bewährte Eintrags-Speicherlogik angebunden.
+- Vitalwerte werden ohne Terminbezeichnung als eigener Messdatensatz gespeichert.
+- Bei einem Speicherfehler erscheint jetzt eine verständliche Rückmeldung.
+- Schließschaltfläche des Vitalwertdialogs rund und 44 × 44 Pixel groß gestaltet.
+- Service-Worker-Cache erneut auf 1.9.1.2.5.4 angehoben.
+
+- Druckzentrum auf eindeutige, inhaltsabhängige Auswahl reduziert.
+- Kostenübersicht: nur Kurzübersicht oder detaillierte Übersicht mit Einzelposten.
+- Einzelposten enthalten Datum, Kostenart, Bezeichnung/Empfänger und Betrag.
+- Leeren Druckfuß entfernt; unbeabsichtigte leere Folgeseite verhindert.
+- „Kommende Termine mit Fragen“ als gemeinsamer Ausdruck ergänzt.
+- Offene Fragen zeigen Terminbezug und – soweit vorhanden – Erfassungsdatum.
+- Verlauf und ausgewählte Diagramme für A4-Querformat vorbereitet.
+- Diagramme im Druck auf höchstens zwei große Darstellungen je Reihe vergrößert.
+- Professionelle Buch-Titelseite mit Logo, Cremeweiß, Petrol und Gold umgesetzt.
+- Dokumentkategorien zwischen Hinzufügen, Ändern und Filter vereinheitlicht.
+- Eigener Zugang „＋ Vitalwerte eintragen“ für mehrere Messungen pro Tag ergänzt.
+- Doppelten Berichtzugang von der Übersicht entfernt.
+- Hilfe und Anleitung lesbarer gestaltet.
+- Einführung als hervorgehobenen Startbereich angeordnet.
+- Schriftgrößenauswahl zusätzlich in Hilfe und Anleitung ergänzt.
+- Kennwort-Auge und Medikamentenabschluss aus 1.9.1.2.4 beibehalten.
+- Manifest, Cache und sichtbare Versionsangaben auf 1.9.1.2.5.4 aktualisiert.
+
+Keine automatische Synchronisation und keine Änderung des Sicherungsformats.
