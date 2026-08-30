@@ -1,0 +1,21 @@
+MEIN BEGLEITER 1.9.1.2.5 – ÄNDERUNGSLISTE
+
+- Druckzentrum auf eindeutige, inhaltsabhängige Auswahl reduziert.
+- Kostenübersicht: nur Kurzübersicht oder detaillierte Übersicht mit Einzelposten.
+- Einzelposten enthalten Datum, Kostenart, Bezeichnung/Empfänger und Betrag.
+- Leeren Druckfuß entfernt; unbeabsichtigte leere Folgeseite verhindert.
+- „Kommende Termine mit Fragen“ als gemeinsamer Ausdruck ergänzt.
+- Offene Fragen zeigen Terminbezug und – soweit vorhanden – Erfassungsdatum.
+- Verlauf und ausgewählte Diagramme für A4-Querformat vorbereitet.
+- Diagramme im Druck auf höchstens zwei große Darstellungen je Reihe vergrößert.
+- Professionelle Buch-Titelseite mit Logo, Cremeweiß, Petrol und Gold umgesetzt.
+- Dokumentkategorien zwischen Hinzufügen, Ändern und Filter vereinheitlicht.
+- Eigener Zugang „＋ Vitalwerte eintragen“ für mehrere Messungen pro Tag ergänzt.
+- Doppelten Berichtzugang von der Übersicht entfernt.
+- Hilfe und Anleitung lesbarer gestaltet.
+- Einführung als hervorgehobenen Startbereich angeordnet.
+- Schriftgrößenauswahl zusätzlich in Hilfe und Anleitung ergänzt.
+- Kennwort-Auge und Medikamentenabschluss aus 1.9.1.2.4 beibehalten.
+- Manifest, Cache und sichtbare Versionsangaben auf 1.9.1.2.5 aktualisiert.
+
+Keine automatische Synchronisation und keine Änderung des Sicherungsformats.

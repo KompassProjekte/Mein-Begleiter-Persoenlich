@@ -1,5 +1,5 @@
 MEIN BEGLEITER
-Version 1.9.1.2.4 PWA – PC-Korrekturversion
+Version 1.9.1.2.5 PWA – Persönliche Arbeitsversion
 Stand: 29.08.2026
 Entwickelt von Lothar & Nimbus
 
