@@ -1,0 +1,39 @@
+MEIN BEGLEITER 1.9.1.2.5.2 – KURZER PC-KONTROLLTEST
+
+VORHER
+[ ] Aktuelle verschlüsselte vollständige Sicherung erstellen.
+[ ] Version 1.9.1.2.4 nicht löschen.
+
+START UND ÜBERSICHT
+[ ] Version 1.9.1.2.5.2 wird angezeigt.
+[ ] Persönliche Daten sind vollständig vorhanden.
+[ ] Auf der Übersicht gibt es Bericht nicht doppelt.
+[ ] „＋ Vitalwerte eintragen“ ist sichtbar und verständlich.
+
+VITALWERTE
+[ ] Zwei Messungen am selben Tag mit unterschiedlichen Uhrzeiten speichern.
+[ ] Beide Messungen erscheinen einzeln und bleiben änderbar/löschbar.
+[ ] Im Verlauf werden beide Uhrzeiten berücksichtigt.
+
+DOKUMENTE
+[ ] Eigene Kategorie im Filter „Alle Kategorien“ finden.
+[ ] Kategorie beim Ändern eines Dokuments auswählen.
+[ ] Dateiname wird als änderbarer Dokumentname vorgeschlagen.
+
+DRUCKEN
+[ ] Kosten – Kurzübersicht: keine leere zweite Seite.
+[ ] Kosten – detailliert: alle Einzelposten und Bezeichnung/Empfänger vorhanden.
+[ ] Kommende Termine: zugehörige Fragen stehen direkt beim Termin.
+[ ] Nicht zugeordnete Fragen stehen am Ende.
+[ ] Verlauf und ausgewählte Diagramme: A4 quer, große Diagramme, Werte lesbar.
+[ ] Tagebuch/Buch: professionelle Titelseite mit Logo und ohne technische Filter.
+
+HILFE
+[ ] Einführung starten ist deutlich sichtbar.
+[ ] Standard, Groß und Sehr groß lassen sich auswählen.
+[ ] Sehr groß schneidet keine Schaltflächen oder Texte ab.
+
+SICHERHEIT
+[ ] Kennwort-Auge funktioniert.
+[ ] Bestehende verschlüsselte Sicherung wird korrekt geprüft.
+[ ] Keine Sicherung einlesen, wenn keine aktuelle Rücksicherung vorhanden ist.

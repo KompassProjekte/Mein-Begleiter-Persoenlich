@@ -1,0 +1,13 @@
+GITHUB-AKTUALISIERUNG – MEIN BEGLEITER 1.9.1.2.5.2
+
+1. In der bisherigen persönlichen Version eine aktuelle verschlüsselte Sicherung erstellen.
+2. Sicherungsdatei, Kennwort und persönliche Dokumente niemals bei GitHub hochladen.
+3. Nur die Programmdateien aus diesem ZIP in das vorhandene persönliche Programm-Repository übernehmen.
+4. Vorhandene Programmdateien mit den neuen Dateien ersetzen; den Ordner icons vollständig übernehmen.
+5. GitHub Pages aktualisieren lassen.
+6. Anwendung öffnen und erforderlichenfalls eine vollständige Browseraktualisierung ausführen.
+7. Kontrollieren, ob Version 1.9.1.2.5.2 angezeigt wird.
+8. Vorhandene Daten prüfen und den PC-Kontrolltest durchführen.
+
+Es gibt keine automatische Synchronisation. GitHub enthält ausschließlich die Anwendung,
+niemals persönliche Gesundheitsdaten oder Sicherungsdateien.

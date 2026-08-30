@@ -1,6 +1,6 @@
 "use strict";
 (() => {
-  const VERSION = "1.9.1.2.5.1";
+  const VERSION = "1.9.1.2.5.2";
   const q = (s, r = document) => r.querySelector(s);
   const qa = (s, r = document) => [...r.querySelectorAll(s)];
   const safe = v => typeof esc === "function" ? esc(String(v ?? "")) : String(v ?? "").replace(/[&<>\"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -10,6 +10,26 @@
 
   // Alle sichtbaren Laufzeitangaben angleichen, ohne gespeicherte Daten anzutasten.
   document.title = `Mein Begleiter ${VERSION} PWA – Persönliche Arbeitsversion`;
+
+  // Messwerte aus 1.9.1.2.5 wurden versehentlich mit der Maßnahme
+  // „Vitalwerte“ gespeichert und dadurch als Termine erkannt. Nur diese
+  // falsche Termin-Kennzeichnung wird entfernt; sämtliche Messwerte bleiben.
+  const istVitalmessung = e => {
+    const hatMesswert = ["temperatur","blutdruckSys","blutdruckDia","puls","spo2","blutzucker"]
+      .some(k => e?.[k] !== "" && e?.[k] !== null && e?.[k] !== undefined);
+    return !String(e?.arzt || "").trim() && String(e?.massnahme || "").trim().toLocaleLowerCase("de-DE") === "vitalwerte" && hatMesswert;
+  };
+  let vitalAltbestandBereinigt = false;
+  daten.eintraege.forEach(e => {
+    if (!istVitalmessung(e)) return;
+    e.eintragsart = "vitalwerte";
+    e.massnahme = "";
+    vitalAltbestandBereinigt = true;
+  });
+  if (vitalAltbestandBereinigt) {
+    speichern();
+    renderAlles();
+  }
 
   // Der doppelte Berichtzugang auf der Startseite entfällt.
   const cockpit = q("#seite-cockpit");
@@ -99,7 +119,14 @@
       q("#blutzucker").value = e.blutzucker;
       q("#blutzuckerEinheit").value = e.blutzuckerEinheit;
       q("#messnotiz").value = e.messnotiz;
+      const vorherigeIds = new Set(daten.eintraege.map(eintrag => eintrag.id));
       form.requestSubmit();
+      const neuerEintrag = daten.eintraege.find(eintrag => !vorherigeIds.has(eintrag.id));
+      if (neuerEintrag) {
+        neuerEintrag.eintragsart = "vitalwerte";
+        speichern();
+        renderAlles();
+      }
       vitalDialog.close();
     } catch (fehler) {
       console.error("Vitalwerte konnten nicht gespeichert werden:", fehler);
