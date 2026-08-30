@@ -1,6 +1,6 @@
 "use strict";
 (() => {
-  const VERSION = "1.9.1.2.5";
+  const VERSION = "1.9.1.2.5.1";
   const q = (s, r = document) => r.querySelector(s);
   const qa = (s, r = document) => [...r.querySelectorAll(s)];
   const safe = v => typeof esc === "function" ? esc(String(v ?? "")) : String(v ?? "").replace(/[&<>\"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -76,14 +76,36 @@
     const datum = q("#vitalDatum").value, zeit = q("#vitalZeit").value;
     if (!datum || !zeit) { if (typeof toast === "function") toast("Bitte Datum und Uhrzeit eintragen."); return; }
     const zahl = id => q(id).value === "" ? "" : Number(q(id).value);
-    const e = {id:"v" + Date.now(), datum, messUhrzeit:zeit, arzt:"", terminstatus:"Geplant", massnahme:"Vitalwerte", bemerkung:"", gedanken:"", buchMoment:"normal", rechnung:0, rezept:0, fahrt:0, befinden:"", befindenWert:"", schmerz:"", energie:"", schlaf:"", gewicht:"", tageszeit:"", messsituation:"", messnotiz:q("#vitalNotiz").value.trim(), schmerzOrt:"", schlafQualitaet:"", temperatur:zahl("#vitalTemp"), temperaturOrt:q("#vitalTempOrt").value, beschwerden:"", blutdruckSys:zahl("#vitalSys"), blutdruckDia:zahl("#vitalDia"), puls:zahl("#vitalPuls"), spo2:zahl("#vitalSpo2"), atemfrequenz:"", blutzucker:zahl("#vitalZucker"), blutzuckerEinheit:q("#vitalZuckerEinheit").value, blutzuckerZeitpunkt:"", trinkmenge:"", urinmenge:"", stuhlgang:"", appetit:"", uebelkeit:"", atemnot:"", schwellungen:"", aktivitaetMin:"", schritte:""};
+    const e = {temperatur:zahl("#vitalTemp"), temperaturOrt:q("#vitalTempOrt").value, blutdruckSys:zahl("#vitalSys"), blutdruckDia:zahl("#vitalDia"), puls:zahl("#vitalPuls"), spo2:zahl("#vitalSpo2"), blutzucker:zahl("#vitalZucker"), blutzuckerEinheit:q("#vitalZuckerEinheit").value, messnotiz:q("#vitalNotiz").value.trim()};
     const hatWert = [e.temperatur,e.blutdruckSys,e.blutdruckDia,e.puls,e.spo2,e.blutzucker].some(v => v !== "") || e.messnotiz;
     if (!hatWert) { if (typeof toast === "function") toast("Bitte mindestens einen Messwert eintragen."); return; }
-    daten.eintraege.push(e);
-    if (typeof speichern === "function") speichern();
-    if (typeof renderAlles === "function") renderAlles();
-    vitalDialog.close();
-    if (typeof toast === "function") toast("Vitalwerte gespeichert");
+    try {
+      const form = q("#eintragForm");
+      if (!form) throw new Error("Das Speicherformular wurde nicht gefunden.");
+      form.reset();
+      q("#eintragId").value = "";
+      q("#datum").value = datum;
+      q("#messUhrzeit").value = zeit;
+      q("#terminstatus").value = "Geplant";
+      q("#buchMoment").value = "normal";
+      q("#befindenWert").dataset.aktiv = "0";
+      q("#schmerz").dataset.aktiv = "0";
+      q("#temperatur").value = e.temperatur;
+      q("#temperaturOrt").value = e.temperaturOrt;
+      q("#blutdruckSys").value = e.blutdruckSys;
+      q("#blutdruckDia").value = e.blutdruckDia;
+      q("#puls").value = e.puls;
+      q("#spo2").value = e.spo2;
+      q("#blutzucker").value = e.blutzucker;
+      q("#blutzuckerEinheit").value = e.blutzuckerEinheit;
+      q("#messnotiz").value = e.messnotiz;
+      form.requestSubmit();
+      vitalDialog.close();
+    } catch (fehler) {
+      console.error("Vitalwerte konnten nicht gespeichert werden:", fehler);
+      if (typeof toast === "function") toast("Vitalwerte wurden nicht gespeichert. Bitte erneut versuchen.");
+      else alert("Vitalwerte wurden nicht gespeichert. Bitte erneut versuchen.");
+    }
   });
   const vitalButton = document.createElement("button");
   vitalButton.type = "button"; vitalButton.className = "knopf v19125-vitalbutton"; vitalButton.innerHTML = "＋ Vitalwerte eintragen";
