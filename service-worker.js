@@ -1,4 +1,4 @@
-const CACHE = 'mein-begleiter-persoenlich-cache-v1-9-1-2-5-5';
+const CACHE = 'mein-begleiter-persoenlich-cache-v1-9-1-2-5-6';
 const BASIS = '/Mein-Begleiter-Persoenlich/';
 const PFLICHTDATEIEN = [
   BASIS,
@@ -15,7 +15,8 @@ const OPTIONALE_DATEIEN = [
   BASIS + 'icons/icon-512.png',
   BASIS + 'icons/icon-maskable-512.png',
   BASIS + 'icons/apple-touch-icon-180.png',
-  BASIS + 'icons/favicon-64.png'
+  BASIS + 'icons/favicon-64.png',
+  BASIS + 'icons/logo-persoenlich.svg'
 ];
 
 self.addEventListener('install', event => {

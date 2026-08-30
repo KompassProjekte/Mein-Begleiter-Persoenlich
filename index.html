@@ -7,7 +7,7 @@
       content="width=device-width,initial-scale=1,viewport-fit=cover"
     />
     <meta name="theme-color" content="#225b56" />
-    <title>Mein Begleiter 1.9.1.2.5.5 PWA – Persönliche Arbeitsversion</title>
+    <title>Mein Begleiter 1.9.1.2.5.6 PWA – Persönliche Arbeitsversion</title>
     <link rel="manifest" href="./manifest.webmanifest" />
     <link rel="icon" type="image/png" href="./icons/favicon-64.png" />
     <link rel="apple-touch-icon" href="./icons/apple-touch-icon-180.png" />
@@ -1704,7 +1704,7 @@
           </button>
         </nav>
         <div class="seitenfuss">
-          <strong>Version 1.9.1.2.5.5 PWA – PERSÖNLICHE ARBEITSVERSION</strong
+          <strong>Version 1.9.1.2.5.6 PWA – PERSÖNLICHE ARBEITSVERSION</strong
           >Stand: 28.08.2026<br />Entwickelt von Lothar &amp; Nimbus
         </div>
       </aside>
@@ -1905,8 +1905,8 @@
               <p>Alle erfassten Rechnungen, Rezepte und Fahrtkosten.</p>
             </div>
             <div class="kopf-aktionen">
-              <button class="knopf sekundaer" onclick="window.print()">
-                🖨 Kostenübersicht drucken
+              <button class="knopf sekundaer" type="button" id="kostenBerichtErstellen">
+                🖨 Kostenbericht erstellen
               </button>
             </div>
           </header>
@@ -2660,7 +2660,7 @@
                 <span>Persönlicher Browser-Speicher</span>
               </div>
               <p>
-                <strong>Mein Begleiter 1.9.1.2.5.5 PWA – Persönliche Arbeitsversion</strong>
+                <strong>Mein Begleiter 1.9.1.2.5.6 PWA – Persönliche Arbeitsversion</strong>
               </p>
               <p>
                 Ihre Einträge werden ausschließlich lokal im persönlichen
@@ -4130,7 +4130,7 @@
               return `<div class="tagebuch-eintrag"><div class="tagebuch-datum">${datumLang(e.datum)}</div><div class="tagebuch-text"><h5>${esc(ueberschrift)}</h5>${texte.join("") || "<p>Eintrag ohne weitere Beschreibung.</p>"}</div></div>`;
             })
             .join("");
-        html += `</div><p class="hinweis">Erstellt mit Mein Begleiter 1.9.1.2.5.5 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus</p>`;
+        html += `</div><p class="hinweis">Erstellt mit Mein Begleiter 1.9.1.2.5.6 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus</p>`;
         $("#berichtAusgabe").innerHTML = html;
         gespeichertenEntwurfAnzeigen();
       }
@@ -4192,7 +4192,7 @@
           });
         if (schluss)
           html += `<div class="buch-seite"><h4>Mein Rückblick und Ausblick</h4><div class="buch-schluss"><p>${esc(schluss)}</p></div></div>`;
-        html += `<p class="hinweis">Erstellt mit Mein Begleiter 1.9.1.2.5.5 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus · ${datumLang(heuteIso())}</p>`;
+        html += `<p class="hinweis">Erstellt mit Mein Begleiter 1.9.1.2.5.6 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus · ${datumLang(heuteIso())}</p>`;
         $("#berichtAusgabe").innerHTML = html;
       }
       function renderBericht() {
@@ -4458,7 +4458,7 @@
           });
         if (schluss)
           html += `<div class="buch-seite"><h4>Mein Rückblick und Ausblick</h4><div class="buch-schluss"><p>${esc(schluss)}</p></div></div>`;
-        html += `<p class="hinweis">${fassung === "lese" ? "Persönliche Leseausgabe – aus meinen eigenen Einträgen zusammengestellt. " : ""}Erstellt mit Mein Begleiter 1.9.1.2.5.5 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus · ${datumLang(heuteIso())}</p>`;
+        html += `<p class="hinweis">${fassung === "lese" ? "Persönliche Leseausgabe – aus meinen eigenen Einträgen zusammengestellt. " : ""}Erstellt mit Mein Begleiter 1.9.1.2.5.6 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus · ${datumLang(heuteIso())}</p>`;
         $("#berichtAusgabe").innerHTML = html;
         gespeichertenEntwurfAnzeigen();
       }
@@ -5801,38 +5801,23 @@
           chart("#chartSchlaf", "schlaf", 12, "#3479a6", " Std.");
           chart("#chartGewicht", "gewicht", null, "#7651a8", " kg");
         }
-        const basisKosten = renderKosten;
         renderKosten = function () {
           const von = $("#kostenVon").value,
             bis = $("#kostenBis").value,
-            art = $("#kostenArt").value,
-            original = daten.eintraege;
-          daten.eintraege = original.filter((e) => imZeitraum(e, von, bis));
-          if (art !== "alle")
-            daten.eintraege = daten.eintraege.map((e) => ({
-              ...e,
-              rechnung: art === "rechnung" ? e.rechnung : 0,
-              rezept: art === "rezept" ? e.rezept : 0,
-              fahrt: art === "fahrt" ? e.fahrt : 0,
-            }));
-          basisKosten();
-          daten.eintraege = original;
-          const kostenposten = [];
-          original
-            .filter((e) => imZeitraum(e, von, bis))
-            .forEach((e) =>
-              ["rechnung", "rezept", "fahrt"].forEach((a) => {
-                if (+e[a])
-                  kostenposten.push({
-                    datum: e.datum,
-                    art: a,
-                    betrag: +e[a],
-                    text: (e.arzt || e.massnahme || "").trim().toLowerCase(),
-                  });
-              }),
-            );
+            art = $("#kostenArt").value;
+          const namen={rechnung:"Rechnung",rezept:"Rezept",fahrt:"Fahrtkosten"};
+          const eintraege=daten.eintraege.filter(e=>imZeitraum(e,von,bis));
+          const kostenposten=eintraege.flatMap(e=>["rechnung","rezept","fahrt"]
+            .filter(a=>(art==="alle"||art===a)&&Number(e[a])>0)
+            .map(a=>({datum:e.datum,art:a,betrag:Number(e[a]),bezeichnung:(e.arzt||e.massnahme||e.bemerkung||"Ohne Bezeichnung").trim()})))
+            .sort((a,b)=>(b.datum||"").localeCompare(a.datum||""));
+          const summe=a=>kostenposten.filter(p=>p.art===a).reduce((s,p)=>s+p.betrag,0);
+          const r=summe("rechnung"),p=summe("rezept"),f=summe("fahrt"),g=r+p+f;
+          $("#kostenRechnungen").textContent=euro(r);$("#kostenRezepte").textContent=euro(p);$("#kostenFahrten").textContent=euro(f);$("#kostenGesamt").textContent=euro(g);
+          $("#kostenBalken").innerHTML=[["Rechnungen",r],["Rezepte",p],["Fahrtkosten",f]].map(([n,w])=>`<div class="kostenzeile"><span>${n}</span><div class="balken"><i style="width:${g?(w/g)*100:0}%"></i></div><strong>${euro(w)}</strong></div>`).join("");
+          $("#kostenEinzel").innerHTML=kostenposten.length?`<div class="v19126-kostentabelle"><table><thead><tr><th>Datum</th><th>Kostenart</th><th>Bezeichnung / Empfänger</th><th>Betrag</th></tr></thead><tbody>${kostenposten.map(p=>`<tr><td>${datumLang(p.datum)}</td><td>${namen[p.art]}</td><td>${esc(p.bezeichnung)}</td><td>${euro(p.betrag)}</td></tr>`).join("")}</tbody></table></div><div class="v19126-kostenkarten">${kostenposten.map(p=>`<article><strong>${namen[p.art]} · ${euro(p.betrag)}</strong><span>${datumLang(p.datum)}</span><p>${esc(p.bezeichnung)}</p></article>`).join("")}</div>`:'<div class="leer">Für die gewählte Auswahl sind keine Kosten vorhanden.</div>';
           const d = mehrfach(kostenposten, (e) =>
-            [e.datum, e.art, e.betrag, e.text].join("|"),
+            [e.datum, e.art, e.betrag, e.bezeichnung.toLowerCase()].join("|"),
           );
           $("#kostenDopplungen").classList.toggle("warn", d > 0);
           $("#kostenDopplungen").textContent = d
@@ -6522,7 +6507,7 @@
           const version = Number(obj.version || obj.formatVersion || 1);
           if (!Number.isFinite(version) || version > APP_VERSION)
             throw new Error(
-              `Diese Sicherung wurde mit einer neueren Datenstruktur (${obj.version || "unbekannt"}) erstellt und kann mit Version 1.9.1.2.5.5 nicht sicher geöffnet werden.`,
+              `Diese Sicherung wurde mit einer neueren Datenstruktur (${obj.version || "unbekannt"}) erstellt und kann mit Version 1.9.1.2.5.6 nicht sicher geöffnet werden.`,
             );
           return {
             obj,
@@ -6806,7 +6791,7 @@
           pass = $("#geraetePasswort"),
           pass2 = $("#geraetePasswort2"),
           weiter = $("#geraeteWeiter");
-        const APP_VERSION_GERAETEWECHSEL = "1.9.1.2.5.5";
+        const APP_VERSION_GERAETEWECHSEL = "1.9.1.2.5.6";
         const DATENSTRUKTUR_VERSION = "1.8";
         const SICHERUNGSFORMAT_VERSION = 2;
         const MAX_DATEIGROESSE = 250 * 1024 * 1024;
@@ -7245,7 +7230,7 @@
                 vorbereiteteRuecksicherung = await ruecksicherungVorbereiten(kennwort);
               }
               $("#geraetePruefung").innerHTML =
-        `<strong>✓ Entschlüsselung und Integritätsprüfung bestanden</strong><p>Datei: ${esc(importDatei.name)} · ${dateigroesse(importDatei.size)}</p><p>Erstellt: ${new Date(innen.erstelltAm).toLocaleString("de-DE")} auf ${esc(innen.quellgeraet)} · Quellversion ${esc(innen.appVersion)}</p><p>Sicherungskennung: ${esc(innen.sicherungsId)}</p><p>${stats.eintraege} Einträge · ${stats.termine} Termine · ${stats.fragen} Fragen · ${stats.medikamente} Medikamente</p><p>${stats.dokumente} Dokumentenmappen · ${stats.seiten} Dokumentseiten · ${dateigroesse(stats.dokumentBytes)}</p><p>Speicher: ${esc(speicher.text)}</p><p>Auf diesem Gerät vorhanden: ${ziel.eintraege} Einträge · ${ziel.dokumente} Dokumentenmappen.</p>${zielIstLeer ? '<p><strong>✓ Das Zielgerät ist vollständig leer. Eine Rücksicherung ist nicht erforderlich.</strong></p>' : '<p><strong>Vorhandene Zieldaten werden ersetzt. Laden Sie deshalb zuerst die verschlüsselte Rücksicherung herunter.</strong></p>'}<p><strong>Eine Zusammenführung ist in Version 1.9.1.2.5.5 sicherheitshalber deaktiviert.</strong></p>`;
+        `<strong>✓ Entschlüsselung und Integritätsprüfung bestanden</strong><p>Datei: ${esc(importDatei.name)} · ${dateigroesse(importDatei.size)}</p><p>Erstellt: ${new Date(innen.erstelltAm).toLocaleString("de-DE")} auf ${esc(innen.quellgeraet)} · Quellversion ${esc(innen.appVersion)}</p><p>Sicherungskennung: ${esc(innen.sicherungsId)}</p><p>${stats.eintraege} Einträge · ${stats.termine} Termine · ${stats.fragen} Fragen · ${stats.medikamente} Medikamente</p><p>${stats.dokumente} Dokumentenmappen · ${stats.seiten} Dokumentseiten · ${dateigroesse(stats.dokumentBytes)}</p><p>Speicher: ${esc(speicher.text)}</p><p>Auf diesem Gerät vorhanden: ${ziel.eintraege} Einträge · ${ziel.dokumente} Dokumentenmappen.</p>${zielIstLeer ? '<p><strong>✓ Das Zielgerät ist vollständig leer. Eine Rücksicherung ist nicht erforderlich.</strong></p>' : '<p><strong>Vorhandene Zieldaten werden ersetzt. Laden Sie deshalb zuerst die verschlüsselte Rücksicherung herunter.</strong></p>'}<p><strong>Eine Zusammenführung ist in Version 1.9.1.2.5.6 sicherheitshalber deaktiviert.</strong></p>`;
               $("#geraetePruefung").hidden = false;
               pass.disabled = true;
               weiter.textContent = zielIstLeer
@@ -7761,6 +7746,7 @@
           ),
         );
         const tageswertZahl = wert => {
+          if (wert === null || wert === undefined || String(wert).trim() === "") return null;
           const zahl = Number(String(wert ?? "").trim().replace(",", "."));
           return Number.isFinite(zahl) ? zahl : null;
         };
@@ -7804,7 +7790,7 @@
             max = Math.max(...alle),
             w = 760,
             h = 230,
-            p = 34,
+            p = 44,
             x = (i) =>
               p +
               (arr.length === 1
@@ -7817,12 +7803,12 @@
             svg += `<polyline points="${linie(feld2)}" fill="none" stroke="#cf7d35" stroke-width="4"/>`;
           const schritt = Math.max(1, Math.ceil(arr.length / 6));
           svg +=
-            arr
-              .map(
-                (e, i) =>
-                  `<circle cx="${x(i)}" cy="${y(tageswertZahl(e[feld]))}" r="5" fill="#28776d"><title>${datumLang(e.datum)} ${e.messUhrzeit || ""}: ${e[feld]} ${einheit}</title></circle>`,
-              )
-              .join("") + arr.map((e,i) => (i % schritt === 0 || i === arr.length-1) ? `<text x="${x(i)}" y="${h-7}" text-anchor="middle" font-size="12" fill="#506965">${new Intl.DateTimeFormat('de-DE',{day:'2-digit',month:'2-digit'}).format(new Date(e.datum+'T12:00:00'))}</text>` : '').join('') + "</svg>";
+            arr.map((e, i) => {
+              const v1=tageswertZahl(e[feld]), v2=feld2?tageswertZahl(e[feld2]):null;
+              const label=feld2?`${String(e[feld]).replace('.', ',')}/${String(e[feld2]).replace('.', ',')}`:`${String(e[feld]).replace('.', ',')}`;
+              const labelY=Math.max(16,Math.min(y(v1),v2===null?y(v1):y(v2))-10);
+              return `<circle cx="${x(i)}" cy="${y(v1)}" r="5" fill="#28776d"><title>${datumLang(e.datum)} ${e.messUhrzeit || ""}: ${label} ${einheit}</title></circle>${v2===null?'':`<circle cx="${x(i)}" cy="${y(v2)}" r="5" fill="#cf7d35"></circle>`}<text x="${x(i)}" y="${labelY}" text-anchor="middle" class="v19126-messwert">${label}</text>`;
+            }).join("") + arr.map((e,i) => (i % schritt === 0 || i === arr.length-1) ? `<text x="${x(i)}" y="${h-7}" text-anchor="middle" font-size="12" fill="#506965">${arr.some((x,j)=>j!==i&&x.datum===e.datum)&&e.messUhrzeit?esc(e.messUhrzeit):new Intl.DateTimeFormat('de-DE',{day:'2-digit',month:'2-digit'}).format(new Date(e.datum+'T12:00:00'))}</text>` : '').join('') + (feld2?`<g class="v19126-legende"><circle cx="${p}" cy="18" r="5" fill="#28776d"/><text x="${p+10}" y="22">SYS</text><circle cx="${p+58}" cy="18" r="5" fill="#cf7d35"/><text x="${p+68}" y="22">DIA</text></g>`:'') + "</svg>";
           el.innerHTML = svg;
         }
         function tcCharts() {
@@ -8355,7 +8341,7 @@
 </dialog>
 <script id="bedienoptimierung-v186-script">
 (() => {
-  const APP_VERSION = '1.9.1.2.5.5';
+  const APP_VERSION = '1.9.1.2.5.6';
   const MODUS_KEY = 'mein-begleiter-persoenlich-v1-9-1-ansicht';
   const START_KEY = 'mein-begleiter-persoenlich-v1-9-1-startauswahl';
   const ua = navigator.userAgent;
