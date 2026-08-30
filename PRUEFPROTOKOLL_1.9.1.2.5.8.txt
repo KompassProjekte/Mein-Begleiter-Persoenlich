@@ -1,0 +1,26 @@
+MEIN BEGLEITER 1.9.1.2.5.8 – TECHNISCHES PRÜFPROTOKOLL
+
+KONSOLIDIERUNG UND CACHE
+- Eindeutige Dateien v19128.js und v19128.css werden geladen.
+- Service Worker verwendet ausschließlich den Cache 1.9.1.2.5.8 und die neuen Zusatzdateien.
+- Datenstruktur und Sicherungsformat sind unverändert.
+
+FUNKTIONSWEGE
+- „Meine Geschichte“ enthält keinen direkten Druckknopf.
+- Kosten, Tagebuch und persönliches Buch sind nicht im allgemeinen Druckzentrum enthalten.
+- Persönliche Ausgaben bleiben ausschließlich im Berichts-, Tagebuch- und Buchzentrum erreichbar.
+- Das Druckzentrum erklärt seine Zuständigkeit.
+- Verlauf/Diagramme zeigen einen manuellen Querformat-Hinweis; eine automatische Umschaltung wird nicht mehr behauptet.
+- Vitalwerte speichern und behalten beim Ändern ihre Eintragsart und sichtbare Kennzeichnung.
+- Diagramme liefern Werte und Datumsbeschriftungen; SYS und DIA sind getrennt.
+
+AUTOMATISIERTE PRÜFUNGEN
+- JavaScript-Syntax, eingebettete Skripte, Manifest und statische HTML-IDs geprüft.
+- DOM-Laufzeittest für Start, Vitalwerte, Änderung, Druckwege, Kosten, Fragen, Diagramme und Querformat-Hinweis.
+- ZIP-Struktur und erforderliche PWA-Dateien geprüft.
+
+NOCH DURCH LOTHAR ZU PRÜFEN
+- Reale Druckvorschau: Querformat manuell auswählen, Seitenumbrüche und Schriftgröße prüfen.
+- Bedienkontrolle mit den persönlichen Daten auf dem PC.
+- Die Neugestaltung der Buch- und Berichtsausgaben folgt erst nach Abnahme dieser Funktionsversion.
+

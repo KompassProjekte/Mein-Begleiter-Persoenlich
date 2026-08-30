@@ -1,0 +1,14 @@
+MEIN BEGLEITER 1.9.1.2.5.8 – SICHERE AKTUALISIERUNG
+
+1. In der bisherigen Version zuerst eine aktuelle vollständige verschlüsselte Sicherung erstellen.
+2. Sicherungsdatei und Kennwort getrennt und geschützt aufbewahren.
+3. Die Programmdateien der Version 1.9.1.2.5.8 vollständig bereitstellen.
+4. Anwendung neu laden. Falls weiterhin 1.9.1.2.3 erscheint, Browserseite vollständig aktualisieren.
+5. Prüfen, ob 1.9.1.2.5.8 angezeigt wird und die vorhandenen Daten sichtbar sind.
+6. Den kurzen PC-Kontrolltest durchführen.
+
+WICHTIG
+- Persönliche Daten bleiben im lokalen Browser-Speicher des jeweiligen Geräts.
+- Es gibt keine automatische Synchronisation.
+- Sicherungsdateien und persönliche Dokumente niemals in ein öffentliches GitHub-Repository hochladen.
+- Das Sicherungskennwort kann nicht wiederhergestellt werden.

@@ -1,0 +1,35 @@
+MEIN BEGLEITER 1.9.1.2.5.8 – PC-KONTROLLTEST
+
+VORHER
+[ ] Aktuelle verschlüsselte vollständige Sicherung erstellen.
+[ ] Version 1.9.1.2.5.7 nicht löschen, aber während des Tests nicht parallel öffnen.
+
+START UND VITALWERTE
+[ ] Version 1.9.1.2.5.8 wird angezeigt; persönliche Daten sind vorhanden.
+[ ] „＋ Vitalwerte eintragen“ ist genau einmal sichtbar.
+[ ] Blutdruck und Puls speichern: Dialog schließt, Bestätigung erscheint, Messung ist sichtbar.
+[ ] Messung ändern und erneut speichern: „Vitalwerte – Messung“ bleibt erhalten.
+[ ] Mehrere Messungen am selben Tag bleiben einzeln gespeichert und nach Uhrzeit unterscheidbar.
+
+MEINE GESCHICHTE UND DRUCKWEGE
+[ ] In „Meine Geschichte“ gibt es neben „＋ Neue Einträge“ keinen direkten Druckknopf.
+[ ] Der Ausdruck von Listen erfolgt nur über den Menüpunkt „Drucken“.
+[ ] Das Druckzentrum enthält keine Kostenübersicht, kein Tagebuch und kein persönliches Buch.
+[ ] Im Berichts-, Tagebuch- und Buchzentrum bleiben Erstellen, Speichern und Drucken erreichbar.
+[ ] Die Erklärung zur Zuständigkeit der beiden Zentren ist verständlich.
+
+VERLAUF UND DIAGRAMME
+[ ] Messpunkte zeigen Werte und Datumsangaben; Blutdruck zeigt SYS und DIA.
+[ ] Bei „Verlauf“ und „Ausgewählte Diagramme“ erscheint: „Bitte wählen Sie im folgenden Druckfenster Querformat.“
+[ ] Im echten Druckfenster Querformat manuell wählen und Lesbarkeit/Seitenumbrüche prüfen.
+[ ] Es erscheint nirgends die falsche Zusage „automatisch gewählt“.
+
+WEITERE KONTROLLE
+[ ] Zentraler Kostenbericht funktioniert in Kurz- und Detailansicht.
+[ ] Kommende Termine und offene Fragen werden korrekt gedruckt.
+[ ] Kennwort-Auge sowie verschlüsselte Sicherungsprüfung funktionieren.
+
+BEWUSST ZURÜCKGESTELLT
+- Gestaltung und inhaltlicher Aufbau der Buch- und Berichtsausgaben.
+- Samsung A9 und Smartphone.
+
