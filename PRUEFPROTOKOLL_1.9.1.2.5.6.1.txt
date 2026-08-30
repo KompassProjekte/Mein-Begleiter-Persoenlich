@@ -1,0 +1,67 @@
+MEIN BEGLEITER 1.9.1.2.5.6.1 – TECHNISCHES PRÜFPROTOKOLL
+
+KORREKTURPRÜFUNG 1.9.1.2.5.6.1
+- Diagrammparser unterscheidet leere Werte ausdrücklich von der Zahl Null.
+- Vitaldiagramme erzeugen Werttexte; Blutdruck erzeugt SYS-/DIA-Legende und kombinierte Werte.
+- Mehrfachmessungen werden nach Datum und Uhrzeit sortiert.
+- Das allgemeine Druckzentrum enthält keine Druckart „Kostenübersicht“ mehr.
+- Der Kostenbericht wird ausschließlich über „Kostenbericht erstellen“ auf der Kostenseite erzeugt.
+- Druckausrichtung wird unmittelbar vor dem Drucken als dynamische `@page`-Regel gesetzt.
+- Das Buch verwendet `icons/logo-persoenlich.svg`; das Praxistest-Symbol wird nicht verwendet.
+- Titelblattzeitraum wird nur aus gültigen Datumswerten oder tatsächlichen Einträgen gebildet.
+
+STATISCH BESTÄTIGT – VITALWERTE
+- Der Vitalwert-Dialog legt den Messdatensatz direkt in `daten.eintraege` an.
+- Vor dem Schließen werden lokaler Speicher und Ansichten aktualisiert.
+- Die Eintragsart wird ausdrücklich auf `vitalwerte` gesetzt.
+- Arzt und Maßnahme bleiben leer; der Datensatz erfüllt daher nicht die Terminerkennung.
+- Der Speicherknopf besitzt einen Schutz gegen Doppelklick während des Vorgangs.
+
+ÜBERNOMMENE KORREKTUR AUS 1.9.1.2.5.3
+- Einträge mit „eintragsart = vitalwerte“ erhalten ausschließlich in der Darstellung die Bezeichnung „Vitalwerte – Messung“.
+- Die Bezeichnung wird nicht in „massnahme“ gespeichert und erzeugt deshalb keinen Termin.
+- Tabellenansicht und mobile Kartenansicht verwenden dieselbe eindeutige Kennzeichnung.
+- Andere Eintragsarten behalten ihre bisherige Bezeichnung.
+
+ÜBERNOMMENE KORREKTUR AUS 1.9.1.2.5.2
+- Altdatenmigration ist auf Einträge ohne Arzt, mit Maßnahme „Vitalwerte“ und mindestens einem Vitalwert begrenzt.
+- Es werden keine Messdatensätze gelöscht.
+- Nur das Feld „massnahme“ wird bei eindeutig erkannten Fehlzuordnungen geleert.
+- Neue Messdatensätze werden nach erfolgreicher Speicherung als Vitalwerte gekennzeichnet.
+
+REPARATURPRÜFUNG 1.9.1.2.5.6.1
+- Vitalwertdialog speichert direkt als eigenständigen Messdatensatz.
+- Datum, Uhrzeit und alle angebotenen Messwerte werden an die passenden Bestandsfelder übergeben.
+- Der Datensatz enthält keine Terminbezeichnung und erzeugt daher keinen künstlichen Termin.
+- Speicherfehler werden abgefangen und sichtbar gemeldet.
+- Schließschaltfläche hat feste quadratische Abmessungen und runde Darstellung.
+
+BESTANDEN – STATISCHE PRÜFUNGEN
+- JavaScript-Syntax von v19124.js und v19125.js ohne Fehler.
+- Eingebettete ausführbare Skripte aus index.html syntaktisch geprüft.
+- manifest.webmanifest ist gültiges JSON.
+- Service Worker verwendet neuen Cache 1.9.1.2.5.6.1 und enthält v19125.css/js.
+- Sichtbare und technische Hauptversionsangaben auf 1.9.1.2.5.6.1 gesetzt.
+- Vorgängerverzeichnis 1.9.1.2.5.5 blieb unverändert erhalten.
+- ZIP enthält die erforderlichen PWA-Dateien.
+- Keine Sicherungsdateien oder absichtlich eingebauten persönlichen Testdaten.
+
+DURCH QUELLCODEPRÜFUNG BESTÄTIGT
+- Kostendruck ist aus dem allgemeinen Druckzentrum entfernt und enthält auf der Kostenseite nur zwei Varianten.
+- Detaillierte Kostenübersicht erzeugt Einzelposten mit vier Spalten.
+- Alter Druckfuß „Seite“ wird im neuen Druckzentrum nicht verwendet.
+- Kommende Termine werden zusammen mit zugeordneten Fragen aufgebaut.
+- Nicht zugeordnete Fragen werden separat ausgegeben.
+- Vitalwerte werden als eigene Einträge mit Datum und Uhrzeit gespeichert.
+- Dokumentfilter wird aus den tatsächlich gespeicherten Kategorien ergänzt.
+- Doppelte Berichtsschaltfläche wird auf der Übersicht entfernt.
+- Hilfe enthält Einführung und gemeinsame Schriftgrößensteuerung.
+
+NOCH OFFEN – ECHTER BROWSER-/GERÄTETEST
+- Vollständiger Bedien- und Drucktest in Chrome oder Firefox auf dem PC.
+- Kontrolle echter Druckvorschau: Hoch-/Querformat und Seitenumbrüche.
+- Kontrolle der Titelseite mit realen Buchdaten.
+- Kontrolle mehrerer Vitalmessungen und ihrer Diagramme mit persönlichen Daten.
+- Samsung A9 und Smartphone im Hoch- und Querformat.
+
+Grund für offene Browserprüfung: In der Entwicklungsumgebung stand kein ausführbarer Browser zur Verfügung. Diese Punkte werden deshalb nicht als bestanden bezeichnet.

@@ -1,6 +1,6 @@
 "use strict";
 (() => {
-  const VERSION = "1.9.1.2.5.6";
+  const VERSION = "1.9.1.2.5.6.1";
   const q = (s, r = document) => r.querySelector(s);
   const qa = (s, r = document) => [...r.querySelectorAll(s)];
   const safe = v => typeof esc === "function" ? esc(String(v ?? "")) : String(v ?? "").replace(/[&<>\"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -19,9 +19,30 @@
       .some(k => e?.[k] !== "" && e?.[k] !== null && e?.[k] !== undefined);
     return !String(e?.arzt || "").trim() && String(e?.massnahme || "").trim().toLocaleLowerCase("de-DE") === "vitalwerte" && hatMesswert;
   };
+  // In 1.9.1.2.5.6 konnte die interne Kennzeichnung beim Ändern verloren
+  // gehen. Eine Wiederherstellung erfolgt nur bei eindeutig reinen
+  // Messdatensätzen. So bleiben Termine und Tageschecks unangetastet.
+  const istMessungOhneKennzeichnung = e => {
+    const vorhanden = k => e?.[k] !== "" && e?.[k] !== null && e?.[k] !== undefined;
+    const hatMesswert = ["temperatur","blutdruckSys","blutdruckDia","puls","spo2","blutzucker"]
+      .some(vorhanden);
+    const hatTagescheck = [
+      "befinden", "befindenWert", "schmerz", "energie", "schlaf", "gewicht",
+      "gedanken", "beschwerden", "aktivitaetMin", "schritte", "atemfrequenz",
+      "trinkmenge", "urinmenge", "stuhlgang", "appetit", "uebelkeit",
+      "atemnot", "schwellungen"
+    ].some(vorhanden);
+    const hatKosten = ["rechnung", "rezept", "fahrt"].some(k => Number(e?.[k] || 0) !== 0);
+    return !String(e?.arzt || "").trim()
+      && !String(e?.massnahme || "").trim()
+      && !String(e?.eintragsart || "").trim()
+      && hatMesswert
+      && !hatTagescheck
+      && !hatKosten;
+  };
   let vitalAltbestandBereinigt = false;
   daten.eintraege.forEach(e => {
-    if (!istVitalmessung(e)) return;
+    if (!istVitalmessung(e) && !istMessungOhneKennzeichnung(e)) return;
     e.eintragsart = "vitalwerte";
     e.massnahme = "";
     vitalAltbestandBereinigt = true;

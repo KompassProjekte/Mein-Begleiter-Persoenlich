@@ -1,0 +1,64 @@
+MEIN BEGLEITER 1.9.1.2.5.6.1 – KURZER PC-KONTROLLTEST
+
+VORHER
+[ ] Aktuelle verschlüsselte vollständige Sicherung erstellen.
+[ ] Vorherige Version 1.9.1.2.5.6 zunächst nicht löschen.
+
+START UND ÜBERSICHT
+[ ] Version 1.9.1.2.5.6.1 wird angezeigt.
+[ ] Persönliche Daten sind vollständig vorhanden.
+[ ] Auf der Übersicht gibt es Bericht nicht doppelt.
+[ ] „＋ Vitalwerte eintragen“ ist sichtbar und verständlich.
+
+VITALWERTE
+[ ] Das runde Kreuz sitzt mit Abstand zum rechten Rand auf Höhe der Überschrift.
+[ ] Blutdruck und Puls eintragen und einmal „Vitalwerte speichern“ drücken.
+[ ] Der Dialog schließt sich und „Vitalwerte gespeichert“ wird angezeigt.
+[ ] Die neue Messung ist sofort unter „Meine Einträge“ sichtbar.
+[ ] Ein vorhandener Vitalwert-Eintrag zeigt deutlich „Vitalwerte – Messung“.
+[ ] Einen Vitalwert-Eintrag über „Ändern“ öffnen und erneut speichern.
+[ ] Danach steht weiterhin „Vitalwerte – Messung“ in der Spalte Maßnahme.
+[ ] Bereits leer beschriftete reine Messungen werden nach dem Update wieder als „Vitalwerte – Messung“ angezeigt.
+[ ] Messwerte, Datum, Uhrzeit und Notiz bleiben dabei unverändert.
+[ ] Der Eintrag erscheint nicht unter „Termine“.
+[ ] Zwei Messungen am selben Tag mit unterschiedlichen Uhrzeiten speichern.
+[ ] Beide Messungen erscheinen einzeln und bleiben änderbar/löschbar.
+[ ] Im Verlauf werden beide Uhrzeiten berücksichtigt.
+
+DIAGRAMME
+[ ] An jedem tatsächlichen Messpunkt steht ein Wert.
+[ ] Unter jedem Messpunkt steht das zugehörige Datum.
+[ ] Bei mehreren Vitalmessungen am selben Tag steht zusätzlich die jeweilige Uhrzeit.
+[ ] Fehlende Messungen erscheinen nicht als 0.
+[ ] Blutdruck zeigt an der grünen SYS-Linie jeden SYS-Wert.
+[ ] Blutdruck zeigt an der orangefarbenen DIA-Linie jeden DIA-Wert.
+[ ] Mehrere Messungen desselben Tages bleiben nach Uhrzeit unterscheidbar.
+[ ] Verlauf und ausgewählte Diagramme öffnen die Druckvorschau im Querformat.
+
+DOKUMENTE
+[ ] Eigene Kategorie im Filter „Alle Kategorien“ finden.
+[ ] Kategorie beim Ändern eines Dokuments auswählen.
+[ ] Dateiname wird als änderbarer Dokumentname vorgeschlagen.
+
+DRUCKEN
+[ ] Im allgemeinen Druckzentrum gibt es keine zweite Kostenübersicht.
+[ ] „Kostenbericht erstellen“ befindet sich nur auf der Kostenseite.
+[ ] Kurzübersicht und vollständiger Kostennachweis funktionieren.
+[ ] Kosten – Kurzübersicht: keine leere zweite Seite.
+[ ] Kosten – detailliert: alle Einzelposten und Bezeichnung/Empfänger vorhanden.
+[ ] Kommende Termine: zugehörige Fragen stehen direkt beim Termin.
+[ ] Nicht zugeordnete Fragen stehen am Ende.
+[ ] Verlauf und ausgewählte Diagramme: A4 quer, große Diagramme, Werte lesbar.
+[ ] Tagebuch/Buch: professionelle Titelseite mit Logo und ohne technische Filter.
+[ ] Buchlogo enthält nicht „Praxistest“.
+[ ] Kein Zeitraum 01.01.1 bis 31.12.9999 und keine leere Zusatzseite.
+
+HILFE
+[ ] Einführung starten ist deutlich sichtbar.
+[ ] Standard, Groß und Sehr groß lassen sich auswählen.
+[ ] Sehr groß schneidet keine Schaltflächen oder Texte ab.
+
+SICHERHEIT
+[ ] Kennwort-Auge funktioniert.
+[ ] Bestehende verschlüsselte Sicherung wird korrekt geprüft.
+[ ] Keine Sicherung einlesen, wenn keine aktuelle Rücksicherung vorhanden ist.
