@@ -7,7 +7,7 @@
       content="width=device-width,initial-scale=1,viewport-fit=cover"
     />
     <meta name="theme-color" content="#225b56" />
-    <title>Mein Begleiter 1.9.1.2.5.8 PWA – Persönliche Arbeitsversion</title>
+    <title>Mein Begleiter 1.9.1.2.5.9 PWA – Persönliche Arbeitsversion</title>
     <link rel="manifest" href="./manifest.webmanifest" />
     <link rel="icon" type="image/png" href="./icons/favicon-64.png" />
     <link rel="apple-touch-icon" href="./icons/apple-touch-icon-180.png" />
@@ -1704,8 +1704,7 @@
           </button>
         </nav>
         <div class="seitenfuss">
-          <strong>Version 1.9.1.2.5.8 PWA – PERSÖNLICHE ARBEITSVERSION</strong
-          >Stand: 28.08.2026<br />Entwickelt von Lothar &amp; Nimbus
+          <strong>Version 1.9.1.2.5.9</strong><br />Qualitätsversion
         </div>
       </aside>
       <main>
@@ -1964,7 +1963,7 @@
             <div>
               <h2>Behandlung &amp; Medikamente</h2>
               <p>
-                Medikamente und nächste Behandlungsschritte gemeinsam im Blick
+                Medikamente sowie geplante und erfolgte Behandlungen gemeinsam im Blick
                 behalten.
               </p>
             </div>
@@ -2079,7 +2078,7 @@
             </article>
             <article class="karte span6">
               <div class="abschnitt-titel">
-                <h3>Behandlungsschritte</h3>
+                <h3>Behandlungen und nächste Schritte</h3>
                 <span id="schrittAnzahl"></span>
               </div>
               <div class="kompakt-form">
@@ -2103,7 +2102,7 @@
                   <option value="In Vorbereitung">In Vorbereitung</option>
                   <option value="Erledigt">Erledigt</option></select
                 ><button class="knopf breit" id="schrittHinzufuegen">
-                  ＋ Behandlungsschritt eintragen</button
+                  ＋ Behandlung speichern</button
                 ><button
                   class="knopf breit sekundaer"
                   id="schrittAbbrechen"
@@ -2657,7 +2656,7 @@
                 <span>Persönlicher Browser-Speicher</span>
               </div>
               <p>
-                <strong>Mein Begleiter 1.9.1.2.5.8 PWA – Persönliche Arbeitsversion</strong>
+                <strong>Mein Begleiter 1.9.1.2.5.9 PWA – Persönliche Arbeitsversion</strong>
               </p>
               <p>
                 Ihre Einträge werden ausschließlich lokal im persönlichen
@@ -3269,7 +3268,7 @@
       }
       function echteTermine() {
         return daten.eintraege.filter(
-          (e) => e.arzt || e.massnahme,
+          (e) => e.eintragsart !== "kosten" && e.eintragsart !== "vitalwerte" && (e.arzt || e.massnahme),
         );
       }
       function behandlungsTermine() {
@@ -3703,7 +3702,7 @@
         $("#schrittWer").value = "";
         $("#schrittStatus").value = "Geplant";
         $("#schrittHinzufuegen").textContent =
-          "＋ Behandlungsschritt eintragen";
+          "＋ Behandlung speichern";
         $("#schrittAbbrechen").hidden = true;
       }
       function renderBehandlung() {
@@ -4127,7 +4126,7 @@
               return `<div class="tagebuch-eintrag"><div class="tagebuch-datum">${datumLang(e.datum)}</div><div class="tagebuch-text"><h5>${esc(ueberschrift)}</h5>${texte.join("") || "<p>Eintrag ohne weitere Beschreibung.</p>"}</div></div>`;
             })
             .join("");
-        html += `</div><p class="hinweis">Erstellt mit Mein Begleiter 1.9.1.2.5.8 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus</p>`;
+        html += `</div><p class="hinweis">Erstellt mit Mein Begleiter 1.9.1.2.5.9 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus</p>`;
         $("#berichtAusgabe").innerHTML = html;
         gespeichertenEntwurfAnzeigen();
       }
@@ -4189,7 +4188,7 @@
           });
         if (schluss)
           html += `<div class="buch-seite"><h4>Mein Rückblick und Ausblick</h4><div class="buch-schluss"><p>${esc(schluss)}</p></div></div>`;
-        html += `<p class="hinweis">Erstellt mit Mein Begleiter 1.9.1.2.5.8 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus · ${datumLang(heuteIso())}</p>`;
+        html += `<p class="hinweis">Erstellt mit Mein Begleiter 1.9.1.2.5.9 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus · ${datumLang(heuteIso())}</p>`;
         $("#berichtAusgabe").innerHTML = html;
       }
       function renderBericht() {
@@ -4455,7 +4454,7 @@
           });
         if (schluss)
           html += `<div class="buch-seite"><h4>Mein Rückblick und Ausblick</h4><div class="buch-schluss"><p>${esc(schluss)}</p></div></div>`;
-        html += `<p class="hinweis">${fassung === "lese" ? "Persönliche Leseausgabe – aus meinen eigenen Einträgen zusammengestellt. " : ""}Erstellt mit Mein Begleiter 1.9.1.2.5.8 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus · ${datumLang(heuteIso())}</p>`;
+        html += `<p class="hinweis">${fassung === "lese" ? "Persönliche Leseausgabe – aus meinen eigenen Einträgen zusammengestellt. " : ""}Erstellt mit Mein Begleiter 1.9.1.2.5.9 PWA – Persönliche Arbeitsversion · Lothar &amp; Nimbus · ${datumLang(heuteIso())}</p>`;
         $("#berichtAusgabe").innerHTML = html;
         gespeichertenEntwurfAnzeigen();
       }
@@ -5660,7 +5659,12 @@
         neuerKnopf.addEventListener("click", () => {
           const titel = $("#schrittTitel").value.trim();
           if (!titel) {
-            toast("Bitte den Behandlungsschritt beschreiben.");
+            toast("Bitte die Behandlung beschreiben.");
+            return;
+          }
+          if (!$("#schrittDatum").value) {
+            toast("Bitte das Datum der Behandlung eintragen.");
+            $("#schrittDatum").focus();
             return;
           }
           const werte = {
@@ -5811,7 +5815,7 @@
           const eintraege=daten.eintraege.filter(e=>imZeitraum(e,von,bis));
           const kostenposten=eintraege.flatMap(e=>["rechnung","rezept","fahrt"]
             .filter(a=>(art==="alle"||art===a)&&Number(e[a])>0)
-            .map(a=>({datum:e.datum,art:a,betrag:Number(e[a]),bezeichnung:(e.arzt||e.massnahme||e.bemerkung||"Ohne Bezeichnung").trim()})))
+            .map(a=>({datum:e.datum,art:a,betrag:Number(e[a]),bezeichnung:(e.massnahme||e.arzt||e.bemerkung||"Ohne Bezeichnung").trim()})))
             .sort((a,b)=>(b.datum||"").localeCompare(a.datum||""));
           const summe=a=>kostenposten.filter(p=>p.art===a).reduce((s,p)=>s+p.betrag,0);
           const r=summe("rechnung"),p=summe("rezept"),f=summe("fahrt"),g=r+p+f;
@@ -6509,7 +6513,7 @@
           const version = Number(obj.version || obj.formatVersion || 1);
           if (!Number.isFinite(version) || version > APP_VERSION)
             throw new Error(
-              `Diese Sicherung wurde mit einer neueren Datenstruktur (${obj.version || "unbekannt"}) erstellt und kann mit Version 1.9.1.2.5.8 nicht sicher geöffnet werden.`,
+              `Diese Sicherung wurde mit einer neueren Datenstruktur (${obj.version || "unbekannt"}) erstellt und kann mit Version 1.9.1.2.5.9 nicht sicher geöffnet werden.`,
             );
           return {
             obj,
@@ -6793,7 +6797,7 @@
           pass = $("#geraetePasswort"),
           pass2 = $("#geraetePasswort2"),
           weiter = $("#geraeteWeiter");
-        const APP_VERSION_GERAETEWECHSEL = "1.9.1.2.5.8";
+        const APP_VERSION_GERAETEWECHSEL = "1.9.1.2.5.9";
         const DATENSTRUKTUR_VERSION = "1.8";
         const SICHERUNGSFORMAT_VERSION = 2;
         const MAX_DATEIGROESSE = 250 * 1024 * 1024;
@@ -7232,7 +7236,7 @@
                 vorbereiteteRuecksicherung = await ruecksicherungVorbereiten(kennwort);
               }
               $("#geraetePruefung").innerHTML =
-        `<strong>✓ Entschlüsselung und Integritätsprüfung bestanden</strong><p>Datei: ${esc(importDatei.name)} · ${dateigroesse(importDatei.size)}</p><p>Erstellt: ${new Date(innen.erstelltAm).toLocaleString("de-DE")} auf ${esc(innen.quellgeraet)} · Quellversion ${esc(innen.appVersion)}</p><p>Sicherungskennung: ${esc(innen.sicherungsId)}</p><p>${stats.eintraege} Einträge · ${stats.termine} Termine · ${stats.fragen} Fragen · ${stats.medikamente} Medikamente</p><p>${stats.dokumente} Dokumentenmappen · ${stats.seiten} Dokumentseiten · ${dateigroesse(stats.dokumentBytes)}</p><p>Speicher: ${esc(speicher.text)}</p><p>Auf diesem Gerät vorhanden: ${ziel.eintraege} Einträge · ${ziel.dokumente} Dokumentenmappen.</p>${zielIstLeer ? '<p><strong>✓ Das Zielgerät ist vollständig leer. Eine Rücksicherung ist nicht erforderlich.</strong></p>' : '<p><strong>Vorhandene Zieldaten werden ersetzt. Laden Sie deshalb zuerst die verschlüsselte Rücksicherung herunter.</strong></p>'}<p><strong>Eine Zusammenführung ist in Version 1.9.1.2.5.8 sicherheitshalber deaktiviert.</strong></p>`;
+        `<strong>✓ Entschlüsselung und Integritätsprüfung bestanden</strong><p>Datei: ${esc(importDatei.name)} · ${dateigroesse(importDatei.size)}</p><p>Erstellt: ${new Date(innen.erstelltAm).toLocaleString("de-DE")} auf ${esc(innen.quellgeraet)} · Quellversion ${esc(innen.appVersion)}</p><p>Sicherungskennung: ${esc(innen.sicherungsId)}</p><p>${stats.eintraege} Einträge · ${stats.termine} Termine · ${stats.fragen} Fragen · ${stats.medikamente} Medikamente</p><p>${stats.dokumente} Dokumentenmappen · ${stats.seiten} Dokumentseiten · ${dateigroesse(stats.dokumentBytes)}</p><p>Speicher: ${esc(speicher.text)}</p><p>Auf diesem Gerät vorhanden: ${ziel.eintraege} Einträge · ${ziel.dokumente} Dokumentenmappen.</p>${zielIstLeer ? '<p><strong>✓ Das Zielgerät ist vollständig leer. Eine Rücksicherung ist nicht erforderlich.</strong></p>' : '<p><strong>Vorhandene Zieldaten werden ersetzt. Laden Sie deshalb zuerst die verschlüsselte Rücksicherung herunter.</strong></p>'}<p><strong>Eine Zusammenführung ist in Version 1.9.1.2.5.9 sicherheitshalber deaktiviert.</strong></p>`;
               $("#geraetePruefung").hidden = false;
               pass.disabled = true;
               weiter.textContent = zielIstLeer
@@ -8348,7 +8352,7 @@
 </dialog>
 <script id="bedienoptimierung-v186-script">
 (() => {
-  const APP_VERSION = '1.9.1.2.5.8';
+  const APP_VERSION = '1.9.1.2.5.9';
   const MODUS_KEY = 'mein-begleiter-persoenlich-v1-9-1-ansicht';
   const START_KEY = 'mein-begleiter-persoenlich-v1-9-1-startauswahl';
   const ua = navigator.userAgent;
@@ -9032,8 +9036,8 @@
 })();
 </script>
 <link rel="stylesheet" href="v19124.css">
-<link rel="stylesheet" href="v19128.css">
+<link rel="stylesheet" href="v19129.css">
 <script src="v19124.js"></script>
-<script src="v19128.js"></script>
+<script src="v19129.js"></script>
 </body>
 </html>

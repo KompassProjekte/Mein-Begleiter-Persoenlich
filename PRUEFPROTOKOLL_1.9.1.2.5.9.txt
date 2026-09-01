@@ -1,0 +1,33 @@
+PRÜFPROTOKOLL - MEIN BEGLEITER 1.9.1.2.5.9
+Stand: 01.09.2026
+
+AUTOMATISCH GEPRÜFT
+[OK] JavaScript-Syntax index.html
+[OK] JavaScript-Syntax v19124.js
+[OK] JavaScript-Syntax v19129.js
+[OK] Service-Worker-Syntax
+[OK] Manifest ist gültiges JSON
+[OK] Keine statisch doppelten HTML-IDs
+[OK] Versionsangaben 1.9.1.2.5.9
+[OK] PWA-Pflichtdateien vollständig vorhanden
+[OK] Cache-Name aktualisiert
+[OK] Neue Kosteneingabe vorhanden
+[OK] Kosten werden von der Terminlogik ausgeschlossen
+[OK] Behandlungsdatum wird vor dem Speichern geprüft
+[OK] Sicherungsformat und Datenstruktur unverändert
+
+NOCH PRAKTISCH DURCH LOTHAR ZU TESTEN
+[ ] Kostenposten anlegen, ändern und löschen
+[ ] Behandlung planen und als erledigt dokumentieren
+[ ] Tages-Check und Vitalwerte getrennt testen
+[ ] Dokumentenmappe anlegen und ändern
+[ ] Kostenbericht im Hochformat drucken
+[ ] Bericht, Tagebuch und Buch drucken
+[ ] Samsung A9: keine verdeckten Bedienelemente
+[ ] Verschlüsselte Sicherung erstellen
+[ ] Sicherung auf einem Testgerät wiederherstellen
+[ ] Offline-Neustart der installierten PWA
+
+WICHTIG
+Vor einer Datenübernahme immer eine verschlüsselte vollständige Sicherung
+der aktuellen persönlichen Daten erstellen.

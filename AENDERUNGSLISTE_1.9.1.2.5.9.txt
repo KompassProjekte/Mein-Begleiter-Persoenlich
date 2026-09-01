@@ -1,0 +1,36 @@
+MEIN BEGLEITER 1.9.1.2.5.9 - QUALITÄTSVERSION
+Stand: 01.09.2026
+
+1. KOSTEN
+- Neue eindeutige Hauptaktion „+ Kosten eintragen“ auf der Kostenseite.
+- Eigener Dialog für Datum, Uhrzeit, Kostenart, Betrag, Bezeichnung,
+  Arzt/Stelle und Notiz.
+- Kostenposten werden nicht mehr fälschlich als Termine gewertet.
+- Kostenberichte zeigen den tatsächlichen ersten und letzten Kostenposten.
+- Bei leerem Bestand erscheint „Noch keine Kosten erfasst“.
+
+2. BEHANDLUNG
+- „Behandlungsschritte“ zu „Behandlungen und nächste Schritte“ erweitert.
+- Geplante und erfolgte Behandlungen können per Status dokumentiert werden.
+- Datum und Beschreibung sind beim Speichern verbindlich.
+- Eindeutige Schaltfläche „+ Behandlung speichern“.
+
+3. BEDIENUNG
+- Doppelter Tages-Check-Einstieg im grafischen Verlauf entfernt.
+- „Bereit zum Ablegen“ wird im Ausgangszustand ausgeblendet.
+- Vollständige Versionsinformation nach „Über Mein Begleiter“ verschoben.
+- Seitenleiste zeigt nur eine kurze Versionsangabe.
+
+4. BERICHTE UND DRUCK
+- Schriftgröße, Zeilenhöhe und Absatzabstände kompakter vereinheitlicht.
+- Kostenbericht weiterhin ausschließlich im Hochformat.
+
+5. PWA
+- Cache und Programmdateien auf Version 1.9.1.2.5.9 aktualisiert.
+- Shortcut „Neue Einträge“ auf das richtige Ziel #eintraege korrigiert.
+
+6. DATEN UND KOMPATIBILITÄT
+- Bestehende Datenstruktur 1.8 bleibt erhalten.
+- Vorhandene persönliche Daten werden nicht gelöscht oder umbenannt.
+- Verschlüsselte Sicherung und Gerätewechsel bleiben kompatibel.
+- Version 1.9.1.2.5.8 bleibt unverändert als Rückfallversion erhalten.

@@ -1,0 +1,203 @@
+tmp/audit_191258/v19129.js:4:  const q = (s, r = document) => r.querySelector(s);
+tmp/audit_191258/v19129.js:5:  const qa = (s, r = document) => [...r.querySelectorAll(s)];
+tmp/audit_191258/v19129.js:9:  const heute = () => typeof heuteIso === "function" ? heuteIso() : new Date().toISOString().slice(0, 10);
+tmp/audit_191258/v19129.js:109:  const vitalOeffnen = () => {
+tmp/audit_191258/v19129.js:169:  async function dokumentKategorienAktualisieren() {
+tmp/audit_191258/v19129.js:238:  const dokumenteLaden = async () => { try { druckDokumente = typeof alleDokumente === "function" ? await alleDokumente() : []; } catch (_) { druckDokumente = []; } };
+tmp/audit_191258/v19129.js:240:  const art = () => q('[name="v19125-art"]:checked')?.value || "fragen";
+tmp/audit_191258/v19129.js:243:  const tabelle = (spalten, zeilen) => zeilen.length ? `<table class="v19123-druckliste"><thead><tr>${spalten.map(s=>`<th>${s}</th>`).join("")}</tr></thead><tbody>${zeilen.join("")}</tbody></table>` : `<div class="v19123-leer">Keine passenden Daten vorhanden.</div>`;
+tmp/audit_191258/v19129.js:262:  const kostenPosten=()=>{const von=q("#kostenVon")?.value||"0000-01-01",bis=q("#kostenBis")?.value||"9999-12-31",wahl=q("#kostenArt")?.value||"alle",namen={rechnung:"Rechnung",rezept:"Rezept",fahrt:"Fahrtkosten"};return daten.eintraege.flatMap(e=>["rechnung","rezept","fahrt"].filter(a=>(wahl==="alle"||wahl===a)&&e.datum>=von&&e.datum<=bis&&Number(e[a])>0).map(a=>({datum:e.datum,art:a,artname:namen[a],betrag:Number(e[a]),text:e.arzt||e.massnahme||e.bemerkung||"Ohne Bezeichnung"}))).sort((a,b)=>String(b.datum).localeCompare(String(a.datum)));};
+tmp/audit_191258/v19129.js:263:  const kostenVorschau=()=>{const ps=kostenPosten(),sum=a=>ps.filter(p=>p.art===a).reduce((s,p)=>s+p.betrag,0),r=sum("rechnung"),z=sum("rezept"),f=sum("fahrt"),g=r+z+f,voll=q('[name="v19126-kostenmodus"]:checked')?.value==="voll",von=q("#kostenVon")?.value,bis=q("#kostenBis")?.value,zeit=[von?formatDatum(von):"Beginn",bis?formatDatum(bis):"heute"].join(" bis ");q("#v19126KostenVorschau").innerHTML=`<header class="v19125-druckkopf"><h2>Kostenübersicht</h2><div>Zeitraum: ${safe(zeit)}</div></header><div class="v19123-kosten"><div>Rechnungen<strong>${formatEuro(r)}</strong></div><div>Rezepte<strong>${formatEuro(z)}</strong></div><div>Fahrtkosten<strong>${formatEuro(f)}</strong></div><div>Gesamtkosten<strong>${formatEuro(g)}</strong></div></div><h3>Verteilung nach Kostenart</h3><div class="v19126-verteilung"><span>Rechnungen ${formatEuro(r)}</span><span>Rezepte ${formatEuro(z)}</span><span>Fahrtkosten ${formatEuro(f)}</span></div>${voll?`<h3>Einzelposten</h3>${tabelle(["Datum","Kostenart","Bezeichnung / Empfänger","Betrag"],ps.map(p=>`<tr><td>${formatDatum(p.datum)}</td><td>${p.artname}</td><td>${safe(p.text)}</td><td>${formatEuro(p.betrag)}</td></tr>`))}<p class="v19125-gesamtsumme"><strong>Gesamtsumme: ${formatEuro(g)}</strong></p>`:""}`;};
+tmp/audit_191258/v19129.js:268:  const vorschau = async () => {
+tmp/audit_191258/v19129.js:292:  let timer=0; const planen=()=>{clearTimeout(timer);timer=setTimeout(vorschau,80);};
+tmp/audit_191258/v19124.js:3:  const de = (s) => String(s || "").localeCompare(String(s || ""), "de");
+tmp/audit_191258/v19124.js:7:  function navKnopf(seite, symbol, text, mobil = false) {
+tmp/audit_191258/v19124.js:34:  const umbenennen = (root) => root?.querySelectorAll('[data-seite="behandlung"]').forEach(b => {
+tmp/audit_191258/v19124.js:72:    const zeitraumAnwenden = () => {
+tmp/audit_191258/v19124.js:93:    const refresh = () => { zeitraumAnwenden(); renderTermine(); };
+tmp/audit_191258/v19124.js:108:  const artWert=()=>document.querySelector('[name="v19123-art"]:checked')?.value||"fragen";
+tmp/audit_191258/v19124.js:110:  const dokumenteFuerDruckLaden=async()=>{try{druckDokumente=typeof alleDokumente==="function"?await alleDokumente():[...dokumenteGeschichte];}catch(_){druckDokumente=[...dokumenteGeschichte];}};
+tmp/audit_191258/v19124.js:115:  const tabelle=(spalten,zeilen)=>zeilen.length?`<table class="v19123-druckliste"><thead><tr>${spalten.map(x=>`<th>${x}</th>`).join("")}</tr></thead><tbody>${zeilen.join("")}</tbody></table>`:`<div class="v19123-leer">Keine passenden Daten vorhanden.</div>`;
+tmp/audit_191258/v19124.js:117:  const vorschau=()=>{
+tmp/audit_191258/v19124.js:134:  const drucken=async()=>{vorschau();document.body.classList.add("v19123-druckt");await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));window.print();};
+tmp/audit_191258/v19124.js:158:  const kategorienSynchronisieren = async (aktuell = "") => {
+tmp/audit_191258/index.html:3152:      const $ = (s) => document.querySelector(s),
+tmp/audit_191258/index.html:3154:      const heuteIso = () => new Date().toLocaleDateString("sv-SE");
+tmp/audit_191258/index.html:3155:      const euro = (n) =>
+tmp/audit_191258/index.html:3160:      const datumLang = (s) =>
+tmp/audit_191258/index.html:3168:      const zeitraumText = (von, bis) =>
+tmp/audit_191258/index.html:3172:      const datumKurz = (s) =>
+tmp/audit_191258/index.html:3179:      const esc = (s) =>
+tmp/audit_191258/index.html:3193:      const dateigroesse = (n) =>
+tmp/audit_191258/index.html:3213:      function ladeDaten() {
+tmp/audit_191258/index.html:3242:      function speichern() {
+tmp/audit_191258/index.html:3246:      function toast(text) {
+tmp/audit_191258/index.html:3253:      function sortiert(auf = true) {
+tmp/audit_191258/index.html:3259:      function zeitSchluessel(e) {
+tmp/audit_191258/index.html:3262:      function istKommenderTermin(e) {
+tmp/audit_191258/index.html:3267:      function kosten(e) {
+tmp/audit_191258/index.html:3270:      function echteTermine() {
+tmp/audit_191258/index.html:3275:      function behandlungsTermine() {
+tmp/audit_191258/index.html:3325:      function alleTermine() {
+tmp/audit_191258/index.html:3328:      function hatTageswerte(e) {
+tmp/audit_191258/index.html:3338:      function renderArztVorschlaege() {
+tmp/audit_191258/index.html:3374:      function messwerteHtml(e) {
+tmp/audit_191258/index.html:3396:      function wechsleSeite(name) {
+tmp/audit_191258/index.html:3441:      function terminStatus(e) {
+tmp/audit_191258/index.html:3446:      function statusKlasse(s) {
+tmp/audit_191258/index.html:3455:      function terminHtml(e, bearbeitbar = false) {
+tmp/audit_191258/index.html:3461:      function renderCockpit() {
+tmp/audit_191258/index.html:3500:      function renderTabelle() {
+tmp/audit_191258/index.html:3537:        const docHtml = (datum) =>
+tmp/audit_191258/index.html:3545:        const kartenFeld = (titel, inhalt) => inhalt
+tmp/audit_191258/index.html:3591:      function renderTermine() {
+tmp/audit_191258/index.html:3608:        const normal = (wert) => String(wert || "").trim().toLocaleLowerCase("de-DE").replace(/\s+/g, " ");
+tmp/audit_191258/index.html:3618:        const fragenAmTermin = (e) => {
+tmp/audit_191258/index.html:3643:      function renderFragen() {
+tmp/audit_191258/index.html:3657:      function tageZwischen(von, bis = heuteIso()) {
+tmp/audit_191258/index.html:3666:      function datumPlus(iso, anzahl, einheit) {
+tmp/audit_191258/index.html:3672:      function medZeitplan(m) {
+tmp/audit_191258/index.html:3698:      function schrittFormularLeeren() {
+tmp/audit_191258/index.html:3709:      function renderBehandlung() {
+tmp/audit_191258/index.html:3796:      function dokumentFehler(text) {
+tmp/audit_191258/index.html:3801:      function initDokumente() {
+tmp/audit_191258/index.html:3866:      function alleDokumente() {
+tmp/audit_191258/index.html:3883:      async function renderDokumente() {
+tmp/audit_191258/index.html:3953:      function dokumentHolen(id) {
+tmp/audit_191258/index.html:3963:      function renderKosten() {
+tmp/audit_191258/index.html:3995:      function renderVerlauf() {
+tmp/audit_191258/index.html:4022:      function ausgabeModus() {
+tmp/audit_191258/index.html:4028:      function berichtArztWert() {
+tmp/audit_191258/index.html:4031:      function berichtNormal(wert) {
+tmp/audit_191258/index.html:4034:      function passtBerichtArzt(wert) {
+tmp/audit_191258/index.html:4041:      function berichtAuswahlText() {
+tmp/audit_191258/index.html:4045:      function berichtEintraege() {
+tmp/audit_191258/index.html:4059:      function berichtDatenstand() {
+tmp/audit_191258/index.html:4069:      function entwurfSchluessel() {
+tmp/audit_191258/index.html:4079:      function gespeichertenEntwurfAnzeigen() {
+tmp/audit_191258/index.html:4088:      function renderTagebuch() {
+tmp/audit_191258/index.html:4134:      function renderBuchGrundfassung() {
+tmp/audit_191258/index.html:4195:      function renderBericht() {
+tmp/audit_191258/index.html:4246:      function buchFassung() {
+tmp/audit_191258/index.html:4261:      function buchEinstellungenSpeichern() {
+tmp/audit_191258/index.html:4278:      function buchEinstellungenLaden() {
+tmp/audit_191258/index.html:4304:      function alsSatz(text) {
+tmp/audit_191258/index.html:4308:      function renderBuch() {
+tmp/audit_191258/index.html:4462:      function initialisiereBericht() {
+tmp/audit_191258/index.html:4471:      function renderAlles() {
+tmp/audit_191258/index.html:4484:      function oeffneNeu(nurBefinden = false) {
+tmp/audit_191258/index.html:4723:      function formularStand() {
+tmp/audit_191258/index.html:4731:      function eintragAbbrechen() {
+tmp/audit_191258/index.html:4764:      function frageBearbeitungBeenden() {
+tmp/audit_191258/index.html:4773:      function frageHinzufuegen() {
+tmp/audit_191258/index.html:4854:      function medFormularLeeren() {
+tmp/audit_191258/index.html:5010:      function dokumentFormularLeeren() {
+tmp/audit_191258/index.html:5023:      function dokumentInDbSpeichern(d) {
+tmp/audit_191258/index.html:5114:      async function dokumentAusgeben(id, nurDownload, index = 0) {
+tmp/audit_191258/index.html:5131:      function blobAusgeben(blob, name, nurDownload) {
+tmp/audit_191258/index.html:5279:      function modusAktualisieren() {
+tmp/audit_191258/index.html:5337:      function bearbeitungBeenden() {
+tmp/audit_191258/index.html:5464:      function downloadInhalt(inhalt, name, typ) {
+tmp/audit_191258/index.html:5472:      async function dateiSpeichern(inhalt, name, typ, beschreibung, endung) {
+tmp/audit_191258/index.html:5493:      async function sicherungErstellen() {
+tmp/audit_191258/index.html:5530:        const q = (v) => '"' + String(v ?? "").replace(/"/g, '""') + '"',
+tmp/audit_191258/index.html:5724:        const imZeitraum = (e, von, bis) =>
+tmp/audit_191258/index.html:5728:        const mehrfach = (arr, schluessel) => {
+tmp/audit_191258/index.html:5738:        function chart(id, feld, max, farbe, einheit = "") {
+tmp/audit_191258/index.html:5799:        function renderGrafiken() {
+tmp/audit_191258/index.html:5910:        const dialogSchliessen = () => bearbeiten.close();
+tmp/audit_191258/index.html:5981:        const zeitstempel = () => {
+tmp/audit_191258/index.html:5986:        const neueSicherung = async () => {
+tmp/audit_191258/index.html:6035:        const zeitstempel = () => {
+tmp/audit_191258/index.html:6040:        const blobZuDaten = (blob) =>
+tmp/audit_191258/index.html:6047:        const datenZuBlob = (text, typ) => {
+tmp/audit_191258/index.html:6053:        const grunddaten = () => ({
+tmp/audit_191258/index.html:6062:        async function dokumenteFuerSicherung() {
+tmp/audit_191258/index.html:6104:        function datenUebernehmen(neu) {
+tmp/audit_191258/index.html:6121:        const dokumenteErsetzen = (dokumente) =>
+tmp/audit_191258/index.html:6127:              const seiten = (d.seiten || []).map((s) => ({
+tmp/audit_191258/index.html:6240:        const zeitstempel = () => {
+tmp/audit_191258/index.html:6245:        const status = (art, text) => {
+tmp/audit_191258/index.html:6269:        const blobZuDaten = (blob) =>
+tmp/audit_191258/index.html:6276:        const datenZuBlob = (text, typ) => {
+tmp/audit_191258/index.html:6282:        const grunddaten = () => ({
+tmp/audit_191258/index.html:6291:        const normDaten = (neu) => ({
+tmp/audit_191258/index.html:6306:        async function dokumentePaket() {
+tmp/audit_191258/index.html:6343:        const dokumenteErsetzen = (dokumente) =>
+tmp/audit_191258/index.html:6349:              const seiten = (d.seiten || []).map((s) => ({
+tmp/audit_191258/index.html:6366:        async function speicherUebersicht() {
+tmp/audit_191258/index.html:6400:        async function exportKlein() {
+tmp/audit_191258/index.html:6430:        async function exportVoll() {
+tmp/audit_191258/index.html:6486:        function validiere(obj, voll, datei) {
+tmp/audit_191258/index.html:6530:        function zeigePruefung(p) {
+tmp/audit_191258/index.html:6549:        async function dateiPruefen(file, voll) {
+tmp/audit_191258/index.html:6571:        async function wiederherstellen() {
+tmp/audit_191258/index.html:6619:        const ersetzeKnopf = (id, aktion) => {
+tmp/audit_191258/index.html:6810:        const bytesZu64 = (bytes) => {
+tmp/audit_191258/index.html:6817:        const zuBytes = (s) => {
+tmp/audit_191258/index.html:6823:        const geraet = () =>
+tmp/audit_191258/index.html:6829:        const zeitname = () => {
+tmp/audit_191258/index.html:6834:        async function schluessel(kennwort, salz) {
+tmp/audit_191258/index.html:6850:        async function verschluesseln(inhalt, kennwort) {
+tmp/audit_191258/index.html:6873:        async function entschluesseln(paket, kennwort) {
+tmp/audit_191258/index.html:6898:        const blob64 = (blob) =>
+tmp/audit_191258/index.html:6905:        async function dokumenteSammeln() {
+tmp/audit_191258/index.html:6942:        const grunddaten = () => ({
+tmp/audit_191258/index.html:6951:        async function inhaltBauen(mitDokumenten) {
+tmp/audit_191258/index.html:6966:        async function paketSpeichern(kennwort, mitDokumenten, name) {
+tmp/audit_191258/index.html:6977:        async function ruecksicherungVorbereiten(kennwort) {
+tmp/audit_191258/index.html:6981:        const normDaten = (neu) => ({
+tmp/audit_191258/index.html:6996:        const dokumenteErsetzen = (docs) =>
+tmp/audit_191258/index.html:7002:              const seiten = (d.seiten || []).map((s) => {
+tmp/audit_191258/index.html:7024:        function statusSetzen(art, text) {
+tmp/audit_191258/index.html:7031:        function statusAnzeigen() {
+tmp/audit_191258/index.html:7039:        const anzahl = (wert) => Array.isArray(wert) ? wert.length : 0;
+tmp/audit_191258/index.html:7040:        function statistik(inhalt) {
+tmp/audit_191258/index.html:7055:        function validiereInhalt(inhalt) {
+tmp/audit_191258/index.html:7078:        async function speicherReicht(dateiBytes, dokumentBytes) {
+tmp/audit_191258/index.html:7085:        const datenbestandIstLeer = (s) =>
+tmp/audit_191258/index.html:7089:        async function protokollSpeichern(inhalt, stats) {
+tmp/audit_191258/index.html:7110:        function oeffnen(art) {
+tmp/audit_191258/index.html:7137:        function schliessen() {
+tmp/audit_191258/index.html:7167:        const kennwortBewerten = () => {
+tmp/audit_191258/index.html:7513:        const einstellungen = () => {
+tmp/audit_191258/index.html:7523:        const n = (id) => {
+tmp/audit_191258/index.html:7527:        const s = (id) => {
+tmp/audit_191258/index.html:7531:        function anwenden() {
+tmp/audit_191258/index.html:7538:        function warnungen() {
+tmp/audit_191258/index.html:7605:        const hatWert = (wert) =>
+tmp/audit_191258/index.html:7711:        function settingsForm() {
+tmp/audit_191258/index.html:7755:        function chartTageswerte(id, feld, einheit, feld2) {
+tmp/audit_191258/index.html:7820:        function tcCharts() {
+tmp/audit_191258/index.html:7846:          const q = (v) => '"' + String(v ?? "").replace(/"/g, '""') + '"',
+tmp/audit_191258/index.html:7991:        const normal = (wert) => String(wert || "").trim().toLocaleLowerCase("de-DE").replace(/\s+/g, " ");
+tmp/audit_191258/index.html:7992:        const sichtbareAerzte = () => {
+tmp/audit_191258/index.html:8005:        const fuelleArztFilter = () => {
+tmp/audit_191258/index.html:8050:        const dokumentTitelHinweis = () => {
+tmp/audit_191258/index.html:8096:          const menueSetzen = (offen) => {
+tmp/audit_191258/index.html:8232:  const onlineStatus = () => { status.textContent = navigator.onLine ? 'Online' : 'Offline – Daten bleiben auf diesem Gerät'; status.style.background = navigator.onLine ? '#fff' : '#fff0c7'; status.classList.toggle('offline', !navigator.onLine); };
+tmp/audit_191258/index.html:8257:  const schliessen = () => { localStorage.setItem(HINWEIS, 'gesehen'); willkommen.close(); };
+tmp/audit_191258/index.html:8371:  function modusSetzen(modus, melden = false) {
+tmp/audit_191258/index.html:8388:  const startZeigen = () => { if (!localStorage.getItem(START_KEY) && !document.querySelector('dialog[open]')) start.showModal(); };
+tmp/audit_191258/index.html:8396:  const hilfeZu = () => hilfe.close();
+tmp/audit_191258/index.html:8407:  function optionenSortieren(select, oben = [], unten = []) {
+tmp/audit_191258/index.html:8417:  function alleListenSortieren() {
+tmp/audit_191258/index.html:8491:  const geaendert = () => offen && ausgang && formStand(offen) !== ausgang;
+tmp/audit_191258/index.html:8492:  const darfVerlassen = () => !geaendert() || confirm('Nicht gespeicherte Änderungen gehen verloren. Möchten Sie trotzdem fortfahren?');
+tmp/audit_191258/index.html:8493:  const schliesseBereich = () => {
+tmp/audit_191258/index.html:8502:  const aktualisiereAuswahl = () => {
+tmp/audit_191258/index.html:8512:  const standardwerte = () => {
+tmp/audit_191258/index.html:8537:  const dialogSchliessen = () => { if (!darfVerlassen()) return; schliesseBereich(); dialog.close(); };
+tmp/audit_191258/index.html:8544:  const leeresEintragObjekt = (id,datum,zeit) => ({id,datum,arzt:'',terminstatus:'Geplant',massnahme:'',bemerkung:'',gedanken:'',buchMoment:'normal',rechnung:0,rezept:0,fahrt:0,befinden:'',befindenWert:'',schmerz:'',energie:'',schlaf:'',gewicht:'',messUhrzeit:zeit,tageszeit:'',messsituation:'',messnotiz:'',schmerzOrt:'',schlafQualitaet:'',temperatur:'',temperaturOrt:'',beschwerden:'',blutdruckSys:'',blutdruckDia:'',puls:'',spo2:'',atemfrequenz:'',blutzucker:'',blutzuckerEinheit:'',blutzuckerZeitpunkt:'',trinkmenge:'',urinmenge:'',stuhlgang:'',appetit:'',uebelkeit:'',atemnot:'',schwellungen:'',aktivitaetMin:'',schritte:''});
+tmp/audit_191258/index.html:8680:  const schliessen = () => {
+tmp/audit_191258/index.html:8714:  const sync = () => {
+tmp/audit_191258/index.html:8755:  const datalist = (id, werte) => {
+tmp/audit_191258/index.html:8761:  function aktualisiereLernlisten() {
+tmp/audit_191258/index.html:8769:    const zuordnen = (id,list) => document.getElementById(id)?.setAttribute('list',list);
+tmp/audit_191258/index.html:8797:  const beschwerden = () => einzigartig([
+tmp/audit_191258/index.html:8802:  const zeichneBeschwerden = () => {
+tmp/audit_191258/index.html:8809:  const zeichneChips = () => {
+tmp/audit_191258/index.html:8822:    const ergaenzen=() => { const w=eigen.value.trim(); if(!w)return; if(![...altAuswahl.options].some(o=>norm(o.value)===norm(w))){const o=document.createElement('option');o.value=o.textContent=w;altAuswahl.appendChild(o);} gewaehlt.add(norm(w)); eigen.value=''; zeichneChips(); zeichneBeschwerden(); };
+tmp/audit_191258/index.html:8841:    const katUebernehmen=() => { const w=eigenKat.value.trim(); if(!w)return; let o=[...dokumentKategorie.options].find(x=>norm(x.value)===norm(w)); if(!o){o=document.createElement('option');o.value=o.textContent=w;dokumentKategorie.appendChild(o);} dokumentKategorie.value=o.value; };
+tmp/audit_191258/index.html:8950:  if(verlauf){const box=document.createElement('div');box.className='v19121-aktualisierung';box.innerHTML='<button class="knopf sekundaer" type="button">↻ Verlauf aktualisieren</button><small aria-live="polite">Werte werden automatisch aktualisiert.</small>';const kopf=verlauf.querySelector('.kopf')||verlauf.firstElementChild;kopf.insertAdjacentElement('afterend',box);const aktualisieren=(melden=false)=>{renderAlles();box.querySelector('small').textContent='Zuletzt aktualisiert: '+new Date().toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'});if(melden)toast('Verlauf aktualisiert');};box.querySelector('button').addEventListener('click',()=>aktualisieren(true));['verlaufVon','verlaufBis','verlaufReset'].forEach(id=>document.getElementById(id)?.addEventListener(id==='verlaufReset'?'click':'change',()=>setTimeout(()=>aktualisieren(false),0)));
+tmp/audit_191258/index.html:9021:  const berichtSanitieren=()=>{

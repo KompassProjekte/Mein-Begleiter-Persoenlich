@@ -1,0 +1,43 @@
+MEIN BEGLEITER 1.9.1.2.5.9 – PC-KONTROLLTEST
+
+VORHER
+[ ] Aktuelle verschlüsselte vollständige Sicherung erstellen.
+[ ] Version 1.9.1.2.5.8 nicht löschen, aber während des Tests nicht parallel öffnen.
+
+START UND VITALWERTE
+[ ] Version 1.9.1.2.5.9 wird angezeigt; persönliche Daten sind vorhanden.
+[ ] „＋ Vitalwerte eintragen“ ist genau einmal sichtbar.
+[ ] Blutdruck und Puls speichern: Dialog schließt, Bestätigung erscheint, Messung ist sichtbar.
+[ ] Messung ändern und erneut speichern: „Vitalwerte – Messung“ bleibt erhalten.
+[ ] Mehrere Messungen am selben Tag bleiben einzeln gespeichert und nach Uhrzeit unterscheidbar.
+
+KOSTEN UND BEHANDLUNG
+[ ] Unter „Kosten“ ist „＋ Kosten eintragen“ sichtbar.
+[ ] Rechnung, Rezept und Fahrtkosten jeweils speichern und in der Übersicht kontrollieren.
+[ ] Der Kostenbericht zeigt den tatsächlichen Zeitraum der vorhandenen Kosten.
+[ ] Unter „Behandlung & Medikamente“ eine geplante Behandlung speichern.
+[ ] Eine erfolgte Behandlung mit Status „Erledigt“ speichern.
+[ ] Behandlung ändern und anschließend kontrolliert löschen.
+
+MEINE GESCHICHTE UND DRUCKWEGE
+[ ] In „Meine Geschichte“ gibt es neben „＋ Neue Einträge“ keinen direkten Druckknopf.
+[ ] Der Ausdruck von Listen erfolgt nur über den Menüpunkt „Drucken“.
+[ ] Das Druckzentrum enthält keine Kostenübersicht, kein Tagebuch und kein persönliches Buch.
+[ ] Im Berichts-, Tagebuch- und Buchzentrum bleiben Erstellen, Speichern und Drucken erreichbar.
+[ ] Die Erklärung zur Zuständigkeit der beiden Zentren ist verständlich.
+
+VERLAUF UND DIAGRAMME
+[ ] Messpunkte zeigen Werte und Datumsangaben; Blutdruck zeigt SYS und DIA.
+[ ] Bei „Verlauf“ und „Ausgewählte Diagramme“ erscheint: „Bitte wählen Sie im folgenden Druckfenster Querformat.“
+[ ] Im echten Druckfenster Querformat manuell wählen und Lesbarkeit/Seitenumbrüche prüfen.
+[ ] Es erscheint nirgends die falsche Zusage „automatisch gewählt“.
+
+WEITERE KONTROLLE
+[ ] Zentraler Kostenbericht funktioniert in Kurz- und Detailansicht.
+[ ] Kommende Termine und offene Fragen werden korrekt gedruckt.
+[ ] Kennwort-Auge sowie verschlüsselte Sicherungsprüfung funktionieren.
+
+GERÄTETEST
+[ ] Auf dem Samsung A9 werden keine Inhalte durch die Versionsangabe verdeckt.
+[ ] Unter Einstellungen ist „Über Mein Begleiter“ vollständig sichtbar.
+[ ] Berichte sind kompakter und bleiben gut lesbar.
