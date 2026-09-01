@@ -1,0 +1,49 @@
+MEIN BEGLEITER 1.9.1.2.5.10 - PC-ABSCHLUSSTEST
+
+VORHER
+[ ] Aktuelle verschlüsselte vollständige Sicherung erstellen.
+[ ] Version 1.9.1.2.5.9 als Rückfallversion aufbewahren.
+
+1. KOSTEN
+[ ] Rechnung speichern: Dialog schließt und Bestätigung erscheint.
+[ ] Rezept speichern: Dialog schließt und Bestätigung erscheint.
+[ ] Fahrtkosten speichern: Dialog schließt und Bestätigung erscheint.
+[ ] Ohne Betrag: Hinweis erscheint direkt im Dialog und Betragsfeld wird markiert.
+[ ] Ohne Bezeichnung: Hinweis erscheint direkt im Dialog und Bezeichnungsfeld wird markiert.
+[ ] Pflichtfelder besitzen Sternchen und hellen Hintergrund.
+[ ] Kostenposten direkt in der Kostenübersicht ändern.
+[ ] Kostenposten mit Sicherheitsabfrage löschen.
+[ ] Ein absichtlich doppelter Kostenposten wird nur gemeldet, nicht automatisch gelöscht.
+[ ] Kostenbericht zeigt den tatsächlichen Zeitraum.
+[ ] Druckknopf steht oben neben „Schließen“.
+
+2. TAGES-CHECK UND VITALWERTE
+[ ] Tages-Check erscheint in „Meine Einträge“ mit der Bezeichnung „Tages-Check“.
+[ ] Tages-Check wird nicht als Termin oder Behandlung eingeordnet.
+[ ] Vitalmessung erscheint weiterhin als „Vitalwerte - Messung“.
+
+3. BEHANDLUNG
+[ ] Geplante Behandlung speichern.
+[ ] Erfolgte Behandlung mit Status „Erledigt“ speichern.
+[ ] Behandlung ändern und kontrolliert löschen.
+[ ] Pflichtfelder sind eindeutig gekennzeichnet.
+
+4. AUSGABEN
+[ ] Menüpunkt „Bericht, Tagebuch & Buch“ ist vorhanden.
+[ ] Persönliches Buch erstellen, als Datei speichern und drucken.
+[ ] Persönliches Tagebuch erstellen, als Datei speichern und drucken.
+[ ] Sachlichen Bericht erstellen, als Datei speichern und drucken.
+[ ] Menüpunkt „Listen drucken“ ist vorhanden.
+[ ] Termine, Fragen, Medikamente und Dokumentenliste ausgeben.
+[ ] Verlauf wird automatisch in A4-Querformat geöffnet.
+[ ] Ausgewählte Diagramme werden automatisch in A4-Querformat geöffnet.
+[ ] Alle übrigen Ausgaben bleiben im A4-Hochformat.
+
+5. SICHERHEIT UND ABSCHLUSS
+[ ] Dokumentenmappe öffnen und eine Seite kontrollieren.
+[ ] Verschlüsselte vollständige Sicherung erstellen.
+[ ] Sicherung in einer getrennten Testumgebung wiederherstellen.
+[ ] Einige Einträge, Kosten und Dokumente nach der Wiederherstellung vergleichen.
+[ ] Anwendung schließen und offline erneut öffnen.
+
+Gerätetests auf Tablet und Smartphone gehören ausdrücklich nicht zu diesem PC-Abschlusstest.

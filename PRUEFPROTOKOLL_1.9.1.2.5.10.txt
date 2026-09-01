@@ -1,0 +1,28 @@
+PRÜFPROTOKOLL - MEIN BEGLEITER 1.9.1.2.5.10 PC-ABSCHLUSSVERSION
+Stand: 01.09.2026
+
+AUTOMATISCH GEPRÜFT
+[OK] Sämtliche internen JavaScript-Blöcke syntaktisch gültig
+[OK] v19124.js syntaktisch gültig
+[OK] v1912510.js syntaktisch gültig
+[OK] Service Worker syntaktisch gültig
+[OK] Manifest gültiges JSON
+[OK] Keine statisch doppelten HTML-IDs
+[OK] PWA-Pflichtdateien vollständig
+[OK] Cache-Version 1.9.1.2.5.10
+[OK] Sicherungsformat und Datenstruktur unverändert
+[OK] Tages-Check-Anzeige ohne Terminzuordnung
+[OK] Kosten speichern vor Dialogschluss; Aktualisierung danach
+[OK] Direkte Kostenänderung und kontrolliertes Löschen vorhanden
+[OK] Pflichtfeldkennzeichnung vorhanden
+[OK] Kostenbericht-Druckknopf oben
+[OK] A4-Querformat für Verlauf und ausgewählte Diagramme
+[OK] A4-Hochformat für übrige Ausgaben
+[OK] Neue verständliche Menübezeichnungen
+
+PRAKTISCHER ABSCHLUSSTEST
+Siehe TESTLISTE_LOTHAR_1.9.1.2.5.10.txt.
+
+HINWEIS
+Die Browser-Druckvorschau und die vollständige Wiederherstellung persönlicher Daten
+müssen abschließend am PC praktisch kontrolliert werden.

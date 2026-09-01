@@ -1,0 +1,34 @@
+MEIN BEGLEITER 1.9.1.2.5.10 - PC-ABSCHLUSSVERSION
+Stand: 01.09.2026
+
+KOSTEN
+- Speicherablauf neu geordnet: speichern, Dialog schließen, danach Ansichten aktualisieren.
+- Direkte Fehlermeldung und Fokus auf das erste fehlende Pflichtfeld.
+- Rechnung, Rezept und Fahrtkosten verwenden dieselbe geprüfte Speicherlogik.
+- Kosten lassen sich direkt in der Kostenübersicht ändern und löschen.
+- Beim Löschen erfolgt eine Sicherheitsabfrage.
+- Druckknopf des Kostenberichts steht oben neben „Schließen“.
+- Dopplungswarnung bleibt unverändert erhalten; es wird nichts automatisch gelöscht.
+
+PFLICHTFELDER
+- Pflichtfelder werden anwendungsweit mit Sternchen, hellem Hintergrund und
+  dem Hinweis „Mit * gekennzeichnete Felder müssen ausgefüllt werden“ gekennzeichnet.
+- Ungültige Kostenfelder erhalten roten Rahmen und direkten Fehlertext.
+- Freiwillige Felder bleiben weiß und ausdrücklich als freiwillig bezeichnet.
+
+MEINE EINTRÄGE
+- Reine Tages-Checks werden sichtbar als „Tages-Check“ bezeichnet.
+- Die Bezeichnung ist nur eine Anzeige und erzeugt keinen Termin.
+- Vitalmessungen bleiben „Vitalwerte - Messung“.
+
+AUSGABEN
+- „Bericht“ heißt jetzt „Bericht, Tagebuch & Buch“.
+- „Drucken“ heißt jetzt „Listen drucken“.
+- Verlauf und ausgewählte Diagramme erhalten automatisch A4-Querformat.
+- Alle übrigen Ausgaben bleiben im A4-Hochformat.
+
+PWA UND DATEN
+- Versions-, Cache- und Manifestangaben auf 1.9.1.2.5.10 aktualisiert.
+- Bestehende Datenstruktur und verschlüsselte Sicherungen bleiben kompatibel.
+- Version 1.9.1.2.5.9 bleibt unverändert als Rückfallversion erhalten.
+- Tablet- und Smartphone-Anpassungen sind nicht Bestandteil dieser PC-Version.
