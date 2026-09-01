@@ -40,7 +40,8 @@ VORHER
 [ ] Alle übrigen Ausgaben bleiben im A4-Hochformat.
 
 5. SICHERHEIT UND ABSCHLUSS
-[ ] Dokumentenmappe öffnen und eine Seite kontrollieren.
+[ ] Unter „Dokumente“ eine abgelegte Dokumentenmappe öffnen und mindestens eine Seite kontrollieren.
+[ ] Eine DOCX-Datei zeigt das Word-Symbol und nur „Word-Datei herunterladen“; anschließend mit Word oder LibreOffice öffnen.
 [ ] Verschlüsselte vollständige Sicherung erstellen.
 [ ] Sicherung in einer getrennten Testumgebung wiederherstellen.
 [ ] Einige Einträge, Kosten und Dokumente nach der Wiederherstellung vergleichen.

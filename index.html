@@ -1800,7 +1800,7 @@
                   <tr>
                     <th>Datum</th>
                     <th>Arzt / Stelle</th>
-                    <th>Maßnahme</th>
+                    <th>Eintrag / Maßnahme</th>
                     <th>Bemerkungen</th>
                     <th>Zugehörige Dokumente</th>
                     <th>Rechnungen</th>
@@ -2087,7 +2087,9 @@
                   class="breit"
                   maxlength="160"
                   placeholder="Nächster Behandlungsschritt"
-                /><input id="schrittDatum" type="date" /><input
+                /><label class="v1912510-schrittfeld"><span>Datum *</span><input id="schrittDatum" type="date" /></label><label class="v1912510-schrittfeld"><span>Uhrzeit *</span><input
+                  id="schrittUhrzeit" type="time"
+                /></label><input
                   id="schrittOrt"
                   maxlength="100"
                   placeholder="Wo findet die Behandlung statt?"
@@ -3268,7 +3270,7 @@
       }
       function echteTermine() {
         return daten.eintraege.filter(
-          (e) => e.eintragsart !== "kosten" && e.eintragsart !== "vitalwerte" && (e.arzt || e.massnahme),
+          (e) => e.eintragsart !== "kosten" && e.eintragsart !== "vitalwerte" && !(hatTageswerte(e) && !String(e.massnahme || "").trim()) && (e.arzt || e.massnahme),
         );
       }
       function behandlungsTermine() {
@@ -3277,6 +3279,7 @@
           .map((s) => ({
             id: "schritt-" + s.id,
             datum: s.datum,
+            messUhrzeit: s.uhrzeit || "",
             arzt: s.wer || s.ort || "Behandlungszentrum",
             massnahme: [s.titel, s.ort && "Ort: " + s.ort]
               .filter(Boolean)
@@ -3537,7 +3540,7 @@
           (gruppiert.get(datum) || [])
             .map(
               (d) =>
-                `<div class="geschichte-dokument"><strong>${esc(d.name || "Dokument")}</strong><small>${esc(d.kategorie || "Sonstiges")} · ${d.seiten?.length || 1} ${(d.seiten?.length || 1) === 1 ? "Datei" : "Seiten"}${d.notiz ? " · " + esc(d.notiz) : ""}</small><button class="knopf klein sekundaer" type="button" onclick="dokumentOeffnen('${d.id}')">Dokument öffnen</button></div>`,
+                `<div class="geschichte-dokument"><strong>${esc(d.name || "Dokument")}</strong><small>${esc(d.kategorie || "Sonstiges")} · ${d.seiten?.length || 1} ${(d.seiten?.length || 1) === 1 ? "Datei" : "Seiten"}${d.notiz ? " · " + esc(d.notiz) : ""}</small>${istWordDokument(d.seiten?.[0] || d) ? `<button class="knopf klein sekundaer" type="button" onclick="dokumentLaden('${d.id}')">Word-Datei herunterladen</button>` : `<button class="knopf klein sekundaer" type="button" onclick="dokumentOeffnen('${d.id}')">Dokument öffnen</button>`}</div>`,
             )
             .join("");
         const karten = [];
@@ -3549,7 +3552,8 @@
           // ohne das allgemeine Feld "massnahme" zu belegen. Dieses Feld bleibt
           // leer, damit eine Messung nicht wieder als Termin behandelt wird.
           const istVitalwertMessung = e.eintragsart === "vitalwerte";
-          const istTagesCheck = !istVitalwertMessung && hatTageswerte(e);
+          const istTagesCheck = !istVitalwertMessung && hatTageswerte(e) && !String(e.massnahme || "").trim();
+          const istTerminEintrag = !istVitalwertMessung && !istTagesCheck && !!(e.arzt || e.massnahme);
           const sichtbareMassnahme = istVitalwertMessung
             ? `<strong>Vitalwerte</strong><br><small>Messung</small>`
             : e.massnahme
@@ -3571,13 +3575,13 @@
           const befinden = [e.befinden ? esc(e.befinden) : "", messwerte ? `<div class="messwerte">${messwerte}</div>` : ""].filter(Boolean).join("");
           karten.push({
             schluessel: zeitSchluessel(e),
-            html: `<article class="journal-karte"><header><div><strong>${datumLang(e.datum)}</strong>${e.messUhrzeit ? `<small>${esc(e.messUhrzeit)} Uhr</small>` : ""}</div>${e.arzt || e.massnahme ? `<span class="messwert">${esc(terminStatus(e))}</span>` : ""}</header>${kartenFeld(istVitalwertMessung || istTagesCheck ? "Eintragsart" : "Maßnahme", sichtbareMassnahme)}${kartenFeld("Arzt / Stelle", e.arzt ? esc(e.arzt) : "")}${kartenFeld("Bemerkungen", bemerkungen)}${kartenFeld("Dokumente", dokumenteAmTag)}${kartenFeld("Kosten / Rezepte / Fahrtkosten", nebenkosten)}${kartenFeld("Befinden / Messwerte", befinden)}<div class="journal-karte-aktionen"><button class="knopf klein sekundaer" onclick="bearbeiten('${e.id}')">Ändern</button><button class="knopf klein gefahr" onclick="loeschen('${e.id}')">Löschen</button></div></article>`,
+            html: `<article class="journal-karte"><header><div><strong>${datumLang(e.datum)}</strong>${e.messUhrzeit ? `<small>${esc(e.messUhrzeit)} Uhr</small>` : ""}</div>${istTerminEintrag ? `<span class="messwert">${esc(terminStatus(e))}</span>` : ""}</header>${kartenFeld(istVitalwertMessung || istTagesCheck ? "Eintragsart" : "Eintrag / Maßnahme", sichtbareMassnahme)}${kartenFeld("Arzt / Stelle", !istTagesCheck && e.arzt ? esc(e.arzt) : "")}${kartenFeld("Bemerkungen", bemerkungen)}${kartenFeld("Dokumente", dokumenteAmTag)}${kartenFeld("Kosten / Rezepte / Fahrtkosten", nebenkosten)}${kartenFeld("Befinden / Messwerte", befinden)}<div class="journal-karte-aktionen"><button class="knopf klein sekundaer" onclick="bearbeiten('${e.id}')">Ändern</button><button class="knopf klein gefahr" onclick="loeschen('${e.id}')">Löschen</button></div></article>`,
           });
           gruppiert.delete(e.datum);
-          return { schluessel: zeitSchluessel(e), html: `<tr><td>${datumLang(e.datum)}${e.messUhrzeit ? `<br><small>${esc(e.messUhrzeit)} Uhr</small>` : ""}</td><td>${esc(e.arzt)}${e.arzt || e.massnahme ? `<div class="messwerte"><span class="messwert">${esc(terminStatus(e))}</span></div>` : ""}</td><td>${sichtbareMassnahme}</td><td>${esc(e.bemerkung)}${e.gedanken ? `<p><strong>Meine Gedanken:</strong><br>${esc(e.gedanken)}</p>` : ""}${e.buchMoment && e.buchMoment !== "normal" ? `<div class="messwerte"><span class="messwert">${e.buchMoment === "wendepunkt" ? "Wendepunkt" : "Wichtiger Moment"}</span></div>` : ""}</td><td>${dokumenteAmTag}</td><td class="geld">${e.rechnung ? euro(e.rechnung) : ""}</td><td class="geld">${e.rezept ? euro(e.rezept) : ""}</td><td class="geld">${e.fahrt ? euro(e.fahrt) : ""}</td><td>${esc(e.befinden)}<div class="messwerte">${messwerteHtml(e)}</div></td><td class="aktionen"><button class="knopf klein sekundaer" onclick="bearbeiten('${e.id}')">Ändern</button> <button class="knopf klein gefahr" onclick="loeschen('${e.id}')">Löschen</button></td></tr>` };
+          return { schluessel: zeitSchluessel(e), html: `<tr><td>${datumLang(e.datum)}${e.messUhrzeit ? `<br><small>${esc(e.messUhrzeit)} Uhr</small>` : ""}</td><td>${istTagesCheck ? "" : esc(e.arzt)}${istTerminEintrag ? `<div class="messwerte"><span class="messwert">${esc(terminStatus(e))}</span></div>` : ""}</td><td>${sichtbareMassnahme}</td><td>${esc(e.bemerkung)}${e.gedanken ? `<p><strong>Meine Gedanken:</strong><br>${esc(e.gedanken)}</p>` : ""}${e.buchMoment && e.buchMoment !== "normal" ? `<div class="messwerte"><span class="messwert">${e.buchMoment === "wendepunkt" ? "Wendepunkt" : "Wichtiger Moment"}</span></div>` : ""}</td><td>${dokumenteAmTag}</td><td class="geld">${e.rechnung ? euro(e.rechnung) : ""}</td><td class="geld">${e.rezept ? euro(e.rezept) : ""}</td><td class="geld">${e.fahrt ? euro(e.fahrt) : ""}</td><td>${esc(e.befinden)}<div class="messwerte">${messwerteHtml(e)}</div></td><td class="aktionen"><button class="knopf klein sekundaer" onclick="bearbeiten('${e.id}')">Ändern</button> <button class="knopf klein gefahr" onclick="loeschen('${e.id}')">Löschen</button></td></tr>` };
         });
         [...gruppiert.entries()].forEach(([datum, dokumente]) => {
-          const dokumentHtml = dokumente.map((d) => `<div class="geschichte-dokument"><strong>${esc(d.name || "Dokument")}</strong><small>${esc(d.kategorie || "Sonstiges")} · ${d.seiten?.length || 1} ${(d.seiten?.length || 1) === 1 ? "Datei" : "Seiten"}${d.notiz ? " · " + esc(d.notiz) : ""}</small><button class="knopf klein sekundaer" type="button" onclick="dokumentOeffnen('${d.id}')">Dokument öffnen</button></div>`).join("");
+          const dokumentHtml = dokumente.map((d) => `<div class="geschichte-dokument"><strong>${esc(d.name || "Dokument")}</strong><small>${esc(d.kategorie || "Sonstiges")} · ${d.seiten?.length || 1} ${(d.seiten?.length || 1) === 1 ? "Datei" : "Seiten"}${d.notiz ? " · " + esc(d.notiz) : ""}</small>${istWordDokument(d.seiten?.[0] || d) ? `<button class="knopf klein sekundaer" type="button" onclick="dokumentLaden('${d.id}')">Word-Datei herunterladen</button>` : `<button class="knopf klein sekundaer" type="button" onclick="dokumentOeffnen('${d.id}')">Dokument öffnen</button>`}</div>`).join("");
           zeilen.push({ schluessel: `${datum}T00:00`, html: `<tr><td>${datumLang(datum)}</td><td></td><td><strong>Abgelegtes Dokument</strong></td><td></td><td>${dokumentHtml}</td><td></td><td></td><td></td><td></td><td></td></tr>` });
           karten.push({ schluessel: `${datum}T00:00`, html: `<article class="journal-karte"><header><div><strong>${datumLang(datum)}</strong><small>Abgelegtes Dokument</small></div></header>${kartenFeld("Dokumente", dokumentHtml)}</article>` });
         });
@@ -3701,6 +3705,7 @@
         schrittBearbeitungId = null;
         $("#schrittTitel").value = "";
         $("#schrittDatum").value = "";
+        $("#schrittUhrzeit").value = "";
         $("#schrittOrt").value = "";
         $("#schrittWer").value = "";
         $("#schrittStatus").value = "Geplant";
@@ -3882,6 +3887,11 @@
           a.onerror = () => fehler(a.error);
         });
       }
+      function istWordDokument(datei) {
+        const name = String(datei?.name || "").trim();
+        const typ = String(datei?.typ || datei?.datei?.type || "").toLowerCase();
+        return /\.docx$/i.test(name) || typ === "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+      }
       async function renderDokumente() {
         if (!dokumentDb) return;
         try {
@@ -3939,9 +3949,10 @@
                       (d.erstellt || new Date().toISOString()).slice(0, 10),
                     seitenHtml =
                       anzahl > 1
-                        ? `<details class="dokument-seiten"><summary>${anzahl} Seiten anzeigen</summary>${seiten.map((s, i) => `<div class="dokument-seite"><span><strong>Seite ${i + 1}</strong><small> · ${esc(s.name || "Datei")} · ${dateigroesse(+s.groesse || 0)}</small></span><span class="listen-aktionen"><button class="knopf klein sekundaer" type="button" onclick="dokumentSeiteOeffnen('${d.id}',${i})">Öffnen</button><button class="knopf klein sekundaer" type="button" onclick="dokumentSeiteLaden('${d.id}',${i})">Download</button><button class="knopf klein gefahr" type="button" onclick="dokumentSeiteLoeschen('${d.id}',${i})">Löschen</button></span></div>`).join("")}</details>`
+                        ? `<details class="dokument-seiten"><summary>${anzahl} Seiten anzeigen</summary>${seiten.map((s, i) => `<div class="dokument-seite"><span><strong>Seite ${i + 1}</strong><small> · ${esc(s.name || "Datei")} · ${dateigroesse(+s.groesse || 0)}</small></span><span class="listen-aktionen">${istWordDokument(s) ? `<button class="knopf klein sekundaer" type="button" onclick="dokumentSeiteLaden('${d.id}',${i})">Word-Datei herunterladen</button>` : `<button class="knopf klein sekundaer" type="button" onclick="dokumentSeiteOeffnen('${d.id}',${i})">Öffnen</button><button class="knopf klein sekundaer" type="button" onclick="dokumentSeiteLaden('${d.id}',${i})">Download</button>`}<button class="knopf klein gefahr" type="button" onclick="dokumentSeiteLoeschen('${d.id}',${i})">Löschen</button></span></div>`).join("")}</details>`
                         : "";
-                  return `<div class="dokument"><div class="dateisymbol">${anzahl > 1 ? "📚" : typ.startsWith("image/") ? "🖼️" : typ === "application/pdf" ? "📕" : "📄"}</div><div><strong>${esc(d.name || "Dokument")}</strong><p>${esc(d.kategorie || "Sonstiges")} · ${anzahl} ${anzahl === 1 ? "Datei" : "Seiten"} · ${dateigroesse(gesamt)} · ${datumLang(erstellt)}${d.notiz ? " · " + esc(d.notiz) : ""}</p></div><div class="listen-aktionen"><button class="knopf klein sekundaer" type="button" aria-label="Dokumentangaben ändern" onclick="dokumentUmbenennen('${d.id}')">Ändern</button><button class="knopf klein sekundaer" type="button" onclick="dokumentOeffnen('${d.id}')">${anzahl > 1 ? "Seite 1" : "Öffnen"}</button><button class="knopf klein sekundaer" type="button" onclick="dokumentLaden('${d.id}')">${anzahl > 1 ? "Alle laden" : "Download"}</button><button class="knopf klein gefahr" type="button" onclick="dokumentLoeschen('${d.id}')">${anzahl > 1 ? "Mappe löschen" : "Löschen"}</button></div><label class="dokument-wahl"><input type="checkbox" ${d.inGeschichte ? "checked" : ""} onchange="dokumentGeschichteUmschalten('${d.id}',this.checked)"> In „Meine Geschichte“ anzeigen</label>${seitenHtml}</div>`;
+                  const einzelWord = anzahl === 1 && istWordDokument(seiten[0]);
+                  return `<div class="dokument"><div class="dateisymbol${einzelWord ? " docx" : ""}">${anzahl > 1 ? "📚" : einzelWord ? "W" : typ.startsWith("image/") ? "🖼️" : typ === "application/pdf" ? "📕" : "📄"}</div><div><strong>${esc(d.name || "Dokument")}</strong><p>${esc(d.kategorie || "Sonstiges")} · ${anzahl} ${anzahl === 1 ? "Datei" : "Seiten"} · ${dateigroesse(gesamt)} · ${datumLang(erstellt)}${d.notiz ? " · " + esc(d.notiz) : ""}${einzelWord ? " · Zum Öffnen mit Word oder LibreOffice herunterladen" : ""}</p></div><div class="listen-aktionen"><button class="knopf klein sekundaer" type="button" aria-label="Dokumentangaben ändern" onclick="dokumentUmbenennen('${d.id}')">Ändern</button>${einzelWord ? `<button class="knopf klein sekundaer" type="button" onclick="dokumentLaden('${d.id}')">Word-Datei herunterladen</button>` : `<button class="knopf klein sekundaer" type="button" onclick="dokumentOeffnen('${d.id}')">${anzahl > 1 ? "Seite 1" : "Öffnen"}</button><button class="knopf klein sekundaer" type="button" onclick="dokumentLaden('${d.id}')">${anzahl > 1 ? "Alle laden" : "Download"}</button>`}<button class="knopf klein gefahr" type="button" onclick="dokumentLoeschen('${d.id}')">${anzahl > 1 ? "Mappe löschen" : "Löschen"}</button></div><label class="dokument-wahl"><input type="checkbox" ${d.inGeschichte ? "checked" : ""} onchange="dokumentGeschichteUmschalten('${d.id}',this.checked)"> In „Meine Geschichte“ anzeigen</label>${seitenHtml}</div>`;
                 })
                 .join("")
             : '<div class="leer">Noch keine passenden Dokumente abgelegt.</div>';
@@ -5644,13 +5655,13 @@
         renderBehandlung = function () {
           basisRenderBehandlung();
           const sch = [...daten.schritte].sort((a, b) =>
-            (a.datum || "9999").localeCompare(b.datum || "9999"),
+            `${a.datum || "9999"}T${a.uhrzeit || "00:00"}`.localeCompare(`${b.datum || "9999"}T${b.uhrzeit || "00:00"}`),
           );
           $("#schrittListe").innerHTML = sch.length
             ? sch
                 .map(
                   (s) =>
-                    `<div class="listenkarte"><div><strong>${esc(s.titel)}</strong><p>${[s.datum && datumLang(s.datum), s.ort && "Ort: " + s.ort, s.wer && "Durchgeführt von: " + s.wer, s.status].filter(Boolean).map(esc).join(" · ")}</p></div><div class="listen-aktionen"><select class="statuswahl" onchange="schrittStatus('${s.id}',this.value)"><option ${s.status === "Geplant" ? "selected" : ""}>Geplant</option><option ${s.status === "In Vorbereitung" ? "selected" : ""}>In Vorbereitung</option><option ${s.status === "Erledigt" ? "selected" : ""}>Erledigt</option></select><button class="knopf klein sekundaer" onclick="schrittBearbeiten('${s.id}')">Ändern</button><button class="knopf klein gefahr" onclick="schrittLoeschen('${s.id}')">Löschen</button></div></div>`,
+                  `<div class="listenkarte"><div><strong>${esc(s.titel)}</strong><p>${[s.datum && datumLang(s.datum), s.uhrzeit && s.uhrzeit + " Uhr", s.ort && "Ort: " + s.ort, s.wer && "Durchgeführt von: " + s.wer, s.status].filter(Boolean).map(esc).join(" · ")}</p></div><div class="listen-aktionen"><select class="statuswahl" onchange="schrittStatus('${s.id}',this.value)"><option ${s.status === "Geplant" ? "selected" : ""}>Geplant</option><option ${s.status === "In Vorbereitung" ? "selected" : ""}>In Vorbereitung</option><option ${s.status === "Erledigt" ? "selected" : ""}>Erledigt</option></select><button class="knopf klein sekundaer" onclick="schrittBearbeiten('${s.id}')">Ändern</button><button class="knopf klein gefahr" onclick="schrittLoeschen('${s.id}')">Löschen</button></div></div>`,
                 )
                 .join("")
             : '<div class="leer">Noch keine Behandlungsschritte eingetragen.</div>';
@@ -5670,9 +5681,15 @@
             $("#schrittDatum").focus();
             return;
           }
+          if (!$("#schrittUhrzeit").value) {
+            toast("Bitte die Uhrzeit der Behandlung eintragen.");
+            $("#schrittUhrzeit").focus();
+            return;
+          }
           const werte = {
             titel,
             datum: $("#schrittDatum").value,
+            uhrzeit: $("#schrittUhrzeit").value,
             ort: $("#schrittOrt").value.trim(),
             wer: $("#schrittWer").value.trim(),
             status: $("#schrittStatus").value,
@@ -5698,6 +5715,7 @@
           schrittBearbeitungId = id;
           $("#schrittTitel").value = s.titel || "";
           $("#schrittDatum").value = s.datum || "";
+          $("#schrittUhrzeit").value = s.uhrzeit || "";
           $("#schrittOrt").value = s.ort || "";
           $("#schrittWer").value = s.wer || "";
           $("#schrittStatus").value = s.status || "Geplant";

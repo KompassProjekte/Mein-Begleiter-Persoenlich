@@ -52,6 +52,20 @@
     renderAlles();
   }
 
+  // Reine Tages-Checks aus älteren Eingabemasken dürfen nicht durch die
+  // Hilfsbezeichnung „Selbstbehandlung“ als geplante Termine erscheinen.
+  let tagescheckAltbestandBereinigt = false;
+  daten.eintraege.forEach(e => {
+    const reineSelbstbeobachtung = String(e?.arzt || "").trim().toLocaleLowerCase("de-DE") === "selbstbehandlung"
+      && !String(e?.massnahme || "").trim()
+      && typeof hatTageswerte === "function" && hatTageswerte(e);
+    if (!reineSelbstbeobachtung) return;
+    e.arzt = "";
+    e.terminstatus = "";
+    tagescheckAltbestandBereinigt = true;
+  });
+  if (tagescheckAltbestandBereinigt) speichern();
+
   // Der doppelte Berichtzugang auf der Startseite entfällt.
   const cockpit = q("#seite-cockpit");
   qa('button,[role="button"]', cockpit || document).forEach(b => {
@@ -283,8 +297,8 @@
       let ts=alleTermine().filter(imZeitraum).filter(beimArzt); if(a==="vergangen")ts=ts.filter(e=>!istKommenderTermin(e)); ts.sort((x,y)=>zeitSchluessel(x).localeCompare(zeitSchluessel(y))); html=tabelle(["Datum","Arzt / Stelle","Termin","Status"],ts.map(e=>`<tr><td>${formatDatum(e.datum)}${e.messUhrzeit?`<br>${safe(e.messUhrzeit)} Uhr`:""}</td><td>${safe(e.arzt||"")}</td><td>${safe(e.massnahme||e.bemerkung||"")}</td><td>${safe(terminStatus(e))}</td></tr>`));
     } else if(a==="medikamente") html=tabelle(["Medikament","Anwendung","Abstand"],daten.medikamente.map(m=>`<tr><td>${safe(m.name)}</td><td>${safe(m.anwendung||m.zeit||"")}</td><td>${m.weitereGeplant===false?"Behandlung beendet":safe(m.abstand?`${m.abstand} ${m.einheit||"Tage"}`:"")}</td></tr>`));
     else if(a==="nebenwirkungen") html=tabelle(["Datum","Medikament","Beobachtung"],daten.nebenwirkungen.filter(imZeitraum).map(n=>`<tr><td>${formatDatum(n.datum)}</td><td>${safe(n.medName||"")}</td><td>${safe(n.beschwerde||"")}</td></tr>`));
-    else if(a==="schritte") html=tabelle(["Datum","Behandlungsschritt","Ort / Stelle","Status"],daten.schritte.filter(imZeitraum).map(s=>`<tr><td>${formatDatum(s.datum)}</td><td>${safe(s.titel||s.name||s.massnahme||"")}</td><td>${safe(s.ort||s.stelle||s.arzt||"")}</td><td>${safe(s.status||"")}</td></tr>`));
-    else if(a==="behandlung") html=`<h3>Medikamentenplan</h3>${tabelle(["Medikament","Anwendung"],daten.medikamente.map(m=>`<tr><td>${safe(m.name)}</td><td>${safe(m.anwendung||m.zeit||"")}</td></tr>`))}<h3>Behandlungsschritte</h3>${tabelle(["Datum","Behandlungsschritt","Status"],daten.schritte.filter(imZeitraum).map(s=>`<tr><td>${formatDatum(s.datum)}</td><td>${safe(s.titel||s.name||s.massnahme||"")}</td><td>${safe(s.status||"")}</td></tr>`))}`;
+    else if(a==="schritte") html=tabelle(["Datum / Uhrzeit","Behandlungsschritt","Ort / Stelle","Status"],daten.schritte.filter(imZeitraum).map(s=>`<tr><td>${formatDatum(s.datum)}${s.uhrzeit?`<br>${safe(s.uhrzeit)} Uhr`:""}</td><td>${safe(s.titel||s.name||s.massnahme||"")}</td><td>${safe(s.ort||s.stelle||s.arzt||"")}</td><td>${safe(s.status||"")}</td></tr>`));
+    else if(a==="behandlung") html=`<h3>Medikamentenplan</h3>${tabelle(["Medikament","Anwendung"],daten.medikamente.map(m=>`<tr><td>${safe(m.name)}</td><td>${safe(m.anwendung||m.zeit||"")}</td></tr>`))}<h3>Behandlungsschritte</h3>${tabelle(["Datum / Uhrzeit","Behandlungsschritt","Status"],daten.schritte.filter(imZeitraum).map(s=>`<tr><td>${formatDatum(s.datum)}${s.uhrzeit?`<br>${safe(s.uhrzeit)} Uhr`:""}</td><td>${safe(s.titel||s.name||s.massnahme||"")}</td><td>${safe(s.status||"")}</td></tr>`))}`;
     else if(a==="dokumente") {await dokumenteLaden(); const v=q("#v19125Von").value||"0000-01-01",b=q("#v19125Bis").value||"9999-12-31"; const ds=druckDokumente.filter(d=>{const dt=d.dokumentDatum||d.datum||(d.erstellt||"").slice(0,10);return dt>=v&&dt<=b&&beimArzt(d);}); html=`<p class="v19124-erklaerung">Übersicht der gespeicherten Dokumente. Die Dokumentinhalte selbst werden nicht gedruckt.</p>${tabelle(["Datum","Dokument","Kategorie","Arzt / Stelle","Seiten"],ds.map(d=>`<tr><td>${formatDatum(d.dokumentDatum||d.datum||(d.erstellt||"").slice(0,10))}</td><td>${safe(d.name||"Dokument")}</td><td>${safe(d.kategorie||"Sonstiges")}</td><td>${safe(d.quelleName||"")}</td><td>${d.seiten?.length||1}</td></tr>`))}`;}
     else if(["verlauf","diagramme"].includes(a)) {const vf=q("#verlaufVon"),vb=q("#verlaufBis");if(vf)vf.value=q("#v19125Von").value;if(vb)vb.value=q("#v19125Bis").value;if(typeof renderVerlauf==="function")renderVerlauf();const ids=a==="verlauf"?diagramme.map(d=>d[0]):qa("#v19125Diagramme input:checked").map(i=>i.value);const cards=ids.map(id=>q(`#${id}`)?.closest("article")).filter(Boolean).filter(c=>!q(".diagramm.ist-leer",c));html=cards.length?`<div class="v19125-diagramme">${cards.map(c=>`<section class="v19125-diagramm">${c.innerHTML}</section>`).join("")}</div>`:`<div class="v19123-leer">Für die Auswahl sind noch keine bewerteten Werte vorhanden.</div>`;if(a==="verlauf"&&q("#behandlungVerlauf"))html+=`<section class="v19125-behandlung"><h3>Behandlungsverlauf</h3>${q("#behandlungVerlauf").innerHTML}</section>`;}
     out.className=`v19123-vorschau${q("#v19125Dichte").value==="sparsam"?" v19123-sparsam":""}${quer?" v19125-quer":" v19125-hoch"}`; out.innerHTML=kopf(titel)+html;
@@ -382,7 +396,7 @@
   if(mobilMenue){const b1=q('[data-seite="bericht"]',mobilMenue),b2=q('[data-seite="drucken"]',mobilMenue);if(b1)b1.textContent="🖨 Bericht, Tagebuch & Buch";if(b2)b2.textContent="📋 Listen drucken";}
 
   // Pflichtfelder in allen PC-Eingabebereichen einheitlich kennzeichnen.
-  const pflichtIds=["datum","messUhrzeit","neuEintragDatum","neuEintragZeit","neuEintragText","neuFrageArzt","neuFrageText","neuTerminDatum","neuTerminZeit","neuTerminArzt","neuMedName","neuGabeMed","neuGabeDatum","medName","einnahmeMed","einnahmeDatum","nebenwirkungMed","nebenwirkungDatum","schrittTitel","schrittDatum","dokumentDatei","dokumentTitel","vitalDatum","vitalZeit","v19129KostenDatum","v19129KostenZeit","v19129KostenArt","v19129KostenBetrag","v19129KostenText"];
+  const pflichtIds=["datum","messUhrzeit","neuEintragDatum","neuEintragZeit","neuEintragText","neuFrageArzt","neuFrageText","neuTerminDatum","neuTerminZeit","neuTerminArzt","neuMedName","neuGabeMed","neuGabeDatum","medName","einnahmeMed","einnahmeDatum","nebenwirkungMed","nebenwirkungDatum","schrittTitel","schrittDatum","schrittUhrzeit","dokumentDatei","dokumentTitel","vitalDatum","vitalZeit","v19129KostenDatum","v19129KostenZeit","v19129KostenArt","v19129KostenBetrag","v19129KostenText"];
   pflichtIds.forEach(id=>q(`#${id}`)?.setAttribute("required",""));
   qa("input[required],select[required],textarea[required]").forEach(feld=>{
     feld.classList.add("v1912510-pflichtfeld");

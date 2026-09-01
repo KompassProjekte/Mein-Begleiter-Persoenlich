@@ -59,6 +59,17 @@
 .v19129-ueber{margin-top:20px;padding:18px;border:1px solid #b9d7ce;border-radius:14px;background:#f7fbfa;color:#244d48}
 .v19129-ueber h3{margin-top:0}
 .v19129-kostendialog{width:min(94vw,760px)}
+.v1912510-schrittfeld{display:grid;gap:5px;font-weight:800;color:#173b39}
+.v1912510-schrittfeld input{width:100%}
+.dateisymbol.docx{display:flex;align-items:center;justify-content:center;background:#2b579a!important;color:#fff!important;border-radius:8px;font:bold 1.15rem/1 system-ui}
+
+/* PC-Abschlusskorrektur: Nur der Formularinhalt scrollt. Dadurch besitzen
+   Kopf und Bedienleiste eigenen Platz und überdecken keine Eingabefelder. */
+#eintragDialog{max-height:calc(100dvh - 24px)!important;overflow:hidden!important}
+#eintragDialog>form{display:flex;flex-direction:column;max-height:calc(100dvh - 24px);overflow:hidden}
+#eintragDialog .dialog-kopf,#eintragDialog .dialog-fuss{position:relative!important;inset:auto!important;flex:0 0 auto}
+#eintragDialog .dialog-inhalt{flex:1 1 auto;min-height:0;overflow-y:auto;padding-bottom:24px;scroll-padding-bottom:24px}
+@media(max-width:720px){#eintragDialog,#eintragDialog>form{max-height:calc(100dvh - 8px)!important}}
 .v19129-kostenformular{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .v19129-kostenformular label{display:grid;gap:6px;font-weight:800}
 .v19129-kostenformular input,.v19129-kostenformular select,.v19129-kostenformular textarea{width:100%;min-height:46px}

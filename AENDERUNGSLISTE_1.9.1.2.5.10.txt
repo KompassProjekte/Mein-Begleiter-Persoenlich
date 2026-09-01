@@ -1,6 +1,14 @@
 MEIN BEGLEITER 1.9.1.2.5.10 - PC-ABSCHLUSSVERSION
 Stand: 01.09.2026
 
+PC-ABSCHLUSSKORREKTUR NACH SICHTPRÜFUNG
+- Im Dialog „Eintrag ändern“ überdeckt die Bedienleiste keine Felder mehr.
+- Kopf und Schaltflächen bleiben erreichbar; nur der Formularinhalt scrollt.
+- Tabellenüberschrift „Eintrag / Maßnahme“ bildet auch Tages-Checks und Vitalwerte korrekt ab.
+- Behandlungsschritte besitzen ein verpflichtendes Uhrzeitfeld; Uhrzeit, Sortierung und Terminanzeige sind verbunden.
+- Reine Tages-Checks und Vitalwerte erscheinen nicht als geplante Termine oder Selbstbehandlungen.
+- DOCX-Dateien erhalten Word-Kennzeichnung und einen eindeutigen Downloadknopf statt zweier gleich wirkender Knöpfe.
+
 KOSTEN
 - Speicherablauf neu geordnet: speichern, Dialog schließen, danach Ansichten aktualisieren.
 - Direkte Fehlermeldung und Fokus auf das erste fehlende Pflichtfeld.

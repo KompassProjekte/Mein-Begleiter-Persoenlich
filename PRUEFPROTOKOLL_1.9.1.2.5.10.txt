@@ -1,6 +1,13 @@
 PRÜFPROTOKOLL - MEIN BEGLEITER 1.9.1.2.5.10 PC-ABSCHLUSSVERSION
 Stand: 01.09.2026
 
+NACHTRÄGLICHE SICHTPRÜFUNG
+[OK] Getrennter Kopf-, Scroll- und Fußbereich im Eintragsdialog
+[OK] Bedienleiste beansprucht eigenen Platz und überlagert keine Formularfelder
+[OK] Behandlungsuhrzeit in Speicherung, Änderung, Sortierung, Terminansicht und Druckausgabe eingebunden
+[OK] Reine Tages-Checks und Vitalwerte aus der Terminlogik ausgeschlossen
+[OK] DOCX-Erkennung über Dateiendung und MIME-Typ; eindeutige Word-Bedienung
+
 AUTOMATISCH GEPRÜFT
 [OK] Sämtliche internen JavaScript-Blöcke syntaktisch gültig
 [OK] v19124.js syntaktisch gültig
