@@ -23,7 +23,7 @@
 .v19125-druckkopf{margin-bottom:15px;padding-bottom:10px;border-bottom:2px solid #23665f}.v19125-druckkopf h2{margin:0 0 5px}.v19125-druckkopf div{color:#395d58}
 .v19125-terminblock{margin:0 0 14px;padding:12px 14px;border:1px solid #bdd3ce;border-left:5px solid #286e66;border-radius:9px;break-inside:avoid}.v19125-terminblock h3,.v19125-terminblock h4,.v19125-terminblock p{margin:0 0 7px}.v19125-terminblock ul{margin:.3rem 0}.v19125-status{color:#49645f}.v19125-keine{font-style:italic;color:#607570}.v19125-nichtzugeordnet{margin-top:18px;padding:13px;border:1px solid #d7b970;background:#fff9e9;border-radius:9px}.v19125-nichtzugeordnet h3{margin-top:0}
 .v19123-druckliste small{display:block;margin-top:4px;color:#536b67}.v19125-gesamtsumme{text-align:right;font-size:1.12rem}.v19123-druckliste tr{break-inside:avoid}
-.v19125-diagramme{display:grid;grid-template-columns:1fr 1fr;gap:9mm}.v19125-diagramm{min-height:78mm;padding:4mm;border:1px solid #b9cec9;border-radius:9px;break-inside:avoid}.v19125-diagramm .diagramm{height:65mm!important}.v19125-diagramm svg text{font-size:13px!important;font-weight:700!important;fill:#123f3b!important}.v19125-behandlung{break-before:page;margin-top:0}
+.v19125-diagramme{display:grid;grid-template-columns:1fr;gap:5mm}.v19125-diagramm{min-height:0;padding:3mm;border:1px solid #b9cec9;border-radius:7px;break-inside:avoid}.v19125-diagramm .diagramm{height:58mm!important}.v19125-diagramm svg text{font-size:13px!important;font-weight:700!important;fill:#123f3b!important}.v19125-behandlung{margin-top:5mm}
 .buch-titelblatt[data-v19125="1"]{height:257mm!important;min-height:0!important;display:flex!important;flex-direction:column!important;justify-content:center!important;align-items:center!important;padding:18mm!important;box-sizing:border-box!important;background:linear-gradient(145deg,#fffdf7,#f5ecd8)!important;border:1.5px solid #4d8179!important;box-shadow:inset 0 0 0 7px #fffdf7!important;position:relative!important;overflow:hidden!important;text-align:center!important}.v19125-titellogo{width:45mm;height:45mm;object-fit:contain;margin-bottom:7mm}.v19125-ausgabe{font-size:1.12rem;font-weight:800;letter-spacing:.06em;color:#315f59}.v19125-goldlinie{width:56mm;height:2px;margin:6mm 0;background:#b58a37}.buch-titelblatt[data-v19125="1"] h3{font-size:2.7rem!important;color:#175650!important;margin:0!important}.buch-titelblatt[data-v19125="1"] .untertitel{font-size:1.35rem!important;margin:7mm 0!important}.v19125-zeitraum{font-size:1rem;margin-top:7mm}.v19125-wasserzeichen{position:absolute;right:-15mm;bottom:-24mm;font-size:95mm;color:#c8b276;opacity:.08}
 @media(max-width:900px){.v19125-druckfilter{grid-template-columns:repeat(2,minmax(0,1fr))}.v19125-einfuehrung{grid-template-columns:auto 1fr}.v19125-einfuehrung .knopf{grid-column:1/-1;width:100%}}
 @media(max-width:900px){#seite-kosten .raster{grid-template-columns:repeat(2,minmax(0,1fr))!important}#seite-kosten .raster>.span3{grid-column:span 1!important}#seite-kosten .raster>.span6{grid-column:1/-1!important}}
@@ -36,10 +36,10 @@
   body.v19125-druckt #seite-drucken>*:not(#v19125Vorschau){display:none!important}
   body.v19125-druckt #v19125Vorschau{display:block!important;margin:0!important;padding:0!important;border:0!important;box-shadow:none!important;font-size:11pt!important;line-height:1.4!important}
   body.v19125-druckt #v19125Vorschau.v19123-sparsam{font-size:9.5pt!important;line-height:1.25!important}
-  body.v19125-druckt .v19125-diagramme{grid-template-columns:1fr 1fr!important;gap:7mm!important}
-  body.v19125-druckt .v19125-diagramm{min-height:82mm!important;break-inside:avoid-page!important}
-  body.v19125-druckt .v19125-diagramm .diagramm{height:68mm!important}
-  body.v19125-druckt .v19125-behandlung{break-before:page!important}
+  body.v19125-druckt .v19125-diagramme{grid-template-columns:1fr!important;gap:4mm!important}
+  body.v19125-druckt .v19125-diagramm{min-height:0!important;padding:2.5mm!important;break-inside:avoid-page!important}
+  body.v19125-druckt .v19125-diagramm .diagramm{height:54mm!important}
+  body.v19125-druckt .v19125-behandlung{break-before:auto!important;margin-top:5mm!important}
   body.v19125-druckt .buch-titelblatt[data-v19125="1"]{min-height:250mm!important;break-after:page!important}
   body.v19125-druckt .buch-seite:empty,body.v19125-druckt .buch-kapitel:empty{display:none!important}
   body.v19125-druckt .v19123-druckliste tr{break-inside:avoid-page!important}
@@ -81,8 +81,10 @@
   body.v19125-druckt #v19125Vorschau h2{margin:0 0 3mm!important}
   body.v19125-druckt #v19125Vorschau h3{margin:4mm 0 2mm!important}
   body.v19126-kosten-druckt #v19126KostenVorschau{font-size:10pt!important;line-height:1.3!important}
-  #berichtAusgabe{font-size:10pt!important;line-height:1.3!important}
-  #berichtAusgabe p{margin:.35em 0!important}
+  body.v1912510-sachdruck #berichtAusgabe{font-size:9.5pt!important;line-height:1.25!important}
+  body.v1912510-sachdruck #berichtAusgabe p{margin:.3em 0!important}
+  body.v1912510-buchdruck #berichtAusgabe{font-size:11pt!important;line-height:1.55!important}
+  body.v1912510-buchdruck #berichtAusgabe p{margin:.55em 0!important}
 }
 @media print{
   body.v19126-kosten-druckt *{visibility:hidden!important}
@@ -93,4 +95,35 @@
   body.v19126-kosten-druckt .v19123-kosten{grid-template-columns:repeat(4,1fr)!important}
   body.v19126-kosten-druckt .v19123-druckliste{width:100%;border-collapse:collapse}
   body.v19126-kosten-druckt .v19123-druckliste tr{break-inside:avoid-page}
+}
+
+/* Einheitliches, papiersparendes PC-Druckbild für sachliche Ausgaben. Das
+   persönliche Tagebuch und Buch bleiben davon bewusst ausgenommen. */
+@media print{
+  @page{size:A4 portrait;margin:11mm}
+  .bericht-tabelle thead tr:first-child th:first-child::before{content:none!important}
+  body.v19125-druckt #v19125Vorschau{font-size:9.3pt!important;line-height:1.22!important}
+  body.v19125-druckt .v19125-druckkopf{margin:0 0 3mm!important;padding:0 0 2mm!important}
+  body.v19125-druckt .v19125-druckkopf h2{font-size:16pt!important;margin:0 0 1mm!important}
+  body.v19125-druckt .v19125-terminblock{margin:0 0 3mm!important;padding:2.5mm 3mm!important}
+  body.v19125-druckt .v19125-terminblock h3,body.v19125-druckt .v19125-terminblock h4,body.v19125-druckt .v19125-terminblock p{margin:0 0 1.2mm!important}
+  body.v19125-druckt .v19123-druckliste th,body.v19125-druckt .v19123-druckliste td{padding:1.5mm 2mm!important;vertical-align:top!important}
+  body.v19125-druckt .v19123-druckliste small{margin-top:.5mm!important}
+  body.v1912510-sachdruck #berichtAusgabe .bericht-kopf{margin:0 0 3mm!important;padding:0 0 2mm!important}
+  body.v1912510-sachdruck #berichtAusgabe .bericht-abschnitt{margin:3mm 0!important}
+  body.v1912510-sachdruck #berichtAusgabe .bericht-abschnitt h4{margin:0 0 1.5mm!important;padding-bottom:1mm!important}
+  body.v1912510-sachdruck #berichtAusgabe .bericht-tabelle th,body.v1912510-sachdruck #berichtAusgabe .bericht-tabelle td{padding:1.4mm 1.8mm!important;vertical-align:top!important}
+  #seite-behandlung .raster{display:block!important}
+  #seite-behandlung .behandlung-bereich{padding:2.5mm 0!important;margin:0 0 3mm!important;border:0!important;border-bottom:1px solid #ccd8d4!important;border-radius:0!important;break-inside:auto!important}
+  #seite-behandlung .behandlung-bereich h3{font-size:14pt!important;margin:0 0 2mm!important}
+  #seite-behandlung .listenkarte{padding:1.5mm 0!important;gap:2mm!important;break-inside:avoid-page!important}
+  #seite-behandlung .listenkarte p{margin:.5mm 0!important}
+  #seite-termine .karte{padding:3mm!important;border:0!important}
+  #seite-termine .termin{padding:2mm 0!important;break-inside:avoid-page!important}
+  #seite-kosten .raster{gap:3mm!important}
+  #seite-kosten .raster>.kpi,#seite-kosten .raster>.span6{padding:3mm!important}
+  body.v19126-kosten-druckt #v19126KostenVorschau{font-size:9.3pt!important;line-height:1.22!important}
+  body.v19126-kosten-druckt #v19126KostenVorschau h2{font-size:16pt!important;margin:0 0 1.5mm!important}
+  body.v19126-kosten-druckt #v19126KostenVorschau h3{font-size:12pt!important;margin:3mm 0 1.5mm!important}
+  body.v19126-kosten-druckt .v19123-druckliste th,body.v19126-kosten-druckt .v19123-druckliste td{padding:1.4mm 1.8mm!important}
 }

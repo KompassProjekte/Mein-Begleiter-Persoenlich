@@ -1,5 +1,5 @@
-MEIN BEGLEITER 1.9.1.2.5.10 - PC-ABSCHLUSSVERSION
-Stand: 01.09.2026
+MEIN BEGLEITER 1.9.1.2.5.10 - BEREINIGTE PC-ENDFASSUNG
+Stand: 02.09.2026
 
 PC-ABSCHLUSSKORREKTUR NACH SICHTPRÜFUNG
 - Im Dialog „Eintrag ändern“ überdeckt die Bedienleiste keine Felder mehr.
@@ -32,8 +32,19 @@ MEINE EINTRÄGE
 AUSGABEN
 - „Bericht“ heißt jetzt „Bericht, Tagebuch & Buch“.
 - „Drucken“ heißt jetzt „Listen drucken“.
-- Verlauf und ausgewählte Diagramme erhalten automatisch A4-Querformat.
-- Alle übrigen Ausgaben bleiben im A4-Hochformat.
+- Verlauf und ausgewählte Diagramme werden zuverlässig im A4-Hochformat untereinander ausgegeben.
+- Der überholte Querformat-Hinweis und die widersprüchliche Querformatsteuerung wurden entfernt.
+- Listen, Übersichten und sachliche Berichte nutzen kompakte Abstände und kleinere Seitenränder.
+- Buch und Tagebuch behalten ein ruhiges, gut lesbares Layout.
+- Wiederholte persönliche Gedanken werden in der Buchausgabe nur einmal verwendet.
+- Der Tabellenkopf des sachlichen Berichts enthält in der Datumsspalte ausschließlich „Datum“.
+- Das funktional vorbereitete Titelblatt übernimmt Buchtitel, Untertitel und Zeitraum; die endgültige Gestaltung folgt nach dem Test.
+
+EINTRAGS- UND TERMINLOGIK
+- Die gespeicherte Eintragsart entscheidet dauerhaft über die Terminzuordnung.
+- Tages-Checks bleiben auch mit einer Maßnahme Tages-Checks.
+- Allgemeine Einträge und Vitalwerte werden nicht automatisch zu Terminen.
+- Ältere Daten und frühere Sicherungen erhalten beim Laden eine kompatible Einordnung ohne Inhaltsverlust.
 
 PWA UND DATEN
 - Versions-, Cache- und Manifestangaben auf 1.9.1.2.5.10 aktualisiert.

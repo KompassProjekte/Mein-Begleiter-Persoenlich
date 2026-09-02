@@ -1483,9 +1483,6 @@
         .bericht-tabelle td {
           padding: 5px 6px;
         }
-        .bericht-tabelle thead tr:first-child th:first-child::before {
-          content: "🧭 Mein Begleiter · ";
-        }
       }
       .speicherstatus {
         border: 1px solid #b8d8ca;
@@ -1704,7 +1701,7 @@
           </button>
         </nav>
         <div class="seitenfuss">
-          <strong>Version 1.9.1.2.5.10</strong><br />PC-Abschlussversion
+          <strong>Version 1.9.1.2.5.10</strong><br />Bereinigte PC-Endfassung
         </div>
       </aside>
       <main>
@@ -3268,10 +3265,20 @@
       function kosten(e) {
         return (+e.rechnung || 0) + (+e.rezept || 0) + (+e.fahrt || 0);
       }
+      function eintragsartVon(e) {
+        const gespeichert = String(e?.eintragsart || "").trim();
+        if (gespeichert) return gespeichert;
+        const arzt = String(e?.arzt || "").trim();
+        const selbstbehandlung = arzt.toLocaleLowerCase("de-DE") === "selbstbehandlung";
+        const hatKoerpermessung = ["temperatur","blutdruckSys","blutdruckDia","puls","spo2","blutzucker"]
+          .some(k => e?.[k] !== "" && e?.[k] !== null && e?.[k] !== undefined);
+        if (!arzt && String(e?.massnahme || "").trim().toLocaleLowerCase("de-DE") === "vitalwerte" && hatKoerpermessung) return "vitalwerte";
+        if (hatTageswerte(e) && (!arzt || selbstbehandlung)) return "tagescheck";
+        if ((daten.fragen || []).some(f => f.terminId === e?.id) || arzt) return "termin";
+        return "eintrag";
+      }
       function echteTermine() {
-        return daten.eintraege.filter(
-          (e) => e.eintragsart !== "kosten" && e.eintragsart !== "vitalwerte" && !(hatTageswerte(e) && !String(e.massnahme || "").trim()) && (e.arzt || e.massnahme),
-        );
+        return daten.eintraege.filter((e) => eintragsartVon(e) === "termin");
       }
       function behandlungsTermine() {
         const schritte = daten.schritte
@@ -3551,16 +3558,17 @@
           // Vitalwert-Messungen erhalten eine eindeutige sichtbare Bezeichnung,
           // ohne das allgemeine Feld "massnahme" zu belegen. Dieses Feld bleibt
           // leer, damit eine Messung nicht wieder als Termin behandelt wird.
-          const istVitalwertMessung = e.eintragsart === "vitalwerte";
-          const istTagesCheck = !istVitalwertMessung && hatTageswerte(e) && !String(e.massnahme || "").trim();
-          const istTerminEintrag = !istVitalwertMessung && !istTagesCheck && !!(e.arzt || e.massnahme);
+          const eintragsart = eintragsartVon(e);
+          const istVitalwertMessung = eintragsart === "vitalwerte";
+          const istTagesCheck = eintragsart === "tagescheck";
+          const istTerminEintrag = eintragsart === "termin";
           const sichtbareMassnahme = istVitalwertMessung
             ? `<strong>Vitalwerte</strong><br><small>Messung</small>`
-            : e.massnahme
-              ? esc(e.massnahme)
-              : istTagesCheck
-                ? `<strong>Tages-Check</strong>`
-                : "";
+            : istTagesCheck
+              ? `<strong>Tages-Check</strong>${e.massnahme ? `<br><small>${esc(e.massnahme)}</small>` : ""}`
+              : e.massnahme
+                ? esc(e.massnahme)
+                : `<strong>Allgemeiner Eintrag</strong>`;
           const dokumenteAmTag = docHtml(e.datum);
           const bemerkungen = [
             e.bemerkung ? esc(e.bemerkung) : "",
@@ -4318,6 +4326,27 @@
         const t = String(text || "").trim();
         return t && !/[.!?]$/.test(t) ? t + "." : t;
       }
+      function buchTextNormal(text) {
+        return String(text || "")
+          .toLocaleLowerCase("de-DE")
+          .replace(/[^a-z0-9äöüß]+/gi, " ")
+          .replace(/\s+/g, " ")
+          .trim();
+      }
+      function buchTextEinmal(liste, text) {
+        const satz = alsSatz(text), normal = buchTextNormal(satz);
+        if (!normal) return;
+        const schonVorhanden = buchTextEnthalten(liste, satz);
+        if (!schonVorhanden) liste.push(satz);
+      }
+      function buchTextEnthalten(liste, text) {
+        const normal = buchTextNormal(text);
+        if (!normal) return false;
+        return liste.some(vorhanden => {
+          const vergleich = buchTextNormal(vorhanden);
+          return vergleich === normal || (normal.length > 24 && vergleich.includes(normal)) || (vergleich.length > 24 && normal.includes(vergleich));
+        });
+      }
       function renderBuch() {
         const von = $("#berichtVon").value || "0000-01-01",
           bis = $("#berichtBis").value || "9999-12-31",
@@ -4365,7 +4394,7 @@
                     texte.push(
                       `<p><strong>Arzt / Stelle:</strong> ${esc(e.arzt)}</p>`,
                     );
-                  if (e.massnahme)
+                  if (e.massnahme && e.massnahme !== u)
                     texte.push(
                       `<p><strong>Was geschah:</strong> ${esc(e.massnahme)}</p>`,
                     );
@@ -4440,16 +4469,18 @@
                       uebergaenge[Math.min(index, uebergaenge.length - 1)] +
                         ":",
                     );
-                  if (e.gedanken) saetze.push(alsSatz(e.gedanken));
-                  if (e.massnahme) saetze.push(alsSatz(e.massnahme));
+                  const inhaltssaetze = [];
+                  if (e.gedanken && fassung !== "familie") buchTextEinmal(inhaltssaetze, e.gedanken);
+                  if (e.massnahme) buchTextEinmal(inhaltssaetze, e.massnahme);
                   if (e.arzt)
-                    saetze.push(arztSaetze[index % arztSaetze.length]);
-                  if (e.bemerkung && !e.gedanken?.includes(e.bemerkung))
-                    saetze.push(alsSatz(e.bemerkung));
+                    buchTextEinmal(inhaltssaetze, arztSaetze[index % arztSaetze.length]);
+                  if (e.bemerkung)
+                    buchTextEinmal(inhaltssaetze, e.bemerkung);
                   if (e.befinden)
-                    saetze.push(
+                    buchTextEinmal(inhaltssaetze,
                       `Mein Befinden war ${alsSatz(String(e.befinden).toLowerCase())}`,
                     );
+                  saetze.push(...inhaltssaetze);
                   const mess =
                     mitMesswerten && hatTageswerte(e)
                       ? `<div class="messwerte">${messwerteHtml(e)}</div>`
@@ -4460,7 +4491,10 @@
                       : e.buchMoment === "wichtig"
                         ? "Wichtiger Moment"
                         : "";
-                  return `<section class="leseabschnitt">${kennzeichnung ? `<h5>${kennzeichnung}</h5>` : ""}<p>${esc(saetze.join(" "))}</p>${mess}${fassung === "familie" && e.gedanken ? `<div class="familien-erinnerung"><strong>Was mir wichtig war:</strong> ${esc(e.gedanken)}</div>` : ""}</section>`;
+                  const familienErinnerung = fassung === "familie" && e.gedanken && !buchTextEnthalten(inhaltssaetze, e.gedanken)
+                    ? `<div class="familien-erinnerung"><strong>Was mir wichtig war:</strong> ${esc(e.gedanken)}</div>`
+                    : "";
+                  return `<section class="leseabschnitt">${kennzeichnung ? `<h5>${kennzeichnung}</h5>` : ""}<p>${esc(saetze.join(" "))}</p>${mess}${familienErinnerung}</section>`;
                 })
                 .join("");
             }
@@ -4496,6 +4530,7 @@
       }
       function oeffneNeu(nurBefinden = false) {
         $("#eintragForm").reset();
+        $("#eintragDialog").dataset.eintragsart = nurBefinden ? "tagescheck" : "eintrag";
         $("#terminFrageDetails")?.removeAttribute("open");
         $("#eintragId").value = "";
         $("#datum").value = heuteIso();
@@ -4529,6 +4564,7 @@
       window.bearbeiten = (id) => {
         const e = daten.eintraege.find((x) => x.id === id);
         if (!e) return;
+        $("#eintragDialog").dataset.eintragsart = eintragsartVon(e);
         $("#terminNeueFrage").value = "";
         $("#terminFrageDetails")?.removeAttribute("open");
         const terminFrageBereich = document.querySelector(".terminfrage-bearbeiten");
@@ -4653,7 +4689,7 @@
         const vorhandenerEintrag = daten.eintraege.find((x) => x.id === id);
         const e = {
           id,
-          eintragsart: vorhandenerEintrag?.eintragsart || "",
+          eintragsart: vorhandenerEintrag ? eintragsartVon(vorhandenerEintrag) : ($("#eintragDialog").dataset.eintragsart || "eintrag"),
           datum: $("#datum").value,
           arzt: $("#arzt").value.trim(),
           terminstatus: $("#terminstatus").value,
@@ -5403,7 +5439,12 @@
       $("#berichtDrucken").addEventListener("click", () => {
         if (!ausgabeInBearbeitung) renderBericht();
         bearbeitungBeenden();
+        document.body.classList.remove("v1912510-sachdruck", "v1912510-buchdruck");
+        document.body.classList.add(ausgabeModus() === "bericht" ? "v1912510-sachdruck" : "v1912510-buchdruck");
         window.print();
+      });
+      window.addEventListener("afterprint", () => {
+        document.body.classList.remove("v1912510-sachdruck", "v1912510-buchdruck");
       });
       $("#tagebuchSpeichern").addEventListener("click", async () => {
         const modus = ausgabeModus();
@@ -8566,11 +8607,11 @@
   dialog.addEventListener('click', e => { if (e.target === dialog) dialogSchliessen(); });
   dialog.querySelectorAll('[data-neu-abbrechen]').forEach(b => b.addEventListener('click', () => { if (darfVerlassen()) schliesseBereich(); }));
   const fertig = meldung => { const form = offen?.querySelector('form'); form?.reset(); schliesseBereich(); dialog.close(); speichern(); renderAlles(); toast(meldung); };
-  const leeresEintragObjekt = (id,datum,zeit) => ({id,datum,arzt:'',terminstatus:'Geplant',massnahme:'',bemerkung:'',gedanken:'',buchMoment:'normal',rechnung:0,rezept:0,fahrt:0,befinden:'',befindenWert:'',schmerz:'',energie:'',schlaf:'',gewicht:'',messUhrzeit:zeit,tageszeit:'',messsituation:'',messnotiz:'',schmerzOrt:'',schlafQualitaet:'',temperatur:'',temperaturOrt:'',beschwerden:'',blutdruckSys:'',blutdruckDia:'',puls:'',spo2:'',atemfrequenz:'',blutzucker:'',blutzuckerEinheit:'',blutzuckerZeitpunkt:'',trinkmenge:'',urinmenge:'',stuhlgang:'',appetit:'',uebelkeit:'',atemnot:'',schwellungen:'',aktivitaetMin:'',schritte:''});
+  const leeresEintragObjekt = (id,datum,zeit) => ({id,datum,eintragsart:'eintrag',arzt:'',terminstatus:'',massnahme:'',bemerkung:'',gedanken:'',buchMoment:'normal',rechnung:0,rezept:0,fahrt:0,befinden:'',befindenWert:'',schmerz:'',energie:'',schlaf:'',gewicht:'',messUhrzeit:zeit,tageszeit:'',messsituation:'',messnotiz:'',schmerzOrt:'',schlafQualitaet:'',temperatur:'',temperaturOrt:'',beschwerden:'',blutdruckSys:'',blutdruckDia:'',puls:'',spo2:'',atemfrequenz:'',blutzucker:'',blutzuckerEinheit:'',blutzuckerZeitpunkt:'',trinkmenge:'',urinmenge:'',stuhlgang:'',appetit:'',uebelkeit:'',atemnot:'',schwellungen:'',aktivitaetMin:'',schritte:''});
   document.getElementById('neuEintragForm').addEventListener('submit', e => {
     e.preventDefault(); const datum=document.getElementById('neuEintragDatum').value, zeit=document.getElementById('neuEintragZeit').value, text=document.getElementById('neuEintragText').value.trim();
     if(!datum||!zeit||!text){toast('Bitte Datum, Uhrzeit und Notiz eintragen.');return;}
-    const obj=leeresEintragObjekt('j'+Date.now(),datum,zeit); obj.massnahme=document.getElementById('neuEintragTitel').value.trim(); obj.gedanken=text; daten.eintraege.push(obj); fertig('Eintrag gespeichert');
+    const obj=leeresEintragObjekt('j'+Date.now(),datum,zeit); obj.eintragsart='eintrag'; obj.massnahme=document.getElementById('neuEintragTitel').value.trim(); obj.gedanken=text; daten.eintraege.push(obj); fertig('Eintrag gespeichert');
   });
   document.getElementById('neuFrageForm').addEventListener('submit', e => {
     e.preventDefault(); const arzt=document.getElementById('neuFrageArzt').value.trim(), text=document.getElementById('neuFrageText').value.trim();
@@ -8580,7 +8621,7 @@
   document.getElementById('neuTerminForm').addEventListener('submit', e => {
     e.preventDefault(); const datum=document.getElementById('neuTerminDatum').value, zeit=document.getElementById('neuTerminZeit').value, arzt=document.getElementById('neuTerminArzt').value.trim();
     if(!datum||!zeit||!arzt){toast('Bitte Datum, Uhrzeit und Arzt oder Stelle eintragen.');return;}
-    const obj=leeresEintragObjekt('j'+Date.now(),datum,zeit); obj.arzt=arzt; obj.massnahme=document.getElementById('neuTerminMassnahme').value.trim(); obj.bemerkung=document.getElementById('neuTerminNotiz').value.trim(); daten.eintraege.push(obj);
+    const obj=leeresEintragObjekt('j'+Date.now(),datum,zeit); obj.eintragsart='termin'; obj.terminstatus='Geplant'; obj.arzt=arzt; obj.massnahme=document.getElementById('neuTerminMassnahme').value.trim(); obj.bemerkung=document.getElementById('neuTerminNotiz').value.trim(); daten.eintraege.push(obj);
     const frage=document.getElementById('neuTerminFrage').value.trim(); if(frage) daten.fragen.push({id:'f'+Date.now(),arzt,text:frage,terminId:obj.id,erledigt:false});
     fertig(frage ? 'Termin und zugeordnete Frage gespeichert' : 'Termin gespeichert');
   });

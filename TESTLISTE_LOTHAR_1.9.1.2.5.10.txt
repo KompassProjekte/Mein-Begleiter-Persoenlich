@@ -17,9 +17,11 @@ VORHER
 [ ] Kostenbericht zeigt den tatsächlichen Zeitraum.
 [ ] Druckknopf steht oben neben „Schließen“.
 
-2. TAGES-CHECK UND VITALWERTE
+2. TAGES-CHECK, EINTRÄGE UND VITALWERTE
 [ ] Tages-Check erscheint in „Meine Einträge“ mit der Bezeichnung „Tages-Check“.
-[ ] Tages-Check wird nicht als Termin oder Behandlung eingeordnet.
+[ ] Tages-Check bleibt auch mit Text im Feld „Maßnahme“ ein Tages-Check.
+[ ] Nur ausdrücklich als Termin gespeicherte Einträge erscheinen in der Terminübersicht.
+[ ] Allgemeine Einträge werden nicht allein durch einen Maßnahmentext zu Terminen.
 [ ] Vitalmessung erscheint weiterhin als „Vitalwerte - Messung“.
 
 3. BEHANDLUNG
@@ -35,9 +37,14 @@ VORHER
 [ ] Sachlichen Bericht erstellen, als Datei speichern und drucken.
 [ ] Menüpunkt „Listen drucken“ ist vorhanden.
 [ ] Termine, Fragen, Medikamente und Dokumentenliste ausgeben.
-[ ] Verlauf wird automatisch in A4-Querformat geöffnet.
-[ ] Ausgewählte Diagramme werden automatisch in A4-Querformat geöffnet.
-[ ] Alle übrigen Ausgaben bleiben im A4-Hochformat.
+[ ] Verlauf wird in A4-Hochformat mit kompakten Diagrammen untereinander ausgegeben.
+[ ] Ausgewählte Diagramme werden in A4-Hochformat untereinander ausgegeben.
+[ ] Der frühere Querformat-Hinweis ist nicht mehr vorhanden.
+[ ] Listen, Übersichten und sachliche Berichte nutzen die Seite papiersparend.
+[ ] Buch und Tagebuch behalten ein angenehm lesbares, großzügigeres Layout.
+[ ] Im Buch werden persönliche Gedanken nicht doppelt im Fließtext und im Hervorhebungsfeld wiederholt.
+[ ] Im sachlichen Bericht lautet die erste Tabellenüberschrift nur „Datum“.
+[ ] Das vorbereitete Titelblatt übernimmt Buchtitel, Untertitel und gewählten Zeitraum.
 
 5. SICHERHEIT UND ABSCHLUSS
 [ ] Unter „Dokumente“ eine abgelegte Dokumentenmappe öffnen und mindestens eine Seite kontrollieren.

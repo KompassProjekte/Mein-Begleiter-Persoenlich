@@ -1,5 +1,5 @@
-PRÜFPROTOKOLL - MEIN BEGLEITER 1.9.1.2.5.10 PC-ABSCHLUSSVERSION
-Stand: 01.09.2026
+PRÜFPROTOKOLL - MEIN BEGLEITER 1.9.1.2.5.10 BEREINIGTE PC-ENDFASSUNG
+Stand: 02.09.2026
 
 NACHTRÄGLICHE SICHTPRÜFUNG
 [OK] Getrennter Kopf-, Scroll- und Fußbereich im Eintragsdialog
@@ -23,8 +23,14 @@ AUTOMATISCH GEPRÜFT
 [OK] Direkte Kostenänderung und kontrolliertes Löschen vorhanden
 [OK] Pflichtfeldkennzeichnung vorhanden
 [OK] Kostenbericht-Druckknopf oben
-[OK] A4-Querformat für Verlauf und ausgewählte Diagramme
-[OK] A4-Hochformat für übrige Ausgaben
+[OK] A4-Hochformat mit gestapelten, kompakten Diagrammen
+[OK] Querformat-Hinweis und Querformat-Erzwingung entfernt
+[OK] Papiersparendes Layout für Listen, Übersichten und sachliche Berichte
+[OK] Großzügigeres Buch- und Tagebuchlayout getrennt erhalten
+[OK] Eintragsart steuert Terminzuordnung unabhängig vom Maßnahmentext
+[OK] Doppelte persönliche Gedanken in der Buchausgabe verhindert
+[OK] Tabellenkopf „Datum“ ohne vorangestellten Produktnamen
+[OK] Titelblatt übernimmt Buchtitel, Untertitel und Zeitraum
 [OK] Neue verständliche Menübezeichnungen
 
 PRAKTISCHER ABSCHLUSSTEST

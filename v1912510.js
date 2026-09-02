@@ -57,7 +57,6 @@
   let tagescheckAltbestandBereinigt = false;
   daten.eintraege.forEach(e => {
     const reineSelbstbeobachtung = String(e?.arzt || "").trim().toLocaleLowerCase("de-DE") === "selbstbehandlung"
-      && !String(e?.massnahme || "").trim()
       && typeof hatTageswerte === "function" && hatTageswerte(e);
     if (!reineSelbstbeobachtung) return;
     e.arzt = "";
@@ -65,6 +64,23 @@
     tagescheckAltbestandBereinigt = true;
   });
   if (tagescheckAltbestandBereinigt) speichern();
+
+  // Einmalige, verlustfreie Kennzeichnung älterer Datensätze. Danach
+  // entscheidet ausschließlich der gespeicherte Eintragstyp über Termine.
+  let eintragsartenErgaenzt = false;
+  const terminFrageIds = new Set((daten.fragen || []).map(f => f.terminId).filter(Boolean));
+  daten.eintraege.forEach(e => {
+    if (String(e?.eintragsart || "").trim()) return;
+    const arzt = String(e?.arzt || "").trim();
+    if (terminFrageIds.has(e.id) || arzt) e.eintragsart = "termin";
+    else if (typeof hatTageswerte === "function" && hatTageswerte(e)) e.eintragsart = "tagescheck";
+    else e.eintragsart = "eintrag";
+    eintragsartenErgaenzt = true;
+  });
+  if (eintragsartenErgaenzt) {
+    speichern();
+    renderAlles();
+  }
 
   // Der doppelte Berichtzugang auf der Startseite entfällt.
   const cockpit = q("#seite-cockpit");
@@ -222,11 +238,11 @@
       t.dataset.v19125 = "1";
       const h = q("h3", t);
       const unter = q(".untertitel", t);
-      const von=q("#v19125Von")?.value||q("#berichtVon")?.value||"", bis=q("#v19125Bis")?.value||q("#berichtBis")?.value||"";
+      const von=q("#berichtVon")?.value||q("#v19125Von")?.value||"", bis=q("#berichtBis")?.value||q("#v19125Bis")?.value||"";
       let zeitraum="";
       if(/^\d{4}-\d{2}-\d{2}$/.test(von)&&/^\d{4}-\d{2}-\d{2}$/.test(bis)) zeitraum=`${formatDatum(von)} bis ${formatDatum(bis)}`;
       else if(typeof berichtEintraege==="function") { const ds=berichtEintraege().map(e=>e.datum).filter(d=>/^\d{4}-\d{2}-\d{2}$/.test(d)).sort(); if(ds.length) zeitraum=`${formatDatum(ds[0])} bis ${formatDatum(ds.at(-1))}`; }
-      t.innerHTML = `<img class="v19125-titellogo" src="icons/logo-persoenlich.svg" alt="Mein Begleiter – Persönliche Arbeitsversion"><div class="v19125-ausgabe">Persönliches Buch</div><div class="v19125-goldlinie"></div><h3>${safe(h?.textContent || "Höhen und Tiefen")}</h3><div class="untertitel">${safe(unter?.textContent || "Meine Erfahrungen und Fortschritte")}</div>${zeitraum ? `<p class="v19125-zeitraum">${safe(zeitraum)}</p>` : ""}<div class="v19125-wasserzeichen" aria-hidden="true">✥</div>`;
+      t.innerHTML = `<img class="v19125-titellogo" src="icons/logo-persoenlich.svg" alt="Mein Begleiter – Persönliche Arbeitsversion"><div class="v19125-ausgabe">Persönliches Buch</div><div class="v19125-goldlinie"></div><h3>${safe(h?.textContent || "Höhen und Tiefen")}</h3><div class="untertitel">${safe(unter?.textContent || "Meine Erfahrungen und Fortschritte")}</div>${zeitraum ? `<p class="v19125-zeitraum"><strong>Zeitraum</strong><br>${safe(zeitraum)}</p>` : ""}<div class="v19125-wasserzeichen" aria-hidden="true">✥</div>`;
     });
     qa(".buch-seite,.buch-kapitel",root).forEach(s=>{if(!s.textContent.trim()&&!s.querySelector("img,table,svg"))s.remove();});
   };
@@ -278,14 +294,14 @@
   q("#kostenBerichtErstellen")?.addEventListener("click",()=>{kostenDruck.hidden=false;kostenVorschau();kostenDruck.scrollIntoView({behavior:"smooth",block:"start"});});
   q("#v19126KostenSchliessen")?.addEventListener("click",()=>{kostenDruck.hidden=true;});
   kostenDruck.addEventListener("change",kostenVorschau);["kostenVon","kostenBis","kostenArt"].forEach(id=>q(`#${id}`)?.addEventListener("change",()=>{if(!kostenDruck.hidden)kostenVorschau();}));
-  q("#v19126KostenDrucken")?.addEventListener("click",async()=>{kostenVorschau();ausrichtungsStil.textContent="@media print{@page{size:A4 portrait;margin:14mm}}";document.body.classList.add("v19126-kosten-druckt");await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));window.print();});
+  q("#v19126KostenDrucken")?.addEventListener("click",async()=>{kostenVorschau();ausrichtungsStil.textContent="@media print{@page{size:A4 portrait;margin:11mm}}";document.body.classList.add("v19126-kosten-druckt");await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));window.print();});
   const vorschau = async () => {
-    const a=art(), out=q("#v19125Vorschau"), quer=["verlauf","diagramme"].includes(a), titel=arten.find(x=>x[0]===a)?.[1]||"Ausdruck";
+    const a=art(), out=q("#v19125Vorschau"), titel=arten.find(x=>x[0]===a)?.[1]||"Ausdruck";
     q("#v19125DiagrammBox").hidden=a!=="diagramme";
     q("#v19125ArztLabel").hidden=["verlauf","diagramme","medikamente"].includes(a);
     const formatHinweis=q("#v19125Format"), druckKnopf=q("#v19125Drucken");
-    formatHinweis.classList.toggle("v19128-querhinweis",quer);
-    formatHinweis.textContent=quer?"Druckformat: DIN A4 quer – wird automatisch eingestellt.":"Druckformat: DIN A4 hoch.";
+    formatHinweis.hidden=true;
+    formatHinweis.textContent="";
     druckKnopf.textContent="🖨 Drucken oder als PDF speichern";
     let html="";
     if(a==="fragen"){
@@ -301,12 +317,12 @@
     else if(a==="behandlung") html=`<h3>Medikamentenplan</h3>${tabelle(["Medikament","Anwendung"],daten.medikamente.map(m=>`<tr><td>${safe(m.name)}</td><td>${safe(m.anwendung||m.zeit||"")}</td></tr>`))}<h3>Behandlungsschritte</h3>${tabelle(["Datum / Uhrzeit","Behandlungsschritt","Status"],daten.schritte.filter(imZeitraum).map(s=>`<tr><td>${formatDatum(s.datum)}${s.uhrzeit?`<br>${safe(s.uhrzeit)} Uhr`:""}</td><td>${safe(s.titel||s.name||s.massnahme||"")}</td><td>${safe(s.status||"")}</td></tr>`))}`;
     else if(a==="dokumente") {await dokumenteLaden(); const v=q("#v19125Von").value||"0000-01-01",b=q("#v19125Bis").value||"9999-12-31"; const ds=druckDokumente.filter(d=>{const dt=d.dokumentDatum||d.datum||(d.erstellt||"").slice(0,10);return dt>=v&&dt<=b&&beimArzt(d);}); html=`<p class="v19124-erklaerung">Übersicht der gespeicherten Dokumente. Die Dokumentinhalte selbst werden nicht gedruckt.</p>${tabelle(["Datum","Dokument","Kategorie","Arzt / Stelle","Seiten"],ds.map(d=>`<tr><td>${formatDatum(d.dokumentDatum||d.datum||(d.erstellt||"").slice(0,10))}</td><td>${safe(d.name||"Dokument")}</td><td>${safe(d.kategorie||"Sonstiges")}</td><td>${safe(d.quelleName||"")}</td><td>${d.seiten?.length||1}</td></tr>`))}`;}
     else if(["verlauf","diagramme"].includes(a)) {const vf=q("#verlaufVon"),vb=q("#verlaufBis");if(vf)vf.value=q("#v19125Von").value;if(vb)vb.value=q("#v19125Bis").value;if(typeof renderVerlauf==="function")renderVerlauf();const ids=a==="verlauf"?diagramme.map(d=>d[0]):qa("#v19125Diagramme input:checked").map(i=>i.value);const cards=ids.map(id=>q(`#${id}`)?.closest("article")).filter(Boolean).filter(c=>!q(".diagramm.ist-leer",c));html=cards.length?`<div class="v19125-diagramme">${cards.map(c=>`<section class="v19125-diagramm">${c.innerHTML}</section>`).join("")}</div>`:`<div class="v19123-leer">Für die Auswahl sind noch keine bewerteten Werte vorhanden.</div>`;if(a==="verlauf"&&q("#behandlungVerlauf"))html+=`<section class="v19125-behandlung"><h3>Behandlungsverlauf</h3>${q("#behandlungVerlauf").innerHTML}</section>`;}
-    out.className=`v19123-vorschau${q("#v19125Dichte").value==="sparsam"?" v19123-sparsam":""}${quer?" v19125-quer":" v19125-hoch"}`; out.innerHTML=kopf(titel)+html;
+    out.className=`v19123-vorschau${q("#v19125Dichte").value==="sparsam"?" v19123-sparsam":""} v19125-hoch`; out.innerHTML=kopf(titel)+html;
   };
   let timer=0; const planen=()=>{clearTimeout(timer);timer=setTimeout(vorschau,80);};
   seite.addEventListener("change", planen); qa("#v19125Von,#v19125Bis",seite).forEach(x=>x.addEventListener("input",planen));
   const ausrichtungsStil=document.createElement("style");ausrichtungsStil.id="v19126Druckausrichtung";document.head.appendChild(ausrichtungsStil);
-  q("#v19125Drucken").addEventListener("click", async()=>{await vorschau();const quer=["verlauf","diagramme"].includes(art());ausrichtungsStil.textContent=`@media print{@page{size:A4 ${quer?"landscape":"portrait"};margin:12mm}}`;document.body.classList.add("v19125-druckt");await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));window.print();});
+  q("#v19125Drucken").addEventListener("click", async()=>{await vorschau();ausrichtungsStil.textContent="@media print{@page{size:A4 portrait;margin:11mm}}";document.body.classList.add("v19125-druckt");await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));window.print();});
   window.addEventListener("afterprint",()=>{document.body.classList.remove("v19125-druckt","v19126-kosten-druckt");ausrichtungsStil.textContent="";});
   // Qualitätsversion 1.9.1.2.5.10: eindeutige Eingabewege statt versteckter Umwege.
   const verlaufTagescheck = q('#seite-verlauf [data-neu][data-befinden="1"]');
@@ -323,7 +339,7 @@
     const ueber = document.createElement("section");
     ueber.id = "v19129Ueber";
     ueber.className = "v19129-ueber";
-    ueber.innerHTML = `<h3>Über Mein Begleiter</h3><p><strong>Version ${VERSION} PWA – PERSÖNLICHE ARBEITSVERSION</strong><br>PC-Abschlussversion · Stand: 01.09.2026<br>Entwickelt von Lothar &amp; Nimbus</p><p>Die Gesundheitsdaten werden lokal auf diesem Gerät gespeichert. Es findet keine automatische Synchronisation statt.</p>`;
+    ueber.innerHTML = `<h3>Über Mein Begleiter</h3><p><strong>Version ${VERSION} PWA – PERSÖNLICHE ARBEITSVERSION</strong><br>Bereinigte PC-Endfassung · Stand: 02.09.2026<br>Entwickelt von Lothar &amp; Nimbus</p><p>Die Gesundheitsdaten werden lokal auf diesem Gerät gespeichert. Es findet keine automatische Synchronisation statt.</p>`;
     einstellungen.appendChild(ueber);
   }
 
@@ -409,7 +425,7 @@
   pflichtContainer.forEach(container=>{if(q(".v1912510-pflichthinweis",container))return;const hinweis=document.createElement("p");hinweis.className="v1912510-pflichthinweis";hinweis.innerHTML="Mit <strong>*</strong> gekennzeichnete Felder müssen ausgefüllt werden.";container.prepend(hinweis);});
 
   const ueberBox=q("#v19129Ueber");
-  if(ueberBox)ueberBox.innerHTML=`<h3>Über Mein Begleiter</h3><p><strong>Version ${VERSION} PWA – PERSÖNLICHE ARBEITSVERSION</strong><br>PC-Abschlussversion · Stand: 01.09.2026<br>Entwickelt von Lothar &amp; Nimbus</p><p>Die Gesundheitsdaten werden lokal auf diesem Gerät gespeichert. Es findet keine automatische Synchronisation statt.</p>`;
+  if(ueberBox)ueberBox.innerHTML=`<h3>Über Mein Begleiter</h3><p><strong>Version ${VERSION} PWA – PERSÖNLICHE ARBEITSVERSION</strong><br>Bereinigte PC-Endfassung · Stand: 02.09.2026<br>Entwickelt von Lothar &amp; Nimbus</p><p>Die Gesundheitsdaten werden lokal auf diesem Gerät gespeichert. Es findet keine automatische Synchronisation statt.</p>`;
 
   vorschau();
 })();
