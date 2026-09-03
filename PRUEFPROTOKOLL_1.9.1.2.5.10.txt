@@ -42,7 +42,8 @@ AUTOMATISCH GEPRÜFT
 [OK] Behandlungsverlauf beginnt auf neuer Seite
 [OK] Querformat-Hinweis und Querformat-Erzwingung entfernt
 [OK] Papiersparendes Layout für Listen, Übersichten und sachliche Berichte
-[OK] Kompakter Buch-/Chronikdruck mit 10,25-pt-Grundschrift
+[OK] Alle drei Buchfassungen mit exakt 10,00-pt-Grundschrift
+[OK] „Was mir wichtig war“, „Wichtiger Moment“ und „Wendepunkt“ typografisch einheitlich
 [OK] Eintragsart steuert Terminzuordnung unabhängig vom Maßnahmentext
 [OK] Doppelte persönliche Gedanken in der Buchausgabe verhindert
 [OK] Tabellenkopf „Datum“ ohne vorangestellten Produktnamen

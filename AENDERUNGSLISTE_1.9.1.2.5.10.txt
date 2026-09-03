@@ -7,8 +7,11 @@ LETZTE PC-TESTKORREKTUREN
   gemeinsam verwendet. Optional ist eine Korrektur nur für eine Buchfassung möglich.
 - Alte vollständige HTML-Entwürfe frieren das Titelblatt und Layout nicht mehr ein.
 - Alle drei Buchfassungen werden mit dem aktuellen, einheitlichen Titelblatt aufgebaut.
-- Der Buchdruck verwendet eine normale kompakte Buchschrift von 10,25 pt, kleinere
+- Der Buchdruck verwendet in allen drei Buchfassungen eine kompakte Grundschrift von genau 10,00 pt, kleinere
   Datumszeilen und engere, weiterhin gut lesbare Abstände.
+- „Was mir wichtig war“ entspricht typografisch „Wichtiger Moment“ und „Wendepunkt“.
+- Eine ältere 1,08-rem-Unterregel der Lese- und Familienausgabe wurde aufgehoben;
+  alle eigentlichen Buchtexte besitzen dadurch tatsächlich dieselbe 10,00-pt-Größe.
 - Diagramme werden im Verlaufdruck einheitlich zu drei Stück je Seite angeordnet.
 - Der Behandlungsverlauf beginnt stets auf einer neuen Seite.
 - Auf der Verlaufseite wurde der zusätzliche Tages-Check-Knopf entfernt.
