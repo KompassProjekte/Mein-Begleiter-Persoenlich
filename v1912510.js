@@ -463,16 +463,26 @@
   // Erfassung bleibt auf der Übersicht und unter „Neue Einträge“ erreichbar.
   qa('#seite-verlauf [data-neu][data-befinden="1"]').forEach(b => b.remove());
 
-  // Bei langen Buchvorschauen bleiben die wichtigsten Aktionen erreichbar.
-  const berichtAktionenFest = q('#seite-bericht .kopf-aktionen');
-  if (berichtAktionenFest && !q('#v1912510NachOben')) {
+  // Auf allen längeren Seiten erscheint nach dem Herunterscrollen eine
+  // einheitliche Rückkehr zum Seitenanfang. Kurze Seiten bleiben ungestört.
+  if (!q('#v1912510NachOben')) {
     const oben = document.createElement('button');
     oben.id = 'v1912510NachOben';
     oben.type = 'button';
-    oben.className = 'knopf sekundaer';
+    oben.className = 'knopf v1912510-nach-oben';
     oben.textContent = '↑ Nach oben';
-    oben.addEventListener('click', () => q('#seite-bericht')?.scrollIntoView({behavior:'smooth', block:'start'}));
-    berichtAktionenFest.appendChild(oben);
+    oben.hidden = true;
+    oben.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+    document.body.appendChild(oben);
+    const sichtbarkeit = () => {
+      const aufUnterseite = !!q('.seite.aktiv:not(#seite-cockpit)');
+      oben.hidden = !aufUnterseite || window.scrollY < 550;
+    };
+    window.addEventListener('scroll', sichtbarkeit, {passive:true});
+    document.addEventListener('click', e => {
+      if (e.target.closest('[data-seite],[data-wechsel],[data-zur]')) setTimeout(sichtbarkeit, 0);
+    });
+    sichtbarkeit();
   }
 
   // Read-only-Systemprüfung: Sie verändert weder Gesundheitsdaten noch

@@ -162,3 +162,13 @@
   body.v19126-kosten-druckt #v19126KostenVorschau h3{font-size:12pt!important;margin:3mm 0 1.5mm!important}
   body.v19126-kosten-druckt .v19123-druckliste th,body.v19126-kosten-druckt .v19123-druckliste td{padding:1.4mm 1.8mm!important}
 }
+/* Einheitliche Rückkehr auf langen Ansichten */
+.v1912510-nach-oben {
+  position: fixed;
+  right: clamp(1rem, 2.2vw, 2rem);
+  bottom: clamp(1rem, 2.2vw, 2rem);
+  z-index: 90;
+  box-shadow: 0 5px 18px rgba(3, 61, 59, .24);
+}
+.v1912510-nach-oben[hidden] { display: none !important; }
+@media print { .v1912510-nach-oben { display: none !important; } }

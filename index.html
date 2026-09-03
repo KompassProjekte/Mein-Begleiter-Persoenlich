@@ -3526,7 +3526,14 @@
         const q = $("#suche").value.toLowerCase().trim(),
           f = $("#zeitfilter").value,
           arztFilter = ($("#eintragArztFilter")?.value || "").trim().toLocaleLowerCase("de-DE");
-        let arr = [...daten.eintraege].sort((a, b) =>
+        // „Meine Einträge“ verwendet dieselbe vollständige Terminbasis wie
+        // die Terminübersicht. Automatisch berechnete Behandlungstermine und
+        // Medikamentengaben werden nur angezeigt, niemals doppelt gespeichert.
+        const gespeicherteIds = new Set(daten.eintraege.map((e) => e.id));
+        const automatischeTermine = alleTermine().filter(
+          (e) => e.quelle && !gespeicherteIds.has(e.id),
+        );
+        let arr = [...daten.eintraege, ...automatischeTermine].sort((a, b) =>
           zeitSchluessel(b).localeCompare(zeitSchluessel(a)),
         );
         if (q)
@@ -3578,12 +3585,18 @@
           const istVitalwertMessung = eintragsart === "vitalwerte";
           const istTagesCheck = eintragsart === "tagescheck";
           const istTerminEintrag = eintragsart === "termin";
+          const istAutomatischerTermin = !!e.quelle && !gespeicherteIds.has(e.id);
+          const quellenText = e.quelle === "Medikamentenplan"
+            ? "Automatisch aus dem Medikamentenplan"
+            : e.quelle === "Behandlungsschritt"
+              ? "Automatisch aus dem Behandlungsverlauf"
+              : "Automatisch übernommener Termin";
           const sichtbareMassnahme = istVitalwertMessung
             ? `<strong>Vitalwerte</strong><br><small>Messung</small>`
             : istTagesCheck
               ? `<strong>Tages-Check</strong>${e.massnahme ? `<br><small>${esc(e.massnahme)}</small>` : ""}`
               : e.massnahme
-                ? esc(e.massnahme)
+                ? `${esc(e.massnahme)}${istAutomatischerTermin ? `<br><small>${esc(quellenText)}</small>` : ""}`
                 : `<strong>Allgemeiner Eintrag</strong>`;
           const dokumenteAmTag = docHtml(e.datum);
           const bemerkungen = [
@@ -3599,10 +3612,10 @@
           const befinden = [e.befinden ? esc(e.befinden) : "", messwerte ? `<div class="messwerte">${messwerte}</div>` : ""].filter(Boolean).join("");
           karten.push({
             schluessel: zeitSchluessel(e),
-            html: `<article class="journal-karte"><header><div><strong>${datumLang(e.datum)}</strong>${e.messUhrzeit ? `<small>${esc(e.messUhrzeit)} Uhr</small>` : ""}</div>${istTerminEintrag ? `<span class="messwert">${esc(terminStatus(e))}</span>` : ""}</header>${kartenFeld(istVitalwertMessung || istTagesCheck ? "Eintragsart" : "Eintrag / Maßnahme", sichtbareMassnahme)}${kartenFeld("Arzt / Stelle", !istTagesCheck && e.arzt ? esc(e.arzt) : "")}${kartenFeld("Bemerkungen", bemerkungen)}${kartenFeld("Dokumente", dokumenteAmTag)}${kartenFeld("Kosten / Rezepte / Fahrtkosten", nebenkosten)}${kartenFeld("Befinden / Messwerte", befinden)}<div class="journal-karte-aktionen"><button class="knopf klein sekundaer" onclick="bearbeiten('${e.id}')">Ändern</button><button class="knopf klein gefahr" onclick="loeschen('${e.id}')">Löschen</button></div></article>`,
+            html: `<article class="journal-karte"><header><div><strong>${datumLang(e.datum)}</strong>${e.messUhrzeit ? `<small>${esc(e.messUhrzeit)} Uhr</small>` : ""}</div>${istTerminEintrag || istAutomatischerTermin ? `<span class="messwert">${esc(terminStatus(e))}</span>` : ""}</header>${kartenFeld(istVitalwertMessung || istTagesCheck ? "Eintragsart" : "Eintrag / Maßnahme", sichtbareMassnahme)}${kartenFeld("Arzt / Stelle", !istTagesCheck && e.arzt ? esc(e.arzt) : "")}${kartenFeld("Bemerkungen", bemerkungen)}${kartenFeld("Dokumente", dokumenteAmTag)}${kartenFeld("Kosten / Rezepte / Fahrtkosten", nebenkosten)}${kartenFeld("Befinden / Messwerte", befinden)}<div class="journal-karte-aktionen">${istAutomatischerTermin ? `<button class="knopf klein sekundaer" onclick="terminQuelleAendern('${e.id}')">Quelle öffnen</button>` : `<button class="knopf klein sekundaer" onclick="bearbeiten('${e.id}')">Ändern</button><button class="knopf klein gefahr" onclick="loeschen('${e.id}')">Löschen</button>`}</div></article>`,
           });
           gruppiert.delete(e.datum);
-          return { schluessel: zeitSchluessel(e), html: `<tr><td>${datumLang(e.datum)}${e.messUhrzeit ? `<br><small>${esc(e.messUhrzeit)} Uhr</small>` : ""}</td><td>${istTagesCheck ? "" : esc(e.arzt)}${istTerminEintrag ? `<div class="messwerte"><span class="messwert">${esc(terminStatus(e))}</span></div>` : ""}</td><td>${sichtbareMassnahme}</td><td>${esc(e.bemerkung)}${e.gedanken ? `<p><strong>Meine Gedanken:</strong><br>${esc(e.gedanken)}</p>` : ""}${e.buchMoment && e.buchMoment !== "normal" ? `<div class="messwerte"><span class="messwert">${e.buchMoment === "wendepunkt" ? "Wendepunkt" : "Wichtiger Moment"}</span></div>` : ""}</td><td>${dokumenteAmTag}</td><td class="geld">${e.rechnung ? euro(e.rechnung) : ""}</td><td class="geld">${e.rezept ? euro(e.rezept) : ""}</td><td class="geld">${e.fahrt ? euro(e.fahrt) : ""}</td><td>${esc(e.befinden)}<div class="messwerte">${messwerteHtml(e)}</div></td><td class="aktionen"><button class="knopf klein sekundaer" onclick="bearbeiten('${e.id}')">Ändern</button> <button class="knopf klein gefahr" onclick="loeschen('${e.id}')">Löschen</button></td></tr>` };
+          return { schluessel: zeitSchluessel(e), html: `<tr><td>${datumLang(e.datum)}${e.messUhrzeit ? `<br><small>${esc(e.messUhrzeit)} Uhr</small>` : ""}</td><td>${istTagesCheck ? "" : esc(e.arzt)}${istTerminEintrag || istAutomatischerTermin ? `<div class="messwerte"><span class="messwert">${esc(terminStatus(e))}</span></div>` : ""}</td><td>${sichtbareMassnahme}</td><td>${esc(e.bemerkung)}${e.gedanken ? `<p><strong>Meine Gedanken:</strong><br>${esc(e.gedanken)}</p>` : ""}${e.buchMoment && e.buchMoment !== "normal" ? `<div class="messwerte"><span class="messwert">${e.buchMoment === "wendepunkt" ? "Wendepunkt" : "Wichtiger Moment"}</span></div>` : ""}</td><td>${dokumenteAmTag}</td><td class="geld">${e.rechnung ? euro(e.rechnung) : ""}</td><td class="geld">${e.rezept ? euro(e.rezept) : ""}</td><td class="geld">${e.fahrt ? euro(e.fahrt) : ""}</td><td>${esc(e.befinden)}<div class="messwerte">${messwerteHtml(e)}</div></td><td class="aktionen">${istAutomatischerTermin ? `<button class="knopf klein sekundaer" onclick="terminQuelleAendern('${e.id}')">Quelle öffnen</button>` : `<button class="knopf klein sekundaer" onclick="bearbeiten('${e.id}')">Ändern</button> <button class="knopf klein gefahr" onclick="loeschen('${e.id}')">Löschen</button>`}</td></tr>` };
         });
         [...gruppiert.entries()].forEach(([datum, dokumente]) => {
           const dokumentHtml = dokumente.map((d) => `<div class="geschichte-dokument"><strong>${esc(d.name || "Dokument")}</strong><small>${esc(d.kategorie || "Sonstiges")} · ${d.seiten?.length || 1} ${(d.seiten?.length || 1) === 1 ? "Datei" : "Seiten"}${d.notiz ? " · " + esc(d.notiz) : ""}</small>${istWordDokument(d.seiten?.[0] || d) ? `<button class="knopf klein sekundaer" type="button" onclick="dokumentLaden('${d.id}')">Word-Datei herunterladen</button>` : `<button class="knopf klein sekundaer" type="button" onclick="dokumentOeffnen('${d.id}')">Dokument öffnen</button>`}</div>`).join("");
@@ -9212,8 +9225,8 @@
 })();
 </script>
 <link rel="stylesheet" href="v19124.css">
-<link rel="stylesheet" href="v1912510.css?v=pc-abschluss-5">
+<link rel="stylesheet" href="v1912510.css?v=pc-abschluss-6">
 <script src="v19124.js"></script>
-<script src="v1912510.js?v=pc-abschluss-5"></script>
+<script src="v1912510.js?v=pc-abschluss-6"></script>
 </body>
 </html>

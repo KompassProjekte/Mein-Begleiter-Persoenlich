@@ -1,12 +1,12 @@
-const CACHE = 'mein-begleiter-persoenlich-cache-v1-9-1-2-5-10-pc-abschluss-5';
+const CACHE = 'mein-begleiter-persoenlich-cache-v1-9-1-2-5-10-pc-abschluss-6';
 const BASIS = '/Mein-Begleiter-Persoenlich/';
 const PFLICHTDATEIEN = [
   BASIS,
   BASIS + 'index.html',
   BASIS + 'v19124.css',
   BASIS + 'v19124.js',
-  BASIS + 'v1912510.css?v=pc-abschluss-5',
-  BASIS + 'v1912510.js?v=pc-abschluss-5',
+  BASIS + 'v1912510.css?v=pc-abschluss-6',
+  BASIS + 'v1912510.js?v=pc-abschluss-6',
   BASIS + 'manifest.webmanifest',
   BASIS + 'offline.html'
 ];
