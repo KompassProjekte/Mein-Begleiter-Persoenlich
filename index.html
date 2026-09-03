@@ -1701,7 +1701,7 @@
           </button>
         </nav>
         <div class="seitenfuss">
-          <strong>Version 1.9.1.2.5.10</strong><br />PC-Vergleichsfassung
+          <strong>Version 1.9.1.2.5.10</strong><br />PC-Abschlusskorrektur
         </div>
       </aside>
       <main>
@@ -4098,12 +4098,11 @@
         return [modus, fassung, von, bis, arzt, optionen].join("|");
       }
       function gespeichertenEntwurfAnzeigen() {
-        const entwurf = daten.ausgabeEntwuerfe?.[entwurfSchluessel()];
-        const datenstand = berichtDatenstand();
-        if (entwurf?.html && entwurf.datenstand === datenstand) {
-          $("#berichtAusgabe").innerHTML = entwurf.html;
-          return true;
-        }
+        // Frühere Fassungen speicherten die komplette HTML-Ausgabe. Dadurch
+        // wurden alte Titelblätter und Layouts dauerhaft eingefroren. Diese
+        // Altentwürfe bleiben aus Gründen der Datensicherheit erhalten, werden
+        // aber nicht mehr als aktuelle Ausgabe eingeblendet. Buchtext-
+        // Korrekturen werden ab jetzt getrennt je Eintrag gespeichert.
         return false;
       }
       function renderTagebuch() {
@@ -4347,6 +4346,30 @@
           return vergleich === normal || (normal.length > 24 && vergleich.includes(normal)) || (vergleich.length > 24 && normal.includes(vergleich));
         });
       }
+      function buchKorrekturSpeicher() {
+        daten.buchTextKorrekturen = daten.buchTextKorrekturen || {
+          alle: {},
+          fassungen: { original: {}, lese: {}, familie: {} },
+        };
+        daten.buchTextKorrekturen.alle ||= {};
+        daten.buchTextKorrekturen.fassungen ||= {};
+        ["original", "lese", "familie"].forEach((f) =>
+          (daten.buchTextKorrekturen.fassungen[f] ||= {}),
+        );
+        return daten.buchTextKorrekturen;
+      }
+      function buchKorrekturText(e, fassung) {
+        const s = buchKorrekturSpeicher();
+        return s.fassungen?.[fassung]?.[e.id] ?? s.alle?.[e.id] ?? "";
+      }
+      function buchKorrekturHtml(text) {
+        return String(text || "")
+          .split(/\n+/)
+          .map((zeile) => zeile.trim())
+          .filter(Boolean)
+          .map((zeile) => `<p>${esc(zeile)}</p>`)
+          .join("");
+      }
       function renderBuch() {
         const von = $("#berichtVon").value || "0000-01-01",
           bis = $("#berichtBis").value || "9999-12-31",
@@ -4411,7 +4434,8 @@
                     texte.push(
                       `<div class="messwerte">${messwerteHtml(e)}</div>`,
                     );
-                  return `<div class="tagebuch-eintrag"><div class="tagebuch-datum">${datumLang(e.datum)}</div><div class="tagebuch-text"><h5>${esc(u)}</h5>${texte.join("")}</div></div>`;
+                  const korrektur = buchKorrekturText(e, fassung);
+                  return `<div class="tagebuch-eintrag" data-buch-eintrag-id="${esc(e.id)}"><div class="tagebuch-datum">${datumLang(e.datum)}</div><div class="tagebuch-text"><h5>${esc(u)}</h5><div class="buch-korrekturtext">${korrektur ? buchKorrekturHtml(korrektur) : texte.filter((t) => !t.includes('class="messwerte"')).join("")}</div>${mitMesswerten && hatTageswerte(e) ? `<div class="messwerte">${messwerteHtml(e)}</div>` : ""}</div></div>`;
                 })
                 .join("");
             } else {
@@ -4496,7 +4520,8 @@
                   const familienErinnerung = fassung === "familie" && e.gedanken && !buchTextEnthalten(inhaltssaetze, e.gedanken)
                     ? `<div class="familien-erinnerung"><strong>Was mir wichtig war:</strong> ${esc(e.gedanken)}</div>`
                     : "";
-                  return `<section class="leseabschnitt"><time class="chronik-datum" datetime="${esc(e.datum)}">${datumLang(e.datum)}</time><div class="chronik-inhalt">${kennzeichnung ? `<h5>${kennzeichnung}</h5>` : ""}<p>${esc(saetze.join(" "))}</p>${mess}${familienErinnerung}</div></section>`;
+                  const korrektur = buchKorrekturText(e, fassung);
+                  return `<section class="leseabschnitt" data-buch-eintrag-id="${esc(e.id)}"><time class="chronik-datum" datetime="${esc(e.datum)}">${datumLang(e.datum)}</time><div class="chronik-inhalt">${kennzeichnung ? `<h5>${kennzeichnung}</h5>` : ""}<div class="buch-korrekturtext">${korrektur ? buchKorrekturHtml(korrektur) : `<p>${esc(saetze.join(" "))}</p>${familienErinnerung}`}</div>${mess}</div></section>`;
                 })
                 .join("");
             }
@@ -5387,13 +5412,17 @@
         $("#" + id).addEventListener("change", buchEinstellungenSpeichern),
       );
       let ausgabeInBearbeitung = false;
+      let buchBearbeitungsStart = new Map();
       function bearbeitungBeenden() {
         ausgabeInBearbeitung = false;
-        $("#berichtAusgabe").contentEditable = "false";
+        $$("#berichtAusgabe .buch-korrekturtext").forEach((el) =>
+          el.contentEditable = "false",
+        );
         $("#berichtAusgabe").classList.remove("bearbeitung-aktiv");
         $("#bearbeitungHinweis").classList.remove("aktiv");
         $("#ausgabeBearbeiten").textContent = "✍ Text bearbeiten";
         $("#aenderungenSpeichern").hidden = true;
+        $("#buchKorrekturUmfang")?.remove();
       }
       $("#ausgabeBearbeiten").addEventListener("click", () => {
         if (ausgabeModus() === "bericht") {
@@ -5401,26 +5430,52 @@
           return;
         }
         ausgabeInBearbeitung = true;
-        $("#berichtAusgabe").contentEditable = "true";
+        const felder = $$("#berichtAusgabe .buch-korrekturtext");
+        buchBearbeitungsStart = new Map();
+        felder.forEach((el) => {
+          const id = el.closest("[data-buch-eintrag-id]")?.dataset.buchEintragId;
+          if (id) buchBearbeitungsStart.set(id, (el.innerText || el.textContent || "").trim());
+          el.contentEditable = "true";
+        });
         $("#berichtAusgabe").classList.add("bearbeitung-aktiv");
         $("#bearbeitungHinweis").classList.add("aktiv");
         $("#ausgabeBearbeiten").textContent = "✍ Text wird bearbeitet";
         $("#aenderungenSpeichern").hidden = false;
-        $("#berichtAusgabe").focus();
+        const auswahl = document.createElement("select");
+        auswahl.id = "buchKorrekturUmfang";
+        auswahl.className = "filter";
+        auswahl.setAttribute("aria-label", "Geltungsbereich der Buchtext-Korrektur");
+        auswahl.innerHTML = '<option value="alle">Für alle Buchfassungen übernehmen</option><option value="fassung">Nur für diese Buchfassung</option>';
+        $("#aenderungenSpeichern").before(auswahl);
+        felder[0]?.focus();
       });
       $("#aenderungenSpeichern").addEventListener("click", () => {
         if (!ausgabeInBearbeitung) return;
-        daten.ausgabeEntwuerfe = daten.ausgabeEntwuerfe || {};
-        daten.ausgabeEntwuerfe[entwurfSchluessel()] = {
-          html: $("#berichtAusgabe").innerHTML,
-          gespeichertAm: new Date().toISOString(),
-          datenstand: berichtDatenstand(),
-        };
+        const speicher = buchKorrekturSpeicher(), fassung = buchFassung();
+        const nurFassung = $("#buchKorrekturUmfang")?.value === "fassung";
+        $$("#berichtAusgabe [data-buch-eintrag-id]").forEach((zeile) => {
+          const id = zeile.dataset.buchEintragId;
+          const feld = zeile.querySelector(".buch-korrekturtext");
+          const text = (feld?.innerText || feld?.textContent || "").trim();
+          if (text === buchBearbeitungsStart.get(id)) return;
+          if (nurFassung) speicher.fassungen[fassung][id] = text;
+          else {
+            speicher.alle[id] = text;
+            ["original", "lese", "familie"].forEach((f) => delete speicher.fassungen[f][id]);
+          }
+        });
         buchEinstellungenSpeichern();
+        speichern();
         bearbeitungBeenden();
+        renderBuch();
         toast("Deine Änderungen wurden dauerhaft gespeichert");
       });
       $("#berichtErstellen").addEventListener("click", () => {
+        if (ausgabeModus() === "buch") {
+          const hatKorrekturen = Object.keys(buchKorrekturSpeicher().alle).length ||
+            Object.values(buchKorrekturSpeicher().fassungen).some((f) => Object.keys(f).length);
+          if ((ausgabeInBearbeitung || hatKorrekturen) && !confirm("Die Buchausgabe wird neu aufgebaut. Gespeicherte Buchtext-Korrekturen bleiben erhalten. Fortfahren?")) return;
+        }
         bearbeitungBeenden();
         const eintraege = sortiert();
         if (eintraege.length) {
@@ -6128,6 +6183,10 @@
           nebenwirkungen: daten.nebenwirkungen,
           schritte: daten.schritte,
           ausgabeEntwuerfe: daten.ausgabeEntwuerfe || {},
+          buchTextKorrekturen: daten.buchTextKorrekturen || {
+            alle: {},
+            fassungen: { original: {}, lese: {}, familie: {} },
+          },
         });
         async function dokumenteFuerSicherung() {
           if (!dokumentDb) throw new Error("Dokumentenspeicher nicht bereit");
@@ -6357,6 +6416,10 @@
           nebenwirkungen: daten.nebenwirkungen,
           schritte: daten.schritte,
           ausgabeEntwuerfe: daten.ausgabeEntwuerfe || {},
+          buchTextKorrekturen: daten.buchTextKorrekturen || {
+            alle: {},
+            fassungen: { original: {}, lese: {}, familie: {} },
+          },
         });
         const normDaten = (neu) => ({
           eintraege: Array.isArray(neu.eintraege) ? neu.eintraege : [],
@@ -6371,6 +6434,10 @@
             neu.ausgabeEntwuerfe && typeof neu.ausgabeEntwuerfe === "object"
               ? neu.ausgabeEntwuerfe
               : {},
+          buchTextKorrekturen:
+            neu.buchTextKorrekturen && typeof neu.buchTextKorrekturen === "object"
+              ? neu.buchTextKorrekturen
+              : { alle: {}, fassungen: { original: {}, lese: {}, familie: {} } },
           letzteSicherung: new Date().toISOString(),
         });
         async function dokumentePaket() {
@@ -7017,6 +7084,10 @@
           nebenwirkungen: daten.nebenwirkungen,
           schritte: daten.schritte,
           ausgabeEntwuerfe: daten.ausgabeEntwuerfe || {},
+          buchTextKorrekturen: daten.buchTextKorrekturen || {
+            alle: {},
+            fassungen: { original: {}, lese: {}, familie: {} },
+          },
         });
         async function inhaltBauen(mitDokumenten) {
           return {
@@ -7061,6 +7132,10 @@
             neu.ausgabeEntwuerfe && typeof neu.ausgabeEntwuerfe === "object"
               ? neu.ausgabeEntwuerfe
               : {},
+          buchTextKorrekturen:
+            neu.buchTextKorrekturen && typeof neu.buchTextKorrekturen === "object"
+              ? neu.buchTextKorrekturen
+              : { alle: {}, fassungen: { original: {}, lese: {}, familie: {} } },
           letzteSicherung: new Date().toISOString(),
         });
         const dokumenteErsetzen = (docs) =>
@@ -9102,8 +9177,8 @@
 })();
 </script>
 <link rel="stylesheet" href="v19124.css">
-<link rel="stylesheet" href="v1912510.css?v=pc-vergleich-1">
+<link rel="stylesheet" href="v1912510.css?v=pc-abschluss-1">
 <script src="v19124.js"></script>
-<script src="v1912510.js?v=pc-vergleich-1"></script>
+<script src="v1912510.js?v=pc-abschluss-1"></script>
 </body>
 </html>

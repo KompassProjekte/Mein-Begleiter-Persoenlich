@@ -1,5 +1,21 @@
-MEIN BEGLEITER 1.9.1.2.5.10 - PC-VERGLEICHSFASSUNG
-Stand: 02.09.2026
+MEIN BEGLEITER 1.9.1.2.5.10 - PC-ABSCHLUSSKORREKTUR
+Stand: 03.09.2026
+
+LETZTE PC-TESTKORREKTUREN
+- Buchtext-Korrekturen werden getrennt von den Originaleinträgen gespeichert und
+  standardmäßig in Original-Tagebuch, persönlicher Leseausgabe und Familienausgabe
+  gemeinsam verwendet. Optional ist eine Korrektur nur für eine Buchfassung möglich.
+- Alte vollständige HTML-Entwürfe frieren das Titelblatt und Layout nicht mehr ein.
+- Alle drei Buchfassungen werden mit dem aktuellen, einheitlichen Titelblatt aufgebaut.
+- Der Buchdruck verwendet eine normale kompakte Buchschrift von 10,25 pt, kleinere
+  Datumszeilen und engere, weiterhin gut lesbare Abstände.
+- Diagramme werden im Verlaufdruck einheitlich zu drei Stück je Seite angeordnet.
+- Der Behandlungsverlauf beginnt stets auf einer neuen Seite.
+- Auf der Verlaufseite wurde der zusätzliche Tages-Check-Knopf entfernt.
+- Im Buchzentrum bleibt die Bedienleiste beim Scrollen sichtbar und enthält „Nach oben“.
+- „Nächster Termin“ wird chronologisch aus allen kommenden Terminen ermittelt.
+- In den Einstellungen steht eine nur lesende Systemprüfung für PWA, Speicher,
+  Datenbezüge, Dublettenhinweise, Dokumentablage und Sicherungstechnik bereit.
 
 VERSIONSABGLEICH UND REGRESSIONSKORREKTUR
 - Abgleich mit der getesteten PC-Abschlussversion durchgeführt.
@@ -7,11 +23,11 @@ VERSIONSABGLEICH UND REGRESSIONSKORREKTUR
 - Zentralen JavaScript-Abbruch nach Bereinigung der Sicherungsansicht behoben.
 - Vitalwerte-Dialog und Speicherung wieder funktionsfähig.
 - Kostenbericht öffnet und erstellt seine Vorschau wieder.
-- Pro Seite nur noch ein Tages-Check-Schnelleinstieg.
+- Auf der Übersicht genau ein Tages-Check-Schnelleinstieg; im Verlauf keiner.
 - Tages-Check wird einschließlich versehentlich getrennter Teile am gleichen
   Messzeitpunkt vollständig und dauerhaft gelöscht.
 - Offene Fragen enthalten wieder die Spalte Datum.
-- Diagramme werden im Hochformat einzeln untereinander und kompakt gedruckt.
+- Diagramme werden im Hochformat untereinander, einheitlich drei je Seite gedruckt.
 - Alle Buchfassungen verwenden einen kompakten Buch-/Chronikstil mit Datum.
 - Automatische und eigene Buchtexte werden nicht doppelt ausgegeben.
 - Aussageleere Ersatztexte wurden aus Tagebuch und Buch entfernt.

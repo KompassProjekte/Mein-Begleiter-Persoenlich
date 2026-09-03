@@ -1,15 +1,20 @@
-PRÜFPROTOKOLL - MEIN BEGLEITER 1.9.1.2.5.10 PC-VERGLEICHSFASSUNG
-Stand: 02.09.2026
+PRÜFPROTOKOLL - MEIN BEGLEITER 1.9.1.2.5.10 PC-ABSCHLUSSKORREKTUR
+Stand: 03.09.2026
 
 AUTOMATISIERTER REGRESSIONSTEST
 [OK] Vitalwerte-Dialog öffnet und speichert eine Messung
 [OK] Kostenbericht öffnet und erzeugt seine Vorschau
 [OK] Tages-Check einschließlich getrennter Teile vollständig gelöscht
-[OK] Je Seite nur ein Tages-Check-Schnelleinstieg
+[OK] Übersicht mit einem, Verlauf ohne zusätzlichen Tages-Check-Schnelleinstieg
 [OK] Offene Fragen mit Datumsspalte
 [OK] Buchausgabe mit Chronikdatum und Dublettenschutz
-[OK] Diagrammdruck einspaltig und kompakt
+[OK] Diagrammdruck einspaltig, drei Diagramme je Seite
 [OK] Keine Mischung veralteter und neuer PWA-Programmdateien
+[OK] Gemeinsame Buchtext-Korrektur in allen drei Buchfassungen
+[OK] Originaleinträge bleiben bei Buchtext-Korrekturen unverändert
+[OK] Chronologisch nächster statt letzter Termin auf der Übersicht
+[OK] Feste Bedienleiste und „Nach oben“ im Buchzentrum
+[OK] Read-only-Systemprüfung liefert verständliches Ergebnis
 
 NACHTRÄGLICHE SICHTPRÜFUNG
 [OK] Getrennter Kopf-, Scroll- und Fußbereich im Eintragsdialog
@@ -33,10 +38,11 @@ AUTOMATISCH GEPRÜFT
 [OK] Direkte Kostenänderung und kontrolliertes Löschen vorhanden
 [OK] Pflichtfeldkennzeichnung vorhanden
 [OK] Kostenbericht-Druckknopf oben
-[OK] A4-Hochformat mit gestapelten, kompakten Diagrammen
+[OK] A4-Hochformat mit drei gestapelten Diagrammen je Seite
+[OK] Behandlungsverlauf beginnt auf neuer Seite
 [OK] Querformat-Hinweis und Querformat-Erzwingung entfernt
 [OK] Papiersparendes Layout für Listen, Übersichten und sachliche Berichte
-[OK] Großzügigeres Buch- und Tagebuchlayout getrennt erhalten
+[OK] Kompakter Buch-/Chronikdruck mit 10,25-pt-Grundschrift
 [OK] Eintragsart steuert Terminzuordnung unabhängig vom Maßnahmentext
 [OK] Doppelte persönliche Gedanken in der Buchausgabe verhindert
 [OK] Tabellenkopf „Datum“ ohne vorangestellten Produktnamen

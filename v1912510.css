@@ -23,7 +23,7 @@
 .v19125-druckkopf{margin-bottom:15px;padding-bottom:10px;border-bottom:2px solid #23665f}.v19125-druckkopf h2{margin:0 0 5px}.v19125-druckkopf div{color:#395d58}
 .v19125-terminblock{margin:0 0 14px;padding:12px 14px;border:1px solid #bdd3ce;border-left:5px solid #286e66;border-radius:9px;break-inside:avoid}.v19125-terminblock h3,.v19125-terminblock h4,.v19125-terminblock p{margin:0 0 7px}.v19125-terminblock ul{margin:.3rem 0}.v19125-status{color:#49645f}.v19125-keine{font-style:italic;color:#607570}.v19125-nichtzugeordnet{margin-top:18px;padding:13px;border:1px solid #d7b970;background:#fff9e9;border-radius:9px}.v19125-nichtzugeordnet h3{margin-top:0}
 .v19123-druckliste small{display:block;margin-top:4px;color:#536b67}.v19125-gesamtsumme{text-align:right;font-size:1.12rem}.v19123-druckliste tr{break-inside:avoid}
-.v19125-diagramme{display:grid;grid-template-columns:1fr;gap:5mm}.v19125-diagramm{min-height:0;padding:3mm;border:1px solid #b9cec9;border-radius:7px;break-inside:avoid}.v19125-diagramm .diagramm{height:58mm!important}.v19125-diagramm svg text{font-size:13px!important;font-weight:700!important;fill:#123f3b!important}.v19125-behandlung{margin-top:5mm}
+.v19125-diagramme{display:grid;grid-template-columns:1fr;gap:3mm}.v19125-diagramm{min-height:0;padding:2.5mm;border:1px solid #b9cec9;border-radius:7px;break-inside:avoid}.v19125-diagramm .diagramm{height:50mm!important}.v19125-diagramm svg text{font-size:13px!important;font-weight:700!important;fill:#123f3b!important}.v19125-behandlung{margin-top:5mm}
 .buch-titelblatt[data-v19125="1"]{height:257mm!important;min-height:0!important;display:flex!important;flex-direction:column!important;justify-content:center!important;align-items:center!important;padding:18mm!important;box-sizing:border-box!important;background:linear-gradient(145deg,#fffdf7,#f5ecd8)!important;border:1.5px solid #4d8179!important;box-shadow:inset 0 0 0 7px #fffdf7!important;position:relative!important;overflow:hidden!important;text-align:center!important}.v19125-titellogo{width:45mm;height:45mm;object-fit:contain;margin-bottom:7mm}.v19125-ausgabe{font-size:1.12rem;font-weight:800;letter-spacing:.06em;color:#315f59}.v19125-goldlinie{width:56mm;height:2px;margin:6mm 0;background:#b58a37}.buch-titelblatt[data-v19125="1"] h3{font-size:2.7rem!important;color:#175650!important;margin:0!important}.buch-titelblatt[data-v19125="1"] .untertitel{font-size:1.35rem!important;margin:7mm 0!important}.v19125-zeitraum{font-size:1rem;margin-top:7mm}.v19125-wasserzeichen{position:absolute;right:-15mm;bottom:-24mm;font-size:95mm;color:#c8b276;opacity:.08}
 @media(max-width:900px){.v19125-druckfilter{grid-template-columns:repeat(2,minmax(0,1fr))}.v19125-einfuehrung{grid-template-columns:auto 1fr}.v19125-einfuehrung .knopf{grid-column:1/-1;width:100%}}
 @media(max-width:900px){#seite-kosten .raster{grid-template-columns:repeat(2,minmax(0,1fr))!important}#seite-kosten .raster>.span3{grid-column:span 1!important}#seite-kosten .raster>.span6{grid-column:1/-1!important}}
@@ -36,10 +36,12 @@
   body.v19125-druckt #seite-drucken>*:not(#v19125Vorschau){display:none!important}
   body.v19125-druckt #v19125Vorschau{display:block!important;margin:0!important;padding:0!important;border:0!important;box-shadow:none!important;font-size:11pt!important;line-height:1.4!important}
   body.v19125-druckt #v19125Vorschau.v19123-sparsam{font-size:9.5pt!important;line-height:1.25!important}
-  body.v19125-druckt .v19125-diagramme{grid-template-columns:1fr!important;gap:4mm!important}
-  body.v19125-druckt .v19125-diagramm{min-height:0!important;padding:2.5mm!important;break-inside:avoid-page!important}
-  body.v19125-druckt .v19125-diagramm .diagramm{height:40mm!important}
-  body.v19125-druckt .v19125-behandlung{break-before:auto!important;margin-top:5mm!important}
+  body.v19125-druckt .v19125-diagramme{display:block!important}
+  body.v19125-druckt .v19125-diagramm{height:78mm!important;box-sizing:border-box!important;margin:0 0 3mm!important;padding:2.2mm!important;overflow:hidden!important;break-inside:avoid-page!important}
+  body.v19125-druckt .v19125-diagramm .diagramm{height:57mm!important}
+  body.v19125-druckt .v19125-diagramm:nth-child(3n){break-after:page!important}
+  body.v19125-druckt .v19125-diagramm:last-child{break-after:auto!important}
+  body.v19125-druckt .v19125-behandlung{break-before:page!important;margin-top:0!important}
   body.v19125-druckt .buch-titelblatt[data-v19125="1"]{min-height:250mm!important;break-after:page!important}
   body.v19125-druckt .buch-seite:empty,body.v19125-druckt .buch-kapitel:empty{display:none!important}
   body.v19125-druckt .v19123-druckliste tr{break-inside:avoid-page!important}
@@ -51,20 +53,27 @@
 .chronik-datum{color:#315f59;font-weight:800;white-space:nowrap}
 .chronik-inhalt>p:first-child{margin-top:0}
 @media print{
-  body.v1912510-buchdruck #berichtAusgabe .buch-kapitel{break-before:auto!important;margin:5mm 0 0!important;padding:0!important}
-  body.v1912510-buchdruck #berichtAusgabe .buch-kapitel h4{font-size:15pt!important;margin:0 0 3mm!important;padding:0 0 1.5mm!important;border-bottom:1.5px solid #315f59!important;break-after:avoid-page!important}
+  body.v1912510-buchdruck #berichtAusgabe{font:10.25pt/1.34 Georgia,"Times New Roman",serif!important}
+  body.v1912510-buchdruck #berichtAusgabe .buch-kapitel{break-before:auto!important;margin:3mm 0 0!important;padding:0!important}
+  body.v1912510-buchdruck #berichtAusgabe .buch-kapitel h4{font-size:13pt!important;margin:0 0 1.8mm!important;padding:0 0 1mm!important;border-bottom:1.2px solid #315f59!important;break-after:avoid-page!important}
   body.v1912510-buchdruck #berichtAusgabe .tagebuch-eintrag,
-  body.v1912510-buchdruck #berichtAusgabe .leseabschnitt{display:grid!important;grid-template-columns:27mm minmax(0,1fr)!important;gap:4mm!important;margin:0!important;padding:2.4mm 0!important;border-bottom:1px solid #d6dfdc!important;break-inside:avoid-page!important}
+  body.v1912510-buchdruck #berichtAusgabe .leseabschnitt{display:grid!important;grid-template-columns:23mm minmax(0,1fr)!important;gap:3mm!important;margin:0!important;padding:1.45mm 0!important;border-bottom:.7px solid #d6dfdc!important;break-inside:avoid-page!important}
   body.v1912510-buchdruck #berichtAusgabe .tagebuch-datum,
-  body.v1912510-buchdruck #berichtAusgabe .chronik-datum{font-size:9.5pt!important;line-height:1.35!important;color:#315f59!important;font-weight:800!important}
+  body.v1912510-buchdruck #berichtAusgabe .chronik-datum{font-size:8.5pt!important;line-height:1.3!important;color:#315f59!important;font-weight:800!important}
   body.v1912510-buchdruck #berichtAusgabe .tagebuch-text h5,
-  body.v1912510-buchdruck #berichtAusgabe .chronik-inhalt h5{font-size:11pt!important;margin:0 0 .8mm!important}
+  body.v1912510-buchdruck #berichtAusgabe .chronik-inhalt h5{font-size:10.5pt!important;margin:0 0 .4mm!important}
   body.v1912510-buchdruck #berichtAusgabe .tagebuch-text p,
-  body.v1912510-buchdruck #berichtAusgabe .chronik-inhalt p{margin:.5mm 0!important}
-  body.v1912510-buchdruck #berichtAusgabe .familien-erinnerung{margin:1.5mm 0 0!important;padding:1.5mm 2.5mm!important;border-left:2px solid #9caaa6!important;background:#fbfaf6!important}
-  body.v1912510-buchdruck #berichtAusgabe .messwerte{margin-top:1.2mm!important;gap:1.2mm!important}
-  body.v1912510-buchdruck #berichtAusgabe .messwert{padding:1mm 1.8mm!important;font-size:8.5pt!important}
+  body.v1912510-buchdruck #berichtAusgabe .chronik-inhalt p{margin:.25mm 0!important}
+  body.v1912510-buchdruck #berichtAusgabe .familien-erinnerung{margin:.7mm 0 0!important;padding:.8mm 1.5mm!important;border-left:2px solid #9caaa6!important;background:#fbfaf6!important}
+  body.v1912510-buchdruck #berichtAusgabe .messwerte{margin-top:.5mm!important;gap:1mm!important}
+  body.v1912510-buchdruck #berichtAusgabe .messwert{padding:.35mm 1.2mm!important;font-size:7.5pt!important}
 }
+
+#seite-bericht>.kopf{position:sticky;top:0;z-index:45;background:rgba(244,249,247,.97);padding:10px 0 12px;border-bottom:1px solid #c8dad6;box-shadow:0 7px 14px rgba(21,70,64,.08);backdrop-filter:blur(8px)}
+#buchKorrekturUmfang{min-width:260px}
+.bearbeitung-aktiv .buch-korrekturtext[contenteditable="true"]{outline:2px dashed #2f8177;outline-offset:3px;background:#fffdf5}
+.v1912510-systempruefung{margin-top:18px;padding:18px;border:1px solid #aacbc4;border-radius:14px;background:#fff}.v1912510-systempruefung h3{margin-top:0}.v1912510-pruefergebnis{margin-top:12px}.v1912510-pruefergebnis ul{margin:8px 0;padding-left:22px}.v1912510-pruefergebnis .ok{color:#17633a}.v1912510-pruefergebnis .hinweis-pruefung{color:#8a5b00}
+@media print{#seite-bericht>.kopf{position:static!important;box-shadow:none!important}.v1912510-systempruefung{display:none!important}}
 
 .v1912510-dialog-x{display:inline-flex!important;align-items:center!important;justify-content:center!important;width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important;padding:0!important;border:1px solid #a9c7c1!important;border-radius:50%!important;background:#edf4f2!important;color:#174d48!important;font-size:1.35rem!important;line-height:1!important;cursor:pointer!important}
 .v1912510-dialog-x:hover,.v1912510-dialog-x:focus-visible{background:#dcece8!important;border-color:#4f8c84!important;outline:3px solid #b8d9d2!important;outline-offset:2px!important}

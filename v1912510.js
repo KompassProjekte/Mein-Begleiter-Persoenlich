@@ -245,13 +245,14 @@
     qa(".buch-titelblatt", root).forEach(t => {
       if (t.dataset.v19125 === "1") return;
       t.dataset.v19125 = "1";
+      const ausgabe = t.firstElementChild?.textContent?.trim() || "Persönliches Buch";
       const h = q("h3", t);
       const unter = q(".untertitel", t);
       const von=q("#berichtVon")?.value||q("#v19125Von")?.value||"", bis=q("#berichtBis")?.value||q("#v19125Bis")?.value||"";
       let zeitraum="";
       if(/^\d{4}-\d{2}-\d{2}$/.test(von)&&/^\d{4}-\d{2}-\d{2}$/.test(bis)) zeitraum=`${formatDatum(von)} bis ${formatDatum(bis)}`;
       else if(typeof berichtEintraege==="function") { const ds=berichtEintraege().map(e=>e.datum).filter(d=>/^\d{4}-\d{2}-\d{2}$/.test(d)).sort(); if(ds.length) zeitraum=`${formatDatum(ds[0])} bis ${formatDatum(ds.at(-1))}`; }
-      t.innerHTML = `<img class="v19125-titellogo" src="icons/logo-persoenlich.svg" alt="Mein Begleiter – Persönliche Arbeitsversion"><div class="v19125-ausgabe">Persönliches Buch</div><div class="v19125-goldlinie"></div><h3>${safe(h?.textContent || "Höhen und Tiefen")}</h3><div class="untertitel">${safe(unter?.textContent || "Meine Erfahrungen und Fortschritte")}</div>${zeitraum ? `<p class="v19125-zeitraum"><strong>Zeitraum</strong><br>${safe(zeitraum)}</p>` : ""}<div class="v19125-wasserzeichen" aria-hidden="true">✥</div>`;
+      t.innerHTML = `<img class="v19125-titellogo" src="icons/logo-persoenlich.svg" alt="Mein Begleiter – Persönliche Arbeitsversion"><div class="v19125-ausgabe">${safe(ausgabe)}</div><div class="v19125-goldlinie"></div><h3>${safe(h?.textContent || "Höhen und Tiefen")}</h3><div class="untertitel">${safe(unter?.textContent || "Meine Erfahrungen und Fortschritte")}</div>${zeitraum ? `<p class="v19125-zeitraum"><strong>Zeitraum</strong><br>${safe(zeitraum)}</p>` : ""}<div class="v19125-wasserzeichen" aria-hidden="true">✥</div>`;
     });
     qa(".buch-seite,.buch-kapitel",root).forEach(s=>{if(!s.textContent.trim()&&!s.querySelector("img,table,svg"))s.remove();});
   };
@@ -370,7 +371,7 @@
     const ueber = document.createElement("section");
     ueber.id = "v19129Ueber";
     ueber.className = "v19129-ueber";
-    ueber.innerHTML = `<h3>Über Mein Begleiter</h3><p><strong>Version ${VERSION} PWA – PERSÖNLICHE ARBEITSVERSION</strong><br>PC-Vergleichsfassung · Stand: 02.09.2026<br>Entwickelt von Lothar &amp; Nimbus</p><p>Die Gesundheitsdaten werden lokal auf diesem Gerät gespeichert. Es findet keine automatische Synchronisation statt.</p>`;
+    ueber.innerHTML = `<h3>Über Mein Begleiter</h3><p><strong>Version ${VERSION} PWA – PERSÖNLICHE ARBEITSVERSION</strong><br>PC-Abschlusskorrektur · Stand: 03.09.2026<br>Entwickelt von Lothar &amp; Nimbus</p><p>Die Gesundheitsdaten werden lokal auf diesem Gerät gespeichert. Es findet keine automatische Synchronisation statt.</p>`;
     einstellungen.appendChild(ueber);
   }
 
@@ -456,7 +457,61 @@
   pflichtContainer.forEach(container=>{if(q(".v1912510-pflichthinweis",container))return;const hinweis=document.createElement("p");hinweis.className="v1912510-pflichthinweis";hinweis.innerHTML="Mit <strong>*</strong> gekennzeichnete Felder müssen ausgefüllt werden.";container.prepend(hinweis);});
 
   const ueberBox=q("#v19129Ueber");
-  if(ueberBox)ueberBox.innerHTML=`<h3>Über Mein Begleiter</h3><p><strong>Version ${VERSION} PWA – PERSÖNLICHE ARBEITSVERSION</strong><br>PC-Vergleichsfassung · Stand: 02.09.2026<br>Entwickelt von Lothar &amp; Nimbus</p><p>Die Gesundheitsdaten werden lokal auf diesem Gerät gespeichert. Es findet keine automatische Synchronisation statt.</p>`;
+  if(ueberBox)ueberBox.innerHTML=`<h3>Über Mein Begleiter</h3><p><strong>Version ${VERSION} PWA – PERSÖNLICHE ARBEITSVERSION</strong><br>PC-Abschlusskorrektur · Stand: 03.09.2026<br>Entwickelt von Lothar &amp; Nimbus</p><p>Die Gesundheitsdaten werden lokal auf diesem Gerät gespeichert. Es findet keine automatische Synchronisation statt.</p>`;
+
+  // Im Verlauf ist der Tages-Check kein notwendiger zweiter Einstieg. Die
+  // Erfassung bleibt auf der Übersicht und unter „Neue Einträge“ erreichbar.
+  qa('#seite-verlauf [data-neu][data-befinden="1"]').forEach(b => b.remove());
+
+  // Bei langen Buchvorschauen bleiben die wichtigsten Aktionen erreichbar.
+  const berichtAktionenFest = q('#seite-bericht .kopf-aktionen');
+  if (berichtAktionenFest && !q('#v1912510NachOben')) {
+    const oben = document.createElement('button');
+    oben.id = 'v1912510NachOben';
+    oben.type = 'button';
+    oben.className = 'knopf sekundaer';
+    oben.textContent = '↑ Nach oben';
+    oben.addEventListener('click', () => q('#seite-bericht')?.scrollIntoView({behavior:'smooth', block:'start'}));
+    berichtAktionenFest.appendChild(oben);
+  }
+
+  // Read-only-Systemprüfung: Sie verändert weder Gesundheitsdaten noch
+  // Dokumente und macht den Zustand der lokalen PWA verständlich sichtbar.
+  const pruefSeite = q('#seite-einstellungen');
+  if (pruefSeite && !q('#v1912510Systempruefung')) {
+    const box = document.createElement('section');
+    box.id = 'v1912510Systempruefung';
+    box.className = 'v1912510-systempruefung';
+    box.innerHTML = `<h3>Systemprüfung</h3><p>Prüft PWA, lokalen Speicher, Datenbezüge und Sicherungsfähigkeit – ohne Daten zu verändern.</p><button class="knopf" type="button" id="v1912510SystemStart">Systemprüfung durchführen</button><div class="v1912510-pruefergebnis" id="v1912510SystemErgebnis" aria-live="polite"></div>`;
+    pruefSeite.appendChild(box);
+    q('#v1912510SystemStart').addEventListener('click', async () => {
+      const ergebnis = q('#v1912510SystemErgebnis');
+      const ok = [], hinweise = [];
+      const statischeVersion = qa('link[href],script[src]').some(el => (el.getAttribute('href') || el.getAttribute('src') || '').includes('pc-abschluss-1'));
+      statischeVersion ? ok.push('Programmdateien gehören zur aktuellen Abschlusskorrektur.') : hinweise.push('Die aktuelle Cache-Kennung ist noch nicht sichtbar. App einmal vollständig neu laden.');
+      if ('serviceWorker' in navigator) ok.push(navigator.serviceWorker.controller ? 'PWA-Service-Worker ist aktiv.' : 'PWA-Service-Worker wird unterstützt; nach dem nächsten Neustart wird er aktiv.');
+      else hinweise.push('Dieser Browser unterstützt keine installierbare PWA.');
+      try { const k='mb-systemtest'; localStorage.setItem(k,'1'); localStorage.removeItem(k); ok.push('Lokaler Datenspeicher ist beschreibbar.'); } catch (_) { hinweise.push('Lokaler Datenspeicher ist nicht beschreibbar.'); }
+      const ids = new Set(), doppelteIds = [];
+      (daten.eintraege || []).forEach(e => { if (ids.has(e.id)) doppelteIds.push(e.id); ids.add(e.id); });
+      const fachSchluessel = new Map();
+      (daten.eintraege || []).forEach(e => { const k=[e.eintragsart||'',e.datum||'',e.messUhrzeit||'',e.arzt||'',e.massnahme||''].join('|'); fachSchluessel.set(k,(fachSchluessel.get(k)||0)+1); });
+      const doppelteSaetze=[...fachSchluessel.values()].filter(n=>n>1).length;
+      (!doppelteIds.length && !doppelteSaetze) ? ok.push('Keine doppelten Eintrags-IDs oder identischen Datensätze gefunden.') : hinweise.push(`${doppelteIds.length} doppelte ID(s), ${doppelteSaetze} mögliche identische Datensatzgruppe(n) gefunden.`);
+      const ohneTyp=(daten.eintraege||[]).filter(e=>!String(e.eintragsart||'').trim()).length;
+      ohneTyp ? hinweise.push(`${ohneTyp} ältere Einträge besitzen noch keine feste Typkennzeichnung.`) : ok.push('Alle Einträge besitzen eine feste Typkennzeichnung.');
+      const terminIds=new Set((typeof alleTermine==='function'?alleTermine():[]).map(t=>t.id));
+      const loseFragen=(daten.fragen||[]).filter(f=>f.terminId&&!terminIds.has(f.terminId)).length;
+      loseFragen ? hinweise.push(`${loseFragen} Frage(n) verweisen auf einen nicht mehr vorhandenen Termin.`) : ok.push('Alle gespeicherten Terminbezüge der Fragen sind gültig.');
+      const kommende=(typeof alleTermine==='function'?alleTermine():[]).filter(t=>typeof istKommenderTermin==='function'&&istKommenderTermin(t)).sort((a,b)=>zeitSchluessel(a).localeCompare(zeitSchluessel(b)));
+      ok.push(kommende.length ? `Nächster Termin logisch ermittelt: ${formatDatum(kommende[0].datum)}${kommende[0].messUhrzeit?' · '+kommende[0].messUhrzeit+' Uhr':''}.` : 'Zurzeit ist kein kommender Termin gespeichert.');
+      if (globalThis.crypto?.subtle && globalThis.Blob && globalThis.URL) ok.push('Technische Voraussetzungen für Sicherungsdateien sind vorhanden.');
+      else hinweise.push('Eine technische Voraussetzung für Sicherungsdateien fehlt.');
+      try { const ds=typeof alleDokumente==='function'?await alleDokumente():[]; ok.push(`Dokumentenablage erreichbar: ${ds.length} Dokument(e).`); } catch (_) { hinweise.push('Dokumentenablage konnte nicht gelesen werden.'); }
+      if (navigator.storage?.estimate) { try { const s=await navigator.storage.estimate(), frei=Math.max(0,(s.quota||0)-(s.usage||0)); ok.push(`Lokaler Speicher geprüft: ungefähr ${Math.round(frei/1024/1024)} MB frei.`); } catch (_) {} }
+      ergebnis.innerHTML = `<p class="ok"><strong>${hinweise.length ? 'Prüfung abgeschlossen' : 'Alle Prüfungen ohne Auffälligkeit abgeschlossen'}.</strong></p><ul>${ok.map(x=>`<li class="ok">✓ ${safe(x)}</li>`).join('')}${hinweise.map(x=>`<li class="hinweis-pruefung">Hinweis: ${safe(x)}</li>`).join('')}</ul>`;
+    });
+  }
 
   vorschau();
 })();
