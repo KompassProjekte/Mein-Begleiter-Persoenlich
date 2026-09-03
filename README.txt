@@ -1,6 +1,6 @@
 MEIN BEGLEITER
 Version 1.9.1.2.5.10 PWA – Persönliche Arbeitsversion
-Bereinigte PC-Endfassung · Stand: 02.09.2026
+PC-Vergleichsfassung · Stand: 02.09.2026
 Entwickelt von Lothar & Nimbus
 
 Diese Ausgabe ist für die persönliche Arbeit vorgesehen. Sie wird vollständig leer

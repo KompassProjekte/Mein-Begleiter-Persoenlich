@@ -1,12 +1,12 @@
-const CACHE = 'mein-begleiter-persoenlich-cache-v1-9-1-2-5-10-pc-endfassung';
+const CACHE = 'mein-begleiter-persoenlich-cache-v1-9-1-2-5-10-pc-vergleich-1';
 const BASIS = '/Mein-Begleiter-Persoenlich/';
 const PFLICHTDATEIEN = [
   BASIS,
   BASIS + 'index.html',
   BASIS + 'v19124.css',
   BASIS + 'v19124.js',
-  BASIS + 'v1912510.css',
-  BASIS + 'v1912510.js',
+  BASIS + 'v1912510.css?v=pc-vergleich-1',
+  BASIS + 'v1912510.js?v=pc-vergleich-1',
   BASIS + 'manifest.webmanifest',
   BASIS + 'offline.html'
 ];
@@ -25,6 +25,7 @@ self.addEventListener('install', event => {
     await cache.addAll(PFLICHTDATEIEN);
     await Promise.allSettled(OPTIONALE_DATEIEN.map(datei => cache.add(datei)));
   })());
+  self.skipWaiting();
 });
 
 self.addEventListener('activate', event => {
@@ -62,13 +63,15 @@ self.addEventListener('fetch', event => {
   }
 
   event.respondWith((async () => {
-    const gespeichert = await caches.match(event.request);
-    if (gespeichert) return gespeichert;
-    const antwort = await fetch(event.request);
-    if (antwort.ok) {
-      const cache = await caches.open(CACHE);
-      cache.put(event.request, antwort.clone());
+    try {
+      const antwort = await fetch(event.request);
+      if (antwort.ok) {
+        const cache = await caches.open(CACHE);
+        cache.put(event.request, antwort.clone());
+      }
+      return antwort;
+    } catch {
+      return (await caches.match(event.request)) || (await caches.match(BASIS + 'offline.html'));
     }
-    return antwort;
   })());
 });

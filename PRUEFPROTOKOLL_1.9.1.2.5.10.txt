@@ -1,5 +1,15 @@
-PRÜFPROTOKOLL - MEIN BEGLEITER 1.9.1.2.5.10 BEREINIGTE PC-ENDFASSUNG
+PRÜFPROTOKOLL - MEIN BEGLEITER 1.9.1.2.5.10 PC-VERGLEICHSFASSUNG
 Stand: 02.09.2026
+
+AUTOMATISIERTER REGRESSIONSTEST
+[OK] Vitalwerte-Dialog öffnet und speichert eine Messung
+[OK] Kostenbericht öffnet und erzeugt seine Vorschau
+[OK] Tages-Check einschließlich getrennter Teile vollständig gelöscht
+[OK] Je Seite nur ein Tages-Check-Schnelleinstieg
+[OK] Offene Fragen mit Datumsspalte
+[OK] Buchausgabe mit Chronikdatum und Dublettenschutz
+[OK] Diagrammdruck einspaltig und kompakt
+[OK] Keine Mischung veralteter und neuer PWA-Programmdateien
 
 NACHTRÄGLICHE SICHTPRÜFUNG
 [OK] Getrennter Kopf-, Scroll- und Fußbereich im Eintragsdialog

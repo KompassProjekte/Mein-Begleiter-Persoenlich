@@ -1,5 +1,20 @@
-MEIN BEGLEITER 1.9.1.2.5.10 - BEREINIGTE PC-ENDFASSUNG
+MEIN BEGLEITER 1.9.1.2.5.10 - PC-VERGLEICHSFASSUNG
 Stand: 02.09.2026
+
+VERSIONSABGLEICH UND REGRESSIONSKORREKTUR
+- Abgleich mit der getesteten PC-Abschlussversion durchgeführt.
+- Mischstände aus neuer HTML-Datei und alten PWA-Dateien verhindert.
+- Zentralen JavaScript-Abbruch nach Bereinigung der Sicherungsansicht behoben.
+- Vitalwerte-Dialog und Speicherung wieder funktionsfähig.
+- Kostenbericht öffnet und erstellt seine Vorschau wieder.
+- Pro Seite nur noch ein Tages-Check-Schnelleinstieg.
+- Tages-Check wird einschließlich versehentlich getrennter Teile am gleichen
+  Messzeitpunkt vollständig und dauerhaft gelöscht.
+- Offene Fragen enthalten wieder die Spalte Datum.
+- Diagramme werden im Hochformat einzeln untereinander und kompakt gedruckt.
+- Alle Buchfassungen verwenden einen kompakten Buch-/Chronikstil mit Datum.
+- Automatische und eigene Buchtexte werden nicht doppelt ausgegeben.
+- Aussageleere Ersatztexte wurden aus Tagebuch und Buch entfernt.
 
 PC-ABSCHLUSSKORREKTUR NACH SICHTPRÜFUNG
 - Im Dialog „Eintrag ändern“ überdeckt die Bedienleiste keine Felder mehr.

@@ -49,7 +49,6 @@
   });
   if (vitalAltbestandBereinigt) {
     speichern();
-    renderAlles();
   }
 
   // Reine Tages-Checks aus älteren Eingabemasken dürfen nicht durch die
@@ -79,7 +78,6 @@
   });
   if (eintragsartenErgaenzt) {
     speichern();
-    renderAlles();
   }
 
   // Der doppelte Berichtzugang auf der Startseite entfällt.
@@ -195,6 +193,17 @@
   const cockpitAktionen = q("#seite-cockpit .kopf-aktionen") || q("#seite-cockpit .cockpit-aktionen") || q("#seite-cockpit .schnellaktionen");
   if (!vitalButton.isConnected) cockpitAktionen?.appendChild(vitalButton);
 
+  // Pro Seite darf jeder Schnelleinstieg nur einmal vorhanden sein. Dies
+  // schützt auch dann vor Doppelungen, wenn eine ältere PWA-Oberfläche noch
+  // kurz vor der Aktualisierung aufgebaut wurde.
+  qa(".seite").forEach(bereich => {
+    const gesehen = new Set();
+    qa('[data-neu][data-befinden="1"]', bereich).forEach(knopf => {
+      if (gesehen.has("tagescheck")) knopf.remove();
+      else gesehen.add("tagescheck");
+    });
+  });
+
   // Eigene Dokumentkategorien auch im Filter verwenden.
   async function dokumentKategorienAktualisieren() {
     try {
@@ -306,7 +315,7 @@
     let html="";
     if(a==="fragen"){
       const offene=daten.fragen.filter(f=>!f.erledigt).filter(beimArzt).sort((x,y)=>{const tx=daten.eintraege.find(e=>e.id===x.terminId),ty=daten.eintraege.find(e=>e.id===y.terminId);return String(tx?.datum||"9999").localeCompare(String(ty?.datum||"9999"));});
-      html=tabelle(["Termin am","Arzt / Stelle","Offene Frage"],offene.map(f=>{const t=daten.eintraege.find(e=>e.id===f.terminId);return `<tr><td>${t?formatDatum(t.datum):"Noch nicht zugeordnet"}${f.erfasstAm?`<small>Frage erfasst am ${formatDatum(f.erfasstAm)}</small>`:`<small>Erfassungsdatum nicht vorhanden</small>`}</td><td>${safe(f.arzt||t?.arzt||"Allgemein")}</td><td>${safe(f.text)}</td></tr>`;}));
+      html=tabelle(["Datum","Arzt / Stelle","Offene Frage"],offene.map(f=>{const t=daten.eintraege.find(e=>e.id===f.terminId);return `<tr><td>${t?formatDatum(t.datum):"Noch nicht zugeordnet"}${f.erfasstAm?`<small>Frage erfasst am ${formatDatum(f.erfasstAm)}</small>`:`<small>Erfassungsdatum nicht vorhanden</small>`}</td><td>${safe(f.arzt||t?.arzt||"Allgemein")}</td><td>${safe(f.text)}</td></tr>`;}));
     } else if(a==="kommend") {
       const ts=alleTermine().filter(imZeitraum).filter(beimArzt).filter(istKommenderTermin).sort((x,y)=>zeitSchluessel(x).localeCompare(zeitSchluessel(y))); html=terminFragen(ts);
     } else if(["vergangen","alletermine"].includes(a)) {
@@ -325,8 +334,30 @@
   q("#v19125Drucken").addEventListener("click", async()=>{await vorschau();ausrichtungsStil.textContent="@media print{@page{size:A4 portrait;margin:11mm}}";document.body.classList.add("v19125-druckt");await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));window.print();});
   window.addEventListener("afterprint",()=>{document.body.classList.remove("v19125-druckt","v19126-kosten-druckt");ausrichtungsStil.textContent="";});
   // Qualitätsversion 1.9.1.2.5.10: eindeutige Eingabewege statt versteckter Umwege.
-  const verlaufTagescheck = q('#seite-verlauf [data-neu][data-befinden="1"]');
-  verlaufTagescheck?.remove();
+  // Ein Tages-Check ist ein zusammengehöriger Datensatz. Falls eine ältere
+  // Programmfassung am selben Zeitpunkt versehentlich zwei Teile erzeugt hat,
+  // entfernt ein bestätigter Löschvorgang beide Teile dauerhaft.
+  window.loeschen = id => {
+    const ziel = daten.eintraege.find(e => e.id === id);
+    if (!ziel) return;
+    const istCheck = typeof eintragsartVon === "function"
+      ? eintragsartVon(ziel) === "tagescheck"
+      : (typeof hatTageswerte === "function" && hatTageswerte(ziel));
+    const gleichePruefzeit = e => istCheck
+      && e.datum === ziel.datum
+      && String(e.messUhrzeit || "") === String(ziel.messUhrzeit || "")
+      && (typeof eintragsartVon === "function"
+        ? eintragsartVon(e) === "tagescheck"
+        : (typeof hatTageswerte === "function" && hatTageswerte(e)));
+    const ids = new Set(daten.eintraege.filter(e => e.id === id || gleichePruefzeit(e)).map(e => e.id));
+    const name = istCheck ? "Tages-Check" : "Eintrag";
+    if (!confirm(`${name} vom ${formatDatum(ziel.datum)} vollständig löschen?\n\nDiese Aktion kann nicht rückgängig gemacht werden.`)) return;
+    daten.eintraege = daten.eintraege.filter(e => !ids.has(e.id));
+    daten.fragen.forEach(f => { if (ids.has(f.terminId)) f.terminId = ""; });
+    speichern();
+    renderAlles();
+    toast(`${name} vollständig gelöscht`);
+  };
 
   const dokumentStatus = q("#dokumentStatus");
   if (dokumentStatus && dokumentStatus.textContent.trim() === "Bereit zum Ablegen.") dokumentStatus.hidden = true;
@@ -339,7 +370,7 @@
     const ueber = document.createElement("section");
     ueber.id = "v19129Ueber";
     ueber.className = "v19129-ueber";
-    ueber.innerHTML = `<h3>Über Mein Begleiter</h3><p><strong>Version ${VERSION} PWA – PERSÖNLICHE ARBEITSVERSION</strong><br>Bereinigte PC-Endfassung · Stand: 02.09.2026<br>Entwickelt von Lothar &amp; Nimbus</p><p>Die Gesundheitsdaten werden lokal auf diesem Gerät gespeichert. Es findet keine automatische Synchronisation statt.</p>`;
+    ueber.innerHTML = `<h3>Über Mein Begleiter</h3><p><strong>Version ${VERSION} PWA – PERSÖNLICHE ARBEITSVERSION</strong><br>PC-Vergleichsfassung · Stand: 02.09.2026<br>Entwickelt von Lothar &amp; Nimbus</p><p>Die Gesundheitsdaten werden lokal auf diesem Gerät gespeichert. Es findet keine automatische Synchronisation statt.</p>`;
     einstellungen.appendChild(ueber);
   }
 
@@ -425,7 +456,7 @@
   pflichtContainer.forEach(container=>{if(q(".v1912510-pflichthinweis",container))return;const hinweis=document.createElement("p");hinweis.className="v1912510-pflichthinweis";hinweis.innerHTML="Mit <strong>*</strong> gekennzeichnete Felder müssen ausgefüllt werden.";container.prepend(hinweis);});
 
   const ueberBox=q("#v19129Ueber");
-  if(ueberBox)ueberBox.innerHTML=`<h3>Über Mein Begleiter</h3><p><strong>Version ${VERSION} PWA – PERSÖNLICHE ARBEITSVERSION</strong><br>Bereinigte PC-Endfassung · Stand: 02.09.2026<br>Entwickelt von Lothar &amp; Nimbus</p><p>Die Gesundheitsdaten werden lokal auf diesem Gerät gespeichert. Es findet keine automatische Synchronisation statt.</p>`;
+  if(ueberBox)ueberBox.innerHTML=`<h3>Über Mein Begleiter</h3><p><strong>Version ${VERSION} PWA – PERSÖNLICHE ARBEITSVERSION</strong><br>PC-Vergleichsfassung · Stand: 02.09.2026<br>Entwickelt von Lothar &amp; Nimbus</p><p>Die Gesundheitsdaten werden lokal auf diesem Gerät gespeichert. Es findet keine automatische Synchronisation statt.</p>`;
 
   vorschau();
 })();
