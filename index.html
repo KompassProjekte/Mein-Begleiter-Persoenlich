@@ -3278,7 +3278,15 @@
         return "eintrag";
       }
       function echteTermine() {
-        return daten.eintraege.filter((e) => eintragsartVon(e) === "termin");
+        return daten.eintraege.filter((e) => {
+          const art = eintragsartVon(e),
+            status = String(e.terminstatus || "").trim(),
+            ausdruecklichGeplant = ["Geplant", "Bestätigt"].includes(status) &&
+              !!String(e.arzt || "").trim() &&
+              !!String(e.datum || "").trim();
+          if (["tagescheck", "vitalwerte", "kosten"].includes(art)) return false;
+          return art === "termin" || ausdruecklichGeplant;
+        });
       }
       function behandlungsTermine() {
         const schritte = daten.schritte
@@ -9177,8 +9185,8 @@
 })();
 </script>
 <link rel="stylesheet" href="v19124.css">
-<link rel="stylesheet" href="v1912510.css?v=pc-abschluss-3">
+<link rel="stylesheet" href="v1912510.css?v=pc-abschluss-4">
 <script src="v19124.js"></script>
-<script src="v1912510.js?v=pc-abschluss-3"></script>
+<script src="v1912510.js?v=pc-abschluss-4"></script>
 </body>
 </html>

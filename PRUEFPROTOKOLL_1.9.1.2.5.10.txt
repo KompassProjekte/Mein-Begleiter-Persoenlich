@@ -13,6 +13,7 @@ AUTOMATISIERTER REGRESSIONSTEST
 [OK] Gemeinsame Buchtext-Korrektur in allen drei Buchfassungen
 [OK] Originaleinträge bleiben bei Buchtext-Korrekturen unverändert
 [OK] Chronologisch nächster statt letzter Termin auf der Übersicht
+[OK] Früher geplanter Arzt-Eintrag wird trotz älterer Eintragsart als nächster Termin erkannt
 [OK] Feste Bedienleiste und „Nach oben“ im Buchzentrum
 [OK] Read-only-Systemprüfung liefert verständliches Ergebnis
 

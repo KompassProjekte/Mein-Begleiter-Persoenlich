@@ -17,6 +17,10 @@ LETZTE PC-TESTKORREKTUREN
 - Auf der Verlaufseite wurde der zusätzliche Tages-Check-Knopf entfernt.
 - Im Buchzentrum bleibt die Bedienleiste beim Scrollen sichtbar und enthält „Nach oben“.
 - „Nächster Termin“ wird chronologisch aus allen kommenden Terminen ermittelt.
+- Zukünftige Einträge mit Arzt/Stelle und dem ausdrücklichen Status „Geplant“
+  oder „Bestätigt“ werden auch dann berücksichtigt, wenn ein älterer Datenstand
+  sie noch als allgemeinen Eintrag gespeichert hat. Tageschecks, Vitalwerte und
+  Kosten sind weiterhin sicher ausgeschlossen.
 - In den Einstellungen steht eine nur lesende Systemprüfung für PWA, Speicher,
   Datenbezüge, Dublettenhinweise, Dokumentablage und Sicherungstechnik bereit.
 
