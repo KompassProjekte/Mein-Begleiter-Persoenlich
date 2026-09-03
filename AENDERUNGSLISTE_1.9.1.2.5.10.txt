@@ -21,6 +21,10 @@ LETZTE PC-TESTKORREKTUREN
   oder „Bestätigt“ werden auch dann berücksichtigt, wenn ein älterer Datenstand
   sie noch als allgemeinen Eintrag gespeichert hat. Tageschecks, Vitalwerte und
   Kosten sind weiterhin sicher ausgeschlossen.
+- Beim Ändern älterer Einträge kann die Zuordnung jetzt zwischen „Normaler
+  Eintrag / Erlebnis“ und „Als Termin kennzeichnen“ geändert werden. Inhalte,
+  Datum und Uhrzeit bleiben erhalten. Beim Lösen eines Termins bleiben Fragen
+  als offene, nicht zugeordnete Fragen bestehen.
 - In den Einstellungen steht eine nur lesende Systemprüfung für PWA, Speicher,
   Datenbezüge, Dublettenhinweise, Dokumentablage und Sicherungstechnik bereit.
 
