@@ -463,8 +463,8 @@
   // Erfassung bleibt auf der Übersicht und unter „Neue Einträge“ erreichbar.
   qa('#seite-verlauf [data-neu][data-befinden="1"]').forEach(b => b.remove());
 
-  // Auf allen längeren Seiten erscheint nach dem Herunterscrollen eine
-  // einheitliche Rückkehr zum Seitenanfang. Kurze Seiten bleiben ungestört.
+  // Auf allen Unterseiten bleibt eine einheitliche Rückkehr zum Seitenanfang
+  // sichtbar. So ist die Funktion auch ohne vorheriges Scrollen erkennbar.
   if (!q('#v1912510NachOben')) {
     const oben = document.createElement('button');
     oben.id = 'v1912510NachOben';
@@ -475,8 +475,7 @@
     oben.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
     document.body.appendChild(oben);
     const sichtbarkeit = () => {
-      const aufUnterseite = !!q('.seite.aktiv:not(#seite-cockpit)');
-      oben.hidden = !aufUnterseite || window.scrollY < 550;
+      oben.hidden = !q('.seite.aktiv:not(#seite-cockpit)');
     };
     window.addEventListener('scroll', sichtbarkeit, {passive:true});
     document.addEventListener('click', e => {
