@@ -8449,6 +8449,8 @@
       const pruefe = worker => { if (!worker) return; worker.addEventListener('statechange', () => { if (worker.state === 'installed' && navigator.serviceWorker.controller) { wartenderWorker = worker; updateBox.classList.add('zeigen'); } }); };
       pruefe(reg.installing); reg.addEventListener('updatefound', () => pruefe(reg.installing));
       if (reg.waiting) { wartenderWorker = reg.waiting; updateBox.classList.add('zeigen'); }
+      reg.update().catch(() => {});
+      addEventListener('online', () => reg.update().catch(() => {}));
     }).catch(() => { status.textContent = 'Direkte HTML-Nutzung'; });
     let neuLaden = false; navigator.serviceWorker.addEventListener('controllerchange', () => { if (!neuLaden) { neuLaden = true; location.reload(); } });
   } else if (location.protocol === 'file:') { status.textContent = 'HTML-Rückfallversion'; }
@@ -9231,8 +9233,8 @@
 })();
 </script>
 <link rel="stylesheet" href="v19124.css">
-<link rel="stylesheet" href="v1912510.css?v=app-4">
+<link rel="stylesheet" href="v1912510.css?v=app-5">
 <script src="v19124.js"></script>
-<script src="v1912510.js?v=app-4"></script>
+<script src="v1912510.js?v=app-5"></script>
 </body>
 </html>

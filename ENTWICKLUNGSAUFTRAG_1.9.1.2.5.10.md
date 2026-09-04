@@ -1,5 +1,13 @@
 # Mein Begleiter 1.9.1.2.5.10 PWA – verbindlicher Entwicklungsauftrag
 
+## Smartphone-Korrektur 5
+
+- Smartphone-Erkennung auch bei desktopähnlich gemeldeter Browserbreite.
+- Dunkelgrüner, kompakter App-Kopf mit Buch-Kompass im Hoch- und Querformat.
+- Alte helle Seitenleiste auf Smartphones vollständig ausgeblendet.
+- Gut erreichbares, innerhalb des Bildschirms scrollbar bleibendes Mobilmenü.
+- Ausdrückliche Suche nach einer neuen PWA-Version bei bestehender Internetverbindung.
+
 Version 1.9.1.2.5.10 ist die aufgeräumte Funktionsversion auf Grundlage der geprüften Version 1.9.1.2.5.7. Sie bündelt die im abgeschlossenen PC-Test gesammelten Korrekturen. Eine gestalterische Neuentwicklung der Buch- und Berichtsausgaben sowie die Anpassung für Samsung A9 und Smartphone gehören ausdrücklich nicht zu dieser Version.
 
 ## Verbindlicher Funktionsumfang

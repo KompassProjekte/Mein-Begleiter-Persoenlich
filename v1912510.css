@@ -185,3 +185,46 @@
 }
 .v1912510-nach-oben[hidden] { display: none !important; }
 @media print { .v1912510-nach-oben { display: none !important; } }
+
+/* Smartphone-Korrektur 5: unabhängig von einer irreführenden Desktopbreite,
+   die einige Samsung-Browser im installierten App-Modus melden. */
+html.v1912510-smartphone body{overflow-x:hidden!important}
+html.v1912510-smartphone .app{display:block!important;min-height:100dvh!important}
+html.v1912510-smartphone .seitenleiste{display:none!important}
+html.v1912510-smartphone .mobilkopf{
+  display:flex!important;position:sticky!important;top:0!important;z-index:1200!important;
+  min-height:56px!important;padding:8px 12px!important;background:#174f4a!important;
+  color:#fff!important;border:0!important;box-shadow:0 3px 14px #082b2838!important
+}
+html.v1912510-smartphone .mobilkopf strong{display:flex!important;align-items:center!important;gap:9px!important;color:#fff!important}
+html.v1912510-smartphone .v1912510-mobil-logo{width:38px!important;height:38px!important;object-fit:contain!important;border-radius:50%!important;background:#fff!important}
+html.v1912510-smartphone main{
+  width:100%!important;max-width:none!important;margin:0!important;
+  padding:12px 10px calc(82px + env(safe-area-inset-bottom))!important
+}
+html.v1912510-smartphone .pwa-leiste{position:static!important;width:100%!important;max-width:none!important;padding:6px 8px!important;justify-content:center!important}
+html.v1912510-smartphone #v186Menuknopf{
+  display:inline-flex!important;position:fixed!important;left:12px!important;right:auto!important;
+  bottom:calc(12px + env(safe-area-inset-bottom))!important;z-index:1450!important;
+  min-height:50px!important;padding:10px 15px!important;background:#174f4a!important;color:#fff!important
+}
+html.v1912510-smartphone #v186Menue.offen{
+  display:flex!important;position:fixed!important;inset:calc(6px + env(safe-area-inset-top)) 6px calc(6px + env(safe-area-inset-bottom))!important;
+  z-index:1500!important;flex-direction:column!important;background:#174f4a!important;color:#fff!important;
+  border:2px solid #f1c878!important;border-radius:18px!important;overflow:hidden!important
+}
+html.v1912510-smartphone #v186Menue .v186-menue-kopf{flex:0 0 auto!important;background:#123f3b!important;color:#fff!important;border-color:#37736d!important}
+html.v1912510-smartphone #v186Menue .v186-menue-kopf button{background:#fff!important;color:#174f4a!important}
+html.v1912510-smartphone #v186Menue .v186-menue-inhalt{
+  flex:1 1 auto!important;min-height:0!important;overflow-y:auto!important;overscroll-behavior:contain!important;
+  display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important;padding:10px!important
+}
+html.v1912510-smartphone #v186Menue .v186-menue-inhalt button{background:#f7fbfa!important;color:#173b39!important;border-color:#8eb8b1!important;min-height:54px!important}
+html.v1912510-smartphone #v186Menue .v186-menue-inhalt button.wichtig{background:#287a71!important;color:#fff!important;border-color:#e7c476!important}
+html.v1912510-smartphone #v186Menue .v186-menue-trenner{color:#f5d58e!important;border-color:#4f817c!important}
+@media(orientation:landscape) and (max-height:650px){
+  html.v1912510-smartphone #v186Menue .v186-menue-inhalt{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+  html.v1912510-smartphone #v186Menue .v186-menue-inhalt button{min-height:48px!important}
+}
+@media(max-width:370px){html.v1912510-smartphone #v186Menue .v186-menue-inhalt{grid-template-columns:1fr!important}}
+@media print{html.v1912510-smartphone #v186Menuknopf,html.v1912510-smartphone #v186Menue{display:none!important}}

@@ -8,6 +8,29 @@
   const formatEuro = v => typeof euro === "function" ? euro(v) : `${Number(v || 0).toFixed(2).replace(".", ",")} €`;
   const heute = () => typeof heuteIso === "function" ? heuteIso() : new Date().toISOString().slice(0, 10);
 
+  // Manche Samsung-Browser melden im App-Modus eine desktopähnliche Breite.
+  // Deshalb wird ein Smartphone zusätzlich über Touch-Bedienung und das
+  // typische längliche Bildschirmformat erkannt.
+  const smartphoneErkennen = () => {
+    const breite = Number(screen?.width || innerWidth || 0);
+    const hoehe = Number(screen?.height || innerHeight || 0);
+    const kurz = Math.min(breite, hoehe);
+    const lang = Math.max(breite, hoehe);
+    const laenglich = kurz > 0 && lang / kurz >= 1.72;
+    const touch = Number(navigator.maxTouchPoints || 0) > 0
+      || (typeof matchMedia === "function" && matchMedia("(pointer: coarse)").matches);
+    const mobilUa = /Mobi|iPhone|Android.*Mobile/i.test(navigator.userAgent || "");
+    const smartphone = mobilUa || (touch && (kurz <= 600 || laenglich));
+    document.documentElement.classList.toggle("v1912510-smartphone", smartphone);
+    if (smartphone) {
+      document.documentElement.classList.add("v186-kompakt", "v186-handy");
+      document.documentElement.classList.remove("v186-tablet");
+    }
+  };
+  smartphoneErkennen();
+  addEventListener("resize", smartphoneErkennen, { passive: true });
+  addEventListener("orientationchange", smartphoneErkennen, { passive: true });
+
   // Alle sichtbaren Laufzeitangaben angleichen, ohne gespeicherte Daten anzutasten.
   document.title = `Mein Begleiter ${VERSION} – Persönliche App`;
   qa('.marke .markenlogo,.marke .bildmarke img').forEach(img => {
@@ -524,8 +547,8 @@
     q('#v1912510SystemStart').addEventListener('click', async () => {
       const ergebnis = q('#v1912510SystemErgebnis');
       const ok = [], hinweise = [];
-      const statischeVersion = qa('link[href],script[src]').some(el => (el.getAttribute('href') || el.getAttribute('src') || '').includes('app-4'));
-      statischeVersion ? ok.push('Programmdateien gehören zur aktuellen persönlichen App-Version.') : hinweise.push('Die aktuelle App-Kennung ist noch nicht sichtbar. App einmal vollständig neu laden.');
+      const statischeVersion = qa('link[href],script[src]').some(el => (el.getAttribute('href') || el.getAttribute('src') || '').includes('app-5'));
+      statischeVersion ? ok.push('Programmdateien gehören zur Smartphone-Korrektur 5.') : hinweise.push('Die Smartphone-Korrektur 5 ist noch nicht geladen. App einmal vollständig neu laden.');
       if ('serviceWorker' in navigator) ok.push(navigator.serviceWorker.controller ? 'PWA-Service-Worker ist aktiv.' : 'PWA-Service-Worker wird unterstützt; nach dem nächsten Neustart wird er aktiv.');
       else hinweise.push('Dieser Browser unterstützt keine installierbare PWA.');
       try { const k='mb-systemtest'; localStorage.setItem(k,'1'); localStorage.removeItem(k); ok.push('Lokaler Datenspeicher ist beschreibbar.'); } catch (_) { hinweise.push('Lokaler Datenspeicher ist nicht beschreibbar.'); }
