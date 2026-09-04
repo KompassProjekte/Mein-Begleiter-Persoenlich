@@ -89,6 +89,8 @@ MEINE EINTRÄGE
 - Vitalmessungen bleiben „Vitalwerte - Messung“.
 
 AUSGABEN
+- Das über dem Buch-Kompass-Signet eingeblendete Kreuz aus einer älteren Gestaltungsregel wurde entfernt.
+- Die Fußzeile des Titelblatts zeigt das kleine Kompasszeichen dezent vor und hinter „Entwickelt von Lothar & Nimbus“.
 - „Bericht“ heißt jetzt „Bericht, Tagebuch & Buch“.
 - „Drucken“ heißt jetzt „Listen drucken“.
 - Verlauf und ausgewählte Diagramme werden zuverlässig im A4-Hochformat untereinander ausgegeben.

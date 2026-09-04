@@ -60,6 +60,8 @@ AUTOMATISCH GEPRÜFT
 [OK] Doppelte persönliche Gedanken in der Buchausgabe verhindert
 [OK] Tabellenkopf „Datum“ ohne vorangestellten Produktnamen
 [OK] Titelblatt übernimmt Buchtitel, Untertitel und Zeitraum
+[OK] Altes Kreuz über dem Buch-Kompass-Signet in Vorschau, Druck und Datei entfernt
+[OK] Zwei dezente Kompasszeichen rahmen den Entwicklungshinweis in der Fußzeile ein
 [OK] Neue verständliche Menübezeichnungen
 [OK] AES-256-GCM und PBKDF2 mit 600.000 Iterationen unverändert vorhanden
 [OK] Buchkorrekturen in allen vollständigen Sicherungswegen enthalten
