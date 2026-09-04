@@ -63,6 +63,11 @@ AUTOMATISCH GEPRÜFT
 [OK] Altes Kreuz über dem Buch-Kompass-Signet in Vorschau, Druck und Datei entfernt
 [OK] Zwei dezente Kompasszeichen rahmen den Entwicklungshinweis in der Fußzeile ein
 [OK] Bodenwelle als Vektorgrafik in Vorschau, Druck, PDF und gespeicherter Datei vorhanden
+[OK] Neues Buch-Kompass-Appsymbol in 64, 180, 192 und 512 Pixeln erzeugt
+[OK] PWA-Pfade relativ und unabhängig vom Veröffentlichungsordner
+[OK] Installationsknopf und gerätespezifische Installationshinweise vorhanden
+[OK] Touch-Bedienung, Sicherheitsränder sowie Hoch- und Querformat technisch abgesichert
+[OK] Persönliche App-Version verwendet unveränderte Daten- und Sicherungsstrukturen
 [OK] Neue verständliche Menübezeichnungen
 [OK] AES-256-GCM und PBKDF2 mit 600.000 Iterationen unverändert vorhanden
 [OK] Buchkorrekturen in allen vollständigen Sicherungswegen enthalten

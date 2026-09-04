@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="titel beschreibung">
+  <title id="titel">Mein Begleiter</title>
+  <desc id="beschreibung">Offenes Buch mit Kompass, persönliche App-Version</desc>
+  <rect width="512" height="512" rx="104" fill="#17645d"/>
+  <circle cx="256" cy="218" r="156" fill="#fffdf8"/>
+  <path d="M256 326c-49 31-105 25-151-8V171c47 29 105 27 151-9z" fill="#fffdf8" stroke="#174d48" stroke-width="12" stroke-linejoin="round"/>
+  <path d="M256 326c49 31 105 25 151-8V171c-47 29-105 27-151-9z" fill="#fffdf8" stroke="#174d48" stroke-width="12" stroke-linejoin="round"/>
+  <path d="M256 162v164" fill="none" stroke="#174d48" stroke-width="12"/>
+  <g fill="none" stroke="#b98529" stroke-width="6" stroke-linecap="round">
+    <path d="M139 223l83-5M139 254l83-5M139 285l83-5"/>
+    <path d="M290 218l83 5M290 249l83 5M290 280l83 5"/>
+  </g>
+  <circle cx="256" cy="151" r="65" fill="#fffdf8" stroke="#174d48" stroke-width="10"/>
+  <circle cx="256" cy="151" r="49" fill="none" stroke="#b98529" stroke-width="5"/>
+  <path d="M256 99l-15 52 15-12 15 12z" fill="#b98529"/>
+  <path d="M256 203l-15-52 15 12 15-12z" fill="#174d48"/>
+  <circle cx="256" cy="151" r="7" fill="#b98529"/>
+  <text x="256" y="413" text-anchor="middle" fill="#fffdf8" font-family="Arial, sans-serif" font-size="35" font-weight="800" letter-spacing="3">MEIN BEGLEITER</text>
+  <rect x="132" y="438" width="248" height="36" rx="18" fill="#efb74f"/>
+  <text x="256" y="463" text-anchor="middle" fill="#174d48" font-family="Arial, sans-serif" font-size="20" font-weight="800" letter-spacing="2">PERSÖNLICH</text>
+</svg>

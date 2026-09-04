@@ -1,6 +1,6 @@
 MEIN BEGLEITER
-Version 1.9.1.2.5.10 PWA – Persönliche Arbeitsversion
-PC-Abschlusskorrektur · Stand: 03.09.2026
+Version 1.9.1.2.5.10 – Persönliche App
+Für Windows-PC, Samsung-Tablet und Smartphone · Stand: 04.09.2026
 Entwickelt von Lothar & Nimbus
 
 Diese Ausgabe ist für die persönliche Arbeit vorgesehen. Sie wird vollständig leer

@@ -1,12 +1,12 @@
 {
-  "id": "/Mein-Begleiter-Persoenlich/",
-  "name": "Mein Begleiter – Persönliche Arbeitsversion",
+  "id": "./",
+  "name": "Mein Begleiter – Persönliche App",
   "short_name": "Mein Begleiter",
-  "description": "Mein Begleiter 1.9.1.2.5.10 – PC-Abschlusskorrektur für die persönliche, lokal gespeicherte Gesundheitsgeschichte.",
+  "description": "Persönliche, installierbare App für Tagebuch, Gesundheit, Alltag und Erinnerungen. Die Daten bleiben lokal auf dem Gerät.",
   "lang": "de-DE",
   "dir": "ltr",
-  "start_url": "/Mein-Begleiter-Persoenlich/?source=pwa",
-  "scope": "/Mein-Begleiter-Persoenlich/",
+  "start_url": "./?source=pwa",
+  "scope": "./",
   "display": "standalone",
   "display_override": [
     "standalone",
@@ -18,19 +18,19 @@
   "prefer_related_applications": false,
   "icons": [
     {
-      "src": "/Mein-Begleiter-Persoenlich/icons/icon-192.png",
+      "src": "./icons/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/Mein-Begleiter-Persoenlich/icons/icon-512.png",
+      "src": "./icons/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/Mein-Begleiter-Persoenlich/icons/icon-maskable-512.png",
+      "src": "./icons/icon-maskable-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
@@ -40,10 +40,10 @@
     {
       "name": "Meine Übersicht",
       "short_name": "Übersicht",
-      "url": "/Mein-Begleiter-Persoenlich/#cockpit",
+      "url": "./#cockpit",
       "icons": [
         {
-          "src": "/Mein-Begleiter-Persoenlich/icons/icon-192.png",
+          "src": "./icons/icon-192.png",
           "sizes": "192x192"
         }
       ]
@@ -51,10 +51,10 @@
     {
       "name": "Neue Einträge",
       "short_name": "Neue Einträge",
-      "url": "/Mein-Begleiter-Persoenlich/#eintraege",
+      "url": "./#eintraege",
       "icons": [
         {
-          "src": "/Mein-Begleiter-Persoenlich/icons/icon-192.png",
+          "src": "./icons/icon-192.png",
           "sizes": "192x192"
         }
       ]

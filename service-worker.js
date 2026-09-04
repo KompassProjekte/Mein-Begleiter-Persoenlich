@@ -1,12 +1,12 @@
-const CACHE = 'mein-begleiter-persoenlich-cache-v1-9-1-2-5-10-pc-abschluss-12';
-const BASIS = '/Mein-Begleiter-Persoenlich/';
+const CACHE = 'mein-begleiter-persoenlich-cache-v1-9-1-2-5-10-app-1';
+const BASIS = new URL('./', self.location.href).pathname;
 const PFLICHTDATEIEN = [
   BASIS,
   BASIS + 'index.html',
   BASIS + 'v19124.css',
   BASIS + 'v19124.js',
-  BASIS + 'v1912510.css?v=pc-abschluss-12',
-  BASIS + 'v1912510.js?v=pc-abschluss-12',
+  BASIS + 'v1912510.css?v=app-1',
+  BASIS + 'v1912510.js?v=app-1',
   BASIS + 'manifest.webmanifest',
   BASIS + 'offline.html'
 ];
@@ -16,6 +16,7 @@ const OPTIONALE_DATEIEN = [
   BASIS + 'icons/icon-maskable-512.png',
   BASIS + 'icons/apple-touch-icon-180.png',
   BASIS + 'icons/favicon-64.png',
+  BASIS + 'icons/app-symbol.svg',
   BASIS + 'icons/logo-persoenlich.svg'
 ];
 

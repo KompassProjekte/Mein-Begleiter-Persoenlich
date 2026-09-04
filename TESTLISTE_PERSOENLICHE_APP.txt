@@ -1,0 +1,40 @@
+MEIN BEGLEITER 1.9.1.2.5.10 – PERSÖNLICHE APP
+KURZER GERÄTETEST
+
+VORHER
+[ ] Vollständige verschlüsselte Sicherung der PC-Daten erstellt.
+[ ] Neue Programmdateien bei GitHub hochgeladen und gleichnamige Dateien ersetzt.
+
+WINDOWS-PC
+[ ] „App installieren“ ist erreichbar.
+[ ] Neues Buch-Kompass-Symbol erscheint in Startmenü oder auf dem Desktop.
+[ ] App startet ohne Browserleisten.
+[ ] App startet nach einem ersten Online-Aufruf auch ohne Internet.
+[ ] Bestehende persönliche Daten sind weiterhin vorhanden.
+
+SAMSUNG-TABLET
+[ ] Installation über das Browsermenü möglich.
+[ ] Buch-Kompass-Symbol erscheint auf dem Startbildschirm.
+[ ] Hochformat und Querformat sind ohne abgeschnittene Inhalte nutzbar.
+[ ] Menüpunkte und Schaltflächen lassen sich gut mit dem Finger bedienen.
+[ ] Verschlüsselte Sicherung kann ausgewählt und geprüft werden.
+
+SMARTPHONE
+[ ] Installation über das Browsermenü möglich.
+[ ] Mobilmenü öffnet und schließt zuverlässig.
+[ ] Keine Seite lässt sich unbeabsichtigt horizontal verschieben.
+[ ] Eingabefelder bleiben beim Öffnen der Tastatur erreichbar.
+[ ] „Nach oben“ bleibt erreichbar und verdeckt keine wichtigen Schaltflächen.
+
+VERLAUF UND AUSGABEN
+[ ] Datum und Uhrzeit stehen in Diagrammen untereinander; hinter der Zeit steht nicht „Uhr“.
+[ ] Titelblatt, Bodenwelle und Fußzeile erscheinen im PDF vollständig.
+
+GERÄTEWECHSEL
+[ ] Testsicherung lässt sich auf einem zweiten Gerät einlesen.
+[ ] Einträge, Termine, Medikamente, Fragen, Dokumente und Buchdaten sind vollständig.
+[ ] Fehlendes oder falsches Kennwort wird sicher abgelehnt.
+
+ABSCHLUSS
+[ ] Unter Einstellungen zeigt die Systemprüfung keine unerklärte Auffälligkeit.
+[ ] Persönliche Daten wurden niemals in das öffentliche GitHub-Repository hochgeladen.

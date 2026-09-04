@@ -92,6 +92,15 @@ AUSGABEN
 - Das über dem Buch-Kompass-Signet eingeblendete Kreuz aus einer älteren Gestaltungsregel wurde entfernt.
 - Die Fußzeile des Titelblatts zeigt das kleine Kompasszeichen dezent vor und hinter „Entwickelt von Lothar & Nimbus“.
 - Die Bodenwelle ist nun eine drucksichere Vektorgrafik und erscheint auch ohne aktivierte Browser-Hintergrundgrafiken.
+
+PERSÖNLICHE APP-VERSION
+- Der geprüfte PC-Stand wurde als eigener App-Zweig für Windows-PC, Samsung-Tablet und Smartphone übernommen.
+- Neues installierbares Buch-Kompass-Appsymbol; alte Kennzeichnungen „Wegbegleiter“ und „Praxistest“ sind entfernt.
+- Manifest und Service-Worker funktionieren unabhängig vom Namen des GitHub-Unterordners.
+- Installationsknopf und verständliche Hinweise für Windows, Android und iOS ergänzt.
+- Touch-Ziele, Bildschirmränder, Mobilmenü sowie Hoch- und Querformat zusätzlich abgesichert.
+- Die Uhrzeit in den Verlaufsdiagrammen steht ohne das Wort „Uhr“ unter dem Datum.
+- Eigene Installationsanleitung und kurze Gerätetestliste ergänzt.
 - „Bericht“ heißt jetzt „Bericht, Tagebuch & Buch“.
 - „Drucken“ heißt jetzt „Listen drucken“.
 - Verlauf und ausgewählte Diagramme werden zuverlässig im A4-Hochformat untereinander ausgegeben.

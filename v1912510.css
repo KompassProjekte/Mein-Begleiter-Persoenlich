@@ -1,4 +1,8 @@
 /* Mein Begleiter 1.9.1.2.5 – PC-Korrekturversion */
+.pwa-install{touch-action:manipulation}
+@media(pointer:coarse){button,.knopf,summary,select,input[type="checkbox"],input[type="radio"]{touch-action:manipulation}.knopf,button:not(.diagramm-zoom){min-height:46px}input,select,textarea{font-size:16px}}
+@media(max-width:620px){body{padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}.seite>.kopf h2{font-size:1.55rem!important;line-height:1.18}.karte{padding:15px!important}.kopf-aktionen,.werkzeugleiste,.listen-aktionen{gap:8px!important}.kopf-aktionen>.knopf,.werkzeugleiste>.knopf{width:100%;justify-content:center}.pwa-leiste{padding-top:max(5px,env(safe-area-inset-top))!important}.v1912510-nach-oben{right:max(12px,env(safe-area-inset-right))!important;bottom:max(12px,env(safe-area-inset-bottom))!important}}
+@media(orientation:landscape) and (max-height:520px){#v19121MobilMenuknopf{top:6px!important}.v19121-menuliste{grid-template-columns:repeat(3,minmax(0,1fr))!important}.v19121-menuliste button{min-height:46px!important}}
 .v1912510-horizont{left:-2%!important;right:auto!important;bottom:0!important;width:104%!important;height:31mm!important;display:block!important;background:none!important;clip-path:none!important}
 .v1912510-horizont::before,.v1912510-horizont::after{content:none!important;display:none!important}
 [hidden]{display:none!important}

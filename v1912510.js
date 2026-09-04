@@ -9,7 +9,7 @@
   const heute = () => typeof heuteIso === "function" ? heuteIso() : new Date().toISOString().slice(0, 10);
 
   // Alle sichtbaren Laufzeitangaben angleichen, ohne gespeicherte Daten anzutasten.
-  document.title = `Mein Begleiter ${VERSION} PWA – Persönliche Arbeitsversion`;
+  document.title = `Mein Begleiter ${VERSION} – Persönliche App`;
 
   // Messwerte aus 1.9.1.2.5 wurden versehentlich mit der Maßnahme
   // „Vitalwerte“ gespeichert und dadurch als Termine erkannt. Nur diese
@@ -390,7 +390,7 @@
     const ueber = document.createElement("section");
     ueber.id = "v19129Ueber";
     ueber.className = "v19129-ueber";
-    ueber.innerHTML = `<h3>Über Mein Begleiter</h3><p><strong>Version ${VERSION} PWA – PERSÖNLICHE ARBEITSVERSION</strong><br>PC-Abschlusskorrektur · Stand: 03.09.2026<br>Entwickelt von Lothar &amp; Nimbus</p><p>Die Gesundheitsdaten werden lokal auf diesem Gerät gespeichert. Es findet keine automatische Synchronisation statt.</p>`;
+    ueber.innerHTML = `<h3>Über Mein Begleiter</h3><p><strong>Version ${VERSION} – PERSÖNLICHE APP</strong><br>Für Windows-PC, Tablet und Smartphone · Stand: 04.09.2026<br>Entwickelt von Lothar &amp; Nimbus</p><p>Die Gesundheitsdaten werden lokal auf diesem Gerät gespeichert. Es findet keine automatische Synchronisation statt.</p>`;
     einstellungen.appendChild(ueber);
   }
 
@@ -476,7 +476,7 @@
   pflichtContainer.forEach(container=>{if(q(".v1912510-pflichthinweis",container))return;const hinweis=document.createElement("p");hinweis.className="v1912510-pflichthinweis";hinweis.innerHTML="Mit <strong>*</strong> gekennzeichnete Felder müssen ausgefüllt werden.";container.prepend(hinweis);});
 
   const ueberBox=q("#v19129Ueber");
-  if(ueberBox)ueberBox.innerHTML=`<h3>Über Mein Begleiter</h3><p><strong>Version ${VERSION} PWA – PERSÖNLICHE ARBEITSVERSION</strong><br>PC-Abschlusskorrektur · Stand: 03.09.2026<br>Entwickelt von Lothar &amp; Nimbus</p><p>Die Gesundheitsdaten werden lokal auf diesem Gerät gespeichert. Es findet keine automatische Synchronisation statt.</p>`;
+  if(ueberBox)ueberBox.innerHTML=`<h3>Über Mein Begleiter</h3><p><strong>Version ${VERSION} – PERSÖNLICHE APP</strong><br>Für Windows-PC, Tablet und Smartphone · Stand: 04.09.2026<br>Entwickelt von Lothar &amp; Nimbus</p><p>Die Gesundheitsdaten werden lokal auf diesem Gerät gespeichert. Es findet keine automatische Synchronisation statt.</p>`;
 
   // Im Verlauf ist der Tages-Check kein notwendiger zweiter Einstieg. Die
   // Erfassung bleibt auf der Übersicht und unter „Neue Einträge“ erreichbar.
@@ -515,8 +515,8 @@
     q('#v1912510SystemStart').addEventListener('click', async () => {
       const ergebnis = q('#v1912510SystemErgebnis');
       const ok = [], hinweise = [];
-      const statischeVersion = qa('link[href],script[src]').some(el => (el.getAttribute('href') || el.getAttribute('src') || '').includes('pc-abschluss-1'));
-      statischeVersion ? ok.push('Programmdateien gehören zur aktuellen Abschlusskorrektur.') : hinweise.push('Die aktuelle Cache-Kennung ist noch nicht sichtbar. App einmal vollständig neu laden.');
+      const statischeVersion = qa('link[href],script[src]').some(el => (el.getAttribute('href') || el.getAttribute('src') || '').includes('app-1'));
+      statischeVersion ? ok.push('Programmdateien gehören zur aktuellen persönlichen App-Version.') : hinweise.push('Die aktuelle App-Kennung ist noch nicht sichtbar. App einmal vollständig neu laden.');
       if ('serviceWorker' in navigator) ok.push(navigator.serviceWorker.controller ? 'PWA-Service-Worker ist aktiv.' : 'PWA-Service-Worker wird unterstützt; nach dem nächsten Neustart wird er aktiv.');
       else hinweise.push('Dieser Browser unterstützt keine installierbare PWA.');
       try { const k='mb-systemtest'; localStorage.setItem(k,'1'); localStorage.removeItem(k); ok.push('Lokaler Datenspeicher ist beschreibbar.'); } catch (_) { hinweise.push('Lokaler Datenspeicher ist nicht beschreibbar.'); }
