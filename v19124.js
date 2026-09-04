@@ -30,7 +30,7 @@
   const alterAnsichtDialog = document.getElementById("v186AnsichtDialog");
   if (alterAnsichtDialog?.open) alterAnsichtDialog.close();
   alterAnsichtDialog?.remove();
-  document.querySelectorAll("[data-v186-modus],[data-v186-start]").forEach(e => e.remove());
+  document.querySelectorAll("[data-v186-modus]").forEach(e => e.remove());
   const umbenennen = (root) => root?.querySelectorAll('[data-seite="behandlung"]').forEach(b => {
     const symbol = b.querySelector(".symbol")?.outerHTML || "💊 ";
     b.innerHTML = `${symbol}Behandlung &amp; Medikamente`;
