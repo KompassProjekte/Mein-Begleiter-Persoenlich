@@ -544,11 +544,21 @@
     box.className = 'v1912510-systempruefung';
     box.innerHTML = `<h3>Systemprüfung</h3><p>Prüft PWA, lokalen Speicher, Datenbezüge und Sicherungsfähigkeit – ohne Daten zu verändern.</p><button class="knopf" type="button" id="v1912510SystemStart">Systemprüfung durchführen</button><div class="v1912510-pruefergebnis" id="v1912510SystemErgebnis" aria-live="polite"></div>`;
     pruefSeite.appendChild(box);
+    // Auf kleinen Geräten stehen App-Information und Prüfung vor den langen
+    // freiwilligen Tagescheck-Einstellungen und sind sofort auffindbar.
+    if (document.documentElement.classList.contains('v1912510-smartphone')) {
+      const tagescheckBereich = q('[data-tagescheck-einstellungen]', pruefSeite);
+      const ueberBereich = q('#v19129Ueber', pruefSeite);
+      if (tagescheckBereich) {
+        if (ueberBereich) tagescheckBereich.before(ueberBereich);
+        tagescheckBereich.before(box);
+      }
+    }
     q('#v1912510SystemStart').addEventListener('click', async () => {
       const ergebnis = q('#v1912510SystemErgebnis');
       const ok = [], hinweise = [];
-      const statischeVersion = qa('link[href],script[src]').some(el => (el.getAttribute('href') || el.getAttribute('src') || '').includes('app-5'));
-      statischeVersion ? ok.push('Programmdateien gehören zur Smartphone-Korrektur 5.') : hinweise.push('Die Smartphone-Korrektur 5 ist noch nicht geladen. App einmal vollständig neu laden.');
+      const statischeVersion = qa('link[href],script[src]').some(el => (el.getAttribute('href') || el.getAttribute('src') || '').includes('app-6'));
+      statischeVersion ? ok.push('Programmdateien gehören zur Smartphone-Korrektur 6.') : hinweise.push('Die Smartphone-Korrektur 6 ist noch nicht geladen. App einmal vollständig neu laden.');
       if ('serviceWorker' in navigator) ok.push(navigator.serviceWorker.controller ? 'PWA-Service-Worker ist aktiv.' : 'PWA-Service-Worker wird unterstützt; nach dem nächsten Neustart wird er aktiv.');
       else hinweise.push('Dieser Browser unterstützt keine installierbare PWA.');
       try { const k='mb-systemtest'; localStorage.setItem(k,'1'); localStorage.removeItem(k); ok.push('Lokaler Datenspeicher ist beschreibbar.'); } catch (_) { hinweise.push('Lokaler Datenspeicher ist nicht beschreibbar.'); }

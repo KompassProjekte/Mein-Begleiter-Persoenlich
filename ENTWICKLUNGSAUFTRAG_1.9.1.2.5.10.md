@@ -8,6 +8,12 @@
 - Gut erreichbares, innerhalb des Bildschirms scrollbar bleibendes Mobilmenü.
 - Ausdrückliche Suche nach einer neuen PWA-Version bei bestehender Internetverbindung.
 
+## Smartphone-Korrektur 6
+
+- Das tatsächlich verwendete Mobilmenü wird dunkelgrün, kompakt und scrollbar dargestellt.
+- Die alte helle Seitenleiste wird auf Smartphones vollständig ausgeblendet.
+- „Über Mein Begleiter“ und „Systemprüfung“ stehen in den Smartphone-Einstellungen vor den langen Tagescheck-Einstellungen.
+
 Version 1.9.1.2.5.10 ist die aufgeräumte Funktionsversion auf Grundlage der geprüften Version 1.9.1.2.5.7. Sie bündelt die im abgeschlossenen PC-Test gesammelten Korrekturen. Eine gestalterische Neuentwicklung der Buch- und Berichtsausgaben sowie die Anpassung für Samsung A9 und Smartphone gehören ausdrücklich nicht zu dieser Version.
 
 ## Verbindlicher Funktionsumfang

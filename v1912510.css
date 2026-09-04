@@ -228,3 +228,35 @@ html.v1912510-smartphone #v186Menue .v186-menue-trenner{color:#f5d58e!important;
 }
 @media(max-width:370px){html.v1912510-smartphone #v186Menue .v186-menue-inhalt{grid-template-columns:1fr!important}}
 @media print{html.v1912510-smartphone #v186Menuknopf,html.v1912510-smartphone #v186Menue{display:none!important}}
+
+/* Korrektur 6: Das tatsächlich verwendete Mobilmenü der App. */
+html.v1912510-smartphone #v19121MobilMenuknopf{
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  position:fixed!important;left:12px!important;right:auto!important;top:auto!important;
+  bottom:calc(12px + env(safe-area-inset-bottom))!important;z-index:1450!important;
+  min-height:50px!important;padding:10px 15px!important;border:2px solid #fff!important;
+  border-radius:15px!important;background:#174f4a!important;color:#fff!important;
+  font-weight:850!important;box-shadow:0 8px 24px #0005!important
+}
+html.v1912510-smartphone #v19121MobilMenue[open]{
+  display:flex!important;position:fixed!important;
+  inset:calc(6px + env(safe-area-inset-top)) 6px calc(6px + env(safe-area-inset-bottom))!important;
+  width:auto!important;max-width:none!important;max-height:none!important;margin:0!important;padding:0!important;
+  z-index:1500!important;flex-direction:column!important;background:#174f4a!important;color:#fff!important;
+  border:2px solid #f1c878!important;border-radius:18px!important;overflow:hidden!important
+}
+html.v1912510-smartphone #v19121MobilMenue::backdrop{background:#082b28aa!important}
+html.v1912510-smartphone #v19121MobilMenue .v19121-menukopf{flex:0 0 auto!important;background:#123f3b!important;color:#fff!important;border-color:#37736d!important}
+html.v1912510-smartphone #v19121MobilMenue .v19121-menukopf strong{display:flex!important;align-items:center!important;gap:9px!important;color:#fff!important}
+html.v1912510-smartphone #v19121MobilMenue .v1912510-menue-logo{width:38px!important;height:38px!important;object-fit:contain!important;border-radius:50%!important;background:#fff!important}
+html.v1912510-smartphone #v19121MobilMenue .v19121-menuliste{
+  flex:1 1 auto!important;min-height:0!important;overflow-y:auto!important;overscroll-behavior:contain!important;
+  display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important;padding:10px!important
+}
+html.v1912510-smartphone #v19121MobilMenue .v19121-menuliste button{min-height:54px!important;background:#f7fbfa!important;color:#173b39!important;border-color:#8eb8b1!important}
+@media(orientation:landscape) and (max-height:650px){
+  html.v1912510-smartphone #v19121MobilMenue .v19121-menuliste{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+  html.v1912510-smartphone #v19121MobilMenue .v19121-menuliste button{min-height:48px!important}
+}
+@media(max-width:370px){html.v1912510-smartphone #v19121MobilMenue .v19121-menuliste{grid-template-columns:1fr!important}}
+@media print{html.v1912510-smartphone #v19121MobilMenuknopf,html.v1912510-smartphone #v19121MobilMenue{display:none!important}}
