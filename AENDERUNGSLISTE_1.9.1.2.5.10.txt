@@ -2,6 +2,15 @@ MEIN BEGLEITER 1.9.1.2.5.10 - PC-ABSCHLUSSKORREKTUR
 Stand: 03.09.2026
 
 LETZTE PC-TESTKORREKTUREN
+- Das bestätigte Titelblatt „Meine Geschichten“ ist in Original-Tagebuch,
+  persönlicher Leseausgabe und Familienausgabe eingebaut.
+- Titelblatt-Unterzeile: „Gesundheit, Alltag und Erinnerungen“.
+- Das Buch-Kompass-Signet, der ausgewählte Zeitraum, die farblich
+  unterscheidbare Editionsplakette und die ruhige Horizontgestaltung werden
+  auch in gespeicherte Buchdateien übernommen.
+- Gemeinsame Fußzeile: „Erstellt mit Mein Begleiter · Entwickelt von Lothar & Nimbus“.
+- In den Verlaufsdiagrammen steht die Uhrzeit ohne das Wort „Uhr“ in einer
+  eigenen Zeile unter dem Datum.
 - Buchtext-Korrekturen werden getrennt von den Originaleinträgen gespeichert und
   standardmäßig in Original-Tagebuch, persönlicher Leseausgabe und Familienausgabe
   gemeinsam verwendet. Optional ist eine Korrektur nur für eine Buchfassung möglich.

@@ -31,6 +31,10 @@ VORHER
 [ ] Pflichtfelder sind eindeutig gekennzeichnet.
 
 4. AUSGABEN
+[ ] Titelblatt zeigt „Meine Geschichten“ und „Gesundheit, Alltag und Erinnerungen“.
+[ ] Buch-Kompass-Signet, Editionsname, Zeitraum und gemeinsame Fußzeile erscheinen vollständig.
+[ ] Original-Tagebuch, persönliche Leseausgabe und Familienausgabe verwenden dasselbe Grunddesign.
+[ ] In Verlaufsdiagrammen steht die Uhrzeit ohne „Uhr“ unter dem Datum.
 [ ] Menüpunkt „Bericht, Tagebuch & Buch“ ist vorhanden.
 [ ] Persönliches Buch erstellen, als Datei speichern und drucken.
 [ ] Persönliches Tagebuch erstellen, als Datei speichern und drucken.

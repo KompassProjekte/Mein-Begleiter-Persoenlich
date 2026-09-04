@@ -2372,9 +2372,10 @@
                 ><input
                   id="buchTitel"
                   maxlength="100"
-                  value="Mein Gesundheitsweg"
+                  value="Meine Geschichten"
                   list="buchTitelVorschlaege"
                 /><datalist id="buchTitelVorschlaege">
+                  <option value="Meine Geschichten"></option>
                   <option value="Mein Gesundheitsweg"></option>
                   <option value="Meine Behandlung"></option>
                   <option value="Meine Genesung"></option>
@@ -2386,7 +2387,7 @@
                 ><input
                   id="buchUntertitel"
                   maxlength="140"
-                  value="Meine Erfahrungen und Fortschritte"
+                  value="Gesundheit, Alltag und Erinnerungen"
                 />
               </div>
               <div class="feld breit nur-buch">
@@ -4184,7 +4185,7 @@
         const von = $("#berichtVon").value || "0000-01-01",
           bis = $("#berichtBis").value || "9999-12-31",
           arr = berichtEintraege(),
-          titel = $("#buchTitel").value.trim() || "Mein Gesundheitsweg",
+          titel = $("#buchTitel").value.trim() || "Meine Geschichten",
           untertitel = $("#buchUntertitel").value.trim(),
           widmung = $("#buchWidmung").value.trim(),
           vorwort = $("#buchVorwort").value.trim(),
@@ -4403,7 +4404,7 @@
         const von = $("#berichtVon").value || "0000-01-01",
           bis = $("#berichtBis").value || "9999-12-31",
           arr = berichtEintraege(),
-          titel = $("#buchTitel").value.trim() || "Mein Gesundheitsweg",
+          titel = $("#buchTitel").value.trim() || "Meine Geschichten",
           untertitel = $("#buchUntertitel").value.trim(),
           widmung = $("#buchWidmung").value.trim(),
           vorwort = $("#buchVorwort").value.trim(),
@@ -5559,7 +5560,7 @@
         renderBericht();
         const buch = modus === "buch",
           titel = buch
-            ? $("#buchTitel").value.trim() || "Mein Gesundheitsweg"
+            ? $("#buchTitel").value.trim() || "Meine Geschichten"
             : $("#tagebuchTitel").value.trim() || "Mein persönliches Tagebuch",
           inhalt = $("#berichtAusgabe").innerHTML,
           stil = `body{max-width:900px;margin:25px auto;padding:0 24px;color:#173b39;font:16px/1.48 system-ui,sans-serif}.bericht-kopf{border-bottom:3px solid #225b56;padding-bottom:10px}.bericht-kopf h3{font-size:2rem;margin:0}.bericht-meta{display:flex;gap:12px;flex-wrap:wrap;color:#61716d}.tagebuch-vorwort{font-size:1.05rem;font-style:italic;background:#fbfaf6;border-left:4px solid #34796f;padding:10px 13px;margin:15px 0}.bericht-abschnitt h4,.buch-seite h4,.buch-kapitel h4{font-size:1.35rem;border-bottom:1px solid #7f9b95;padding-bottom:5px;margin-bottom:9px}.tagebuch-eintrag,.leseabschnitt{display:grid;grid-template-columns:115px 1fr;gap:15px;padding:9px 0;margin:0;border-bottom:1px solid #d8e4e0;break-inside:avoid}.tagebuch-datum,.chronik-datum{color:#225b56;font-weight:800}.tagebuch-text h5,.chronik-inhalt h5{font-size:1.03rem;margin:0 0 3px}.tagebuch-text p,.chronik-inhalt p{margin:.15rem 0;white-space:pre-wrap}.familien-erinnerung{margin:5px 0 0;padding:5px 8px;border-left:2px solid #9caaa6;background:#fbfaf6}.messwerte{display:flex;gap:5px;flex-wrap:wrap;margin-top:5px}.messwert{background:#e8f3ef;color:#24554f;border-radius:999px;padding:3px 7px;font-size:.78rem;font-weight:800}.hinweis{font-size:.84rem;color:#61716d}.buch-titelblatt{min-height:75vh;display:flex;flex-direction:column;justify-content:center;text-align:center;break-after:page}.buch-titelblatt h3{font-size:3rem;letter-spacing:.08em;color:#225b56;margin:0}.buch-titelblatt .untertitel{font-size:1.45rem;margin:18px}.buch-seite{padding-top:20px}.buch-kapitel{break-before:auto;margin-top:20px}.buch-schluss{background:#fbfaf6;padding:14px}@media(max-width:620px){.tagebuch-eintrag,.leseabschnitt{grid-template-columns:1fr;gap:4px}}@media print{@page{margin:14mm 13mm}body{margin:0;padding:0}.tagebuch-eintrag,.leseabschnitt{break-inside:avoid-page}}`,
@@ -5595,7 +5596,7 @@
           const modus = ausgabeModus(),
             buch = modus === "buch",
             titel = buch
-              ? $("#buchTitel").value.trim() || "Mein Gesundheitsweg"
+              ? $("#buchTitel").value.trim() || "Meine Geschichten"
               : $("#tagebuchTitel").value.trim() ||
                 "Mein persönliches Tagebuch",
             inhalt = $("#berichtAusgabe").innerHTML,
@@ -8005,7 +8006,7 @@
               return `<circle cx="${x(i)}" cy="${y(v1)}" r="5" fill="#28776d"><title>${datumLang(e.datum)} ${e.messUhrzeit || ""}: ${titel} ${einheit}</title></circle><text x="${x(i)}" y="${labelY1}" text-anchor="middle" class="v19126-messwert v19126-messwert-sys">${label1}</text>${v2===null?'':`<circle cx="${x(i)}" cy="${y(v2)}" r="5" fill="#cf7d35"></circle><text x="${x(i)}" y="${labelY2}" text-anchor="middle" class="v19126-messwert v19126-messwert-dia">${label2}</text>`}`;
             }).join("") + arr.map((e,i) => {
               const datum = new Intl.DateTimeFormat('de-DE',{day:'2-digit',month:'2-digit'}).format(new Date(e.datum+'T12:00:00'));
-              const zeit = e.messUhrzeit ? `${esc(e.messUhrzeit)} Uhr` : '';
+              const zeit = e.messUhrzeit ? esc(e.messUhrzeit) : '';
               return `<text x="${x(i)}" y="${h-p+18}" text-anchor="middle" font-size="11" fill="#506965"><tspan x="${x(i)}">${datum}</tspan>${zeit?`<tspan x="${x(i)}" dy="13">${zeit}</tspan>`:''}</text>`;
             }).join('') + (feld2?`<g class="v19126-legende"><circle cx="${p}" cy="18" r="5" fill="#28776d"/><text x="${p+10}" y="22">SYS</text><circle cx="${p+58}" cy="18" r="5" fill="#cf7d35"/><text x="${p+68}" y="22">DIA</text></g>`:'') + "</svg>";
           el.innerHTML = svg;
@@ -9225,8 +9226,8 @@
 })();
 </script>
 <link rel="stylesheet" href="v19124.css">
-<link rel="stylesheet" href="v1912510.css?v=pc-abschluss-8">
+<link rel="stylesheet" href="v1912510.css?v=pc-abschluss-9">
 <script src="v19124.js"></script>
-<script src="v1912510.js?v=pc-abschluss-8"></script>
+<script src="v1912510.js?v=pc-abschluss-9"></script>
 </body>
 </html>

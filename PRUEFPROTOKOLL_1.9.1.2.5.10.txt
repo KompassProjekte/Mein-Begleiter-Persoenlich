@@ -20,6 +20,10 @@ AUTOMATISIERTER REGRESSIONSTEST
 [OK] Read-only-Systemprüfung liefert verständliches Ergebnis
 [OK] Verwaiste Terminfrage erhält Erklärung und direkten Knopf „Frage jetzt zuordnen“
 [OK] Zuordnungsknopf öffnet Termine und springt zu „Noch keinem Termin zugeordnet“
+[OK] Titelblatt „Meine Geschichten“ mit Buch-Kompass-Signet in allen drei Fassungen
+[OK] Dynamischer Zeitraum und Editionsbezeichnung auf dem neuen Titelblatt
+[OK] Titelblattgestaltung in gespeicherten Buchdateien enthalten
+[OK] Diagrammuhrzeit ohne „Uhr“ in eigener Zeile unter dem Datum
 
 NACHTRÄGLICHE SICHTPRÜFUNG
 [OK] Getrennter Kopf-, Scroll- und Fußbereich im Eintragsdialog
