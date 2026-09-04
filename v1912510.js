@@ -10,6 +10,13 @@
 
   // Alle sichtbaren Laufzeitangaben angleichen, ohne gespeicherte Daten anzutasten.
   document.title = `Mein Begleiter ${VERSION} – Persönliche App`;
+  qa('.marke .bildmarke img').forEach(img => {
+    img.src = './icons/icon-192.png';
+    img.alt = '';
+    img.setAttribute('aria-hidden', 'true');
+  });
+  const mobilMarke = q('.mobilkopf strong');
+  if (mobilMarke) mobilMarke.innerHTML = '<img class="v1912510-mobil-logo" src="./icons/icon-192.png" alt=""> <span>Mein Begleiter</span>';
 
   // Messwerte aus 1.9.1.2.5 wurden versehentlich mit der Maßnahme
   // „Vitalwerte“ gespeichert und dadurch als Termine erkannt. Nur diese
@@ -515,7 +522,7 @@
     q('#v1912510SystemStart').addEventListener('click', async () => {
       const ergebnis = q('#v1912510SystemErgebnis');
       const ok = [], hinweise = [];
-      const statischeVersion = qa('link[href],script[src]').some(el => (el.getAttribute('href') || el.getAttribute('src') || '').includes('app-2'));
+      const statischeVersion = qa('link[href],script[src]').some(el => (el.getAttribute('href') || el.getAttribute('src') || '').includes('app-3'));
       statischeVersion ? ok.push('Programmdateien gehören zur aktuellen persönlichen App-Version.') : hinweise.push('Die aktuelle App-Kennung ist noch nicht sichtbar. App einmal vollständig neu laden.');
       if ('serviceWorker' in navigator) ok.push(navigator.serviceWorker.controller ? 'PWA-Service-Worker ist aktiv.' : 'PWA-Service-Worker wird unterstützt; nach dem nächsten Neustart wird er aktiv.');
       else hinweise.push('Dieser Browser unterstützt keine installierbare PWA.');

@@ -69,6 +69,8 @@ AUTOMATISCH GEPRÜFT
 [OK] Touch-Bedienung, Sicherheitsränder sowie Hoch- und Querformat technisch abgesichert
 [OK] Persönliche App-Version verwendet unveränderte Daten- und Sicherungsstrukturen
 [OK] Startdialog besitzt drei stets sichtbare Auswahlknöpfe und speichert die einmalige Auswahl
+[OK] Samsung-A9-Seitenleiste in Hoch- und Querformat dunkel, 200 Pixel breit und eigenständig scrollbar
+[OK] Sichtbare Markenbilder verwenden das aktuelle Buch-Kompass-Appsymbol
 [OK] Neue verständliche Menübezeichnungen
 [OK] AES-256-GCM und PBKDF2 mit 600.000 Iterationen unverändert vorhanden
 [OK] Buchkorrekturen in allen vollständigen Sicherungswegen enthalten

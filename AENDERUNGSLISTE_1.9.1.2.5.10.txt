@@ -94,6 +94,9 @@ AUSGABEN
 - Die Bodenwelle ist nun eine drucksichere Vektorgrafik und erscheint auch ohne aktivierte Browser-Hintergrundgrafiken.
 
 PERSÖNLICHE APP-VERSION
+- Samsung-A9-Darstellung im Hoch- und Querformat: dunkelgrüne Seitenleiste, kompakte feste Breite und eigener vertikaler Navigationsbereich.
+- Die Navigation bleibt vollständig erreichbar, während Markenbereich und Versionszeile stehen bleiben.
+- Alte Leuchtturmzeichen im sichtbaren App-Kopf wurden durch das Buch-Kompass-Symbol ersetzt.
 - Der Startdialog zeigt seine drei Auswahlknöpfe nun innerhalb des sichtbaren Inhaltsbereichs; Firefox auf Tablet und PC kann nicht mehr an einem leeren Dialogfuß hängen bleiben.
 - Der geprüfte PC-Stand wurde als eigener App-Zweig für Windows-PC, Samsung-Tablet und Smartphone übernommen.
 - Neues installierbares Buch-Kompass-Appsymbol; alte Kennzeichnungen „Wegbegleiter“ und „Praxistest“ sind entfernt.
