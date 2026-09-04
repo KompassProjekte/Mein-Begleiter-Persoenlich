@@ -47,6 +47,8 @@ VORHER
 [ ] Das vorbereitete Titelblatt übernimmt Buchtitel, Untertitel und gewählten Zeitraum.
 
 5. SICHERHEIT UND ABSCHLUSS
+[ ] Systemprüfung ausführen: Ohne Auffälligkeit erscheint „Alle Prüfungen ohne Auffälligkeit abgeschlossen“.
+[ ] Falls eine verwaiste Frage gemeldet wird: „Frage jetzt zuordnen“ öffnet direkt den richtigen Bereich der Terminübersicht.
 [ ] Unter „Dokumente“ eine abgelegte Dokumentenmappe öffnen und mindestens eine Seite kontrollieren.
 [ ] Eine DOCX-Datei zeigt das Word-Symbol und nur „Word-Datei herunterladen“; anschließend mit Word oder LibreOffice öffnen.
 [ ] Verschlüsselte vollständige Sicherung erstellen.

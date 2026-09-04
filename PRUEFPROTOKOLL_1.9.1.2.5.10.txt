@@ -18,6 +18,8 @@ AUTOMATISIERTER REGRESSIONSTEST
 [OK] Rückumwandlung zum normalen Eintrag schützt zugeordnete Fragen
 [OK] Feste Bedienleiste und „Nach oben“ im Buchzentrum
 [OK] Read-only-Systemprüfung liefert verständliches Ergebnis
+[OK] Verwaiste Terminfrage erhält Erklärung und direkten Knopf „Frage jetzt zuordnen“
+[OK] Zuordnungsknopf öffnet Termine und springt zu „Noch keinem Termin zugeordnet“
 
 NACHTRÄGLICHE SICHTPRÜFUNG
 [OK] Getrennter Kopf-, Scroll- und Fußbereich im Eintragsdialog
@@ -52,10 +54,16 @@ AUTOMATISCH GEPRÜFT
 [OK] Tabellenkopf „Datum“ ohne vorangestellten Produktnamen
 [OK] Titelblatt übernimmt Buchtitel, Untertitel und Zeitraum
 [OK] Neue verständliche Menübezeichnungen
+[OK] AES-256-GCM und PBKDF2 mit 600.000 Iterationen unverändert vorhanden
+[OK] Buchkorrekturen in allen vollständigen Sicherungswegen enthalten
+[OK] Sämtliche 302 statischen HTML-IDs eindeutig
+[OK] Cache-Kennung, HTML-Verweise und Service-Worker einheitlich auf Abschlussstand 8
+[OK] ZIP-Inhalt vollständig und ohne Kompressionsfehler
 
 PRAKTISCHER ABSCHLUSSTEST
 Siehe TESTLISTE_LOTHAR_1.9.1.2.5.10.txt.
 
 HINWEIS
-Die Browser-Druckvorschau und die vollständige Wiederherstellung persönlicher Daten
-müssen abschließend am PC praktisch kontrolliert werden.
+Die automatisierte technische Prüfung verändert keine persönlichen Daten. Die
+Browser-Druckvorschau und eine vollständige Wiederherstellung der persönlichen
+Sicherung müssen deshalb abschließend am eigenen PC praktisch kontrolliert werden.

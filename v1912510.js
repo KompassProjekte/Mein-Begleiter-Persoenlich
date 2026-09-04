@@ -511,14 +511,26 @@
       ohneTyp ? hinweise.push(`${ohneTyp} ältere Einträge besitzen noch keine feste Typkennzeichnung.`) : ok.push('Alle Einträge besitzen eine feste Typkennzeichnung.');
       const terminIds=new Set((typeof alleTermine==='function'?alleTermine():[]).map(t=>t.id));
       const loseFragen=(daten.fragen||[]).filter(f=>f.terminId&&!terminIds.has(f.terminId)).length;
-      loseFragen ? hinweise.push(`${loseFragen} Frage(n) verweisen auf einen nicht mehr vorhandenen Termin.`) : ok.push('Alle gespeicherten Terminbezüge der Fragen sind gültig.');
+      loseFragen ? hinweise.push(`${loseFragen} offene Frage${loseFragen === 1 ? ' ist' : 'n sind'} einem nicht mehr vorhandenen Termin zugeordnet.`) : ok.push('Alle gespeicherten Terminbezüge der Fragen sind gültig.');
       const kommende=(typeof alleTermine==='function'?alleTermine():[]).filter(t=>typeof istKommenderTermin==='function'&&istKommenderTermin(t)).sort((a,b)=>zeitSchluessel(a).localeCompare(zeitSchluessel(b)));
       ok.push(kommende.length ? `Nächster Termin logisch ermittelt: ${formatDatum(kommende[0].datum)}${kommende[0].messUhrzeit?' · '+kommende[0].messUhrzeit+' Uhr':''}.` : 'Zurzeit ist kein kommender Termin gespeichert.');
       if (globalThis.crypto?.subtle && globalThis.Blob && globalThis.URL) ok.push('Technische Voraussetzungen für Sicherungsdateien sind vorhanden.');
       else hinweise.push('Eine technische Voraussetzung für Sicherungsdateien fehlt.');
       try { const ds=typeof alleDokumente==='function'?await alleDokumente():[]; ok.push(`Dokumentenablage erreichbar: ${ds.length} Dokument(e).`); } catch (_) { hinweise.push('Dokumentenablage konnte nicht gelesen werden.'); }
       if (navigator.storage?.estimate) { try { const s=await navigator.storage.estimate(), frei=Math.max(0,(s.quota||0)-(s.usage||0)); ok.push(`Lokaler Speicher geprüft: ungefähr ${Math.round(frei/1024/1024)} MB frei.`); } catch (_) {} }
-      ergebnis.innerHTML = `<p class="ok"><strong>${hinweise.length ? 'Prüfung abgeschlossen' : 'Alle Prüfungen ohne Auffälligkeit abgeschlossen'}.</strong></p><ul>${ok.map(x=>`<li class="ok">✓ ${safe(x)}</li>`).join('')}${hinweise.map(x=>`<li class="hinweis-pruefung">Hinweis: ${safe(x)}</li>`).join('')}</ul>`;
+      const frageLoesen = loseFragen
+        ? `<div class="v1912510-loesung"><p><strong>Lösung:</strong> Öffnen Sie die Terminübersicht und ordnen Sie die Frage einem neuen Termin zu – oder entfernen Sie die alte Zuordnung.</p><button class="knopf" type="button" id="v1912510FrageZuordnen">Frage jetzt zuordnen</button></div>`
+        : '';
+      ergebnis.innerHTML = `<p class="ok"><strong>${hinweise.length ? 'Prüfung abgeschlossen' : 'Alle Prüfungen ohne Auffälligkeit abgeschlossen'}.</strong></p><ul>${ok.map(x=>`<li class="ok">✓ ${safe(x)}</li>`).join('')}${hinweise.map(x=>`<li class="hinweis-pruefung">Hinweis: ${safe(x)}</li>`).join('')}</ul>${frageLoesen}`;
+      q('#v1912510FrageZuordnen', ergebnis)?.addEventListener('click', () => {
+        if (typeof wechsleSeite === 'function') wechsleSeite('termine');
+        if (typeof renderTermine === 'function') renderTermine();
+        requestAnimationFrame(() => {
+          const ziel = q('#seite-termine .nicht-zugeordnet');
+          ziel?.scrollIntoView({behavior:'smooth', block:'center'});
+          ziel?.querySelector('button')?.focus({preventScroll:true});
+        });
+      });
     });
   }
 

@@ -27,6 +27,9 @@ LETZTE PC-TESTKORREKTUREN
   als offene, nicht zugeordnete Fragen bestehen.
 - In den Einstellungen steht eine nur lesende Systemprüfung für PWA, Speicher,
   Datenbezüge, Dublettenhinweise, Dokumentablage und Sicherungstechnik bereit.
+- Meldet die Systemprüfung eine Frage zu einem nicht mehr vorhandenen Termin,
+  erklärt sie jetzt den Lösungsweg. „Frage jetzt zuordnen“ öffnet unmittelbar
+  die Terminübersicht und führt zu „Noch keinem Termin zugeordnet“.
 
 VERSIONSABGLEICH UND REGRESSIONSKORREKTUR
 - Abgleich mit der getesteten PC-Abschlussversion durchgeführt.
