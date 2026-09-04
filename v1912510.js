@@ -262,6 +262,20 @@
   };
   const berichtAusgabe = q("#berichtAusgabe");
   if (berichtAusgabe) new MutationObserver(() => titelblattVerbessern(berichtAusgabe)).observe(berichtAusgabe, {childList:true,subtree:true});
+  // Druck und Dateispeicherung erzeugen die Ausgabe unmittelbar neu. Deshalb
+  // muss das bestätigte Titelblatt im selben Ablauf fertig sein und darf nicht
+  // erst auf den MutationObserver warten.
+  if (typeof renderBericht === "function") {
+    const renderBerichtVorTitelblatt = renderBericht;
+    renderBericht = function() {
+      const ergebnis = renderBerichtVorTitelblatt.apply(this, arguments);
+      titelblattVerbessern(berichtAusgabe || document);
+      return ergebnis;
+    };
+  }
+  const buchTitelFeld=q("#buchTitel"), buchUntertitelFeld=q("#buchUntertitel");
+  if(buchTitelFeld&&!buchTitelFeld.value.trim())buchTitelFeld.value="Meine Geschichten";
+  if(buchUntertitelFeld&&!buchUntertitelFeld.value.trim())buchUntertitelFeld.value="Gesundheit, Alltag und Erinnerungen";
   titelblattVerbessern(document);
 
   // Das bisherige Druckzentrum vollständig durch eine eindeutige Logik ersetzen.

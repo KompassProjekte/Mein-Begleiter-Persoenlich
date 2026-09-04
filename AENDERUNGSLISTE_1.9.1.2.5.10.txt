@@ -11,6 +11,11 @@ LETZTE PC-TESTKORREKTUREN
 - Gemeinsame Fußzeile: „Erstellt mit Mein Begleiter · Entwickelt von Lothar & Nimbus“.
 - In den Verlaufsdiagrammen steht die Uhrzeit ohne das Wort „Uhr“ in einer
   eigenen Zeile unter dem Datum.
+- Druckkorrektur: Das Titelblatt wird nach jeder Neuerzeugung synchron
+  fertiggestellt. Die Druckvorschau kann dadurch nicht mehr auf die alte
+  Titelseite ohne Signet, Horizont und Fußzeile zurückfallen.
+- Leere Felder für Buchtitel und Untertitel werden sichtbar mit „Meine
+  Geschichten“ und „Gesundheit, Alltag und Erinnerungen“ vorbelegt.
 - Buchtext-Korrekturen werden getrennt von den Originaleinträgen gespeichert und
   standardmäßig in Original-Tagebuch, persönlicher Leseausgabe und Familienausgabe
   gemeinsam verwendet. Optional ist eine Korrektur nur für eine Buchfassung möglich.

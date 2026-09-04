@@ -24,6 +24,9 @@ AUTOMATISIERTER REGRESSIONSTEST
 [OK] Dynamischer Zeitraum und Editionsbezeichnung auf dem neuen Titelblatt
 [OK] Titelblattgestaltung in gespeicherten Buchdateien enthalten
 [OK] Diagrammuhrzeit ohne „Uhr“ in eigener Zeile unter dem Datum
+[OK] Titelblatt synchron vor Druck und Dateispeicherung fertiggestellt
+[OK] Kein Rückfall auf die alte Titelseite in der Druckvorschau
+[OK] Leere Titel- und Untertitelfelder erhalten die beschlossenen Standardwerte
 
 NACHTRÄGLICHE SICHTPRÜFUNG
 [OK] Getrennter Kopf-, Scroll- und Fußbereich im Eintragsdialog
