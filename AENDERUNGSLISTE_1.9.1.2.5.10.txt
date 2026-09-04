@@ -94,6 +94,11 @@ AUSGABEN
 - Die Bodenwelle ist nun eine drucksichere Vektorgrafik und erscheint auch ohne aktivierte Browser-Hintergrundgrafiken.
 
 PERSÖNLICHE APP-VERSION
+- Smartphone Hoch- und Querformat: kompakter dunkelgrüner App-Kopf mit Buch-Kompass.
+- Fester Menüknopf unten links; „Nach oben“ bleibt getrennt unten rechts erreichbar.
+- Das geöffnete Mobilmenü ist dunkelgrün, kontrastreich und besitzt einen eigenen scrollbar bleibenden Inhaltsbereich.
+- Im Querformat werden die Menüpunkte platzsparend dreispaltig angeordnet.
+- Alle sichtbaren alten Leuchtturm-Markenbilder werden beim Start durch das Buch-Kompass-Symbol ersetzt.
 - Samsung-A9-Darstellung im Hoch- und Querformat: dunkelgrüne Seitenleiste, kompakte feste Breite und eigener vertikaler Navigationsbereich.
 - Die Navigation bleibt vollständig erreichbar, während Markenbereich und Versionszeile stehen bleiben.
 - Alte Leuchtturmzeichen im sichtbaren App-Kopf wurden durch das Buch-Kompass-Symbol ersetzt.

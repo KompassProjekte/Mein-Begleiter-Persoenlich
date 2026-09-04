@@ -1,12 +1,12 @@
-const CACHE = 'mein-begleiter-persoenlich-cache-v1-9-1-2-5-10-app-3';
+const CACHE = 'mein-begleiter-persoenlich-cache-v1-9-1-2-5-10-app-4';
 const BASIS = new URL('./', self.location.href).pathname;
 const PFLICHTDATEIEN = [
   BASIS,
   BASIS + 'index.html',
   BASIS + 'v19124.css',
   BASIS + 'v19124.js',
-  BASIS + 'v1912510.css?v=app-3',
-  BASIS + 'v1912510.js?v=app-3',
+  BASIS + 'v1912510.css?v=app-4',
+  BASIS + 'v1912510.js?v=app-4',
   BASIS + 'manifest.webmanifest',
   BASIS + 'offline.html'
 ];

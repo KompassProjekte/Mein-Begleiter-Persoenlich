@@ -71,6 +71,9 @@ AUTOMATISCH GEPRÜFT
 [OK] Startdialog besitzt drei stets sichtbare Auswahlknöpfe und speichert die einmalige Auswahl
 [OK] Samsung-A9-Seitenleiste in Hoch- und Querformat dunkel, 200 Pixel breit und eigenständig scrollbar
 [OK] Sichtbare Markenbilder verwenden das aktuelle Buch-Kompass-Appsymbol
+[OK] Smartphone-App-Kopf mit Buch-Kompass und eigenständigem Mobilmenü
+[OK] Menüknopf links und „Nach oben“ rechts ohne gegenseitige Überdeckung
+[OK] Mobilmenü in Hoch- und Querformat kontrastreich und scrollbar
 [OK] Neue verständliche Menübezeichnungen
 [OK] AES-256-GCM und PBKDF2 mit 600.000 Iterationen unverändert vorhanden
 [OK] Buchkorrekturen in allen vollständigen Sicherungswegen enthalten
