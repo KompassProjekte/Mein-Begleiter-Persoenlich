@@ -1,4 +1,6 @@
 /* Mein Begleiter 1.9.1.2.5 – PC-Korrekturversion */
+.v1912510-horizont{left:-2%!important;right:auto!important;bottom:0!important;width:104%!important;height:31mm!important;display:block!important;background:none!important;clip-path:none!important}
+.v1912510-horizont::before,.v1912510-horizont::after{content:none!important;display:none!important}
 [hidden]{display:none!important}
 #seite-cockpit .v19125-vitalbutton{min-height:52px}
 .v19125-einfuehrung{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;margin:0 0 16px;padding:20px;border:2px solid #6ea49b;border-radius:15px;background:#e9f5f2;color:#123f3b}
