@@ -1,11 +1,11 @@
 {
-  "id": "./",
+  "id": "./?app-id=mein-begleiter-persoenlich-v1912510",
   "name": "Mein Begleiter – Persönliche App",
   "short_name": "Mein Begleiter",
   "description": "Persönliche, installierbare App für Tagebuch, Gesundheit, Alltag und Erinnerungen. Die Daten bleiben lokal auf dem Gerät.",
   "lang": "de-DE",
   "dir": "ltr",
-  "start_url": "./?source=pwa",
+  "start_url": "./?source=pwa&edition=persoenlich",
   "scope": "./",
   "display": "standalone",
   "display_override": [

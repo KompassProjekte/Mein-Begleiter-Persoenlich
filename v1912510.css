@@ -183,6 +183,10 @@
   z-index: 90;
   box-shadow: 0 5px 18px rgba(3, 61, 59, .24);
 }
+
+/* Unter den festen Smartphone-Bedienelementen bleibt genügend freier
+   Scrollraum, damit der letzte Inhalt vollständig hervorgeholt werden kann. */
+@media(max-width:620px){html.v186-handy main{padding-bottom:max(140px,calc(128px + env(safe-area-inset-bottom)))!important;scroll-padding-bottom:140px!important}}
 .v1912510-nach-oben[hidden] { display: none !important; }
 @media print { .v1912510-nach-oben { display: none !important; } }
 
@@ -260,3 +264,8 @@ html.v1912510-smartphone #v19121MobilMenue .v19121-menuliste button{min-height:5
 }
 @media(max-width:370px){html.v1912510-smartphone #v19121MobilMenue .v19121-menuliste{grid-template-columns:1fr!important}}
 @media print{html.v1912510-smartphone #v19121MobilMenuknopf,html.v1912510-smartphone #v19121MobilMenue{display:none!important}}
+
+/* Trennungskorrektur: feste Mobilknöpfe überdecken den Seitenabschluss nicht. */
+@media(max-width:620px){
+  html.v1912510-smartphone main,html.v186-handy main{padding-bottom:max(140px,calc(128px + env(safe-area-inset-bottom)))!important;scroll-padding-bottom:140px!important}
+}

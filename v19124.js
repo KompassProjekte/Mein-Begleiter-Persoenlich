@@ -50,7 +50,8 @@
     box.innerHTML = `<h3>Schriftgröße</h3><p>Wählen Sie die für Sie angenehmste Darstellung. „Groß“ wird empfohlen.</p><div role="group" aria-label="Schriftgröße wählen"><button type="button" data-schrift="standard">Standard</button><button type="button" data-schrift="gross">Groß – empfohlen</button><button type="button" data-schrift="sehr-gross">Sehr groß</button></div>`;
     const ziel = einstellungen.querySelector("[data-tagescheck-einstellungen]");
     ziel?.before(box);
-    const schriftKey = "mein-begleiter-schriftgroesse";
+    const schriftKey = "mein-begleiter-persoenlich-schriftgroesse";
+    const schriftAltKey = "mein-begleiter-schriftgroesse";
     const schriftAnwenden = wert => {
       const erlaubt = ["standard", "gross", "sehr-gross"].includes(wert) ? wert : "gross";
       document.documentElement.dataset.schrift = erlaubt;
@@ -58,7 +59,7 @@
       box.querySelectorAll("[data-schrift]").forEach(b => { const aktiv = b.dataset.schrift === erlaubt; b.classList.toggle("aktiv", aktiv); b.setAttribute("aria-pressed", String(aktiv)); });
     };
     box.addEventListener("click", e => { const b = e.target.closest("[data-schrift]"); if (b) schriftAnwenden(b.dataset.schrift); });
-    schriftAnwenden(localStorage.getItem(schriftKey) || "gross");
+    schriftAnwenden(localStorage.getItem(schriftKey) || localStorage.getItem(schriftAltKey) || "gross");
   }
 
   // Gemeinsame professionelle Terminfilterleiste

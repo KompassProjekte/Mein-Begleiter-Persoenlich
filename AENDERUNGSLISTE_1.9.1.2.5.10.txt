@@ -131,3 +131,8 @@ PWA UND DATEN
 - Bestehende Datenstruktur und verschlüsselte Sicherungen bleiben kompatibel.
 - Version 1.9.1.2.5.9 bleibt unverändert als Rückfallversion erhalten.
 - Tablet- und Smartphone-Anpassungen sind nicht Bestandteil dieser PC-Version.
+Trennungskorrektur 1
+- Die persönliche App besitzt eine eindeutige Installationskennung.
+- Die Schriftgrößen-Einstellung wird getrennt von der öffentlichen Praxistest-Version gespeichert.
+- Eine vorhandene bisherige Schriftwahl wird einmalig und verlustfrei übernommen.
+- Zusätzlicher Scrollraum verhindert, dass feste Smartphone-Schaltflächen den letzten Seiteninhalt verdecken.
