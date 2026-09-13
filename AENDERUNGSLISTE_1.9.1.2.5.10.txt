@@ -136,3 +136,8 @@ Trennungskorrektur 1
 - Die Schriftgrößen-Einstellung wird getrennt von der öffentlichen Praxistest-Version gespeichert.
 - Eine vorhandene bisherige Schriftwahl wird einmalig und verlustfrei übernommen.
 - Zusätzlicher Scrollraum verhindert, dass feste Smartphone-Schaltflächen den letzten Seiteninhalt verdecken.
+KORREKTUR 13.09.2026 – KENNWORTANZEIGE
+- Die doppelte Steuerung der Kennwortanzeige wurde entfernt.
+- Eine eindeutige Schaltfläche zeigt oder verbirgt nun beide Kennwortfelder gemeinsam.
+- Beim Schließen des Dialogs werden beide Felder wieder sicher verborgen.
+- Verschlüsselung, Sicherungsformat und Datenstrukturen bleiben unverändert.

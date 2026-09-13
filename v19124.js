@@ -178,24 +178,34 @@
   };
   window.dokumentUmbenennen = window.dokumentAendern;
 
-  // Verständliche Augen-Schaltfläche für beide Kennwortfelder.
+  // Eine eindeutige Augen-Schaltfläche steuert beide Kennwortfelder.
   const zeigen = document.getElementById("geraetePasswortZeigen");
   const pass1 = document.getElementById("geraetePasswort");
   const pass2 = document.getElementById("geraetePasswort2");
   if (zeigen && pass1) {
-    const label = zeigen.closest("label");
-    const auge = document.createElement("button");
-    auge.type = "button"; auge.className = "v19124-kennwort-auge";
-    auge.innerHTML = '<span aria-hidden="true">👁</span><span>Kennwort anzeigen</span>';
-    auge.setAttribute("aria-pressed", "false");
+    let auge = zeigen;
+    if (zeigen.tagName !== "BUTTON") {
+      const label = zeigen.closest("label");
+      auge = document.createElement("button");
+      auge.type = "button";
+      auge.id = "geraetePasswortZeigen";
+      auge.className = "v19124-kennwort-auge";
+      auge.setAttribute("aria-controls", "geraetePasswort geraetePasswort2");
+      label?.replaceWith(auge);
+    }
     const umschalten = sichtbar => {
-      pass1.type = sichtbar ? "text" : "password";
-      if (pass2) pass2.type = sichtbar ? "text" : "password";
+      [pass1, pass2].filter(Boolean).forEach(feld => {
+        feld.setAttribute("type", sichtbar ? "text" : "password");
+      });
       auge.setAttribute("aria-pressed", String(sichtbar));
-      auge.innerHTML = sichtbar ? '<span aria-hidden="true">◉̸</span><span>Kennwort verbergen</span>' : '<span aria-hidden="true">👁</span><span>Kennwort anzeigen</span>';
+      auge.innerHTML = sichtbar
+        ? '<span aria-hidden="true">◉̸</span><span>Kennwörter verbergen</span>'
+        : '<span aria-hidden="true">👁</span><span>Kennwörter anzeigen</span>';
     };
-    auge.addEventListener("click", () => umschalten(auge.getAttribute("aria-pressed") !== "true"));
-    label?.replaceWith(auge);
+    umschalten(false);
+    auge.addEventListener("click", () => {
+      umschalten(auge.getAttribute("aria-pressed") !== "true");
+    });
     document.getElementById("geraeteDialog")?.addEventListener("close", () => umschalten(false));
   }
 

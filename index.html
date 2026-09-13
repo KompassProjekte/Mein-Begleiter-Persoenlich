@@ -6948,7 +6948,13 @@
             autocomplete="new-password"
             minlength="12"
         /></label>
-        <label><input id="geraetePasswortZeigen" type="checkbox" /> Kennwort anzeigen</label>
+        <button
+          id="geraetePasswortZeigen"
+          class="v19124-kennwort-auge"
+          type="button"
+          aria-controls="geraetePasswort geraetePasswort2"
+          aria-pressed="false"
+        ><span aria-hidden="true">👁</span><span>Kennwörter anzeigen</span></button>
         <div id="geraetePasswortStaerke" class="hinweis" role="status">
           Verwenden Sie mindestens 12 Zeichen, möglichst mehrere Wörter.
         </div>
@@ -7354,10 +7360,6 @@
         };
         $("#geraeteSchliessen").onclick = $("#geraeteAbbrechen").onclick =
           schliessen;
-        $("#geraetePasswortZeigen").onchange = (e) => {
-          const typ = e.target.checked ? "text" : "password";
-          pass.type = pass2.type = typ;
-        };
         const kennwortBewerten = () => {
           const wert = pass.value;
           let punkte = 0;
@@ -9234,7 +9236,7 @@
 </script>
 <link rel="stylesheet" href="v19124.css">
 <link rel="stylesheet" href="v1912510.css?v=personal-7">
-<script src="v19124.js"></script>
+<script src="v19124.js?v=kennwort-1"></script>
 <script src="v1912510.js?v=personal-7"></script>
 </body>
 </html>

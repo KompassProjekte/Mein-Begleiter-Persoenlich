@@ -88,3 +88,10 @@ HINWEIS
 Die automatisierte technische Prüfung verändert keine persönlichen Daten. Die
 Browser-Druckvorschau und eine vollständige Wiederherstellung der persönlichen
 Sicherung müssen deshalb abschließend am eigenen PC praktisch kontrolliert werden.
+NACHTEST 13.09.2026 – KENNWORTANZEIGE
+- Genau eine Schaltfläche zur Kennwortanzeige vorhanden: bestanden.
+- Erstes und zweites Kennwortfeld werden gemeinsam umgeschaltet: bestanden.
+- Ausgangszustand und Zustand nach Dialogschluss sind „verborgen“: bestanden.
+- Veraltete zweite Steuerung entfernt: bestanden.
+- JavaScript-Dateien und Service Worker syntaktisch geprüft: bestanden.
+- Verschlüsselungs- und Sicherungslogik unverändert: bestätigt.
