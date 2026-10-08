@@ -1,4 +1,4 @@
-MEIN BEGLEITER 1.10.2 – KALENDER-TESTVERSION
+MEIN BEGLEITER 1.10.3 – KALENDER-TESTVERSION
 Stand: 08.10.2026
 Grundlage: persönliche App 1.9.1.2.5.10
 
@@ -66,7 +66,7 @@ Automatische Erinnerungen sind vorbereitet, aber NICHT aktiviert.
 Es werden keine medizinischen Dosierungs- oder Einnahmeempfehlungen erzeugt.
 Die übrigen älteren Anleitungen im Paket dokumentieren den Ausgangsstand.
 
-NEU IN 1.10.2 – AUFKLAPPBARE MONATE
+NEU IN 1.10.3 – AUFKLAPPBARE MONATE
 Unter Kalender & Termine die Ansicht Terminliste wählen.
 Der aktuelle Monat ist zunächst geöffnet, weitere Monate geschlossen.
 Wenn der aktuelle Monat nicht im sichtbaren Zeitraum liegt, wird der
@@ -83,7 +83,7 @@ Dieses Paket ersetzt die Dateien im bisherigen Kalender-Testprojekt.
 Der lokale Test-Datenspeicher bleibt derselbe. Vorher Sicherung erstellen.
 Das ursprüngliche persönliche Projekt unverändert lassen.
 
-NEU IN 1.10.2 – FARBE & KENNZEICHNUNG
+NEU IN 1.10.3 – FARBE & KENNZEICHNUNG
 Im Kalender einen vorhandenen Termin anklicken: Farbe & Kennzeichnung öffnet.
 Bei berechneten Planterminen: Termin anklicken, dann Farbe & Kennzeichnung.
 Standard: bisherige automatische Darstellung.
@@ -101,3 +101,20 @@ Frühere Termine bleiben bei Serienänderungen erhalten.
 Markierungen gehören zur verschlüsselten Sicherung und zum Gerätewechsel.
 Im Kalenderbericht werden die Kennzeichnungen als Text ausgegeben und bleiben
 auch bei Schwarzweißdruck erkennbar.
+
+NEU IN 1.10.3 – BEGINN KORRIGIEREN
+Unter Behandlung & Medikamente beim Kalenderplan Plan ändern wählen.
+Das Feld Beginn ist jetzt bearbeitbar.
+Beispiel: Beginn 13.10.2026, Ende 11.12.2026, täglich 18:00 Uhr.
+Plan speichern: 60 berechnete Anwendungen. Tage vor dem korrigierten Beginn
+werden nicht mehr als geplante Anwendungen angezeigt.
+Ein geänderter Beginn korrigiert den gesamten Plan; das Stichtagsfeld wird
+hierfür automatisch auf den neuen Beginn gesetzt. Die bisherige Planfassung
+bleibt im Änderungsverlauf gespeichert.
+Eine Gesamtkorrektur ist nur möglich, solange keine Einnahmen, Nachträge,
+Einzeländerungen, Pausen oder ein Behandlungsende dokumentiert wurden.
+Andernfalls zeigt die App einen Hinweis und lässt den Datenbestand unverändert.
+Dann kann der unveränderte Beginn als Rhythmus-Anker bestehen bleiben und
+eine Änderung ab einem Stichtag vorgenommen werden.
+Farbkennzeichnungen bleiben gespeichert. Ausgeblendete Rhythmus- und
+Anzahlfelder blockieren das Speichern nicht mehr.

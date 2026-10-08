@@ -1,6 +1,6 @@
 "use strict";
 (() => {
-  const VERSION = "1.10.2";
+  const VERSION = "1.10.3";
   const q = (s, r = document) => r.querySelector(s);
   const qa = (s, r = document) => [...r.querySelectorAll(s)];
   const safe = v => typeof esc === "function" ? esc(String(v ?? "")) : String(v ?? "").replace(/[&<>\"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -386,7 +386,7 @@
   const ausrichtungsStil=document.createElement("style");ausrichtungsStil.id="v19126Druckausrichtung";document.head.appendChild(ausrichtungsStil);
   q("#v19125Drucken").addEventListener("click", async()=>{await vorschau();ausrichtungsStil.textContent="@media print{@page{size:A4 portrait;margin:11mm}}";document.body.classList.add("v19125-druckt");await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));window.print();});
   window.addEventListener("afterprint",()=>{document.body.classList.remove("v19125-druckt","v19126-kosten-druckt");ausrichtungsStil.textContent="";});
-  // Qualitätsversion 1.10.2: eindeutige Eingabewege statt versteckter Umwege.
+  // Qualitätsversion 1.10.3: eindeutige Eingabewege statt versteckter Umwege.
   // Ein Tages-Check ist ein zusammengehöriger Datensatz. Falls eine ältere
   // Programmfassung am selben Zeitpunkt versehentlich zwei Teile erzeugt hat,
   // entfernt ein bestätigter Löschvorgang beide Teile dauerhaft.

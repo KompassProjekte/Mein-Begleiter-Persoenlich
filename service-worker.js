@@ -1,4 +1,4 @@
-const CACHE = 'mein-begleiter-kalender-test-cache-v1-10-2-farben-1';
+const CACHE = 'mein-begleiter-kalender-test-cache-v1-10-3-beginn-1';
 const BASIS = new URL('./', self.location.href).pathname;
 const PFLICHTDATEIEN = [
   BASIS,
