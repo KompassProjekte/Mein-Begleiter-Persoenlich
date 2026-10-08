@@ -1,4 +1,4 @@
-MEIN BEGLEITER 1.10.1 – KALENDER-TESTVERSION
+MEIN BEGLEITER 1.10.2 – KALENDER-TESTVERSION
 Stand: 08.10.2026
 Grundlage: persönliche App 1.9.1.2.5.10
 
@@ -34,7 +34,8 @@ Kalender & Termine: Monat, Woche, Tag oder Terminliste.
 Terminliste: 90 Tage ab dem gewählten Datum; mit Pfeilen weiterblättern.
 Filter gelten für den sichtbaren Zeitraum. Alle zeigt auch erledigte Termine.
 Smartphone: zunächst Wochenliste; Tagesliste ebenfalls wählbar.
-Vorhandene Termine anklicken: bisherige Termine & Fragen öffnen.
+Vorhandene Termine anklicken: Farbe & Kennzeichnung öffnen.
+Dort können auch die bisherigen Termine & Fragen aufgerufen werden.
 Plankalender-Termin anklicken: Dokumentation / tatsächliche Zeit / Änderung.
 Eingenommen / durchgeführt: Zeitpunkt prüfen und bestätigen.
 Ausgelassen: wird als solcher Status festgehalten.
@@ -65,7 +66,7 @@ Automatische Erinnerungen sind vorbereitet, aber NICHT aktiviert.
 Es werden keine medizinischen Dosierungs- oder Einnahmeempfehlungen erzeugt.
 Die übrigen älteren Anleitungen im Paket dokumentieren den Ausgangsstand.
 
-NEU IN 1.10.1 – AUFKLAPPBARE MONATE
+NEU IN 1.10.2 – AUFKLAPPBARE MONATE
 Unter Kalender & Termine die Ansicht Terminliste wählen.
 Der aktuelle Monat ist zunächst geöffnet, weitere Monate geschlossen.
 Wenn der aktuelle Monat nicht im sichtbaren Zeitraum liegt, wird der
@@ -81,3 +82,22 @@ AKTUALISIERUNG
 Dieses Paket ersetzt die Dateien im bisherigen Kalender-Testprojekt.
 Der lokale Test-Datenspeicher bleibt derselbe. Vorher Sicherung erstellen.
 Das ursprüngliche persönliche Projekt unverändert lassen.
+
+NEU IN 1.10.2 – FARBE & KENNZEICHNUNG
+Im Kalender einen vorhandenen Termin anklicken: Farbe & Kennzeichnung öffnet.
+Bei berechneten Planterminen: Termin anklicken, dann Farbe & Kennzeichnung.
+Standard: bisherige automatische Darstellung.
+Gelb / ★ Wichtig: besonders beachten.
+Hellblau / Besonderer Termin: eigene Kennzeichnung.
+Hellviolett / Persönlicher Anlass: eigene Kennzeichnung.
+Kennzeichnung speichern bestätigen. Terminstatus, Uhrzeit und Dosierung werden
+hierdurch nicht verändert. Die Auswahl erscheint als Farbe UND Text.
+Bei Planserien: Nur diesen Termin oder Alle zukünftigen Termine dieses Plans.
+Für zukünftige Termine kann ein Stichtag ab heute gewählt werden.
+Einzelkennzeichnungen haben Vorrang vor der Serienfarbe.
+Standard für einen einzelnen Termin setzt dessen Kennzeichnung auf Standard,
+auch wenn für die Serie eine andere Farbe gilt.
+Frühere Termine bleiben bei Serienänderungen erhalten.
+Markierungen gehören zur verschlüsselten Sicherung und zum Gerätewechsel.
+Im Kalenderbericht werden die Kennzeichnungen als Text ausgegeben und bleiben
+auch bei Schwarzweißdruck erkennbar.

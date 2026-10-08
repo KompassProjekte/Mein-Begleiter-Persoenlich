@@ -1,0 +1,59 @@
+Prüfprotokoll – Kalender-Testversion 1.10.2, 08.10.2026
+
+Bestanden:
+- 13.10. bis einschließlich 11.12.2026, täglich 18:00: genau 60 Anwendungen.
+- Mehrere Uhrzeiten, Anzahlgrenze, bestimmte Wochentage, X Tage, X Wochen,
+  individuelle Daten, Schaltjahr und Eingabevalidierung.
+- Stichtagsänderung ohne Änderung früherer geplanter Uhrzeiten.
+- Einzeltermin-Ausnahmen und in einen anderen Zeitraum verschobene Termine.
+- Pausen, Endstatus und tatsächliche Einnahmezeit als separate Dokumentation.
+- Bedienung: Plan erstellen, auslassen, zurücksetzen, eingenommen,
+  Pause, Fortsetzen und vorzeitiges Beenden.
+- Keine erzeugten Tagebucheinträge für Planserien; Einzeltermine aus Berechnung.
+- Lokale Speicherung und Erhalt nach Neuladen.
+- Eigener Speichername, eigene Dokumenten-Datenbank und eigener PWA-Cache.
+- Vollständiger verschlüsselter Export über die App: AES-256-GCM entschlüsselt
+  und Plan, Ausnahme, tatsächliche Zeit, Pause, Testdokument, Termin und Frage
+  im entschlüsselten Inhalt verglichen.
+- Wiederherstellung dieses Pakets über die App mit anschließender Datenprüfung.
+- Browserprüfung mit Chromium: 1366x900, Tablet 800x1280,
+  Smartphone 390x844 und Querformat 844x390; kein seitliches Überlaufen.
+- Keine JavaScript-Laufzeitfehler in diesen geprüften Abläufen.
+- Druck als A4-PDF erzeugt und visuell geprüft; kompakte Ausgabe mit 10 pt.
+
+Prüfumfang / Grenzen:
+Die Bildschirmgrößen wurden im Browser nachgebildet. Kein physischer Test
+auf Windows, Samsung A9 oder Smartphone; Installation und gerätespezifisches
+Verhalten bleiben Teil des persönlichen Praxistests.
+Eine vollständige erneute Prüfung jeder bestehenden Buch-, Messwert- und
+Dokumentenfunktion wurde nicht durchgeführt. Die Ausgangsdateien und ihre
+Funktionen wurden übernommen; gezielte Änderungen betreffen Speichertrennung,
+Versionsangabe, Sicherung/Import und die zusätzliche Kalenderfunktion.
+Das Original-ZIP wurde nicht geändert. Die Testversion wurde nicht veröffentlicht.
+
+ERGÄNZUNG 1.10.1 – MONATSGRUPPEN
+Geprüft: aktueller Monat automatisch offen, andere geschlossen;
+Termin-/Anwendungsanzahl je Monat; einzelne Monatsöffnung; alle öffnen
+und schließen; Erhalt der Auswahl beim Neuzeichnen; unveränderte Plandaten;
+Termindialog aus Monatsgruppe; Smartphone 390x844 ohne Überbreite;
+Druck enthält auch Termine geschlossener Monate. Kalenderlogik weiterhin
+bestanden. Für diese Änderung wurde die Sicherungsverschlüsselung nicht
+erneut vollständig geprüft; Datenstruktur und Verschlüsselung unverändert.
+
+ERGÄNZUNG 1.10.2 – FARBE & KENNZEICHNUNG
+Geprüft im Chromium-Browser:
+- Gelbe Einzelkennzeichnung eines vorhandenen Arzttermins.
+- Terminstatus bleibt unabhängig von der Kennzeichnung erhalten.
+- Planserie ab Stichtag hellblau; früherer Termin bleibt unverändert.
+- Hellviolette Einzelausnahme; Rücksetzen auf Standard.
+- Keine zusätzlichen Termine oder Einnahmeaufzeichnungen durch Farben.
+- Kennzeichnung bleibt nach Neuladen erhalten.
+- Smartphonebreite 390x844 ohne seitliches Überlaufen, visuell geprüft.
+- Kalenderbericht enthält Wichtig und Besonderer Termin als Text.
+- AES-256-GCM-Export geprüft: Farbregeln an bestehendem Termin und Plan
+  enthalten, zusammen mit Dokument, Einnahmezeit, Pause, Termin und Frage.
+- Wiederherstellung dieses Pakets über die App erfolgreich; Farbregeln für
+  Plan und vorhandenen Termin anschließend erneut verglichen.
+- Kalenderberechnung unverändert: weiterhin 60 Anwendungen im Beispiel.
+Keine erneute vollständige Prüfung aller ursprünglichen App-Funktionen;
+kein physischer Gerätetest. Die Testversion ist nicht veröffentlicht.
