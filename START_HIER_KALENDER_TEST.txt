@@ -1,4 +1,4 @@
-MEIN BEGLEITER 1.10.0 – KALENDER-TESTVERSION
+MEIN BEGLEITER 1.10.1 – KALENDER-TESTVERSION
 Stand: 08.10.2026
 Grundlage: persönliche App 1.9.1.2.5.10
 
@@ -64,3 +64,20 @@ Die Daten bleiben lokal. Keine automatische Synchronisation.
 Automatische Erinnerungen sind vorbereitet, aber NICHT aktiviert.
 Es werden keine medizinischen Dosierungs- oder Einnahmeempfehlungen erzeugt.
 Die übrigen älteren Anleitungen im Paket dokumentieren den Ausgangsstand.
+
+NEU IN 1.10.1 – AUFKLAPPBARE MONATE
+Unter Kalender & Termine die Ansicht Terminliste wählen.
+Der aktuelle Monat ist zunächst geöffnet, weitere Monate geschlossen.
+Wenn der aktuelle Monat nicht im sichtbaren Zeitraum liegt, wird der
+gewählte bzw. erste angezeigte Monat geöffnet.
+Monatszeile antippen: Tage, Uhrzeiten und Einnahmestatus anzeigen.
+Alle Monate öffnen / schließen erleichtert den Gesamtüberblick.
+Die Anzahl je Monat bezieht sich auf den gewählten Zeitraum und Filter.
+Monatskästchen, Tages- und Wochenansicht bleiben ebenfalls auswählbar.
+Der Ausdruck enthält weiterhin alle Termine im Zeitraum, unabhängig davon,
+welche Monate am Bildschirm geöffnet sind.
+
+AKTUALISIERUNG
+Dieses Paket ersetzt die Dateien im bisherigen Kalender-Testprojekt.
+Der lokale Test-Datenspeicher bleibt derselbe. Vorher Sicherung erstellen.
+Das ursprüngliche persönliche Projekt unverändert lassen.

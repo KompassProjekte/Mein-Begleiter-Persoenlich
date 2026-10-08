@@ -4,3 +4,5 @@
 @media print{body.kal-print>*:not(#kal-report){display:none!important}body.kal-print{display:block!important;min-height:0!important;height:auto!important;margin:0!important;padding:0!important;background:white!important}body.kal-print #kal-report{margin:0!important;padding:0!important;break-before:auto!important;page-break-before:auto!important}}
 .kal-form [hidden]{display:none!important}.kal-event{font-size:14px}
 @media(max-width:620px){.kal-event{font-size:16px;padding:8px}.kal-event small{font-size:13px}}
+.kal-month{margin:12px 0;border:1px solid #bcd5cf;border-radius:12px;background:#fff;overflow:hidden}.kal-month>summary{padding:16px;cursor:pointer;background:#e4f2ed;color:#174d48;font-weight:700;font-size:18px}.kal-month>summary:focus-visible{outline:3px solid #267c73;outline-offset:-3px}.kal-month-count{font-size:14px;font-weight:400;display:inline-block;margin-left:12px}.kal-month-content{padding:4px 12px 10px}.kal-month-content .karte{box-shadow:none}.kal-month-controls{margin-bottom:8px}
+@media(max-width:620px){.kal-month>summary{padding:14px;font-size:18px}.kal-month-count{display:block;margin:5px 0 0 21px}.kal-month-content{padding:3px 8px 8px}}
