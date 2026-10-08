@@ -7,7 +7,7 @@
       content="width=device-width,initial-scale=1,viewport-fit=cover"
     />
     <meta name="theme-color" content="#225b56" />
-    <title>Mein Begleiter 1.9.1.2.5.10 – Persönliche App</title>
+    <title>Mein Begleiter 1.10.0 – Persönliche App</title>
     <link rel="manifest" href="./manifest.webmanifest" />
     <link rel="icon" type="image/png" href="./icons/favicon-64.png" />
     <link rel="apple-touch-icon" href="./icons/apple-touch-icon-180.png" />
@@ -1701,7 +1701,7 @@
           </button>
         </nav>
         <div class="seitenfuss">
-          <strong>Version 1.9.1.2.5.10</strong><br />Persönliche App-Version
+          <strong>Version 1.10.0</strong><br />Persönliche App-Version
         </div>
       </aside>
       <main>
@@ -2656,7 +2656,7 @@
                 <span>Persönlicher Browser-Speicher</span>
               </div>
               <p>
-                <strong>Mein Begleiter 1.9.1.2.5.10 – Persönliche App</strong>
+                <strong>Mein Begleiter 1.10.0 – Persönliche App</strong>
               </p>
               <p>
                 Ihre Einträge werden ausschließlich lokal im persönlichen
@@ -3152,7 +3152,7 @@
 
     <script>
       "use strict";
-      const SCHLUESSEL = "mein-begleiter-persoenlich-pwa-v1-9-0";
+      const SCHLUESSEL = "mein-begleiter-kalender-test-v1-10-0";
       const STARTDATEN = [];
       let daten = ladeDaten();
       let ungespeicherteSeite = "";
@@ -3221,6 +3221,7 @@
         try {
           const d = JSON.parse(localStorage.getItem(SCHLUESSEL));
           if (d && Array.isArray(d.eintraege)) {
+            d.kalenderPlaene = Array.isArray(d.kalenderPlaene) ? d.kalenderPlaene : [];
             d.fragen = Array.isArray(d.fragen) ? d.fragen : [];
             d.medikamente = Array.isArray(d.medikamente) ? d.medikamente : [];
             d.einnahmen = Array.isArray(d.einnahmen) ? d.einnahmen : [];
@@ -3239,6 +3240,7 @@
           eintraege: structuredClone(STARTDATEN),
           fragen: [],
           medikamente: [],
+          kalenderPlaene: [],
           einnahmen: [],
           nebenwirkungen: [],
           schritte: [],
@@ -3868,7 +3870,7 @@
         let anfrage;
         try {
           anfrage = indexedDB.open(
-            "mein-begleiter-persoenlich-pwa-v1-9-0-dokumente",
+            "mein-begleiter-kalender-test-v1-10-0-dokumente",
             1,
           );
         } catch (e) {
@@ -4112,6 +4114,7 @@
           eintraege: berichtEintraege(),
           fragen: daten.fragen.filter((f) => passtBerichtArzt(f.arzt)),
           medikamente: daten.medikamente,
+          kalenderPlaene: daten.kalenderPlaene || [],
           dokumente: dokumenteGeschichte.filter((d) => passtBerichtArzt(d.quelleName)),
           optionen: ["optWegbegleiter","optMesswerte","optKosten","optMedikamente","optFragen"]
             .map((id) => [id, $("#" + id).checked]),
@@ -4177,7 +4180,7 @@
               return `<div class="tagebuch-eintrag"><div class="tagebuch-datum">${datumLang(e.datum)}</div><div class="tagebuch-text"><h5>${esc(ueberschrift)}</h5>${texte.join("")}</div></div>`;
             })
             .join("");
-        html += `</div><p class="hinweis">Erstellt mit Mein Begleiter 1.9.1.2.5.10 – Persönliche App · Lothar &amp; Nimbus</p>`;
+        html += `</div><p class="hinweis">Erstellt mit Mein Begleiter 1.10.0 – Persönliche App · Lothar &amp; Nimbus</p>`;
         $("#berichtAusgabe").innerHTML = html;
         gespeichertenEntwurfAnzeigen();
       }
@@ -4239,7 +4242,7 @@
           });
         if (schluss)
           html += `<div class="buch-seite"><h4>Mein Rückblick und Ausblick</h4><div class="buch-schluss"><p>${esc(schluss)}</p></div></div>`;
-        html += `<p class="hinweis">Erstellt mit Mein Begleiter 1.9.1.2.5.10 – Persönliche App · Lothar &amp; Nimbus · ${datumLang(heuteIso())}</p>`;
+        html += `<p class="hinweis">Erstellt mit Mein Begleiter 1.10.0 – Persönliche App · Lothar &amp; Nimbus · ${datumLang(heuteIso())}</p>`;
         $("#berichtAusgabe").innerHTML = html;
       }
       function renderBericht() {
@@ -4559,7 +4562,7 @@
           });
         if (schluss)
           html += `<div class="buch-seite"><h4>Mein Rückblick und Ausblick</h4><div class="buch-schluss"><p>${esc(schluss)}</p></div></div>`;
-        html += `<p class="hinweis">${fassung === "lese" ? "Persönliche Leseausgabe – aus meinen eigenen Einträgen zusammengestellt. " : ""}Erstellt mit Mein Begleiter 1.9.1.2.5.10 – Persönliche App · Lothar &amp; Nimbus · ${datumLang(heuteIso())}</p>`;
+        html += `<p class="hinweis">${fassung === "lese" ? "Persönliche Leseausgabe – aus meinen eigenen Einträgen zusammengestellt. " : ""}Erstellt mit Mein Begleiter 1.10.0 – Persönliche App · Lothar &amp; Nimbus · ${datumLang(heuteIso())}</p>`;
         $("#berichtAusgabe").innerHTML = html;
         gespeichertenEntwurfAnzeigen();
       }
@@ -5662,6 +5665,7 @@
               eintraege: daten.eintraege,
               fragen: daten.fragen,
               medikamente: daten.medikamente,
+          kalenderPlaene: daten.kalenderPlaene || [],
               einnahmen: daten.einnahmen,
               nebenwirkungen: daten.nebenwirkungen,
               schritte: daten.schritte,
@@ -5756,7 +5760,8 @@
             daten = {
               eintraege: neu.eintraege,
               fragen: Array.isArray(neu.fragen) ? neu.fragen : [],
-              medikamente: Array.isArray(neu.medikamente)
+              kalenderPlaene: Array.isArray(neu.kalenderPlaene) ? neu.kalenderPlaene : [],
+          medikamente: Array.isArray(neu.medikamente)
                 ? neu.medikamente
                 : [],
               einnahmen: Array.isArray(neu.einnahmen) ? neu.einnahmen : [],
@@ -6167,6 +6172,7 @@
                 eintraege: daten.eintraege,
                 fragen: daten.fragen,
                 medikamente: daten.medikamente,
+          kalenderPlaene: daten.kalenderPlaene || [],
                 einnahmen: daten.einnahmen,
                 nebenwirkungen: daten.nebenwirkungen,
                 schritte: daten.schritte,
@@ -6228,6 +6234,7 @@
           eintraege: daten.eintraege,
           fragen: daten.fragen,
           medikamente: daten.medikamente,
+          kalenderPlaene: daten.kalenderPlaene || [],
           einnahmen: daten.einnahmen,
           nebenwirkungen: daten.nebenwirkungen,
           schritte: daten.schritte,
@@ -6283,7 +6290,8 @@
           daten = {
             eintraege: Array.isArray(neu.eintraege) ? neu.eintraege : [],
             fragen: Array.isArray(neu.fragen) ? neu.fragen : [],
-            medikamente: Array.isArray(neu.medikamente) ? neu.medikamente : [],
+            kalenderPlaene: Array.isArray(neu.kalenderPlaene) ? neu.kalenderPlaene : [],
+          medikamente: Array.isArray(neu.medikamente) ? neu.medikamente : [],
             einnahmen: Array.isArray(neu.einnahmen) ? neu.einnahmen : [],
             nebenwirkungen: Array.isArray(neu.nebenwirkungen)
               ? neu.nebenwirkungen
@@ -6461,6 +6469,7 @@
           eintraege: daten.eintraege,
           fragen: daten.fragen,
           medikamente: daten.medikamente,
+          kalenderPlaene: daten.kalenderPlaene || [],
           einnahmen: daten.einnahmen,
           nebenwirkungen: daten.nebenwirkungen,
           schritte: daten.schritte,
@@ -6473,6 +6482,7 @@
         const normDaten = (neu) => ({
           eintraege: Array.isArray(neu.eintraege) ? neu.eintraege : [],
           fragen: Array.isArray(neu.fragen) ? neu.fragen : [],
+          kalenderPlaene: Array.isArray(neu.kalenderPlaene) ? neu.kalenderPlaene : [],
           medikamente: Array.isArray(neu.medikamente) ? neu.medikamente : [],
           einnahmen: Array.isArray(neu.einnahmen) ? neu.einnahmen : [],
           nebenwirkungen: Array.isArray(neu.nebenwirkungen)
@@ -6695,7 +6705,7 @@
           const version = Number(obj.version || obj.formatVersion || 1);
           if (!Number.isFinite(version) || version > APP_VERSION)
             throw new Error(
-              `Diese Sicherung wurde mit einer neueren Datenstruktur (${obj.version || "unbekannt"}) erstellt und kann mit Version 1.9.1.2.5.10 nicht sicher geöffnet werden.`,
+              `Diese Sicherung wurde mit einer neueren Datenstruktur (${obj.version || "unbekannt"}) erstellt und kann mit Version 1.10.0 nicht sicher geöffnet werden.`,
             );
           return {
             obj,
@@ -6948,13 +6958,7 @@
             autocomplete="new-password"
             minlength="12"
         /></label>
-        <button
-          id="geraetePasswortZeigen"
-          class="v19124-kennwort-auge"
-          type="button"
-          aria-controls="geraetePasswort geraetePasswort2"
-          aria-pressed="false"
-        ><span aria-hidden="true">👁</span><span>Kennwörter anzeigen</span></button>
+        <label><input id="geraetePasswortZeigen" type="checkbox" /> Kennwort anzeigen</label>
         <div id="geraetePasswortStaerke" class="hinweis" role="status">
           Verwenden Sie mindestens 12 Zeichen, möglichst mehrere Wörter.
         </div>
@@ -6985,7 +6989,7 @@
           pass = $("#geraetePasswort"),
           pass2 = $("#geraetePasswort2"),
           weiter = $("#geraeteWeiter");
-        const APP_VERSION_GERAETEWECHSEL = "1.9.1.2.5.10";
+        const APP_VERSION_GERAETEWECHSEL = "1.10.0";
         const DATENSTRUKTUR_VERSION = "1.8";
         const SICHERUNGSFORMAT_VERSION = 2;
         const MAX_DATEIGROESSE = 250 * 1024 * 1024;
@@ -7135,6 +7139,7 @@
           eintraege: daten.eintraege,
           fragen: daten.fragen,
           medikamente: daten.medikamente,
+          kalenderPlaene: daten.kalenderPlaene || [],
           einnahmen: daten.einnahmen,
           nebenwirkungen: daten.nebenwirkungen,
           schritte: daten.schritte,
@@ -7177,6 +7182,7 @@
         const normDaten = (neu) => ({
           eintraege: Array.isArray(neu.eintraege) ? neu.eintraege : [],
           fragen: Array.isArray(neu.fragen) ? neu.fragen : [],
+          kalenderPlaene: Array.isArray(neu.kalenderPlaene) ? neu.kalenderPlaene : [],
           medikamente: Array.isArray(neu.medikamente) ? neu.medikamente : [],
           einnahmen: Array.isArray(neu.einnahmen) ? neu.einnahmen : [],
           nebenwirkungen: Array.isArray(neu.nebenwirkungen)
@@ -7244,6 +7250,7 @@
             termine: Array.isArray(d.eintraege) ? d.eintraege.filter((e) => e && (e.arzt || e.massnahme)).length : 0,
             fragen: anzahl(d.fragen),
             medikamente: anzahl(d.medikamente),
+            kalenderPlaene: anzahl(d.kalenderPlaene),
             einnahmen: anzahl(d.einnahmen),
             nebenwirkungen: anzahl(d.nebenwirkungen),
             behandlungsschritte: anzahl(d.schritte),
@@ -7259,10 +7266,14 @@
             throw new Error("Die Sicherung verwendet eine nicht unterstützte Datenstruktur.");
           if ((inhalt.edition !== edition && inhalt.edition !== "praxistest") || !inhalt.daten || !Array.isArray(inhalt.daten.eintraege))
             throw new Error("Das Paket ist unvollständig oder gehört zu einer anderen Ausgabe.");
-          if (inhalt.appVersion !== "1.8.3" && inhalt.appVersion !== "1.8.4" && inhalt.appVersion !== "1.8.5" && inhalt.appVersion !== "1.8.6" && inhalt.appVersion !== "1.8.6.1" && inhalt.appVersion !== "1.9.0" && inhalt.appVersion !== "1.9.0.1" && inhalt.appVersion !== "1.9.1" && inhalt.appVersion !== "1.9.1.1" && inhalt.appVersion !== "1.9.1.2" && inhalt.appVersion !== "1.9.1.2.1" && inhalt.appVersion !== "1.9.1.2.2" && inhalt.appVersion !== "1.9.1.2.3" && inhalt.appVersion !== APP_VERSION_GERAETEWECHSEL)
+          if (inhalt.appVersion !== "1.8.3" && inhalt.appVersion !== "1.8.4" && inhalt.appVersion !== "1.8.5" && inhalt.appVersion !== "1.8.6" && inhalt.appVersion !== "1.8.6.1" && inhalt.appVersion !== "1.9.0" && inhalt.appVersion !== "1.9.0.1" && inhalt.appVersion !== "1.9.1" && inhalt.appVersion !== "1.9.1.1" && inhalt.appVersion !== "1.9.1.2" && inhalt.appVersion !== "1.9.1.2.1" && inhalt.appVersion !== "1.9.1.2.2" && inhalt.appVersion !== "1.9.1.2.3" && inhalt.appVersion !== "1.9.1.2.5.10" && inhalt.appVersion !== APP_VERSION_GERAETEWECHSEL)
             throw new Error(`Die Programmversion ${inhalt.appVersion || "unbekannt"} ist nicht freigegeben.`);
           if (!inhalt.mitDokumenten || !Array.isArray(inhalt.dokumente))
             throw new Error("Für den sicheren Gerätewechsel müssen die Dokumente vollständig enthalten sein.");
+          for (const plan of inhalt.daten.kalenderPlaene || []) {
+            if (!plan.id || !Array.isArray(plan.revisions) || !plan.revisions.length || !Array.isArray(plan.pauses) || !plan.exceptions) throw new Error("Ein Kalenderplan ist unvollständig.");
+            plan.revisions.forEach(r => { MBKalender.validate(r); if (!MBKalender.valid(r.effective)) throw new Error("Ungültiger Planstichtag."); });
+          }
           for (const doc of inhalt.dokumente) {
             if (!doc || !Array.isArray(doc.seiten)) throw new Error("Eine Dokumentenmappe ist unvollständig.");
             for (const seite of doc.seiten) {
@@ -7285,7 +7296,7 @@
         const datenbestandIstLeer = (s) =>
           s.eintraege === 0 && s.fragen === 0 && s.medikamente === 0 &&
           s.einnahmen === 0 && s.nebenwirkungen === 0 &&
-          s.behandlungsschritte === 0 && s.dokumente === 0 && s.seiten === 0;
+          s.kalenderPlaene === 0 && s.behandlungsschritte === 0 && s.dokumente === 0 && s.seiten === 0;
         async function protokollSpeichern(inhalt, stats) {
           const bericht = [
             "MEIN BEGLEITER – PRÜFPROTOKOLL SICHERER GERÄTEWECHSEL",
@@ -7299,6 +7310,7 @@
             `Termine: ${stats.termine}`,
             `Fragen: ${stats.fragen}`,
             `Medikamente: ${stats.medikamente}`,
+            `Kalenderpläne: ${stats.kalenderPlaene}`,
             `Dokumentenmappen: ${stats.dokumente}`,
             `Dokumentseiten: ${stats.seiten}`,
             "Ergebnis: Datenbestand vollständig übernommen und gespeichert.",
@@ -7360,6 +7372,10 @@
         };
         $("#geraeteSchliessen").onclick = $("#geraeteAbbrechen").onclick =
           schliessen;
+        $("#geraetePasswortZeigen").onchange = (e) => {
+          const typ = e.target.checked ? "text" : "password";
+          pass.type = pass2.type = typ;
+        };
         const kennwortBewerten = () => {
           const wert = pass.value;
           let punkte = 0;
@@ -7428,7 +7444,7 @@
                 vorbereiteteRuecksicherung = await ruecksicherungVorbereiten(kennwort);
               }
               $("#geraetePruefung").innerHTML =
-        `<strong>✓ Entschlüsselung und Integritätsprüfung bestanden</strong><p>Datei: ${esc(importDatei.name)} · ${dateigroesse(importDatei.size)}</p><p>Erstellt: ${new Date(innen.erstelltAm).toLocaleString("de-DE")} auf ${esc(innen.quellgeraet)} · Quellversion ${esc(innen.appVersion)}</p><p>Sicherungskennung: ${esc(innen.sicherungsId)}</p><p>${stats.eintraege} Einträge · ${stats.termine} Termine · ${stats.fragen} Fragen · ${stats.medikamente} Medikamente</p><p>${stats.dokumente} Dokumentenmappen · ${stats.seiten} Dokumentseiten · ${dateigroesse(stats.dokumentBytes)}</p><p>Speicher: ${esc(speicher.text)}</p><p>Auf diesem Gerät vorhanden: ${ziel.eintraege} Einträge · ${ziel.dokumente} Dokumentenmappen.</p>${zielIstLeer ? '<p><strong>✓ Das Zielgerät ist vollständig leer. Eine Rücksicherung ist nicht erforderlich.</strong></p>' : '<p><strong>Vorhandene Zieldaten werden ersetzt. Laden Sie deshalb zuerst die verschlüsselte Rücksicherung herunter.</strong></p>'}<p><strong>Eine Zusammenführung ist in Version 1.9.1.2.5.10 sicherheitshalber deaktiviert.</strong></p>`;
+        `<strong>✓ Entschlüsselung und Integritätsprüfung bestanden</strong><p>Datei: ${esc(importDatei.name)} · ${dateigroesse(importDatei.size)}</p><p>Erstellt: ${new Date(innen.erstelltAm).toLocaleString("de-DE")} auf ${esc(innen.quellgeraet)} · Quellversion ${esc(innen.appVersion)}</p><p>Sicherungskennung: ${esc(innen.sicherungsId)}</p><p>${stats.eintraege} Einträge · ${stats.termine} Termine · ${stats.fragen} Fragen · ${stats.medikamente} Medikamente · ${stats.kalenderPlaene} Kalenderpläne</p><p>${stats.dokumente} Dokumentenmappen · ${stats.seiten} Dokumentseiten · ${dateigroesse(stats.dokumentBytes)}</p><p>Speicher: ${esc(speicher.text)}</p><p>Auf diesem Gerät vorhanden: ${ziel.eintraege} Einträge · ${ziel.dokumente} Dokumentenmappen.</p>${zielIstLeer ? '<p><strong>✓ Das Zielgerät ist vollständig leer. Eine Rücksicherung ist nicht erforderlich.</strong></p>' : '<p><strong>Vorhandene Zieldaten werden ersetzt. Laden Sie deshalb zuerst die verschlüsselte Rücksicherung herunter.</strong></p>'}<p><strong>Eine Zusammenführung ist in Version 1.10.0 sicherheitshalber deaktiviert.</strong></p>`;
               $("#geraetePruefung").hidden = false;
               pass.disabled = true;
               weiter.textContent = zielIstLeer
@@ -7472,7 +7488,7 @@
                 const pruefDokumente = await dokumenteSammeln();
                 const nachher = statistik({ daten: pruefDaten, dokumente: pruefDokumente });
                 const erwartet = geprueft.__stats;
-                if (nachher.eintraege !== erwartet.eintraege || nachher.dokumente !== erwartet.dokumente || nachher.seiten !== erwartet.seiten)
+                if (JSON.stringify(pruefDaten.kalenderPlaene) !== JSON.stringify(geprueft.daten.kalenderPlaene || []) || nachher.eintraege !== erwartet.eintraege || nachher.dokumente !== erwartet.dokumente || nachher.seiten !== erwartet.seiten)
                   throw new Error("Die abschließende Mengenprüfung ist fehlgeschlagen.");
                 renderAlles();
                 await renderDokumente();
@@ -8420,7 +8436,7 @@
 <dialog class="pwa-dialog" id="pwaWillkommen"><div class="dialog-inhalt"><h3>Willkommen in Ihrer persönlichen Arbeitsversion</h3><p>Diese Version startet vollständig leer. Ihre persönlichen Daten werden ausschließlich lokal auf diesem Gerät gespeichert.</p><p>Für die Übernahme Ihrer bisherigen Daten öffnen Sie „Sicherung &amp; Gerätewechsel“ und lesen dort selbst Ihre geprüfte verschlüsselte Sicherung ein.</p><p>Mein Begleiter ersetzt keine ärztliche Beratung, Diagnose oder Behandlung.</p></div><div class="dialog-fuss"><button class="knopf" id="pwaStart" type="button">Zur sicheren Datenübernahme</button><button class="knopf sekundaer" id="pwaHinweisAus" type="button">Hinweis schließen</button></div></dialog>
 <script>
 (() => {
-  const EDITION = "persoenlich", HINWEIS = "mein-begleiter-persoenlich-pwa-v1-9-0-erststart-v1";
+  const EDITION = "persoenlich", HINWEIS = "mein-begleiter-kalender-test-v1-10-0-erststart-v1";
   let installEreignis = null, wartenderWorker = null;
   const pwaLeiste = document.querySelector('.pwa-leiste'), mobilkopf = document.querySelector('.mobilkopf');
   if (pwaLeiste && mobilkopf) mobilkopf.insertAdjacentElement('afterend', pwaLeiste);
@@ -8551,9 +8567,9 @@
 </dialog>
 <script id="bedienoptimierung-v186-script">
 (() => {
-  const APP_VERSION = '1.9.1.2.5.10';
-  const MODUS_KEY = 'mein-begleiter-persoenlich-v1-9-1-ansicht';
-  const START_KEY = 'mein-begleiter-persoenlich-v1-9-1-startauswahl';
+  const APP_VERSION = '1.10.0';
+  const MODUS_KEY = 'mein-begleiter-kalender-test-v1-9-1-ansicht';
+  const START_KEY = 'mein-begleiter-kalender-test-v1-9-1-startauswahl';
   const ua = navigator.userAgent;
   const istTablet = /iPad|Tablet/i.test(ua) || (/Android/i.test(ua) && !/Mobile/i.test(ua));
   const istHandy = /Mobi|iPhone|Android/i.test(ua) && !istTablet;
@@ -9110,7 +9126,7 @@
 <button id="v19121MobilMenuknopf" type="button" aria-controls="v19121MobilMenue">☰ Menü</button>
 <script id="navigation-hilfe-v19121-script">
 (() => {
-  const MODUS_KEY='mein-begleiter-persoenlich-v1-9-1-ansicht';
+  const MODUS_KEY='mein-begleiter-kalender-test-v1-9-1-ansicht';
   document.querySelectorAll('.mobile-mehr,.mobil-mehr-menue,#v186Menuknopf,#v186Menue').forEach(e=>e.remove());
   const nav=document.querySelector('.seitenleiste .nav');
   const navPunkte=[['einstellungen','⚙','Einstellungen'],['hilfe','❔','Hilfe & Anleitung']];
@@ -9206,7 +9222,7 @@
 </style>
 <script id="korrekturen-v19122-script">
 (() => {
-  const MODUS_KEY='mein-begleiter-persoenlich-v1-9-1-ansicht';
+  const MODUS_KEY='mein-begleiter-kalender-test-v1-9-1-ansicht';
   const vollSeiten=['bericht','kosten','verlauf'];
   document.querySelectorAll('.nav [data-seite]').forEach(b=>{if(vollSeiten.includes(b.dataset.seite))b.classList.add('v19122-nur-voll');});
   document.querySelectorAll('#v19121MobilMenue [data-seite]').forEach(b=>{if(vollSeiten.includes(b.dataset.seite))b.classList.add('v19122-nur-voll');});
@@ -9236,7 +9252,10 @@
 </script>
 <link rel="stylesheet" href="v19124.css">
 <link rel="stylesheet" href="v1912510.css?v=personal-7">
-<script src="v19124.js?v=kennwort-1"></script>
+<script src="v19124.js"></script>
 <script src="v1912510.js?v=personal-7"></script>
+<link rel="stylesheet" href="kalender.css">
+<script src="kalender-engine.js"></script>
+<script src="kalender.js"></script>
 </body>
 </html>

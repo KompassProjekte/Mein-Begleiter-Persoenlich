@@ -1,0 +1,66 @@
+MEIN BEGLEITER 1.10.0 – KALENDER-TESTVERSION
+Stand: 08.10.2026
+Grundlage: persönliche App 1.9.1.2.5.10
+
+1. Die bisherige persönliche App unverändert lassen.
+2. Dort eine aktuelle vollständige verschlüsselte Sicherung erstellen.
+   Datei und Kennwort bei sich behalten.
+3. Dieses ZIP in einen neuen, getrennten Ordner entpacken.
+4. Zum ersten PC-Test index.html öffnen. Installation und Offlinebetrieb
+   werden über eine HTTPS-Adresse ermöglicht.
+5. Für den Test auf PC, Tablet und Smartphone ein SEPARATES GitHub-Projekt
+   verwenden, zum Beispiel Mein-Begleiter-Kalender-Test. Die entpackten
+   Dateien hochladen. Nicht das vorhandene persönliche Projekt ersetzen.
+6. In der Testversion unter Sicherung die bisherige verschlüsselte Sicherung
+   wiederherstellen. Die Testversion besitzt einen eigenen lokalen Speicher.
+   Bereits in der Testversion vorhandene Daten werden erst nach der
+   verschlüsselten Rücksicherung und Bestätigung ersetzt.
+
+PLÄNE ERSTELLEN
+Unter Behandlung & Medikamente: Neuen Plan erstellen.
+Mehrere Uhrzeiten mit Komma trennen: 08:00, 18:00.
+Individuelle Daten: 2026-10-13, 2026-10-20.
+Die Zuordnung zu einem vorhandenen Medikament verhindert, dass dessen
+alter berechneter Folgetermin zusätzlich im neuen Kalender erscheint.
+Vorhandene Arzneimittel-Einträge und Einnahmeaufzeichnungen bleiben erhalten.
+
+BEISPIEL
+60-Tage-Beispiel vorbereiten: 13.10.2026 bis 11.12.2026, täglich 18:00.
+Es wird erst nach Plan speichern angelegt; das Paket enthält keine Musterpläne.
+Die 60 Termine entstehen durch Berechnung, ohne 60 Tagebucheinträge anzulegen.
+
+BEDIENUNG
+Kalender & Termine: Monat, Woche, Tag oder Terminliste.
+Terminliste: 90 Tage ab dem gewählten Datum; mit Pfeilen weiterblättern.
+Filter gelten für den sichtbaren Zeitraum. Alle zeigt auch erledigte Termine.
+Smartphone: zunächst Wochenliste; Tagesliste ebenfalls wählbar.
+Vorhandene Termine anklicken: bisherige Termine & Fragen öffnen.
+Plankalender-Termin anklicken: Dokumentation / tatsächliche Zeit / Änderung.
+Eingenommen / durchgeführt: Zeitpunkt prüfen und bestätigen.
+Ausgelassen: wird als solcher Status festgehalten.
+Später nachtragen: markiert den Termin für die spätere Dokumentation.
+Nur diesen Termin ändern: speichert eine Ausnahme statt eines neuen Termins.
+Alle zukünftigen Termine ändern: Stichtag wählen; Vergangenheit bleibt bestehen.
+Bereits dokumentierte Anwendungen ab dem Stichtag schützen die Dokumentation:
+Bitte einen späteren Stichtag wählen oder den betreffenden Termin einzeln ändern.
+Pausieren / Fortsetzen / Beenden: ab heute, Verlauf bleibt dokumentiert.
+Pausen verschieben das vereinbarte Enddatum nicht automatisch.
+Ohne festes Ende: Termine werden für die jeweilige Ansicht berechnet;
+auf der Übersicht wird die nächste Anwendung innerhalb von 12 Monaten gesucht.
+
+DRUCK UND BERICHT
+Im Kalender: Zeitraum drucken / Bericht. Der Ausdruck enthält alle Status
+im gewählten Zeitraum sowie Planverlauf und Pausen; auch als PDF speicherbar.
+Die bisherigen Berichts- und Buchfunktionen bleiben erreichbar.
+
+SICHERUNG UND GERÄTEWECHSEL
+Die vollständige verschlüsselte Sicherung enthält auch alle neuen Pläne,
+Planänderungen, Einzeltermin-Ausnahmen, tatsächlichen Zeitpunkte und Pausen.
+Alte Sicherungen ohne Kalenderpläne können übernommen werden.
+Sicherungen der Testversion in dieser Testversion wiederherstellen; die alte
+App kennt die neuen Planfelder noch nicht und ist kein Rückübernahmeziel.
+Die Daten bleiben lokal. Keine automatische Synchronisation.
+
+Automatische Erinnerungen sind vorbereitet, aber NICHT aktiviert.
+Es werden keine medizinischen Dosierungs- oder Einnahmeempfehlungen erzeugt.
+Die übrigen älteren Anleitungen im Paket dokumentieren den Ausgangsstand.

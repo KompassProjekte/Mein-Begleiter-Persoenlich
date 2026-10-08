@@ -1,0 +1,18 @@
+const assert=require('node:assert/strict'),K=require('../kalender-engine.js');
+const r={name:'Test',start:'2026-10-13',effective:'2026-10-13',mode:'daily',times:['18:00'],endMode:'date',end:'2026-12-11'};
+const p={id:'p',revisions:[r],exceptions:{},pauses:[]};K.validate(r);
+let e=K.occurrences(p,'2026-01-01','2027-01-01');assert.equal(e.length,60);assert.equal(e[0].date,'2026-10-13');assert.equal(e.at(-1).date,'2026-12-11');
+assert.equal(K.summary(p,'2026-10-13').elapsed,1);assert.equal(K.summary(p,'2026-12-11').total,60);
+assert.equal(K.base({...r,times:['08:00','18:00']},r.end).length,120);
+assert.equal(K.base({...r,endMode:'count',count:3,times:['08:00','18:00']},r.end).length,3);
+assert.equal(K.base({...r,mode:'days',interval:2},r.end).length,30);
+assert.equal(K.base({...r,mode:'weeks',interval:1},r.end).length,9);
+assert.equal(K.base({...r,mode:'weekdays',weekdays:[1,3,5]},r.end).length,26);
+assert.equal(K.base({...r,mode:'individual',dates:['2026-10-13','2026-10-20']},r.end).length,2);
+p.exceptions['2026-10-13T18:00']={status:'eingenommen',actual:'2026-10-13T18:05'};assert.equal(K.occurrences(p,r.start,r.end).length,60);
+p.pauses.push({start:'2026-10-14',end:'2026-10-16'});assert.equal(K.occurrences(p,r.start,r.end).filter(x=>x.status==='pausiert').length,3);
+p.revisions.push({...r,effective:'2026-11-01',times:['19:00']});e=K.occurrences(p,r.start,r.end);assert.equal(e.length,60);assert.equal(e.find(x=>x.date==='2026-10-31').time,'18:00');assert.equal(e.find(x=>x.date==='2026-11-01').time,'19:00');
+p.exceptions['2026-10-20T18:00']={date:'2027-01-02',time:'20:00'};assert.equal(K.occurrences(p,'2027-01-01','2027-01-03').length,1);
+assert.equal(K.base({...r,start:'2028-02-28',end:'2028-03-01'},'2028-03-01').length,3);
+assert.throws(()=>K.validate({...r,times:['25:00']}));assert.throws(()=>K.validate({...r,end:'2026-10-12'}));
+console.log('Kalenderlogik: 18 Prüfungen bestanden.');

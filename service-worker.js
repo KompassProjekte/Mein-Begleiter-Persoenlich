@@ -1,13 +1,16 @@
-const CACHE = 'mein-begleiter-persoenlich-cache-v1-9-1-2-5-10-kennwort-1';
+const CACHE = 'mein-begleiter-kalender-test-cache-v1-9-1-2-5-10-trennung-1';
 const BASIS = new URL('./', self.location.href).pathname;
 const PFLICHTDATEIEN = [
   BASIS,
   BASIS + 'index.html',
   BASIS + 'v19124.css',
-  BASIS + 'v19124.js?v=kennwort-1',
+  BASIS + 'v19124.js',
   BASIS + 'v1912510.css?v=personal-7',
   BASIS + 'v1912510.js?v=personal-7',
   BASIS + 'manifest.webmanifest',
+  BASIS + 'kalender.css',
+  BASIS + 'kalender-engine.js',
+  BASIS + 'kalender.js',
   BASIS + 'offline.html'
 ];
 const OPTIONALE_DATEIEN = [
@@ -33,7 +36,7 @@ self.addEventListener('activate', event => {
   event.waitUntil((async () => {
     const namen = await caches.keys();
     await Promise.all(namen
-      .filter(name => name.startsWith('mein-begleiter-persoenlich-cache') && name !== CACHE)
+      .filter(name => name.startsWith('mein-begleiter-kalender-test-cache') && name !== CACHE)
       .map(name => caches.delete(name)));
     await self.clients.claim();
   })());
