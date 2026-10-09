@@ -45,6 +45,7 @@ function occurrences(p,from,to){
    if(r.endMode==='count'&&serial>=r.count)continue;
    serial++;
    const key=b.date+'T'+b.time, override=ex[key]||{};
+   if(override.deleted)continue;
    const date=override.date||b.date,time=override.time||b.time;
    const paused=(p.pauses||[]).some(x=>b.date>=x.start&&(!x.end||b.date<=x.end));
    let status=override.status||'offen';
@@ -53,7 +54,7 @@ function occurrences(p,from,to){
   }
  }
  // Moved occurrences outside the source window also belong to their destination.
- for(const [key,o] of Object.entries(ex))if(o.date&&o.date>=from&&o.date<=to&&!out.some(x=>x.key===key)){
+ for(const [key,o] of Object.entries(ex))if(!o.deleted&&o.date&&o.date>=from&&o.date<=to&&!out.some(x=>x.key===key)){
   const d=key.slice(0,10),r=[...revisions].reverse().find(x=>x.effective<=d);
   if(r&&base(r,d).some(x=>x.date+'T'+x.time===key))out.push({key,planId:p.id,date:o.date,time:o.time||key.slice(11),name:r.name,kind:r.kind,dose:o.dose??r.dose,note:o.note??r.note,status:o.status||'offen',actual:o.actual||'',deferred:!!o.deferred});
  }

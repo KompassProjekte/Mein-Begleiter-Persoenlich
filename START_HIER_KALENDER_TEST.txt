@@ -1,4 +1,4 @@
-MEIN BEGLEITER 1.10.3 – KALENDER-TESTVERSION
+MEIN BEGLEITER 1.10.4 – KALENDER-TESTVERSION
 Stand: 08.10.2026
 Grundlage: persönliche App 1.9.1.2.5.10
 
@@ -66,7 +66,7 @@ Automatische Erinnerungen sind vorbereitet, aber NICHT aktiviert.
 Es werden keine medizinischen Dosierungs- oder Einnahmeempfehlungen erzeugt.
 Die übrigen älteren Anleitungen im Paket dokumentieren den Ausgangsstand.
 
-NEU IN 1.10.3 – AUFKLAPPBARE MONATE
+NEU IN 1.10.4 – AUFKLAPPBARE MONATE
 Unter Kalender & Termine die Ansicht Terminliste wählen.
 Der aktuelle Monat ist zunächst geöffnet, weitere Monate geschlossen.
 Wenn der aktuelle Monat nicht im sichtbaren Zeitraum liegt, wird der
@@ -83,7 +83,7 @@ Dieses Paket ersetzt die Dateien im bisherigen Kalender-Testprojekt.
 Der lokale Test-Datenspeicher bleibt derselbe. Vorher Sicherung erstellen.
 Das ursprüngliche persönliche Projekt unverändert lassen.
 
-NEU IN 1.10.3 – FARBE & KENNZEICHNUNG
+NEU IN 1.10.4 – FARBE & KENNZEICHNUNG
 Im Kalender einen vorhandenen Termin anklicken: Farbe & Kennzeichnung öffnet.
 Bei berechneten Planterminen: Termin anklicken, dann Farbe & Kennzeichnung.
 Standard: bisherige automatische Darstellung.
@@ -102,7 +102,7 @@ Markierungen gehören zur verschlüsselten Sicherung und zum Gerätewechsel.
 Im Kalenderbericht werden die Kennzeichnungen als Text ausgegeben und bleiben
 auch bei Schwarzweißdruck erkennbar.
 
-NEU IN 1.10.3 – BEGINN KORRIGIEREN
+NEU IN 1.10.4 – BEGINN KORRIGIEREN
 Unter Behandlung & Medikamente beim Kalenderplan Plan ändern wählen.
 Das Feld Beginn ist jetzt bearbeitbar.
 Beispiel: Beginn 13.10.2026, Ende 11.12.2026, täglich 18:00 Uhr.
@@ -118,3 +118,5 @@ Dann kann der unveränderte Beginn als Rhythmus-Anker bestehen bleiben und
 eine Änderung ab einem Stichtag vorgenommen werden.
 Farbkennzeichnungen bleiben gespeichert. Ausgeblendete Rhythmus- und
 Anzahlfelder blockieren das Speichern nicht mehr.
+
+NEU 1.10.4: Plan löschen unter Behandlung & Medikamente. Einzeltermin öffnen: Diesen Termin löschen. Einzelne Löschungen werden als Ausnahme gesichert und kehren nach Neuladen nicht zurück. Dokumentierte Einnahmen bleiben geschützt; solche Pläne können ab heute beendet werden. Vor vollständiger Löschung eine verschlüsselte Sicherung erstellen.
