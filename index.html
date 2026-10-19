@@ -7,7 +7,7 @@
       content="width=device-width,initial-scale=1,viewport-fit=cover"
     />
     <meta name="theme-color" content="#225b56" />
-    <title>Mein Begleiter 1.10.4 – Persönliche App</title>
+    <title>Mein Begleiter 1.10.5 – Persönliche App</title>
     <link rel="manifest" href="./manifest.webmanifest" />
     <link rel="icon" type="image/png" href="./icons/favicon-64.png" />
     <link rel="apple-touch-icon" href="./icons/apple-touch-icon-180.png" />
@@ -1701,7 +1701,7 @@
           </button>
         </nav>
         <div class="seitenfuss">
-          <strong>Version 1.10.4</strong><br />Persönliche App-Version
+          <strong>Version 1.10.5</strong><br />Persönliche App-Version
         </div>
       </aside>
       <main>
@@ -1914,34 +1914,54 @@
                 <option value="rezept">Rezepte</option>
                 <option value="fahrt">Fahrtkosten</option>
               </select></label
+            ><label
+              >Gesundheitsbereich<select class="filter" id="kostenBereich">
+                <option value="alle">Alle Gesundheitsbereiche</option>
+              </select></label
+            ><label
+              >Status<select class="filter" id="kostenStatus">
+                <option value="alle">Alle Status</option>
+                <option value="offen">Offen</option>
+                <option value="bezahlt">Bezahlt</option>
+                <option value="eingereicht">Eingereicht</option>
+                <option value="erstattet">Erstattet</option>
+              </select></label
+            ><label
+              >Suche<input class="filter" id="kostenSuche" type="search" placeholder="Leistung oder Empfänger" /></label
             ><button class="knopf sekundaer" id="kostenFilterReset">
               Filter zurücksetzen
             </button>
           </div>
+          <div class="v1105-exportleiste">
+            <button class="knopf" type="button" id="kostenExcelGefiltert">⬇ Excel – aktuelle Auswahl</button>
+            <button class="knopf sekundaer" type="button" id="kostenExcelAlle">⬇ Excel – alle Kosten</button>
+            <span>Die Excel-Datei ist eine Arbeitskopie, keine Datensicherung.</span>
+          </div>
           <div class="pruefhinweis" id="kostenDopplungen">
             Dopplungsprüfung wird ausgeführt …
           </div>
+          <div hidden><span id="kostenRechnungen"></span><span id="kostenRezepte"></span><span id="kostenFahrten"></span></div>
           <div class="raster">
             <article class="karte kpi span3">
-              <div class="kpi-label">Rechnungen</div>
-              <div class="kpi-wert" id="kostenRechnungen">0 €</div>
-            </article>
-            <article class="karte kpi span3">
-              <div class="kpi-label">Rezepte</div>
-              <div class="kpi-wert" id="kostenRezepte">0 €</div>
-            </article>
-            <article class="karte kpi span3">
-              <div class="kpi-label">Fahrtkosten</div>
-              <div class="kpi-wert" id="kostenFahrten">0 €</div>
-            </article>
-            <article class="karte kpi span3">
-              <div class="kpi-label">Gesamt</div>
+              <div class="kpi-label">Gesamtkosten</div>
               <div class="kpi-wert" id="kostenGesamt">0 €</div>
+            </article>
+            <article class="karte kpi span3">
+              <div class="kpi-label">Erstattungen</div>
+              <div class="kpi-wert" id="kostenErstattungen">0 €</div>
+            </article>
+            <article class="karte kpi span3">
+              <div class="kpi-label">Eigenanteil</div>
+              <div class="kpi-wert" id="kostenEigenanteil">0 €</div>
+            </article>
+            <article class="karte kpi span3">
+              <div class="kpi-label">Posten</div>
+              <div class="kpi-wert" id="kostenAnzahl">0</div>
             </article>
             <article class="karte span6">
               <div class="abschnitt-titel">
                 <h3>Verteilung</h3>
-                <span>nach Kostenart</span>
+                <span>nach Gesundheitsbereich</span>
               </div>
               <div class="kostenliste" id="kostenBalken"></div>
             </article>
@@ -2656,7 +2676,7 @@
                 <span>Persönlicher Browser-Speicher</span>
               </div>
               <p>
-                <strong>Mein Begleiter 1.10.4 – Persönliche App</strong>
+                <strong>Mein Begleiter 1.10.5 – Persönliche App</strong>
               </p>
               <p>
                 Ihre Einträge werden ausschließlich lokal im persönlichen
@@ -4180,7 +4200,7 @@
               return `<div class="tagebuch-eintrag"><div class="tagebuch-datum">${datumLang(e.datum)}</div><div class="tagebuch-text"><h5>${esc(ueberschrift)}</h5>${texte.join("")}</div></div>`;
             })
             .join("");
-        html += `</div><p class="hinweis">Erstellt mit Mein Begleiter 1.10.4 – Persönliche App · Lothar &amp; Nimbus</p>`;
+        html += `</div><p class="hinweis">Erstellt mit Mein Begleiter 1.10.5 – Persönliche App · Lothar &amp; Nimbus</p>`;
         $("#berichtAusgabe").innerHTML = html;
         gespeichertenEntwurfAnzeigen();
       }
@@ -4242,7 +4262,7 @@
           });
         if (schluss)
           html += `<div class="buch-seite"><h4>Mein Rückblick und Ausblick</h4><div class="buch-schluss"><p>${esc(schluss)}</p></div></div>`;
-        html += `<p class="hinweis">Erstellt mit Mein Begleiter 1.10.4 – Persönliche App · Lothar &amp; Nimbus · ${datumLang(heuteIso())}</p>`;
+        html += `<p class="hinweis">Erstellt mit Mein Begleiter 1.10.5 – Persönliche App · Lothar &amp; Nimbus · ${datumLang(heuteIso())}</p>`;
         $("#berichtAusgabe").innerHTML = html;
       }
       function renderBericht() {
@@ -4562,7 +4582,7 @@
           });
         if (schluss)
           html += `<div class="buch-seite"><h4>Mein Rückblick und Ausblick</h4><div class="buch-schluss"><p>${esc(schluss)}</p></div></div>`;
-        html += `<p class="hinweis">${fassung === "lese" ? "Persönliche Leseausgabe – aus meinen eigenen Einträgen zusammengestellt. " : ""}Erstellt mit Mein Begleiter 1.10.4 – Persönliche App · Lothar &amp; Nimbus · ${datumLang(heuteIso())}</p>`;
+        html += `<p class="hinweis">${fassung === "lese" ? "Persönliche Leseausgabe – aus meinen eigenen Einträgen zusammengestellt. " : ""}Erstellt mit Mein Begleiter 1.10.5 – Persönliche App · Lothar &amp; Nimbus · ${datumLang(heuteIso())}</p>`;
         $("#berichtAusgabe").innerHTML = html;
         gespeichertenEntwurfAnzeigen();
       }
@@ -6705,7 +6725,7 @@
           const version = Number(obj.version || obj.formatVersion || 1);
           if (!Number.isFinite(version) || version > APP_VERSION)
             throw new Error(
-              `Diese Sicherung wurde mit einer neueren Datenstruktur (${obj.version || "unbekannt"}) erstellt und kann mit Version 1.10.4 nicht sicher geöffnet werden.`,
+              `Diese Sicherung wurde mit einer neueren Datenstruktur (${obj.version || "unbekannt"}) erstellt und kann mit Version 1.10.5 nicht sicher geöffnet werden.`,
             );
           return {
             obj,
@@ -6989,7 +7009,7 @@
           pass = $("#geraetePasswort"),
           pass2 = $("#geraetePasswort2"),
           weiter = $("#geraeteWeiter");
-        const APP_VERSION_GERAETEWECHSEL = "1.10.4";
+        const APP_VERSION_GERAETEWECHSEL = "1.10.5";
         const DATENSTRUKTUR_VERSION = "1.8";
         const SICHERUNGSFORMAT_VERSION = 2;
         const MAX_DATEIGROESSE = 250 * 1024 * 1024;
@@ -7444,7 +7464,7 @@
                 vorbereiteteRuecksicherung = await ruecksicherungVorbereiten(kennwort);
               }
               $("#geraetePruefung").innerHTML =
-        `<strong>✓ Entschlüsselung und Integritätsprüfung bestanden</strong><p>Datei: ${esc(importDatei.name)} · ${dateigroesse(importDatei.size)}</p><p>Erstellt: ${new Date(innen.erstelltAm).toLocaleString("de-DE")} auf ${esc(innen.quellgeraet)} · Quellversion ${esc(innen.appVersion)}</p><p>Sicherungskennung: ${esc(innen.sicherungsId)}</p><p>${stats.eintraege} Einträge · ${stats.termine} Termine · ${stats.fragen} Fragen · ${stats.medikamente} Medikamente · ${stats.kalenderPlaene} Kalenderpläne</p><p>${stats.dokumente} Dokumentenmappen · ${stats.seiten} Dokumentseiten · ${dateigroesse(stats.dokumentBytes)}</p><p>Speicher: ${esc(speicher.text)}</p><p>Auf diesem Gerät vorhanden: ${ziel.eintraege} Einträge · ${ziel.dokumente} Dokumentenmappen.</p>${zielIstLeer ? '<p><strong>✓ Das Zielgerät ist vollständig leer. Eine Rücksicherung ist nicht erforderlich.</strong></p>' : '<p><strong>Vorhandene Zieldaten werden ersetzt. Laden Sie deshalb zuerst die verschlüsselte Rücksicherung herunter.</strong></p>'}<p><strong>Eine Zusammenführung ist in Version 1.10.4 sicherheitshalber deaktiviert.</strong></p>`;
+        `<strong>✓ Entschlüsselung und Integritätsprüfung bestanden</strong><p>Datei: ${esc(importDatei.name)} · ${dateigroesse(importDatei.size)}</p><p>Erstellt: ${new Date(innen.erstelltAm).toLocaleString("de-DE")} auf ${esc(innen.quellgeraet)} · Quellversion ${esc(innen.appVersion)}</p><p>Sicherungskennung: ${esc(innen.sicherungsId)}</p><p>${stats.eintraege} Einträge · ${stats.termine} Termine · ${stats.fragen} Fragen · ${stats.medikamente} Medikamente · ${stats.kalenderPlaene} Kalenderpläne</p><p>${stats.dokumente} Dokumentenmappen · ${stats.seiten} Dokumentseiten · ${dateigroesse(stats.dokumentBytes)}</p><p>Speicher: ${esc(speicher.text)}</p><p>Auf diesem Gerät vorhanden: ${ziel.eintraege} Einträge · ${ziel.dokumente} Dokumentenmappen.</p>${zielIstLeer ? '<p><strong>✓ Das Zielgerät ist vollständig leer. Eine Rücksicherung ist nicht erforderlich.</strong></p>' : '<p><strong>Vorhandene Zieldaten werden ersetzt. Laden Sie deshalb zuerst die verschlüsselte Rücksicherung herunter.</strong></p>'}<p><strong>Eine Zusammenführung ist in Version 1.10.5 sicherheitshalber deaktiviert.</strong></p>`;
               $("#geraetePruefung").hidden = false;
               pass.disabled = true;
               weiter.textContent = zielIstLeer
@@ -8567,7 +8587,7 @@
 </dialog>
 <script id="bedienoptimierung-v186-script">
 (() => {
-  const APP_VERSION = '1.10.4';
+  const APP_VERSION = '1.10.5';
   const MODUS_KEY = 'mein-begleiter-kalender-test-v1-9-1-ansicht';
   const START_KEY = 'mein-begleiter-kalender-test-v1-9-1-startauswahl';
   const ua = navigator.userAgent;
@@ -9253,7 +9273,8 @@
 <link rel="stylesheet" href="v19124.css">
 <link rel="stylesheet" href="v1912510.css?v=personal-7">
 <script src="v19124.js"></script>
-<script src="v1912510.js?v=personal-7"></script>
+<script src="v1912510.js?v=personal-8"></script>
+<script src="kosten-erweiterung.js?v=1.10.5"></script>
 <link rel="stylesheet" href="kalender.css">
 <script src="kalender-engine.js"></script>
 <script src="kalender.js"></script>
