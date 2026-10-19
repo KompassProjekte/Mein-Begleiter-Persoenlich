@@ -1,0 +1,20 @@
+MEIN BEGLEITER 1.10.7 – DOPPELPRÜFUNG – TESTFASSUNG
+
+Die Systemprüfung erklärt mögliche Dopplungen jetzt verständlich.
+
+Bei jeder gefundenen Gruppe können Sie:
+- einen Eintrag öffnen und prüfen,
+- einen tatsächlich doppelten Eintrag nach Rückfrage löschen,
+- beide Einträge als richtig bestätigen.
+
+Wichtig:
+- Die Prüfung löscht niemals automatisch Daten.
+- Bestätigte Gruppen werden künftig nicht erneut als offene Dopplung gemeldet.
+- Technisch doppelte interne IDs werden weiterhin getrennt geprüft.
+
+Kurztest:
+1. Einstellungen öffnen.
+2. "Systemprüfung durchführen" wählen.
+3. Unter "Mögliche Dopplungen prüfen" beide Einträge vergleichen.
+4. Je nach Ergebnis öffnen, löschen oder als richtig bestätigen.
+5. Systemprüfung erneut durchführen und Ergebnis kontrollieren.
