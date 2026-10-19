@@ -1,0 +1,28 @@
+MEIN BEGLEITER 1.10.5 – KOSTENFILTER & EXCEL – TESTFASSUNG
+
+Neu:
+- Kosten nach Gesundheitsbereich/Krankheit zuordnen
+- getrennte Felder für Leistung/Grund und Empfänger
+- Erstattung, automatisch berechneter Eigenanteil und Bearbeitungsstatus
+- Filter nach Zeitraum, Gesundheitsbereich, Kostenart, Status und Suchtext
+- dynamische Summen für Gesamtkosten, Erstattungen und Eigenanteil
+- Excel-Arbeitsmappe für die aktuelle Filterauswahl oder alle Kosten
+- Tabellenblätter: Übersicht, Einzelposten, Gesundheitsbereiche,
+  Kostenarten sowie Erstattung und Status
+- Smartphone-Ansicht als übersichtliche Kostenkarten
+
+Bestehende Kosten:
+Alte Kostenposten bleiben erhalten. Solange sie noch nicht bearbeitet wurden,
+erscheinen sie im Gesundheitsbereich "Nicht zugeordnet", mit 0 Euro Erstattung
+und dem Status "Offen".
+
+Wichtig:
+Die Excel-Datei ist eine Arbeitskopie zum Auswerten und Weiterbearbeiten.
+Sie ersetzt keine verschlüsselte Datensicherung der App.
+
+Empfohlener Kurztest:
+1. Einen neuen Kostenposten vollständig erfassen.
+2. Gesundheitsbereich und Status filtern.
+3. Erstattung und Eigenanteil kontrollieren.
+4. "Excel – aktuelle Auswahl" und "Excel – alle Kosten" ausprobieren.
+5. Eine alte Kostenposition öffnen, zuordnen und wieder speichern.
