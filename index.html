@@ -7,7 +7,7 @@
       content="width=device-width,initial-scale=1,viewport-fit=cover"
     />
     <meta name="theme-color" content="#225b56" />
-    <title>Mein Begleiter 1.10.5 – Persönliche App</title>
+    <title>Mein Begleiter 1.10.6 – Persönliche App</title>
     <link rel="manifest" href="./manifest.webmanifest" />
     <link rel="icon" type="image/png" href="./icons/favicon-64.png" />
     <link rel="apple-touch-icon" href="./icons/apple-touch-icon-180.png" />
@@ -1701,7 +1701,7 @@
           </button>
         </nav>
         <div class="seitenfuss">
-          <strong>Version 1.10.5</strong><br />Persönliche App-Version
+          <strong>Version 1.10.6</strong><br />Persönliche App-Version
         </div>
       </aside>
       <main>
@@ -1921,10 +1921,11 @@
             ><label
               >Status<select class="filter" id="kostenStatus">
                 <option value="alle">Alle Status</option>
-                <option value="offen">Offen</option>
-                <option value="bezahlt">Bezahlt</option>
+                <option value="offen">Nicht eingereicht</option>
                 <option value="eingereicht">Eingereicht</option>
-                <option value="erstattet">Erstattet</option>
+                <option value="teilweise">Teilweise erstattet</option>
+                <option value="erstattet">Vollständig erstattet</option>
+                <option value="abgelehnt">Abgelehnt</option>
               </select></label
             ><label
               >Suche<input class="filter" id="kostenSuche" type="search" placeholder="Leistung oder Empfänger" /></label
@@ -2676,7 +2677,7 @@
                 <span>Persönlicher Browser-Speicher</span>
               </div>
               <p>
-                <strong>Mein Begleiter 1.10.5 – Persönliche App</strong>
+                <strong>Mein Begleiter 1.10.6 – Persönliche App</strong>
               </p>
               <p>
                 Ihre Einträge werden ausschließlich lokal im persönlichen
@@ -7009,7 +7010,7 @@
           pass = $("#geraetePasswort"),
           pass2 = $("#geraetePasswort2"),
           weiter = $("#geraeteWeiter");
-        const APP_VERSION_GERAETEWECHSEL = "1.10.5";
+        const APP_VERSION_GERAETEWECHSEL = "1.10.6";
         const DATENSTRUKTUR_VERSION = "1.8";
         const SICHERUNGSFORMAT_VERSION = 2;
         const MAX_DATEIGROESSE = 250 * 1024 * 1024;
@@ -8587,7 +8588,7 @@
 </dialog>
 <script id="bedienoptimierung-v186-script">
 (() => {
-  const APP_VERSION = '1.10.5';
+  const APP_VERSION = '1.10.6';
   const MODUS_KEY = 'mein-begleiter-kalender-test-v1-9-1-ansicht';
   const START_KEY = 'mein-begleiter-kalender-test-v1-9-1-startauswahl';
   const ua = navigator.userAgent;
@@ -9275,6 +9276,7 @@
 <script src="v19124.js"></script>
 <script src="v1912510.js?v=personal-8"></script>
 <script src="kosten-erweiterung.js?v=1.10.5"></script>
+<script src="kosten-erstattung-1.10.6.js?v=1.10.6"></script>
 <link rel="stylesheet" href="kalender.css">
 <script src="kalender-engine.js"></script>
 <script src="kalender.js"></script>

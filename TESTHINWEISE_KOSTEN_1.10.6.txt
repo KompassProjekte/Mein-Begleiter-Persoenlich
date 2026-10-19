@@ -1,0 +1,27 @@
+MEIN BEGLEITER 1.10.6 – VERSICHERUNG & BEIHILFE – TESTFASSUNG
+
+Neu:
+- Erstattung durch Versicherung separat erfassen
+- Erstattung durch Beihilfe separat erfassen
+- sonstige Erstattung optional erfassen
+- eigener Bearbeitungsstatus für Versicherung und Beihilfe
+- Erstattung insgesamt und verbleibende Differenz werden automatisch berechnet
+- getrennte Spalten und Summen im Excel-Export
+
+Kompatibilität:
+- Alle bisherigen Kosten bleiben erhalten.
+- Eine in Version 1.10.5 erfasste gemeinsame Erstattung wird automatisch als
+  "Sonstige Erstattung" übernommen. Dadurch bleiben Gesamterstattung und
+  Differenz unverändert. Beim nächsten Bearbeiten kann sie auf Versicherung
+  und Beihilfe verteilt werden.
+
+Kurztest:
+1. Betrag, Versicherung und Beihilfe eingeben.
+2. Automatische Gesamterstattung und Differenz kontrollieren.
+3. Unterschiedliche Status für Versicherung und Beihilfe wählen.
+4. Speichern, erneut öffnen und Angaben vergleichen.
+5. Gefilterten und vollständigen Excel-Export testen.
+
+Wichtig:
+Die Excel-Datei ist eine Arbeitskopie und ersetzt keine verschlüsselte
+Datensicherung der App.

@@ -1,4 +1,4 @@
-const CACHE = 'mein-begleiter-kalender-test-cache-v1-10-5-kosten-1';
+const CACHE = 'mein-begleiter-kalender-test-cache-v1-10-6-erstattung-1';
 const BASIS = new URL('./', self.location.href).pathname;
 const PFLICHTDATEIEN = [
   BASIS,
@@ -8,6 +8,7 @@ const PFLICHTDATEIEN = [
   BASIS + 'v1912510.css?v=personal-7',
   BASIS + 'v1912510.js?v=personal-8',
   BASIS + 'kosten-erweiterung.js?v=1.10.5',
+  BASIS + 'kosten-erstattung-1.10.6.js?v=1.10.6',
   BASIS + 'manifest.webmanifest',
   BASIS + 'kalender.css',
   BASIS + 'kalender-engine.js',
